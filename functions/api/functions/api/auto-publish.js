@@ -1,58 +1,73 @@
 export async function onRequestGet(context) {
   const { env } = context;
 
-  // Източници на новини
+  // Източници на новини през JSON API (избягва проблеми с RSS/XML parsing)
   const RSS_FEEDS = [
-    'https://techcrunch.com/feed/',
-    'https://www.theverge.com/rss/index.xml'
+    'https://techcrunch.com/wp-json/wp/v2/posts?per_page=5',
+    'https://venturebeat.com/wp-json/wp/v2/posts?per_page=5'
   ];
 
   try {
     const feedUrl = RSS_FEEDS[Math.floor(Math.random() * RSS_FEEDS.length)];
-    const response = await fetch(feedUrl);
-    const xmlText = await response.text();
-
-    const titleMatch = xmlText.match(/<title><!\[CDATA\[(.*?)\]\]><\/title>/) || xmlText.match(/<title>(.*?)<\/title>/);
-    const linkMatch = xmlText.match(/<link>(.*?)<\/link>/);
-
-    if (!titleMatch || !linkMatch) {
-      return new Response(JSON.stringify({ error: "Няма намерени новини" }), { status: 400 });
+    const res = await fetch(feedUrl, {
+      headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)' }
+    });
+    
+    if (!res.ok) {
+      throw new Error(`Грешка при теглене на източника: ${res.statusText}`);
     }
 
-    const sourceTitle = titleMatch[1];
-    const sourceLink = linkMatch[1];
+    const posts = await res.json();
+    if (!posts || posts.length === 0) {
+      return new Response(JSON.stringify({ error: "Няма намерени новини." }), { status: 400 });
+    }
 
-    // Проверка за дублиране
+    // Избираме първата статия
+    const post = posts[0];
+    const sourceTitle = post.title.rendered.replace(/&#8217;/g, "'").replace(/&#8220;/g, '"').replace(/&#8221;/g, '"');
+    const sourceLink = post.link;
+
+    // Проверка дали вече съществува в базата
     const existing = await env.DB.prepare("SELECT id FROM articles WHERE source_url = ?").bind(sourceLink).first();
     if (existing) {
-      return new Response(JSON.stringify({ message: "Статията вече съществува в базата." }));
+      return new Response(JSON.stringify({ message: "Статията вече съществува в базата." }), {
+        headers: { "Content-Type": "application/json; charset=utf-8" }
+      });
     }
 
-    // Подготовка на prompt за Cloudflare AI
-    const prompt = `Ти си технологичен журналист за българската медия TechPulse.
-Преведи и разшири следното заглавие на български език в пълноценна новинарска статия (около 250-300 думи):
-Заглавие: "${sourceTitle}"
+    // Подготовка на prompt за Cloudflare Workers AI
+    const prompt = `Ти си журналист за технологичната медия TechPulse BG. 
+Напиши пълна новинарска статия на БЪЛГАРСКИ ЕЗИК (около 200-250 думи) по следното заглавие:
+"${sourceTitle}"
 
-Върни отговора САМО в валиден JSON формат без никакви допълнителни обяснения, в следния вид:
+ВЪРНИ САМО ВАЛИДЕН JSON БЕЗ НИКАКЪВ ДРУГ ТЕКСТ, СИМВОЛИ ИЛИ MARKDOWN CODEBLOCKS.
+Формат:
 {
-  "title": "Заглавие на български",
+  "title": "Интересно заглавие на български",
   "category": "AI",
-  "summary": "Кратко резюме в 2 изречения",
-  "content": "<p>Първи параграф...</p><p>Втори параграф...</p>"
+  "summary": "Кратко резюме в две изречения.",
+  "content": "<p>Първи параграф с подробности...</p><p>Втори параграф с заключение...</p>"
 }`;
 
     const aiResponse = await env.AI.run('@cf/meta/llama-3-8b-instruct', {
       messages: [{ role: 'user', content: prompt }]
     });
 
-    const generatedData = JSON.parse(aiResponse.response);
+    let rawText = aiResponse.response.trim();
+    
+    // Изчистване на евентуални markdown формати от AI отговора (```json ... ```)
+    if (rawText.startsWith('```')) {
+      rawText = rawText.replace(/^```(json)?/, '').replace(/```$/, '').trim();
+    }
+
+    const generatedData = JSON.parse(rawText);
 
     const slug = generatedData.title
       .toLowerCase()
       .replace(/[^a-z0-9а-я\s]/gi, '')
       .replace(/\s+/g, '-');
 
-    // Запис в D1
+    // Запис в Cloudflare D1
     await env.DB.prepare(
       `INSERT INTO articles (title, slug, category, summary, content, author, status, source_url, created_at)
        VALUES (?, ?, ?, ?, ?, 'TechPulse AI', 'published', ?, DATETIME('now'))`
@@ -66,10 +81,13 @@ export async function onRequestGet(context) {
     ).run();
 
     return new Response(JSON.stringify({ success: true, article: generatedData.title }), {
-      headers: { "Content-Type": "application/json" }
+      headers: { "Content-Type": "application/json; charset=utf-8" }
     });
 
   } catch (err) {
-    return new Response(JSON.stringify({ error: err.message }), { status: 500 });
+    return new Response(JSON.stringify({ error: err.message }), { 
+      status: 500,
+      headers: { "Content-Type": "application/json; charset=utf-8" }
+    });
   }
 }
