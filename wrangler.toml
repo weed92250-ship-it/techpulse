@@ -1,8 +1,1 @@
-name = "techpulse"
-pages_build_output_dir = "public"
-compatibility_date = "2026-01-01"
 
-[[d1_databases]]
-binding = "DB"
-database_name = "techpulse-db"
-database_id = "b3122124-729a-4cdf-8bc6-5d474c6738f4"
