@@ -5,7 +5,7 @@ compatibility_date = "2026-01-01"
 [[d1_databases]]
 binding = "DB"
 database_name = "techpulse-db"
-database_id = "b3122124-729a-4cdf-8bc6-5d474c6738f4"
+database_id = "bfce16c7-ce83-4c92-bff4-b9d4324061e0"
 
 [ai]
 binding = "AI"
