@@ -5,4 +5,4 @@ compatibility_date = "2026-01-01"
 [[d1_databases]]
 binding = "DB"
 database_name = "techpulse-db"
-database_id = "PUT-YOUR-DATABASE-ID-HERE"
+database_id = "44541da4-fe42-4a5b-91a4-4e0c7052f6de"
