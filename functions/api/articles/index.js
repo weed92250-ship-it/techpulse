@@ -15,6 +15,7 @@ export async function onRequestPost({ request, env }) {
   }
   const id = 'a' + Date.now();
   const date = new Date().toISOString().slice(0, 10);
+  const image = body.image || `https://picsum.photos/seed/${id}/900/500`;
   if (body.breaking) {
     await env.DB.prepare('UPDATE articles SET breaking = 0').run();
   }
@@ -22,7 +23,7 @@ export async function onRequestPost({ request, env }) {
     `INSERT INTO articles (id, title, excerpt, content, category, author, date, breaking, image)
      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`
   )
-    .bind(id, body.title, body.excerpt, body.content, body.category, body.author, date, body.breaking ? 1 : 0, body.image || null)
+    .bind(id, body.title, body.excerpt, body.content, body.category, body.author, date, body.breaking ? 1 : 0, image)
     .run();
   return Response.json({ id, date });
 }
