@@ -13,9 +13,9 @@ export async function onRequestPut({ request, env, params }) {
     await env.DB.prepare('UPDATE articles SET breaking = 0').run();
   }
   await env.DB.prepare(
-    `UPDATE articles SET title=?, excerpt=?, content=?, category=?, author=?, breaking=? WHERE id=?`
+    `UPDATE articles SET title=?, excerpt=?, content=?, category=?, author=?, breaking=?, image=? WHERE id=?`
   )
-    .bind(body.title, body.excerpt, body.content, body.category, body.author, body.breaking ? 1 : 0, params.id)
+    .bind(body.title, body.excerpt, body.content, body.category, body.author, body.breaking ? 1 : 0, body.image || null, params.id)
     .run();
   return Response.json({ ok: true });
 }
