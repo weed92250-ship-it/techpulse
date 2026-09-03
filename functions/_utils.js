@@ -18,5 +18,6 @@ export function rowToArticle(r) {
     author: r.author,
     date: r.date,
     breaking: !!r.breaking,
+    image: r.image || null,
   };
 }
