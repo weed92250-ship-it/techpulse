@@ -671,8 +671,42 @@ function renderAdminPanel(){
           </div>
         </form>
       </div>
+      <div class="section-head" style="margin-top:50px"><span class="dot"></span><h2>Модерация на коментари</h2></div>
+      <div id="commentsAdminList" class="admin-list">Зареждане...</div>
     </main>
   `;
+}
+async function loadAllCommentsForAdmin(){
+  const box = document.getElementById('commentsAdminList');
+  if(!box) return;
+  try{
+    const res = await fetch('/api/all-comments', { headers: { 'x-admin-key': adminKey } });
+    if(!res.ok){ box.innerHTML = '<div class="empty">Неуспешно зареждане на коментарите.</div>'; return; }
+    const list = await res.json();
+    if(!list.length){ box.innerHTML = '<div class="empty">Все още няма коментари.</div>'; return; }
+    box.innerHTML = list.map(c => `
+      <div class="admin-row">
+        <div class="info">
+          <div class="t">${esc(c.name)}: ${esc(c.text)}</div>
+          <div class="c">${esc(c.articleTitle||'(изтрита статия)')} · ${esc(c.date)}</div>
+        </div>
+        <div class="actions">
+          <button onclick="deleteCommentAdmin('${c.id}','${c.articleId}')">Изтрий</button>
+        </div>
+      </div>
+    `).join('');
+  }catch(e){
+    box.innerHTML = '<div class="empty">Неуспешно зареждане на коментарите.</div>';
+  }
+}
+async function deleteCommentAdmin(commentId, articleId){
+  if(!confirm('Сигурен ли си, че искаш да изтриеш този коментар?')) return;
+  const res = await fetch('/api/comments/'+encodeURIComponent(articleId)+'?id='+encodeURIComponent(commentId), {
+    method:'DELETE',
+    headers:{'x-admin-key':adminKey},
+  });
+  if(!res.ok){ alert('Изтриването не бе успешно.'); return; }
+  loadAllCommentsForAdmin();
 }
 function startEdit(id){ editingId = id; render(); window.scrollTo(0,0); }
 async function deleteArticle(id){
@@ -730,6 +764,7 @@ async function render(){
       app.innerHTML = shellHeader(route) + renderAdminGate();
     }else{
       app.innerHTML = shellHeader(route) + renderAdminPanel();
+      loadAllCommentsForAdmin();
     }
     return;
   }
