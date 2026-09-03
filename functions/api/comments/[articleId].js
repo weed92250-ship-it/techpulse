@@ -1,6 +1,8 @@
+import { checkAuth, unauthorized } from '../../_utils.js';
+
 export async function onRequestGet({ env, params }) {
   const { results } = await env.DB.prepare(
-    'SELECT name, text, date FROM comments WHERE article_id = ? ORDER BY id ASC'
+    'SELECT id, name, text, date FROM comments WHERE article_id = ? ORDER BY id ASC'
   )
     .bind(params.articleId)
     .all();
@@ -21,4 +23,15 @@ export async function onRequestPost({ request, env, params }) {
     .bind(params.articleId, name.slice(0, 80), text.slice(0, 2000), date)
     .run();
   return Response.json({ ok: true, date });
+}
+
+export async function onRequestDelete({ request, env, params }) {
+  if (!checkAuth(request, env)) return unauthorized();
+  const url = new URL(request.url);
+  const commentId = url.searchParams.get('id');
+  if (!commentId) return new Response(JSON.stringify({ error: 'Missing id' }), { status: 400 });
+  await env.DB.prepare('DELETE FROM comments WHERE id = ? AND article_id = ?')
+    .bind(commentId, params.articleId)
+    .run();
+  return Response.json({ ok: true });
 }
