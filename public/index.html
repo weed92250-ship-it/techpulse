@@ -421,9 +421,12 @@ function visualSvg(color){
     <polyline points="0,110 40,110 55,70 75,150 100,110 300,110" fill="none" stroke="${color}" stroke-width="1.5" opacity="0.35"/>
   </svg>`;
 }
-function visual(catId, size){
-  const c = catById(catId);
+function visual(article){
+  const c = catById(article && article.category);
   const color = c ? c.color : '#49E0D2';
+  if(article && article.image){
+    return `<div class="art-visual" style="--cat-color:${color}"><img src="${esc(article.image)}" alt="${esc(article.title||'')}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0;"></div>`;
+  }
   return `<div class="art-visual" style="--cat-color:${color}">${visualSvg(color)}</div>`;
 }
 
@@ -486,7 +489,7 @@ function renderHome(){
   const heroHtml = breaking ? `
     <div class="hero">
       <div class="hero-main">
-        <a href="#/article/${breaking.id}">${visual(breaking.category)}</a>
+        <a href="#/article/${breaking.id}">${visual(breaking)}</a>
         ${breaking.breaking ? `<div class="breaking-tag"><span class="pulse-dot"></span> НА ЖИВО</div>` : ''}
         ${catLabel(breaking.category)}
         <a href="#/article/${breaking.id}"><h1>${esc(breaking.title)}</h1></a>
@@ -496,7 +499,7 @@ function renderHome(){
       <div class="hero-side">
         ${sideItems.map(a => `
           <div class="side-item">
-            <a href="#/article/${a.id}">${visual(a.category)}</a>
+            <a href="#/article/${a.id}">${visual(a)}</a>
             <div>
               ${catLabel(a.category)}
               <a href="#/article/${a.id}"><div class="t">${esc(a.title)}</div></a>
@@ -518,7 +521,7 @@ function renderHome(){
 function cardHtml(a){
   return `
     <div class="card">
-      <a href="#/article/${a.id}">${visual(a.category)}</a>
+      <a href="#/article/${a.id}">${visual(a)}</a>
       ${catLabel(a.category)}
       <a href="#/article/${a.id}"><h3>${esc(a.title)}</h3></a>
       <p class="excerpt">${esc(a.excerpt)}</p>
@@ -551,7 +554,7 @@ async function renderArticleView(id){
   const a = articles.find(x => x.id === id);
   const app = document.getElementById('app');
   if(!a){ location.hash = '#/'; return; }
-  const paragraphs = a.content.split(/\n\n+/).map(p => `<p>${esc(p)}</p>`).join('');
+  const paragraphs = a.content.replace(/\\n/g, '\n').split(/\n\n+/).map(p => `<p>${esc(p)}</p>`).join('');
   const comments = await loadComments(id);
 
   app.innerHTML = shellHeader({view:'article'}) + `
@@ -561,7 +564,7 @@ async function renderArticleView(id){
         ${catLabel(a.category)}
         <h1>${esc(a.title)}</h1>
         <div class="meta-row"><span>${esc(a.author)}</span><span class="sep"></span><span>${esc(a.date)}</span></div>
-        ${visual(a.category)}
+        ${visual(a)}
         <div class="article-body">${paragraphs}</div>
         <div class="comments">
           <h2>Коментари (${comments.length})</h2>
@@ -603,7 +606,7 @@ function renderAdminGate(){
   return `
     <main>
       <div class="admin-gate">
-        ${visual('ai')}
+        ${visual({category:'ai'})}
         <h2 style="margin-bottom:16px;">Админ панел</h2>
         <input id="adminPass" type="password" placeholder="Парола">
         <button class="btn" onclick="tryAdminLogin()">Вход</button>
@@ -660,6 +663,7 @@ function renderAdminPanel(){
             <div class="field"><label>АВТОР</label><input id="fAuthor" required value="${editing?esc(editing.author):''}"></div>
           </div>
           <div class="field"><label>СЪДЪРЖАНИЕ (раздели абзаците с празен ред)</label><textarea id="fContent" required>${editing?esc(editing.content):''}</textarea></div>
+          <div class="field"><label>СНИМКА (URL адрес, по избор)</label><input id="fImage" placeholder="https://..." value="${editing&&editing.image?esc(editing.image):''}"></div>
           <label class="checkbox-row"><input type="checkbox" id="fBreaking" ${editing&&editing.breaking?'checked':''}> Маркирай като водеща/На живо новина</label>
           <div class="form-actions">
             <button type="submit" class="btn">${editing?'Запази промените':'Публикувай статия'}</button>
@@ -687,6 +691,7 @@ async function saveArticleForm(e){
     category: document.getElementById('fCategory').value,
     author: document.getElementById('fAuthor').value.trim(),
     content: document.getElementById('fContent').value.trim(),
+    image: document.getElementById('fImage').value.trim(),
     breaking: document.getElementById('fBreaking').checked,
   };
   if(!data.title || !data.excerpt || !data.content || !data.author) return false;
@@ -705,7 +710,7 @@ async function saveArticleForm(e){
 
 /* ============ FOOTER ============ */
 function footerHtml(){
-  return `<footer>TechPulse · демо издание за AI и технологии</footer>`;
+  return `<footer>TechPulse · AI и технологии</footer>`;
 }
 
 /* ============ MAIN RENDER ============ */
