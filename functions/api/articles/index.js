@@ -19,10 +19,10 @@ export async function onRequestPost({ request, env }) {
     await env.DB.prepare('UPDATE articles SET breaking = 0').run();
   }
   await env.DB.prepare(
-    `INSERT INTO articles (id, title, excerpt, content, category, author, date, breaking)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?)`
+    `INSERT INTO articles (id, title, excerpt, content, category, author, date, breaking, image)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`
   )
-    .bind(id, body.title, body.excerpt, body.content, body.category, body.author, date, body.breaking ? 1 : 0)
+    .bind(id, body.title, body.excerpt, body.content, body.category, body.author, date, body.breaking ? 1 : 0, body.image || null)
     .run();
   return Response.json({ id, date });
 }
