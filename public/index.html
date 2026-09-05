@@ -248,7 +248,9 @@
     .article-page h1{font-size:24px;}
   }
 </style>
-  <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "79762c67d9bd4c4abff1e2017fe0dba1"}'></script><!-- End Cloudflare Web Analytics -->
+<!-- Cloudflare Web Analytics -->
+<script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "ec345b79cdfe48dbaac0fa3b9c7029d7"}'></script>
+<!-- End Cloudflare Web Analytics -->
 </head>
 <body>
 <div id="app"></div>
@@ -468,7 +470,7 @@ function shellHeader(route){
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
         <input id="searchInput" type="text" placeholder="Търсене..." value="${route.view==='search'?esc(route.q):''}">
       </form>
-      <a href="#/admin" class="admin-link">Админ</a>
+      <a href="#/admin" class="admin-link" style="display:none"></a>
     </div>
     <nav class="cats">${catLinks}</nav>
   </header>`;
@@ -745,7 +747,7 @@ async function saveArticleForm(e){
 
 /* ============ FOOTER ============ */
 function footerHtml(){
-  return `<footer>TechPulse · AI и технологии</footer>`;
+  return `<footer>TechPulse · AI и технологии &nbsp;·&nbsp; <a href="#/admin" style="color:inherit;opacity:.6;">Вход</a></footer>`;
 }
 
 /* ============ MAIN RENDER ============ */
