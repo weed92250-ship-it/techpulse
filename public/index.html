@@ -4,6 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TechPulse — AI и технологии</title>
+<meta name="description" content="TechPulse — новини, ревюта и AI инструменти за технологичния свят, обяснени ясно на български език.">
+<meta property="og:title" content="TechPulse — AI и технологии">
+<meta property="og:description" content="Новини, ревюта и AI инструменти за технологичния свят, обяснени ясно на български език.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TechPulse">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:,">
+<meta name="robots" content="index, follow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
 <style>
@@ -366,11 +374,11 @@ async function loadComments(articleId){
     return await res.json();
   }catch(e){ return []; }
 }
-async function addComment(articleId, name, text){
+async function addComment(articleId, name, text, honeypot){
   await fetch('/api/comments/'+encodeURIComponent(articleId), {
     method:'POST',
     headers:{'content-type':'application/json'},
-    body: JSON.stringify({name, text}),
+    body: JSON.stringify({name, text, website: honeypot || ''}),
   });
   return await loadComments(articleId);
 }
@@ -575,6 +583,7 @@ async function renderArticleView(id){
           <form class="comment-form" onsubmit="submitComment(event,'${id}')">
             <input id="cName" type="text" placeholder="Твоето име" required>
             <textarea id="cText" placeholder="Напиши коментар..." required></textarea>
+            <input id="cWebsite" type="text" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;top:-9999px;" aria-hidden="true">
             <button type="submit" class="btn">Публикувай коментар</button>
           </form>
         </div>
@@ -594,10 +603,12 @@ function renderComments(list){
 }
 async function submitComment(e, articleId){
   e.preventDefault();
+  const honeypot = document.getElementById('cWebsite').value.trim();
+  if(honeypot){ e.target.reset(); return false; } // тихо отхвърляне на бот
   const name = document.getElementById('cName').value.trim();
   const text = document.getElementById('cText').value.trim();
   if(!name || !text) return false;
-  const list = await addComment(articleId, name, text);
+  const list = await addComment(articleId, name, text, honeypot);
   document.getElementById('commentsList').innerHTML = renderComments(list);
   document.querySelector('.comments h2').textContent = `Коментари (${list.length})`;
   e.target.reset();
