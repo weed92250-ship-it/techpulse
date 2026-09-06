@@ -13,8 +13,17 @@ export async function onRequestPost({ request, env, params }) {
   const body = await request.json();
   const name = (body.name || '').trim();
   const text = (body.text || '').trim();
+  const honeypot = (body.website || '').trim();
+  if (honeypot) {
+    // Тихо приемане на бота без реален запис, за да не разбере, че е спрян
+    return Response.json({ ok: true, date: new Date().toISOString().slice(0, 10) });
+  }
   if (!name || !text) {
     return new Response(JSON.stringify({ error: 'Missing fields' }), { status: 400 });
+  }
+  const urlCount = (text.match(/https?:\/\//gi) || []).length;
+  if (urlCount >= 2) {
+    return new Response(JSON.stringify({ error: 'Too many links' }), { status: 400 });
   }
   const date = new Date().toISOString().slice(0, 10);
   await env.DB.prepare(
