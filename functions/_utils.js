@@ -1,3 +1,11 @@
+export function escapeHtml(s) {
+  return String(s || '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
 export function checkAuth(request, env) {
   const key = request.headers.get('x-admin-key');
   return !!key && key === env.ADMIN_PASSWORD;
