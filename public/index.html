@@ -457,6 +457,8 @@ function parseHash(){
   if(parts[0] === 'article') return {view:'article', id: decodeURIComponent(parts[1]||'')};
   if(parts[0] === 'search') return {view:'search', q: decodeURIComponent(parts[1]||'')};
   if(parts[0] === 'admin') return {view:'admin'};
+  if(parts[0] === 'about') return {view:'about'};
+  if(parts[0] === 'privacy') return {view:'privacy'};
   return {view:'home'};
 }
 window.addEventListener('hashchange', render);
@@ -757,9 +759,39 @@ async function saveArticleForm(e){
   return false;
 }
 
+/* ============ STATIC PAGES ============ */
+function renderAbout(){
+  return `
+    <div class="article-page">
+      <a href="#/" class="back-link">← Начало</a>
+      <h1>За нас</h1>
+      <div class="article-body">
+        <p>TechPulse е независим сайт за новини от света на изкуствения интелект и технологиите, писан на български език.</p>
+        <p>Част от съдържанието на сайта се подготвя ръчно от редакцията, а част се генерира автоматично от AI система, която следи технологични новини и подготвя кратки статии по тях. Автоматично подготвените статии са подписани с автор „TechPulse Екип“.</p>
+        <p>Работим по подобряване на точността на автоматичното съдържание, но при съмнение в достоверността на дадена информация препоръчваме да проверите и оригиналния източник.</p>
+        <p>За въпроси или сигнали за грешки можеш да оставиш коментар под съответната статия.</p>
+      </div>
+    </div>
+  `;
+}
+function renderPrivacy(){
+  return `
+    <div class="article-page">
+      <a href="#/" class="back-link">← Начало</a>
+      <h1>Поверителност</h1>
+      <div class="article-body">
+        <p>Този сайт използва Cloudflare Web Analytics — анализ на посещенията, който не използва бисквитки (cookies) и не събира лични данни, идентифициращи конкретен посетител.</p>
+        <p>Когато оставиш коментар под статия, съхраняваме въведеното от теб име и текст на коментара, за да го покажем на страницата на статията. Не изискваме имейл адрес или друга лична информация за коментиране.</p>
+        <p>Сайтът не продава и не споделя данни с трети страни за рекламни цели извън стандартните услуги, посочени тук.</p>
+        <p>Ако имаш въпроси относно тази политика, можеш да се свържеш с нас чрез коментар на сайта.</p>
+      </div>
+    </div>
+  `;
+}
+
 /* ============ FOOTER ============ */
 function footerHtml(){
-  return `<footer>TechPulse · AI и технологии &nbsp;·&nbsp; <a href="#/admin" style="color:inherit;opacity:.6;">Вход</a></footer>`;
+  return `<footer>TechPulse · AI и технологии &nbsp;·&nbsp; <a href="#/about" style="color:inherit;opacity:.6;">За нас</a> &nbsp;·&nbsp; <a href="#/privacy" style="color:inherit;opacity:.6;">Поверителност</a> &nbsp;·&nbsp; <a href="#/admin" style="color:inherit;opacity:.6;">Вход</a></footer>`;
 }
 
 /* ============ MAIN RENDER ============ */
@@ -788,6 +820,8 @@ async function render(){
   if(route.view === 'home') body = renderHome();
   else if(route.view === 'category') body = renderCategory(route.cat);
   else if(route.view === 'search') body = renderSearch(route.q);
+  else if(route.view === 'about') body = renderAbout();
+  else if(route.view === 'privacy') body = renderPrivacy();
 
   app.innerHTML = shellHeader(route) + `<main>${body}</main>` + footerHtml();
 }
