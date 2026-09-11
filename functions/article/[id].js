@@ -1,6 +1,6 @@
 import { escapeHtml } from '../_utils.js';
 
-const SITE_URL = 'https://techpulseon.pages.dev';
+const SITE_URL = 'https://techpulseon.site';
 
 export async function onRequestGet({ env, params }) {
   const row = await env.DB.prepare('SELECT * FROM articles WHERE id = ?').bind(params.id).first();
