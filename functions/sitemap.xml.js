@@ -1,4 +1,4 @@
-const SITE_URL = 'https://techpulseon.pages.dev';
+const SITE_URL = 'https://techpulseon.site';
 
 export async function onRequestGet({ env }) {
   const { results } = await env.DB.prepare('SELECT id, date FROM articles ORDER BY date DESC').all();
