@@ -1,9 +1,18 @@
 import { checkAuth, unauthorized, rowToArticle } from '../../_utils.js';
 
-export async function onRequestGet({ env }) {
-  const { results } = await env.DB.prepare(
-    'SELECT * FROM articles ORDER BY date DESC, rowid DESC'
-  ).all();
+export async function onRequestGet({ request, env }) {
+  const url = new URL(request.url);
+  const limit = parseInt(url.searchParams.get('limit'));
+  const offset = parseInt(url.searchParams.get('offset')) || 0;
+
+  let query = 'SELECT * FROM articles ORDER BY date DESC, rowid DESC';
+  const binds = [];
+  if (limit) {
+    query += ' LIMIT ? OFFSET ?';
+    binds.push(limit, offset);
+  }
+
+  const { results } = await env.DB.prepare(query).bind(...binds).all();
   return Response.json(results.map(rowToArticle));
 }
 
