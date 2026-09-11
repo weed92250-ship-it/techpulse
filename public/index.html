@@ -296,7 +296,7 @@ const SEED_ARTICLES = [
 
 За хора, които ценят големия екран пред компактността, компромисът си заслужава. За останалите — по-класически флагман остава по-удобен избор.`},
 
-  {id:'a3', title:'Как да организираш AI инструментите си в едно ежедневие', excerpt:'Малка система от три стъпки, с която instrumентите спират да се дублират и да ти отнемат време.', category:'howto', author:'Стефан Колев', date:'2026-08-25', breaking:false,
+  {id:'a3', title:'Как да организираш AI инструментите си в едно ежедневие', excerpt:'Малка система от три стъпки, с която инструментите спират да се дублират и да ти отнемат време.', category:'howto', author:'Стефан Колев', date:'2026-08-25', breaking:false,
    content:`Повечето хора, които използват няколко AI инструмента едновременно, стигат до объркване — един и същ въпрос се задава на три различни места, а резултатите не се събират никъде.
 
 Първата стъпка е да определиш „основен“ инструмент за писане и „основен“ за проучване — не е нужно да е един и същ. Втората е да пазиш едно общо място (документ или бележник), където преместваш най-добрите резултати, вместо да скачаш между чатове.
@@ -358,6 +358,7 @@ let articles = [];
 let adminUnlocked = false;
 let adminKey = localStorage.getItem('tp_admin_key') || null;
 let editingId = null;
+let homeVisibleCount = 12;
 
 /* ============ API (Cloudflare Pages Functions + D1) ============ */
 async function loadArticles(){
@@ -499,7 +500,8 @@ function renderHome(){
   const breaking = articles.find(a => a.breaking) || articles[0];
   const others = articles.filter(a => a.id !== (breaking && breaking.id));
   const sideItems = others.slice(0,3);
-  const gridItems = others.slice(3);
+  const allGridItems = others.slice(3);
+  const gridItems = allGridItems.slice(0, homeVisibleCount);
 
   const heroHtml = breaking ? `
     <div class="hero">
@@ -529,9 +531,14 @@ function renderHome(){
     <div class="section-head"><span class="dot"></span><h2>Последно от TechPulse</h2></div>
     <div class="grid">
       ${gridItems.map(a => cardHtml(a)).join('')}
-    </div>` : '';
+    </div>
+    ${allGridItems.length > homeVisibleCount ? `<div style="text-align:center;margin-top:30px;"><button class="btn secondary" onclick="loadMoreHome()">Зареди още</button></div>` : ''}` : '';
 
   return heroHtml + gridHtml;
+}
+function loadMoreHome(){
+  homeVisibleCount += 12;
+  render();
 }
 function cardHtml(a){
   return `
