@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://techpulseon.pages.dev/sitemap.xml
+Sitemap: https://techpulseon.site/sitemap.xml
