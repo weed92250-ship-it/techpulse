@@ -435,11 +435,19 @@ function visualSvg(color){
     <polyline points="0,110 40,110 55,70 75,150 100,110 300,110" fill="none" stroke="${color}" stroke-width="1.5" opacity="0.35"/>
   </svg>`;
 }
-function visual(article){
+function resizeImageUrl(url, sizeKey){
+  const sizes = { hero:[700,350], side:[200,140], card:[450,250] };
+  const [w,h] = sizes[sizeKey] || sizes.card;
+  const m = url.match(/^(https:\/\/picsum\.photos\/seed\/[^\/]+)\/\d+\/\d+$/);
+  return m ? `${m[1]}/${w}/${h}` : url;
+}
+function visual(article, sizeKey){
   const c = catById(article && article.category);
   const color = c ? c.color : '#49E0D2';
   if(article && article.image){
-    return `<div class="art-visual" style="--cat-color:${color}"><img src="${esc(article.image)}" alt="${esc(article.title||'')}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0;"></div>`;
+    const src = resizeImageUrl(article.image, sizeKey || 'card');
+    const isHero = sizeKey === 'hero';
+    return `<div class="art-visual" style="--cat-color:${color}"><img src="${esc(src)}" alt="${esc(article.title||'')}" ${isHero ? 'loading="eager" fetchpriority="high"' : 'loading="lazy"'} style="width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0;"></div>`;
   }
   return `<div class="art-visual" style="--cat-color:${color}">${visualSvg(color)}</div>`;
 }
@@ -506,7 +514,7 @@ function renderHome(){
   const heroHtml = breaking ? `
     <div class="hero">
       <div class="hero-main">
-        <a href="#/article/${breaking.id}">${visual(breaking)}</a>
+        <a href="#/article/${breaking.id}">${visual(breaking, 'hero')}</a>
         ${breaking.breaking ? `<div class="breaking-tag"><span class="pulse-dot"></span> НА ЖИВО</div>` : ''}
         ${catLabel(breaking.category)}
         <a href="#/article/${breaking.id}"><h1>${esc(breaking.title)}</h1></a>
@@ -516,7 +524,7 @@ function renderHome(){
       <div class="hero-side">
         ${sideItems.map(a => `
           <div class="side-item">
-            <a href="#/article/${a.id}">${visual(a)}</a>
+            <a href="#/article/${a.id}">${visual(a, 'side')}</a>
             <div>
               ${catLabel(a.category)}
               <a href="#/article/${a.id}"><div class="t">${esc(a.title)}</div></a>
@@ -543,7 +551,7 @@ function loadMoreHome(){
 function cardHtml(a){
   return `
     <div class="card">
-      <a href="#/article/${a.id}">${visual(a)}</a>
+      <a href="#/article/${a.id}">${visual(a, 'card')}</a>
       ${catLabel(a.category)}
       <a href="#/article/${a.id}"><h3>${esc(a.title)}</h3></a>
       <p class="excerpt">${esc(a.excerpt)}</p>
@@ -586,7 +594,7 @@ async function renderArticleView(id){
         ${catLabel(a.category)}
         <h1>${esc(a.title)}</h1>
         <div class="meta-row"><span>${esc(a.author)}</span><span class="sep"></span><span>${esc(a.date)}</span></div>
-        ${visual(a)}
+        ${visual(a, 'hero')}
         <div class="article-body">${paragraphs}</div>
         <div class="comments">
           <h2>Коментари (${comments.length})</h2>
@@ -799,7 +807,7 @@ function renderPrivacy(){
 
 /* ============ FOOTER ============ */
 function footerHtml(){
-  return `<footer>TechPulse · AI и технологии &nbsp;·&nbsp; <a href="#/about" style="color:inherit;opacity:.6;">За нас</a> &nbsp;·&nbsp; <a href="#/privacy" style="color:inherit;opacity:.6;">Поверителност</a> &nbsp;·&nbsp; <a href="#/admin" style="color:inherit;opacity:.6;">Вход</a></footer>`;
+  return `<footer>TechPulse · AI и технологии &nbsp;·&nbsp; <a href="#/about" style="color:inherit;opacity:.8;text-decoration:underline;">За нас</a> &nbsp;·&nbsp; <a href="#/privacy" style="color:inherit;opacity:.8;text-decoration:underline;">Поверителност</a> &nbsp;·&nbsp; <a href="#/admin" style="color:inherit;opacity:.8;text-decoration:underline;">Вход</a></footer>`;
 }
 
 /* ============ MAIN RENDER ============ */
