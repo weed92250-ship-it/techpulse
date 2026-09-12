@@ -17,7 +17,7 @@ export async function onRequestGet({ request, env }) {
 }
 
 async function generateArticleImage(env, article) {
-  const prompt = `Editorial illustration for a tech news article. Topic: ${article.title}. Category: ${article.category}. Modern minimalist digital art, dark navy blue background, teal accent lighting, abstract technology visual, no text, no logos, no recognizable real people or faces, professional news website header image, 16:9 composition.`;
+  const prompt = `A realistic photograph for a tech news article about: ${article.title}. Category: ${article.category}. Professional editorial photography style, natural lighting, modern office or technology setting relevant to the topic, shot on a DSLR camera, sharp focus, shallow depth of field, photojournalism style, no text overlays, no logos, no recognizable real celebrity faces, 16:9 composition.`;
 
   const result = await env.AI.run('@cf/black-forest-labs/flux-1-schnell', {
     prompt,
