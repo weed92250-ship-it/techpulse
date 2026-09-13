@@ -260,7 +260,6 @@
 <!-- Cloudflare Web Analytics -->
 <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "ec345b79cdfe48dbaac0fa3b9c7029d7"}'></script>
 <!-- End Cloudflare Web Analytics -->
-<meta name="google-site-verification" content="uYDzBROdMF-4maZOTLfRTlGxCapxhfqV_JgUOSBAgqY" />
 </head>
 <body>
 <div id="app"></div>
@@ -296,7 +295,7 @@ const SEED_ARTICLES = [
 
 За хора, които ценят големия екран пред компактността, компромисът си заслужава. За останалите — по-класически флагман остава по-удобен избор.`},
 
-  {id:'a3', title:'Как да организираш AI инструментите си в едно ежедневие', excerpt:'Малка система от три стъпки, с която инструментите спират да се дублират и да ти отнемат време.', category:'howto', author:'Стефан Колев', date:'2026-08-25', breaking:false,
+  {id:'a3', title:'Как да организираш AI инструментите си в едно ежедневие', excerpt:'Малка система от три стъпки, с която instrumентите спират да се дублират и да ти отнемат време.', category:'howto', author:'Стефан Колев', date:'2026-08-25', breaking:false,
    content:`Повечето хора, които използват няколко AI инструмента едновременно, стигат до объркване — един и същ въпрос се задава на три различни места, а резултатите не се събират никъде.
 
 Първата стъпка е да определиш „основен“ инструмент за писане и „основен“ за проучване — не е нужно да е един и същ. Втората е да пазиш едно общо място (документ или бележник), където преместваш най-добрите резултати, вместо да скачаш между чатове.
@@ -358,7 +357,6 @@ let articles = [];
 let adminUnlocked = false;
 let adminKey = localStorage.getItem('tp_admin_key') || null;
 let editingId = null;
-let homeVisibleCount = 12;
 
 /* ============ API (Cloudflare Pages Functions + D1) ============ */
 async function loadArticles(){
@@ -435,19 +433,11 @@ function visualSvg(color){
     <polyline points="0,110 40,110 55,70 75,150 100,110 300,110" fill="none" stroke="${color}" stroke-width="1.5" opacity="0.35"/>
   </svg>`;
 }
-function resizeImageUrl(url, sizeKey){
-  const sizes = { hero:[700,350], side:[200,140], card:[450,250] };
-  const [w,h] = sizes[sizeKey] || sizes.card;
-  const m = url.match(/^(https:\/\/picsum\.photos\/seed\/[^\/]+)\/\d+\/\d+$/);
-  return m ? `${m[1]}/${w}/${h}` : url;
-}
-function visual(article, sizeKey){
+function visual(article){
   const c = catById(article && article.category);
   const color = c ? c.color : '#49E0D2';
   if(article && article.image){
-    const src = resizeImageUrl(article.image, sizeKey || 'card');
-    const isHero = sizeKey === 'hero';
-    return `<div class="art-visual" style="--cat-color:${color}"><img src="${esc(src)}" alt="${esc(article.title||'')}" ${isHero ? 'loading="eager" fetchpriority="high"' : 'loading="lazy"'} style="width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0;"></div>`;
+    return `<div class="art-visual" style="--cat-color:${color}"><img src="${esc(article.image)}" alt="${esc(article.title||'')}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0;"></div>`;
   }
   return `<div class="art-visual" style="--cat-color:${color}">${visualSvg(color)}</div>`;
 }
@@ -469,6 +459,7 @@ function parseHash(){
   if(parts[0] === 'admin') return {view:'admin'};
   if(parts[0] === 'about') return {view:'about'};
   if(parts[0] === 'privacy') return {view:'privacy'};
+  if(parts[0] === 'contacts') return {view:'contacts'};
   return {view:'home'};
 }
 window.addEventListener('hashchange', render);
@@ -508,13 +499,12 @@ function renderHome(){
   const breaking = articles.find(a => a.breaking) || articles[0];
   const others = articles.filter(a => a.id !== (breaking && breaking.id));
   const sideItems = others.slice(0,3);
-  const allGridItems = others.slice(3);
-  const gridItems = allGridItems.slice(0, homeVisibleCount);
+  const gridItems = others.slice(3);
 
   const heroHtml = breaking ? `
     <div class="hero">
       <div class="hero-main">
-        <a href="#/article/${breaking.id}">${visual(breaking, 'hero')}</a>
+        <a href="#/article/${breaking.id}">${visual(breaking)}</a>
         ${breaking.breaking ? `<div class="breaking-tag"><span class="pulse-dot"></span> НА ЖИВО</div>` : ''}
         ${catLabel(breaking.category)}
         <a href="#/article/${breaking.id}"><h1>${esc(breaking.title)}</h1></a>
@@ -524,7 +514,7 @@ function renderHome(){
       <div class="hero-side">
         ${sideItems.map(a => `
           <div class="side-item">
-            <a href="#/article/${a.id}">${visual(a, 'side')}</a>
+            <a href="#/article/${a.id}">${visual(a)}</a>
             <div>
               ${catLabel(a.category)}
               <a href="#/article/${a.id}"><div class="t">${esc(a.title)}</div></a>
@@ -539,19 +529,14 @@ function renderHome(){
     <div class="section-head"><span class="dot"></span><h2>Последно от TechPulse</h2></div>
     <div class="grid">
       ${gridItems.map(a => cardHtml(a)).join('')}
-    </div>
-    ${allGridItems.length > homeVisibleCount ? `<div style="text-align:center;margin-top:30px;"><button class="btn secondary" onclick="loadMoreHome()">Зареди още</button></div>` : ''}` : '';
+    </div>` : '';
 
   return heroHtml + gridHtml;
-}
-function loadMoreHome(){
-  homeVisibleCount += 12;
-  render();
 }
 function cardHtml(a){
   return `
     <div class="card">
-      <a href="#/article/${a.id}">${visual(a, 'card')}</a>
+      <a href="#/article/${a.id}">${visual(a)}</a>
       ${catLabel(a.category)}
       <a href="#/article/${a.id}"><h3>${esc(a.title)}</h3></a>
       <p class="excerpt">${esc(a.excerpt)}</p>
@@ -594,7 +579,7 @@ async function renderArticleView(id){
         ${catLabel(a.category)}
         <h1>${esc(a.title)}</h1>
         <div class="meta-row"><span>${esc(a.author)}</span><span class="sep"></span><span>${esc(a.date)}</span></div>
-        ${visual(a, 'hero')}
+        ${visual(a)}
         <div class="article-body">${paragraphs}</div>
         <div class="comments">
           <h2>Коментари (${comments.length})</h2>
@@ -804,10 +789,22 @@ function renderPrivacy(){
     </div>
   `;
 }
+function renderContacts(){
+  return `
+    <div class="article-page">
+      <a href="#/" class="back-link">← Начало</a>
+      <h1>Контакти</h1>
+      <div class="article-body">
+        <p>За въпроси, обратна връзка или сигнали за грешки в статиите, можеш да оставиш коментар под съответната статия — редакцията го чете.</p>
+        <p>За друг вид запитвания: <a href="mailto:contact@techpulseon.site">contact@techpulseon.site</a></p>
+      </div>
+    </div>
+  `;
+}
 
 /* ============ FOOTER ============ */
 function footerHtml(){
-  return `<footer>TechPulse · AI и технологии &nbsp;·&nbsp; <a href="#/about" style="color:inherit;opacity:.8;text-decoration:underline;">За нас</a> &nbsp;·&nbsp; <a href="#/privacy" style="color:inherit;opacity:.8;text-decoration:underline;">Поверителност</a> &nbsp;·&nbsp; <a href="#/admin" style="color:inherit;opacity:.8;text-decoration:underline;">Вход</a></footer>`;
+  return `<footer>TechPulse · AI и технологии &nbsp;·&nbsp; <a href="#/about" style="color:inherit;opacity:.6;">За нас</a> &nbsp;·&nbsp; <a href="#/contacts" style="color:inherit;opacity:.6;">Контакти</a> &nbsp;·&nbsp; <a href="#/privacy" style="color:inherit;opacity:.6;">Поверителност</a> &nbsp;·&nbsp; <a href="#/admin" style="color:inherit;opacity:.6;">Вход</a></footer>`;
 }
 
 /* ============ MAIN RENDER ============ */
@@ -838,6 +835,7 @@ async function render(){
   else if(route.view === 'search') body = renderSearch(route.q);
   else if(route.view === 'about') body = renderAbout();
   else if(route.view === 'privacy') body = renderPrivacy();
+  else if(route.view === 'contacts') body = renderContacts();
 
   app.innerHTML = shellHeader(route) + `<main>${body}</main>` + footerHtml();
 }
