@@ -31,13 +31,15 @@ DEFAULT_ARTICLES = [
         "title": "Qualcomm представи нови чипове за смартфони с фокус върху изкуствения интелект",
         "time": "2026-09-23",
         "category": "Мобилни",
-        "url": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&auto=format&fit=crop"
+        "url": "#",
+        "img": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&auto=format&fit=crop"
     },
     {
         "title": "Snorkel AI набра 350 милиона долара за разширяване на платформата си",
         "time": "2026-09-23",
         "category": "AI",
-        "url": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=400&auto=format&fit=crop"
+        "url": "#",
+        "img": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=400&auto=format&fit=crop"
     }
 ]
 
@@ -148,10 +150,10 @@ def build_full_page(title, main_image_url, fallback_backup_img, article_body, si
     for item in sidebar_items:
         sidebar_html += f"""
         <div class="similar-item">
-            <img src="{item['img']}" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1518770660439-4636190af475?w=200&auto=format&fit=crop';" alt="{item['title']}">
+            <img src="{item.get('img', 'https://images.unsplash.com/photo-1535378273068-9bb67d5beacd?w=200&auto=format&fit=crop')}" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1518770660439-4636190af475?w=200&auto=format&fit=crop';" alt="{item.get('title', 'Новина')}">
             <div class="similar-item-info">
                 <span class="similar-tag">{item.get('category', 'AI')}</span>
-                <h4><a href="{item['url']}">{item['title']}</a></h4>
+                <h4><a href="{item.get('url', '#')}">{item.get('title', 'Новина')}</a></h4>
                 <span>{item.get('time', '2026-09-25')}</span>
             </div>
         </div>
@@ -205,7 +207,7 @@ def build_full_page(title, main_image_url, fallback_backup_img, article_body, si
 </html>"""
 
 def generate_news():
-    print("⚡ Gemini генерира нова статия в public папка...")
+    print("⚡ Gemini генерира нова статия с нов модел...")
     prompt = """
     Напиши подробна и актуална технологична новина на български език (свързана с AI, смарт устройства, хардуер или автопилоти).
     Структурирай я в HTML:
@@ -219,7 +221,7 @@ def generate_news():
     Върни САМО чисто HTML съдържание без markdown.
     """
     
-    models = ['gemini-2.5-flash', 'gemini-2.5-pro']
+    models = ['gemini-3.8-flash', 'gemini-3.1-pro-preview']
     article_body = None
     
     for model_name in models:
