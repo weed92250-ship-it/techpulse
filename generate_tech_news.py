@@ -13,8 +13,9 @@ if not api_key:
 
 client = genai.Client(api_key=api_key)
 
-ARTICLES_DIR = "articles"
-HISTORY_FILE = "articles.json"
+PUBLIC_DIR = "public"
+ARTICLES_DIR = os.path.join(PUBLIC_DIR, "articles")
+HISTORY_FILE = os.path.join(PUBLIC_DIR, "articles.json")
 
 os.makedirs(ARTICLES_DIR, exist_ok=True)
 
@@ -30,15 +31,13 @@ DEFAULT_ARTICLES = [
         "title": "Qualcomm представи нови чипове за смартфони с фокус върху изкуствения интелект",
         "time": "2026-09-23",
         "category": "Мобилни",
-        "url": "#",
-        "img": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&auto=format&fit=crop"
+        "url": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&auto=format&fit=crop"
     },
     {
         "title": "Snorkel AI набра 350 милиона долара за разширяване на платформата си",
         "time": "2026-09-23",
         "category": "AI",
-        "url": "#",
-        "img": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=400&auto=format&fit=crop"
+        "url": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=400&auto=format&fit=crop"
     }
 ]
 
@@ -51,166 +50,35 @@ CSS_STYLES = """
         padding: 20px;
         line-height: 1.6;
     }
-    .container {
-        max-width: 1180px;
-        margin: 0 auto;
-    }
-    .header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding-bottom: 15px;
-        margin-bottom: 15px;
-    }
-    .logo {
-        font-size: 24px;
-        font-weight: 800;
-        color: #38bdf8;
-        text-decoration: none;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-    }
-    .search-box input {
-        padding: 8px 16px;
-        border-radius: 6px;
-        border: 1px solid #1e293b;
-        background-color: #0f172a;
-        color: #f8fafc;
-        width: 220px;
-        font-size: 13px;
-        outline: none;
-    }
-    .nav-categories {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 18px;
-        padding-bottom: 15px;
-        border-bottom: 1px solid #1e293b;
-        margin-bottom: 25px;
-    }
-    .nav-link {
-        color: #cbd5e1;
-        text-decoration: none;
-        font-size: 13px;
-        font-weight: 500;
-        transition: color 0.2s;
-    }
-    .nav-link:hover, .nav-link.active {
-        color: #38bdf8;
-    }
-    .main-layout {
-        display: grid;
-        grid-template-columns: 1fr 340px;
-        gap: 30px;
-    }
-    .article-card, .static-card {
-        background: #0f172a;
-        border-radius: 10px;
-        padding: 25px;
-        border: 1px solid #1e293b;
-    }
-    .article-image {
-        width: 100%;
-        height: 420px;
-        object-fit: cover;
-        border-radius: 6px;
-        margin-bottom: 20px;
-    }
-    .article-card h2, .static-card h1 {
-        color: #f8fafc;
-        margin-top: 10px;
-        font-size: 26px;
-        line-height: 1.3;
-    }
-    .article-card h3 {
-        color: #38bdf8;
-        margin-top: 25px;
-        border-bottom: 1px solid #1e293b;
-        padding-bottom: 8px;
-    }
-    .article-meta {
-        background-color: #070c18;
-        border-left: 3px solid #38bdf8;
-        padding: 10px 14px;
-        border-radius: 0 4px 4px 0;
-        font-size: 13px;
-        color: #cbd5e1;
-        margin-bottom: 20px;
-    }
-    .article-intro {
-        font-size: 16px;
-        color: #cbd5e1;
-    }
+    .container { max-width: 1180px; margin: 0 auto; }
+    .header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 15px; margin-bottom: 15px; }
+    .logo { font-size: 24px; font-weight: 800; color: #38bdf8; text-decoration: none; display: flex; align-items: center; gap: 8px; }
+    .search-box input { padding: 8px 16px; border-radius: 6px; border: 1px solid #1e293b; background-color: #0f172a; color: #f8fafc; width: 220px; font-size: 13px; outline: none; }
+    .nav-categories { display: flex; flex-wrap: wrap; gap: 18px; padding-bottom: 15px; border-bottom: 1px solid #1e293b; margin-bottom: 25px; }
+    .nav-link { color: #cbd5e1; text-decoration: none; font-size: 13px; font-weight: 500; }
+    .nav-link:hover, .nav-link.active { color: #38bdf8; }
+    .main-layout { display: grid; grid-template-columns: 1fr 340px; gap: 30px; }
+    .article-card, .static-card { background: #0f172a; border-radius: 10px; padding: 25px; border: 1px solid #1e293b; }
+    .article-image { width: 100%; height: 420px; object-fit: cover; border-radius: 6px; margin-bottom: 20px; }
+    .article-card h2, .static-card h1 { color: #f8fafc; margin-top: 10px; font-size: 26px; line-height: 1.3; }
+    .article-card h3 { color: #38bdf8; margin-top: 25px; border-bottom: 1px solid #1e293b; padding-bottom: 8px; }
+    .article-meta { background-color: #070c18; border-left: 3px solid #38bdf8; padding: 10px 14px; border-radius: 0 4px 4px 0; font-size: 13px; color: #cbd5e1; margin-bottom: 20px; }
+    .article-intro { font-size: 16px; color: #cbd5e1; }
     ul, ol { padding-left: 20px; }
     li { margin-bottom: 8px; }
-    .sidebar {
-        background: #0f172a;
-        border-radius: 10px;
-        padding: 20px;
-        border: 1px solid #1e293b;
-        height: fit-content;
-    }
-    .sidebar h3 {
-        margin-top: 0;
-        color: #f8fafc;
-        font-size: 16px;
-        border-bottom: 1px solid #1e293b;
-        padding-bottom: 10px;
-        margin-bottom: 18px;
-    }
-    .similar-item {
-        display: flex;
-        gap: 12px;
-        margin-bottom: 18px;
-        align-items: flex-start;
-    }
-    .similar-item img {
-        width: 75px;
-        height: 60px;
-        border-radius: 4px;
-        object-fit: cover;
-    }
-    .similar-item-info h4 {
-        margin: 0 0 4px 0;
-        font-size: 13px;
-        line-height: 1.3;
-    }
-    .similar-item-info h4 a {
-        color: #f8fafc;
-        text-decoration: none;
-    }
-    .similar-item-info h4 a:hover {
-        color: #38bdf8;
-    }
-    .similar-tag {
-        color: #38bdf8;
-        font-size: 11px;
-        font-weight: bold;
-        display: block;
-        margin-bottom: 2px;
-    }
-    .similar-item-info span {
-        font-size: 11px;
-        color: #64748b;
-    }
-    footer {
-        text-align: center;
-        margin-top: 40px;
-        padding-top: 20px;
-        border-top: 1px solid #1e293b;
-        color: #64748b;
-        font-size: 13px;
-    }
-    .footer-links a {
-        color: #94a3b8;
-        text-decoration: none;
-        margin: 0 10px;
-    }
+    .sidebar { background: #0f172a; border-radius: 10px; padding: 20px; border: 1px solid #1e293b; height: fit-content; }
+    .sidebar h3 { margin-top: 0; color: #f8fafc; font-size: 16px; border-bottom: 1px solid #1e293b; padding-bottom: 10px; margin-bottom: 18px; }
+    .similar-item { display: flex; gap: 12px; margin-bottom: 18px; align-items: flex-start; }
+    .similar-item img { width: 75px; height: 60px; border-radius: 4px; object-fit: cover; }
+    .similar-item-info h4 { margin: 0 0 4px 0; font-size: 13px; line-height: 1.3; }
+    .similar-item-info h4 a { color: #f8fafc; text-decoration: none; }
+    .similar-item-info h4 a:hover { color: #38bdf8; }
+    .similar-tag { color: #38bdf8; font-size: 11px; font-weight: bold; display: block; margin-bottom: 2px; }
+    .similar-item-info span { font-size: 11px; color: #64748b; }
+    footer { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #1e293b; color: #64748b; font-size: 13px; }
+    .footer-links a { color: #94a3b8; text-decoration: none; margin: 0 10px; }
     .footer-links a:hover { color: #38bdf8; }
-    @media (max-width: 850px) {
-        .main-layout { grid-template-columns: 1fr; }
-    }
+    @media (max-width: 850px) { .main-layout { grid-template-columns: 1fr; } }
 """
 
 def slugify(text):
@@ -251,6 +119,7 @@ def create_static_pages():
         "privacy.html": ("Поверителност", "<h1>Политика за поверителност</h1><p>Зачитаме вашата поверителност.</p>")
     }
     for filename, (title, content) in pages.items():
+        filepath = os.path.join(PUBLIC_DIR, filename)
         html = f"""<!DOCTYPE html>
 <html lang="bg">
 <head>
@@ -271,7 +140,7 @@ def create_static_pages():
     </div>
 </body>
 </html>"""
-        with open(filename, "w", encoding="utf-8") as f:
+        with open(filepath, "w", encoding="utf-8") as f:
             f.write(html)
 
 def build_full_page(title, main_image_url, fallback_backup_img, article_body, sidebar_items):
@@ -336,7 +205,7 @@ def build_full_page(title, main_image_url, fallback_backup_img, article_body, si
 </html>"""
 
 def generate_news():
-    print("⚡ Gemini генерира нова статия...")
+    print("⚡ Gemini генерира нова статия в public папка...")
     prompt = """
     Напиши подробна и актуална технологична новина на български език (свързана с AI, смарт устройства, хардуер или автопилоти).
     Структурирай я в HTML:
@@ -355,10 +224,7 @@ def generate_news():
     
     for model_name in models:
         try:
-            response = client.models.generate_content(
-                model=model_name,
-                contents=prompt,
-            )
+            response = client.models.generate_content(model=model_name, contents=prompt)
             if response and response.text:
                 article_body = response.text.replace("```html", "").replace("```", "").strip()
                 break
@@ -368,8 +234,8 @@ def generate_news():
     fallback_img = "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=800&auto=format&fit=crop"
 
     if not article_body:
-        title_text = "Технологичният сектор отбелязва нов ръст в развитието на AI"
-        article_body = f"<h2>{title_text}</h2><p class='article-intro'>Нови иновации променят пазара.</p>"
+        title_text = "Нов пробив в квантовите компютри и изкуствения интелект"
+        article_body = f"<h2>{title_text}</h2><p class='article-intro'>Технологиите напредват бързо.</p>"
     else:
         title_match = re.search(r'<h2>(.*?)</h2>', article_body)
         title_text = title_match.group(1) if title_match else "Технологична новина"
@@ -383,12 +249,13 @@ def generate_news():
 
     full_html = build_full_page(title_text, main_image_url, fallback_img, article_body, sidebar_items)
 
-    with open("index.html", "w", encoding="utf-8") as f:
+    index_path = os.path.join(PUBLIC_DIR, "index.html")
+    with open(index_path, "w", encoding="utf-8") as f:
         f.write(full_html)
 
     article_slug = slugify(title_text)
     article_file_path = os.path.join(ARTICLES_DIR, f"{article_slug}.html")
-    article_url = f"/{ARTICLES_DIR}/{article_slug}.html"
+    article_url = f"/articles/{article_slug}.html"
 
     with open(article_file_path, "w", encoding="utf-8") as f:
         f.write(full_html)
@@ -402,7 +269,7 @@ def generate_news():
     })
     save_history(history)
     create_static_pages()
-    print("🎉 Успешно създадена и записaна статия!")
+    print("🎉 Успешно създадена и записана статия в public!")
 
 if __name__ == "__main__":
     generate_news()
