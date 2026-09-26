@@ -64,8 +64,7 @@ CSS_STYLES = """
     .article-image { width: 100%; height: 420px; object-fit: cover; border-radius: 6px; margin-bottom: 20px; }
     .article-card h2, .static-card h1 { color: #f8fafc; margin-top: 10px; font-size: 26px; line-height: 1.3; }
     .article-card h3 { color: #38bdf8; margin-top: 25px; border-bottom: 1px solid #1e293b; padding-bottom: 8px; }
-    .article-meta { background-color: #070c18; border-left: 3px solid #38bdf8; padding: 10px 14px; border-radius: 0 4px 4px 0; font-size: 13px; color: #cbd5e1; margin-bottom: 20px; }
-    .article-intro { font-size: 16px; color: #cbd5e1; }
+    .article-intro { font-size: 16px; color: #cbd5e1; margin-top: 15px; }
     ul, ol { padding-left: 20px; }
     li { margin-bottom: 8px; }
     .sidebar { background: #0f172a; border-radius: 10px; padding: 20px; border: 1px solid #1e293b; height: fit-content; }
@@ -154,7 +153,6 @@ def build_full_page(title, main_image_url, fallback_backup_img, article_body, si
             <div class="similar-item-info">
                 <span class="similar-tag">{item.get('category', 'AI')}</span>
                 <h4><a href="{item.get('url', '#')}">{item.get('title', 'Новина')}</a></h4>
-                <span>{item.get('time', '2026-09-25')}</span>
             </div>
         </div>
         """
@@ -210,18 +208,17 @@ def generate_news():
     print("⚡ Gemini генерира нова статия с нов модел...")
     prompt = """
     Напиши подробна и актуална технологична новина на български език (свързана с AI, смарт устройства, хардуер или автопилоти).
-    Структурирай я в HTML:
+    Структурирай я в HTML БЕЗ да включваш дати, категории или време за четене:
     1. <h2>Заглавие</h2>
-    2. <p class="article-meta">📅 <strong>Дата:</strong> 25 септември 2026 | 🏷️ <strong>Категория:</strong> AI | ⏱️ <strong>Време за четене:</strong> 3 мин</p>
-    3. <p class="article-intro">Въведение (2-3 изречения).</p>
-    4. <h3>Първо подзаглавие</h3>
-    5. Текст и списък (ul / li)
-    6. <h3>Второ подзаглавие</h3>
-    7. Заключение и перспективи.
+    2. <p class="article-intro">Въведение (2-3 изречения).</p>
+    3. <h3>Първо подзаглавие</h3>
+    4. Текст и списък (ul / li)
+    5. <h3>Второ подзаглавие</h3>
+    6. Заключение и перспективи.
     Върни САМО чисто HTML съдържание без markdown.
     """
     
-    models = ['gemini-3.8-flash', 'gemini-3.1-pro-preview']
+    models = ['gemini-2.5-flash', 'gemini-2.5-pro']
     article_body = None
     
     for model_name in models:
