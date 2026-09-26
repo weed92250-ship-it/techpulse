@@ -61,7 +61,7 @@ CSS_STYLES = """
     .nav-link:hover, .nav-link.active { color: #38bdf8; }
     .main-layout { display: grid; grid-template-columns: 1fr 340px; gap: 30px; }
     .article-card, .static-card { background: #0f172a; border-radius: 10px; padding: 25px; border: 1px solid #1e293b; }
-    .article-image { width: 100%; height: 420px; object-fit: cover; border-radius: 6px; margin-bottom: 20px; }
+    .article-image { width: 100%; height: 420px; object-fit: cover; border-radius: 6px; margin-bottom: 20px; background-color: #1e293b; }
     .article-card h2, .static-card h1 { color: #f8fafc; margin-top: 10px; font-size: 26px; line-height: 1.3; }
     .article-card h3 { color: #38bdf8; margin-top: 25px; border-bottom: 1px solid #1e293b; padding-bottom: 8px; }
     .article-meta { background-color: #070c18; border-left: 3px solid #38bdf8; padding: 10px 14px; border-radius: 0 4px 4px 0; font-size: 13px; color: #cbd5e1; margin-bottom: 20px; }
@@ -72,7 +72,7 @@ CSS_STYLES = """
     .sidebar { background: #0f172a; border-radius: 10px; padding: 20px; border: 1px solid #1e293b; height: fit-content; }
     .sidebar h3 { margin-top: 0; color: #f8fafc; font-size: 16px; border-bottom: 1px solid #1e293b; padding-bottom: 10px; margin-bottom: 18px; }
     .similar-item { display: flex; gap: 12px; margin-bottom: 18px; align-items: flex-start; }
-    .similar-item img { width: 75px; height: 60px; border-radius: 4px; object-fit: cover; }
+    .similar-item img { width: 75px; height: 60px; border-radius: 4px; object-fit: cover; background-color: #1e293b; }
     .similar-item-info h4 { margin: 0 0 4px 0; font-size: 13px; line-height: 1.3; }
     .similar-item-info h4 a { color: #f8fafc; text-decoration: none; }
     .similar-item-info h4 a:hover { color: #38bdf8; }
@@ -151,7 +151,7 @@ def build_full_page(title, main_image_url, fallback_backup_img, article_body, si
     for item in sidebar_items:
         sidebar_html += f"""
         <div class="similar-item">
-            <img src="{item.get('img', 'https://images.unsplash.com/photo-1535378273068-9bb67d5beacd?w=200&auto=format&fit=crop')}" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1518770660439-4636190af475?w=200&auto=format&fit=crop';" alt="{item.get('title', 'Новина')}">
+            <img src="{item.get('img', 'https://images.unsplash.com/photo-1535378273068-9bb67d5beacd?w=200&auto=format&fit=crop')}" onerror="this.src='https://images.unsplash.com/photo-1518770660439-4636190af475?w=200&auto=format&fit=crop';" alt="Новина">
             <div class="similar-item-info">
                 <span class="similar-tag">{item.get('category', 'AI')}</span>
                 <h4><a href="{item.get('url', '#')}">{item.get('title', 'Новина')}</a></h4>
@@ -188,7 +188,7 @@ def build_full_page(title, main_image_url, fallback_backup_img, article_body, si
         <div class="main-layout">
             <div class="main-content">
                 <article class="article-card">
-                    <img src="{main_image_url}" onerror="this.onerror=null;this.src='{fallback_backup_img}';" alt="{title}" class="article-image">
+                    <img src="{main_image_url}" onerror="this.src='{fallback_backup_img}';" alt="{title}" class="article-image">
                     {article_body}
                 </article>
             </div>
@@ -208,12 +208,12 @@ def build_full_page(title, main_image_url, fallback_backup_img, article_body, si
 </html>"""
 
 def generate_news():
-    print("⚡ Gemini генерира подробна статия с пълно съдържание...")
+    print("⚡ Gemini генерира подробна статия...")
     prompt = """
     Напиши задълбочена, дълга и подробна технологична новина на български език (свързана с изкуствен интелект, нови смарт устройства, хардуер или софтуерни иновации). 
     Статията ТРЯБВА да бъде богата на текст (поне 4-5 информативни параграфа). 
-    Структурирай я стриктно в следния HTML формат:
-    <h2>Заглавие на статията</h2>
+    Структурирай я стриктно в следния HTML формат (БЕЗ да повтаряш заглавието извън h2 тага):
+    <h2>Заглавие на статията тук</h2>
     <p class="article-meta">📅 <strong>Дата:</strong> 26 септември 2026 | 🏷️ <strong>Категория:</strong> AI | ⏱️ <strong>Време за четене:</strong> 4 мин</p>
     <p class="article-intro">Обстойно уводно изречение или абзац (3-4 изречения), въвеждащ читателя в събитието и неговото значение за индустрията.</p>
     <h3>Първи основен аспект и технологии</h3>
@@ -238,7 +238,7 @@ def generate_news():
             response = client.models.generate_content(model=model_name, contents=prompt)
             if response and response.text:
                 cleaned = response.text.replace("```html", "").replace("```", "").strip()
-                if "<h3>" in cleaned:
+                if "<h2>" in cleaned and "<h3>" in cleaned:
                     article_body = cleaned
                     break
         except Exception as e:
@@ -263,9 +263,8 @@ def generate_news():
         title_match = re.search(r'<h2>(.*?)</h2>', article_body)
         title_text = title_match.group(1) if title_match else "Технологична новина"
 
-    image_prompt = f"high tech modern {title_text} cyber style 4k photography"
-    encoded_prompt = urllib.parse.quote(image_prompt)
-    main_image_url = f"[https://image.pollinations.ai/prompt/](https://image.pollinations.ai/prompt/){encoded_prompt}?width=800&height=450&nologo=true&private=true"
+    # Използваме сигурен Unsplash линк за главна снимка вместо нестабилен външен генератор, за да гарантираме перфектен вид
+    main_image_url = "[https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop](https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop)"
 
     history = load_history()
     sidebar_items = history[:3] if len(history) >= 3 else DEFAULT_ARTICLES
@@ -292,7 +291,7 @@ def generate_news():
     })
     save_history(history)
     create_static_pages()
-    print("🎉 Успешно създадена и записана пълна статия с картинка без воден знак!")
+    print("🎉 Успешно създадена перфектна статия!")
 
 if __name__ == "__main__":
     generate_news()
