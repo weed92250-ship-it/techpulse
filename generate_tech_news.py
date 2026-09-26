@@ -250,11 +250,9 @@ def generate_news():
         title_match = re.search(r'<h2>(.*?)</h2>', article_body)
         title_text = title_match.group(1) if title_match else "Технологична новина"
 
-    image_prompt = f"high tech modern {title_text} cyber style 4k photography"
-    encoded_prompt = urllib.parse.quote(image_prompt)
-    
-    # Тук е зададен моделът flux и параметърът nologo=true за премахване на водния знак
-    main_image_url = f"https://image.pollinations.ai/prompt/{encoded_prompt}?width=800&height=450&model=flux&nologo=true"
+    # Използваме Picsum Photos с уникален seed на база заглавието – гарантирано няма воден знак!
+    safe_seed = urllib.parse.quote(title_text)
+    main_image_url = f"https://picsum.photos/seed/{safe_seed}/800/450"
 
     history = load_history()
     sidebar_items = history[:3] if len(history) >= 3 else DEFAULT_ARTICLES
@@ -281,7 +279,7 @@ def generate_news():
     })
     save_history(history)
     create_static_pages()
-    print("🎉 Успешно създадена статия с изчистени подзаглавия и без воден знак!")
+    print("🎉 Успешно създадена статия с изчистени подзаглавия и напълно чиста картинка без водни знаци!")
 
 if __name__ == "__main__":
     generate_news()
