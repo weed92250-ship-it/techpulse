@@ -238,7 +238,6 @@ def generate_news():
             response = client.models.generate_content(model=model_name, contents=prompt)
             if response and response.text:
                 cleaned = response.text.replace("```html", "").replace("```", "").strip()
-                # Проверка дали отговорът е пълен (съдържа поне един таг h3)
                 if "<h3>" in cleaned:
                     article_body = cleaned
                     break
