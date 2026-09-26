@@ -50,18 +50,16 @@
     <div class="container">
         <div class="header">
             <a href="/" class="logo">⚡ TechPulse</a>
-            <div class="search-box"><input type="search" aria-label="Търсене в TechPulse" placeholder="🔍 Търсене..."></div>
+            <form class="search-box" action="/articles.html" method="get"><input id="site-search" name="q" type="search" aria-label="Търсене в TechPulse" placeholder="🔍 Търсене..."></form>
         </div>
-        <nav class="nav-categories">
-            <a href="/" class="nav-link active">Начало</a>
-            <a href="/" class="nav-link">AI</a>
-            <a href="/" class="nav-link">Технологии</a>
-            <a href="/" class="nav-link">Мобилни</a>
-            <a href="/" class="nav-link">Компютри</a>
-            <a href="/" class="nav-link">Приложения</a>
-            <a href="/" class="nav-link">AI инструменти</a>
-            <a href="/" class="nav-link">Ревюта</a>
-            <a href="/" class="nav-link">Новини</a>
+        <nav class="nav-categories" aria-label="Основна навигация">
+            <a href="/" class="nav-link">Начало</a>
+            <a href="/articles.html" class="nav-link">Статии</a>
+            <a href="/articles.html#ai" class="nav-link">AI</a>
+            <a href="/articles.html#technologies" class="nav-link">Технологии</a>
+            <a href="/articles.html#hardware" class="nav-link">Хардуер</a>
+            <a href="/about.html" class="nav-link">За нас</a>
+            <a href="/contacts.html" class="nav-link">Контакти</a>
         </nav>
         <nav class="breadcrumbs" aria-label="Навигация по пътя"><a href="/">Начало</a><span aria-hidden="true">›</span><a href="/articles.html">Статии</a><span aria-hidden="true">›</span><span aria-current="page">Мащабен пробив в областта на следващото поколение изкуствен интелект</span></nav>
         <div class="main-layout">
@@ -120,5 +118,8 @@
             <p>© TechPulse. Всички права запазени.</p>
         </footer>
     </div>
+<script>
+(function(){const form=document.querySelector('.search-box');const input=document.getElementById('site-search');if(form&&input){form.addEventListener('submit',function(){if(!input.value.trim())return;});}})();
+</script>
 </body>
 </html>
