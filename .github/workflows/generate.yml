@@ -2,35 +2,117 @@ name: TechPulse AI Publisher
 
 on:
   schedule:
-    - cron: '0 9 * * *'
+    - cron: '15 9 * * *'
+      timezone: 'Europe/Sofia'
   workflow_dispatch:
 
+permissions:
+  contents: write
+
+concurrency:
+  group: techpulse-auto-publisher
+  cancel-in-progress: false
+
 jobs:
-  build-and-publish:
+  publish:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: '3.12'
 
       - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install google-genai
+        run: python -m pip install --upgrade pip google-genai
 
-      - name: Run Tech Generator
+      - name: Backup curated pages
+        run: |
+          mkdir -p /tmp/techpulse-backup
+          cp public/index.html /tmp/techpulse-backup/index.html
+          cp public/about.html /tmp/techpulse-backup/about.html
+          cp public/contacts.html /tmp/techpulse-backup/contacts.html
+          cp public/privacy.html /tmp/techpulse-backup/privacy.html
+          cp public/articles.html /tmp/techpulse-backup/articles.html
+          cp public/sitemap.xml /tmp/techpulse-backup/sitemap.xml
+
+      - name: Generate article
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        run: |
-          python generate_tech_news.py
+        run: python generate_tech_news.py
 
-      - name: Commit and Push changes
+      - name: Restore curated pages and wire the new article
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          cp /tmp/techpulse-backup/index.html public/index.html
+          cp /tmp/techpulse-backup/about.html public/about.html
+          cp /tmp/techpulse-backup/contacts.html public/contacts.html
+          cp /tmp/techpulse-backup/privacy.html public/privacy.html
+          cp /tmp/techpulse-backup/articles.html public/articles.html
+          cp /tmp/techpulse-backup/sitemap.xml public/sitemap.xml
+
+          python - <<'PY'
+          import datetime as dt
+          import html, json, os, re
+          from pathlib import Path
+
+          root = Path("public")
+          articles = root / "articles"
+          history_file = root / "articles.json"
+          index_file = root / "index.html"
+          articles_file = root / "articles.html"
+          sitemap_file = root / "sitemap.xml"
+          base = "https://techpulseon.site"
+
+          history = json.loads(history_file.read_text(encoding="utf-8"))
+          item = history[0]
+          slug = Path(item["url"]).stem
+          article_path = articles / (slug + ".html")
+          date = item.get("time") or dt.date.today().isoformat()
+          title = html.escape(item["title"])
+          category = html.escape(item.get("category", "AI"))
+          image = item.get("img", "https://images.unsplash.com/photo-1535378273068-9bb67d5beacd?w=1200&auto=format&fit=crop")
+          url = base + item["url"]
+
+          raw = article_path.read_text(encoding="utf-8")
+          raw = raw.replace("<meta charset="UTF-8">",
+                            "<meta charset="UTF-8"><meta name="robots" content="index,follow,max-image-preview:large">"
+                            f"<meta name="description" content="{title}"><link rel="canonical" href="{url}">"
+                            "<meta property="og:type" content="article">"
+                            f"<meta property="og:url" content="{url}"><meta property="og:title" content="{title} — TechPulse">"
+                            f"<meta property="og:image" content="{image}"><meta name="twitter:card" content="summary_large_image">"
+                            f"<meta name="twitter:image" content="{image}">")
+          raw = raw.replace('<img ', '<img width="1200" height="675" loading="eager" ', 1)
+          article_path.write_text(raw, encoding="utf-8")
+
+          desc = html.escape(re.sub("<[^>]+>", " ", raw).strip()[:155])
+          card = f'<article class="article-card" data-search="{html.escape(item["title"].lower(), quote=True)}"><img loading="lazy" width="800" height="450" src="{image}" alt="{title}"><div class="article-body"><span class="tag">{category}</span><h3><a href="{item["url"]}">{title}</a></h3><p>{desc}</p><div class="meta">Автоматично публикуван материал · {date}</div></div></article>'
+
+          page = index_file.read_text(encoding="utf-8")
+          marker = '<section id="articles" class="article-grid" aria-label="Последни статии">'
+          if item["url"] not in page:
+              page = page.replace(marker, marker + "\n" + card, 1)
+          index_file.write_text(page, encoding="utf-8")
+
+          page = articles_file.read_text(encoding="utf-8")
+          list_card = f'<a data-category="{category.lower()}" data-search="{html.escape(item["title"].lower(), quote=True)}" href="{item["url"]}"><span>{category}</span>{title}<p>{desc}</p></a>'
+          if item["url"] not in page:
+              page = page.replace('<p class="empty" id="empty-state">', list_card + '\n<p class="empty" id="empty-state">', 1)
+          articles_file.write_text(page, encoding="utf-8")
+
+          sitemap = sitemap_file.read_text(encoding="utf-8")
+          if url not in sitemap:
+              sitemap = sitemap.replace("</urlset>", f"  <url><loc>{url}</loc><lastmod>{date}</lastmod></url>\n</urlset>")
+          sitemap = re.sub(r"(<loc>https://techpulseon\.site/articles\.html</loc><lastmod>)[^<]+",
+                           rf"\g<1>{date}", sitemap)
+          sitemap_file.write_text(sitemap, encoding="utf-8")
+          PY
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add public/
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Автоматично генерирани новини в public папка" && git push)
+          git diff --cached --quiet || git commit -m "Автоматично публикуване на нов TechPulse материал"
+          git push
