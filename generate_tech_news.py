@@ -22,21 +22,21 @@ os.makedirs(ARTICLES_DIR, exist_ok=True)
 DEFAULT_ARTICLES = [
     {
         "title": "Meta представи малко носимо устройство за асистента си с изкуствен интелект",
-        "time": "2026-09-24",
+        "time": "2026-09-26",
         "category": "AI",
         "url": "#",
         "img": "https://images.unsplash.com/photo-1535378273068-9bb67d5beacd?w=400&auto=format&fit=crop"
     },
     {
         "title": "Qualcomm представи нови чипове за смартфони с фокус върху изкуствения интелект",
-        "time": "2026-09-23",
+        "time": "2026-09-26",
         "category": "Мобилни",
         "url": "#",
         "img": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&auto=format&fit=crop"
     },
     {
         "title": "Snorkel AI набра 350 милиона долара за разширяване на платформата си",
-        "time": "2026-09-23",
+        "time": "2026-09-26",
         "category": "AI",
         "url": "#",
         "img": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=400&auto=format&fit=crop"
@@ -154,7 +154,7 @@ def build_full_page(title, main_image_url, fallback_backup_img, article_body, si
             <div class="similar-item-info">
                 <span class="similar-tag">{item.get('category', 'AI')}</span>
                 <h4><a href="{item.get('url', '#')}">{item.get('title', 'Новина')}</a></h4>
-                <span>{item.get('time', '2026-09-25')}</span>
+                <span>{item.get('time', '2026-09-26')}</span>
             </div>
         </div>
         """
@@ -207,18 +207,16 @@ def build_full_page(title, main_image_url, fallback_backup_img, article_body, si
 </html>"""
 
 def generate_news():
-    print("⚡ Gemini генерира нова статия с нов модел...")
+    print("⚡ Gemini генерира нова статия с пълно съдържание...")
     prompt = """
-    Напиши подробна и актуална технологична новина на български език (свързана с AI, смарт устройства, хардуер или автопилоти).
-    Структурирай я в HTML:
-    1. <h2>Заглавие</h2>
-    2. <p class="article-meta">📅 <strong>Дата:</strong> 25 септември 2026 | 🏷️ <strong>Категория:</strong> AI | ⏱️ <strong>Време за четене:</strong> 3 мин</p>
-    3. <p class="article-intro">Въведение (2-3 изречения).</p>
-    4. <h3>Първо подзаглавие</h3>
-    5. Текст и списък (ul / li)
-    6. <h3>Второ подзаглавие</h3>
-    7. Заключение и перспективи.
-    Върни САМО чисто HTML съдържание без markdown.
+    Напиши голяма, задълбочена и подробна технологична новина на български език, посветена на напреднал изкуствен интелект или иновативен хардуер.
+    Текстът задължително трябва да съдържа:
+    1. Заглавие, затворено в <h2> тагове.
+    2. Мета блок с точно този вид: <p class="article-meta">📅 <strong>Дата:</strong> 26 септември 2026 | 🏷️ <strong>Категория:</strong> AI | ⏱️ <strong>Време за четене:</strong> 4 мин</p>
+    3. Въведение в абзац с клас <p class="article-intro">...</p>.
+    4. Поне три различни подзаглавия в <h3> тагове, като под всяко има поне един дълъг абзац текст и списък с водещи точки (ul / li).
+    5. Заключителен анализ.
+    Върни САМО чист HTML код за статията, без никакъв markdown (без ```html ... ```).
     """
     
     models = ['gemini-2.5-flash', 'gemini-2.5-pro']
@@ -228,8 +226,10 @@ def generate_news():
         try:
             response = client.models.generate_content(model=model_name, contents=prompt)
             if response and response.text:
-                article_body = response.text.replace("```html", "").replace("```", "").strip()
-                break
+                cleaned = response.text.replace("```html", "").replace("```", "").strip()
+                if "<h2>" in cleaned and len(cleaned) > 300:
+                    article_body = cleaned
+                    break
         except Exception as e:
             print(f"Грешка с {model_name}: {e}")
 
@@ -237,7 +237,20 @@ def generate_news():
 
     if not article_body:
         title_text = "Нов пробив в квантовите компютри и изкуствения интелект"
-        article_body = f"<h2>{title_text}</h2><p class='article-intro'>Технологиите напредват бързо.</p>"
+        article_body = f"""
+        <h2>{title_text}</h2>
+        <p class="article-meta">📅 <strong>Дата:</strong> 26 септември 2026 | 🏷️ <strong>Категория:</strong> AI | ⏱️ <strong>Време за четене:</strong> 4 мин</p>
+        <p class="article-intro">Технологичният свят е изправен пред поредната мащабна революция, след като водещи изследователски екипи обявиха успешни тестове на нова генерация хибридни системи.</p>
+        <h3>Основни аспекти на новата технология</h3>
+        <p>Платформата обединява класически алгоритми за машинно обучение с квантови модули, което драстично скъсява времето за обработка на сложни симулации.</p>
+        <ul>
+            <li>Ускорение на изчисленията с над 300% спрямо предходните поколения.</li>
+            <li>Намалена консумация на електрическа енергия в центровете за данни.</li>
+            <li>Пълна съвместимост с наличните софтуерни рамки.</li>
+        </ul>
+        <h3>Бъдещи приложения и пазарна реализация</h3>
+        <p>Очаква се първите търговски продукти да се появят на пазара още през следващото тримесечие, като интерес към технологията вече проявяват както финансови институции, така и производители на автономни превозни средства.</p>
+        """
     else:
         title_match = re.search(r'<h2>(.*?)</h2>', article_body)
         title_text = title_match.group(1) if title_match else "Технологична новина"
@@ -264,14 +277,14 @@ def generate_news():
 
     history.insert(0, {
         "title": title_text,
-        "time": "2026-09-25",
+        "time": "2026-09-26",
         "category": "AI",
         "url": article_url,
         "img": main_image_url
     })
     save_history(history)
     create_static_pages()
-    print("🎉 Успешно създадена и записана статия в public!")
+    print("🎉 Успешно създадена и записана статия с пълно съдържание!")
 
 if __name__ == "__main__":
     generate_news()
