@@ -204,91 +204,97 @@ def build_full_page(title, main_image_url, fallback_backup_img, article_body, si
 </html>"""
 
 def generate_news():
-    print("⚡ Писане на дълга авторска статия без подзаглавия...")
+    print("TechPulse: търсене на актуална технологична тема чрез Google Search...")
+    from google.genai import types
     prompt = """
-    Напиши голяма, задълбочена и изключително качествена журналистическа статия на български език, посветена на гореща тема в сферата на технологиите и изкуствения интелект. Пиши в стил на опитен технологичен редактор – човешки, увличащ, аналитичен и естествен.
-    
-    МЕЖДУНАРОДНИ И СТРОГИ ИЗИСКВАНИЯ:
-    1. Заглавие, затворено единствено в <h2> тагове (БЕЗ да слагаш дати, категории или каквито и да е мета редове под него!).
-    2. Въведение с клас <p class="article-intro">...</p>, което въвежда читателя в темата.
-    3. СТРОГО ЗАБРАНЕНО Е използването на каквито и да било подзаглавия (без <h3>, без <h4> и т.н.). Текстът трябва да бъде изцяло оформен като плавен, дълъг и непрекъснат авторски разказ, разделен само на стандартни абзаци (<p>) и евентуално един списък с водещи точки (ul / li), ако е наложително. Никакви междинни заглавия!
-    4. Статията трябва да е дълга, съдържаща няколко последователни смислови блока, които текат един след друг естествено.
-    Върни САМО чист HTML код за статията, без никакъв markdown (без ```html ... ```).
-    """
-    
-    models = ['gemini-2.5-flash', 'gemini-2.5-pro']
+Избери една актуална и значима тема от последните дни в областта на AI, чипове,
+квантови технологии, роботика, киберсигурност или потребителски технологии.
+Използвай Google Search задължително и базирай статията на проверими, актуални
+източници. Предпочитай първични източници: официални блогове, документация,
+прессъобщения, научни публикации и изявления на самите компании.
+
+Напиши дълга българска технологична статия от поне 1200 думи.
+Стилът трябва да е естествен, редакционен и човешки, без шаблонни AI фрази.
+Не измисляй числа, цитати, експерти, събития или факти. Ако дадено твърдение
+не може да бъде потвърдено от намерените източници, не го включвай.
+
+Формат:
+- първият ред е заглавието в <h2>...</h2>;
+- след него има <p class="article-intro">...</p>;
+- използвай <h3> за смисловите секции;
+- използвай нормални <p> абзаци и при нужда <ul>/<li>;
+- завърши с кратък извод, който ясно различава установените факти от анализа;
+- не използвай първо лице и не твърди, че авторът е разговарял лично с експерти;
+- върни само HTML, без Markdown и без code fences.
+
+Темата трябва да е конкретна и да има реална новинарска стойност.
+"""
+    grounding_tool = types.Tool(google_search=types.GoogleSearch())
+    config = types.GenerateContentConfig(tools=[grounding_tool])
     article_body = None
-    
-    for model_name in models:
+    grounding = None
+    for model_name in ["gemini-2.5-flash", "gemini-2.5-pro"]:
         try:
-            response = client.models.generate_content(model=model_name, contents=prompt)
+            response = client.models.generate_content(model=model_name, contents=prompt, config=config)
             if response and response.text:
-                cleaned = response.text.replace("```html", "").replace("```", "").strip()
-                if "<h2>" in cleaned and "<h3>" not in cleaned and len(cleaned) > 500:
+                cleaned = response.text.replace(chr(96)*3 + "html", "").replace(chr(96)*3, "").strip()
+                word_count = len(re.findall(r"\\b[\\wА-Яа-яЁё]+\\b", re.sub(r"<[^>]+>", " ", cleaned)))
+                if "<h2>" in cleaned and "<p" in cleaned and word_count >= 1000:
                     article_body = cleaned
+                    if response.candidates:
+                        grounding = getattr(response.candidates[0], "grounding_metadata", None)
+                    print(f"Получена статия: {word_count} думи чрез {model_name}.")
                     break
         except Exception as e:
             print(f"Грешка с {model_name}: {e}")
-
-    fallback_img = "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=800&auto=format&fit=crop"
-
     if not article_body:
-        title_text = "Как новите технологии променят начина, по който мислиме за софтуера"
-        article_body = f"""
-        <h2>{title_text}</h2>
-        <p class="article-intro">През последните месеци ставаме свидетели на тиха, но дълбока трансформация в технологичния свят. Това вече не е просто надпревара за по-бързи чипове, а фундаментална промяна в парадигмата на софтуерната инженерия.</p>
-        
-        <p>Когато обсъждаме развитието на съвременните системи, често забравяме колко бързо се изчерпват традиционните методи за оптимизация. Инженерите по целия свят се сблъскват с непреодолими физични и архитектурни бариери в класическите процесори. Личното ми наблюдение е, че индустрията дълго време разчиташе на груба сила вместо на елегантни софтуерни решения, но днес този подход започва да се пука по шевовете.</p>
-        
-        <p>Пътят напред изглежда е в симбиозата между различни изчислителни парадигми. Новите платформи успяват да обединят гъвкавостта на софтуера с бързината на хардуерното ускорение по начин, който доскоро изглеждаше невъзможен. Разговорите с експерти от бранша показват едно и също: бъдещето принадлежи на системите, които могат динамично да се адаптират към натоварването в реално време.</p>
-        
-        <p>В крайна сметка, всяка технологична революция има смисъл само ако улеснява живота на крайния потребител. В следващите месеци ще усетим промяната през по-интуитивни интерфейси, по-дълъг живот на батерията и приложения, които наистина ни разбират в дълбочина.</p>
-        
-        <p>Пътят напред няма да бъде лесен, а предизвикателствата пред разработчиците остават огромни. Въпреки това, енергията и иновативният дух в сектора показват, че най-интересното предстои да се случи на хоризонта.</p>
-        """
-    else:
-        title_match = re.search(r'<h2>(.*?)</h2>', article_body)
-        title_text = title_match.group(1) if title_match else "Технологична новина"
-
-    # База от гарантирано качествени и тематични технологични снимки (без водни знаци)
+        raise RuntimeError("Gemini не върна достатъчно дълга grounded статия. Няма да се публикува непроверен fallback материал.")
+    source_links = []
+    if grounding:
+        for chunk in getattr(grounding, "grounding_chunks", []) or []:
+            web = getattr(chunk, "web", None)
+            uri = getattr(web, "uri", None) if web else None
+            title = getattr(web, "title", None) if web else None
+            if uri and uri not in [x["url"] for x in source_links]:
+                source_links.append({"title": title or uri, "url": uri})
+    if source_links:
+        source_html = '<section class="article-sources"><h3>Източници</h3><ul>'
+        for source in source_links[:6]:
+            source_html += f'<li><a href="{source["url"]}" rel="noopener noreferrer">{source["title"]}</a></li>'
+        source_html += "</ul></section>"
+        article_body += source_html
+    title_match = re.search(r"<h2>(.*?)</h2>", article_body, re.S)
+    title_text = re.sub(r"<[^>]+>", "", title_match.group(1)).strip() if title_match else "Технологична новина"
     tech_images = [
-        "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&auto=format&fit=crop", # чипове/хардуер
-        "https://images.unsplash.com/photo-1535378273068-9bb67d5beacd?w=800&auto=format&fit=crop", # AI/код
-        "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop", # абстрактни технологии
-        "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&auto=format&fit=crop", # програмиране/код на екран
-        "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&auto=format&fit=crop", # киберсигурност / сървъри
-        "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&auto=format&fit=crop"  # технологичен офис / лаптопи
+        "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1535378273068-9bb67d5beacd?w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&auto=format&fit=crop"
     ]
-    
-    # Избираме на случаен принцип една от тематичните снимки
+    fallback_img = tech_images[0]
     main_image_url = random.choice(tech_images)
-
     history = load_history()
     sidebar_items = history[:3] if len(history) >= 3 else DEFAULT_ARTICLES
-
     full_html = build_full_page(title_text, main_image_url, fallback_img, article_body, sidebar_items)
-
-    index_path = os.path.join(PUBLIC_DIR, "index.html")
-    with open(index_path, "w", encoding="utf-8") as f:
-        f.write(full_html)
-
     article_slug = slugify(title_text)
     article_file_path = os.path.join(ARTICLES_DIR, f"{article_slug}.html")
     article_url = f"/articles/{article_slug}.html"
-
+    if os.path.exists(article_file_path):
+        raise RuntimeError(f"Статията вече съществува: {article_file_path}")
     with open(article_file_path, "w", encoding="utf-8") as f:
         f.write(full_html)
-
     history.insert(0, {
         "title": title_text,
-        "time": "2026-09-26",
+        "time": __import__("datetime").date.today().isoformat(),
         "category": "AI",
         "url": article_url,
-        "img": main_image_url
+        "img": main_image_url,
+        "sources": source_links[:6]
     })
-    save_history(history)
-    create_static_pages()
-    print("🎉 Успешно създадена статия с тематична технологична снимка и без водни знаци!")
+    save_history(history[:200])
+    print(f"Публикационният пакет е готов: {article_url}")
 
 if __name__ == "__main__":
     generate_news()
