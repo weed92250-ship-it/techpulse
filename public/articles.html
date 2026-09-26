@@ -15,26 +15,42 @@
 <title>Статии — TechPulse</title>
 <style>
 body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#070c18;color:#94a3b8;margin:0;padding:20px;line-height:1.6}
-.container{max-width:1180px;margin:0 auto}.header{display:flex;justify-content:space-between;align-items:center;padding-bottom:15px;margin-bottom:25px;border-bottom:1px solid #1e293b}
-.logo{font-size:24px;font-weight:800;color:#38bdf8;text-decoration:none}.static-card{background:#0f172a;border:1px solid #1e293b;border-radius:10px;padding:30px}
-h1{color:#f8fafc}.article-list{display:grid;gap:14px;margin-top:25px}.article-list a{display:block;padding:18px;background:#111827;border:1px solid #1e293b;border-radius:8px;color:#f8fafc;text-decoration:none}.article-list a:hover{border-color:#38bdf8}.article-list span{display:block;color:#38bdf8;font-size:12px;margin-bottom:5px}
+.container{max-width:1180px;margin:0 auto}.header{display:flex;justify-content:space-between;align-items:center;gap:20px;padding-bottom:15px;margin-bottom:20px;border-bottom:1px solid #1e293b}
+.logo{font-size:24px;font-weight:800;color:#38bdf8;text-decoration:none}.nav{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:22px}.nav a{color:#cbd5e1;text-decoration:none;font-size:14px}.nav a:hover,.nav a[aria-current="page"]{color:#38bdf8}
+.search{display:flex;gap:8px;margin:18px 0}.search input{flex:1;min-width:0;padding:11px 14px;border-radius:8px;border:1px solid #1e293b;background:#0f172a;color:#f8fafc}.search button{padding:11px 16px;border:1px solid #1e293b;border-radius:8px;background:#111827;color:#f8fafc;cursor:pointer}.filters{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}.filters a{color:#cbd5e1;text-decoration:none;border:1px solid #1e293b;border-radius:999px;padding:7px 12px;font-size:13px}.filters a:hover{border-color:#38bdf8;color:#38bdf8}
+.static-card{background:#0f172a;border:1px solid #1e293b;border-radius:10px;padding:30px}
+h1{color:#f8fafc}.article-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:25px}.article-list a{display:block;padding:20px;background:#111827;border:1px solid #1e293b;border-radius:8px;color:#f8fafc;text-decoration:none}.article-list a:hover{border-color:#38bdf8;transform:translateY(-1px)}.article-list span{display:block;color:#38bdf8;font-size:12px;margin-bottom:7px}.article-list p{margin:7px 0 0;color:#94a3b8;font-size:14px}
+.empty{display:none;padding:20px;border:1px dashed #334155;border-radius:8px;color:#94a3b8}.article-list a:target{scroll-margin-top:20px}
 footer{text-align:center;margin-top:40px;padding-top:20px;border-top:1px solid #1e293b;color:#64748b;font-size:13px}.footer-links a{color:#94a3b8;text-decoration:none;margin:0 10px}
-:focus-visible{outline:3px solid #38bdf8;outline-offset:3px}
+:focus-visible{outline:3px solid #38bdf8;outline-offset:3px}@media(max-width:720px){.article-list{grid-template-columns:1fr}.header{align-items:flex-start;flex-direction:column}}
 </style>
 </head>
 <body>
 <div class="container">
-<header class="header"><a href="/" class="logo">⚡ TechPulse</a><a href="/" style="color:#cbd5e1;text-decoration:none">Начало</a></header>
-<nav aria-label="Основна навигация" style="display:flex;gap:18px;flex-wrap:wrap;margin-bottom:20px"><a href="/" style="color:#cbd5e1;text-decoration:none">Начало</a><a href="/articles.html" style="color:#38bdf8;text-decoration:none">Статии</a><a href="/about.html" style="color:#cbd5e1;text-decoration:none">За нас</a><a href="/contacts.html" style="color:#cbd5e1;text-decoration:none">Контакти</a></nav><main class="static-card">
+<header class="header"><a href="/" class="logo">⚡ TechPulse</a></header>
+<nav class="nav" aria-label="Основна навигация"><a href="/">Начало</a><a href="/articles.html" aria-current="page">Статии</a><a href="/articles.html#ai">AI</a><a href="/articles.html#technologies">Технологии</a><a href="/articles.html#hardware">Хардуер</a><a href="/about.html">За нас</a><a href="/contacts.html">Контакти</a></nav>
+<main class="static-card">
 <h1>Статии</h1>
 <p>Последни материали на TechPulse за изкуствен интелект, софтуер, квантови технологии и хардуер.</p>
+<form class="search" id="article-search"><input id="site-search" type="search" placeholder="Търси в статиите…" aria-label="Търси в статиите"><button type="submit">Търси</button></form>
+<nav class="filters" aria-label="Филтри по тема"><a href="#ai">AI</a><a href="#technologies">Технологии</a><a href="#hardware">Хардуер</a><a href="/articles.html">Всички</a></nav>
 <div class="article-list">
-<a href="/articles/kak-novite-tehnologii-promenyat-nachina-po-koyto-mislime-za-softuera.html"><span>Технологии</span>Как новите технологии променят начина, по който мислиме за софтуера</a>
-<a href="/articles/mashtaben-probiv-v-oblastta-na-sledvashtoto-pokolenie-izkustven-intelekt.html"><span>AI</span>Мащабен пробив в областта на следващото поколение изкуствен интелект</a>
-<a href="/articles/nov-probiv-v-kvantovite-kompyutri-i-izkustveniya-intelekt.html"><span>AI</span>Нов пробив в квантовите компютри и изкуствения интелект</a>
-<a href="/articles/sledvashto-pokolenie-nevromorfni-ai-chipove-revolyutsionizirat-avtonomnite-ustroystva-i-robotikata.html"><span>AI</span>Следващо поколение невроморфни AI чипове революционизират автономните устройства и роботиката</a>
-</div>
+<a id="technologies" data-category="technologies" data-search="технологии софтуер ai разработчици" href="/articles/kak-novite-tehnologii-promenyat-nachina-po-koyto-mislime-za-softuera.html"><span>Технологии</span>Как новите технологии променят начина, по който мислиме за софтуера<p>AI, специализирани ускорители и новият софтуерен стек.</p></a>
+<a id="ai" data-category="ai" data-search="ai изкуствен интелект следващо поколение" href="/articles/mashtaben-probiv-v-oblastta-na-sledvashtoto-pokolenie-izkustven-intelekt.html"><span>AI</span>Мащабен пробив в областта на следващото поколение изкуствен интелект<p>Как се развиват новите подходи към AI.</p></a>
+<a data-category="ai" data-search="ai квантови компютри квантов изкуствен интелект" href="/articles/nov-probiv-v-kvantovite-kompyutri-i-izkustveniya-intelekt.html"><span>AI</span>Нов пробив в квантовите компютри и изкуствения интелект<p>Хибриден подход между генеративен AI и квантова оптимизация.</p></a>
+<a id="hardware" data-category="hardware ai невроморфни" data-search="хардуер ai невроморфни чипове роботика" href="/articles/sledvashto-pokolenie-nevromorfni-ai-chipove-revolyutsionizirat-avtonomnite-ustroystva-i-robotikata.html"><span>Хардуер</span>Следващо поколение невроморфни AI чипове революционизират автономните устройства и роботиката<p>Невроморфни архитектури и енергийно ефективно AI изчисление.</p></a>
+</div><p class="empty" id="empty-state">Няма намерени статии.</p>
 </main>
+<script>
+(function(){
+ const form=document.getElementById('article-search'), input=document.getElementById('site-search');
+ const cards=[...document.querySelectorAll('.article-list a')], empty=document.getElementById('empty-state');
+ const params=new URLSearchParams(location.search); input.value=params.get('q')||'';
+ function filter(){const q=input.value.trim().toLowerCase();let shown=0;cards.forEach(c=>{const ok=!q||c.dataset.search.includes(q);c.style.display=ok?'block':'none';if(ok)shown++;});empty.style.display=shown?'none':'block';}
+ form.addEventListener('submit',e=>{e.preventDefault();const q=input.value.trim();history.replaceState(null,'',q?'?q='+encodeURIComponent(q):'/articles.html');filter();});
+ filter();
+})();
+</script>
 <footer><div class="footer-links"><a href="/about.html">За нас</a> | <a href="/contacts.html">Контакти</a> | <a href="/privacy.html">Поверителност</a></div><p>© TechPulse. Всички права запазени.</p></footer>
 </div>
 </body>
