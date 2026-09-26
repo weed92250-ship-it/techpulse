@@ -253,8 +253,8 @@ def generate_news():
     image_prompt = f"high tech modern {title_text} cyber style 4k photography"
     encoded_prompt = urllib.parse.quote(image_prompt)
     
-    # ТУК Е ДОБАВЕН ПАРАМЕТЪРЪТ &nologo=true ЗА ПРЕМАХВАНЕ НА ВОДНИЯ ЗНАК
-    main_image_url = f"https://image.pollinations.ai/prompt/{encoded_prompt}?width=800&height=450&nologo=true"
+    # Тук е зададен моделът flux и параметърът nologo=true за премахване на водния знак
+    main_image_url = f"https://image.pollinations.ai/prompt/{encoded_prompt}?width=800&height=450&model=flux&nologo=true"
 
     history = load_history()
     sidebar_items = history[:3] if len(history) >= 3 else DEFAULT_ARTICLES
@@ -281,7 +281,7 @@ def generate_news():
     })
     save_history(history)
     create_static_pages()
-    print("🎉 Успешно създадена статия с изчистени подзаглавия и без воден знак на картинката!")
+    print("🎉 Успешно създадена статия с изчистени подзаглавия и без воден знак!")
 
 if __name__ == "__main__":
     generate_news()
