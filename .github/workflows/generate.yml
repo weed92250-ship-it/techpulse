@@ -76,10 +76,10 @@ jobs:
           url = base + item["url"]
 
           raw = article_path.read_text(encoding="utf-8")
-          raw = raw.replace("<meta charset="UTF-8">",
-                            "<meta charset="UTF-8"><meta name="robots" content="index,follow,max-image-preview:large">"
+          raw = raw.replace('<meta charset="UTF-8">',
+                            '<meta charset="UTF-8"><meta name="robots" content="index,follow,max-image-preview:large">'
                             f"<meta name="description" content="{title}"><link rel="canonical" href="{url}">"
-                            "<meta property="og:type" content="article">"
+                            '<meta property="og:type" content="article">'
                             f"<meta property="og:url" content="{url}"><meta property="og:title" content="{title} — TechPulse">"
                             f"<meta property="og:image" content="{image}"><meta name="twitter:card" content="summary_large_image">"
                             f"<meta name="twitter:image" content="{image}">")
