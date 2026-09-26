@@ -4,6 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#080b12">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <link rel="canonical" href="https://techpulseon.site/">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E⚡%3C/text%3E%3C/svg%3E">
   <meta name="description" content="TechPulse събира най-важното от света на AI, технологиите, мобилните устройства, приложенията и хардуера на едно място.">
   <meta property="og:type" content="website">
   <meta property="og:title" content="TechPulse | Технологиите без шум">
@@ -12,9 +15,6 @@
   <meta name="twitter:card" content="summary_large_image">
   <title>TechPulse | Технологиите без шум</title>
   <link rel="preconnect" href="https://images.unsplash.com">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -25,16 +25,17 @@
   }
   </script>
   <style>
+    .skip{position:absolute;left:-9999px;top:8px;padding:10px 14px;background:#fff;color:#000;border-radius:8px;z-index:100}.skip:focus{left:12px}
     :root{--bg:#070a10;--surface:#0d121b;--surface2:#111824;--line:#202938;--text:#f5f7fb;--muted:#9aa6b8;--accent:#67e8f9;--accent2:#8b5cf6;--max:1180px}
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
-    body{margin:0;background:radial-gradient(circle at 80% -10%,rgba(103,232,249,.09),transparent 30%),radial-gradient(circle at 10% 10%,rgba(139,92,246,.08),transparent 25%),var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;line-height:1.6}
+    body{margin:0;background:radial-gradient(circle at 80% -10%,rgba(103,232,249,.09),transparent 30%),radial-gradient(circle at 10% 10%,rgba(139,92,246,.08),transparent 25%),var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6}
     a{color:inherit;text-decoration:none}
     button,input{font:inherit}
     .wrap{width:min(calc(100% - 40px),var(--max));margin:auto}
     .top{position:sticky;top:0;z-index:20;background:rgba(7,10,16,.86);backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.06)}
     .bar{height:72px;display:flex;align-items:center;gap:24px}
-    .logo{display:flex;align-items:center;gap:10px;font-family:"Space Grotesk";font-weight:700;font-size:22px;white-space:nowrap}
+    .logo{display:flex;align-items:center;gap:10px;font-family:Inter,ui-sans-serif,system-ui,sans-serif;font-weight:700;font-size:22px;white-space:nowrap}
     .logo-mark{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#071017;font-weight:900;box-shadow:0 8px 30px rgba(103,232,249,.16)}
     .search{position:relative;flex:1;max-width:390px;margin-left:auto}
     .search input{width:100%;height:42px;padding:0 15px 0 40px;border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--text);outline:0}
@@ -85,6 +86,7 @@
 </head>
 <body>
 <header class="top">
+  <a class="skip" href="#content">Към основното съдържание</a>
   <div class="wrap bar">
     <a class="logo" href="/" aria-label="TechPulse начало"><span class="logo-mark">⚡</span>TechPulse</a>
     <label class="search" aria-label="Търсене"><span>⌕</span><input id="search" type="search" placeholder="Търси новини, AI, устройства..." autocomplete="off"></label>
@@ -95,11 +97,11 @@
   </div></nav>
 </header>
 
-<main class="wrap">
+<main class="wrap" id="content">
   <div class="eyebrow">● TechPulse · 26 септември 2026</div>
   <section class="hero" aria-label="Водещи новини">
     <article class="hero-main">
-      <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1600&auto=format&fit=crop&q=85" alt="Модерен компютърен чип и технологии" fetchpriority="high">
+      <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1600&auto=format&fit=crop&q=82" width="1600" height="900" alt="Модерен компютърен чип и технологии" fetchpriority="high" decoding="async">
       <div class="hero-copy">
         <span class="tag">AI · Анализ</span>
         <h1>Как AI променя начина, по който изграждаме софтуер</h1>
@@ -108,21 +110,21 @@
       </div>
     </article>
     <div class="side">
-      <article class="mini" data-category="AI"><img src="https://images.unsplash.com/photo-1535378273068-9bb67d5beacd?w=500&auto=format&fit=crop&q=80" alt="Изкуствен интелект" loading="lazy"><div><span class="tag">AI</span><h3>Новото поколение AI асистенти идва с по-дълбок контекст</h3><span class="meta">24 септември · 4 мин</span></div></article>
-      <article class="mini" data-category="Мобилни"><img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500&auto=format&fit=crop&q=80" alt="Смартфон" loading="lazy"><div><span class="tag">Мобилни</span><h3>Следващата вълна смартфони залага на локален AI</h3><span class="meta">23 септември · 5 мин</span></div></article>
-      <article class="mini" data-category="Компютри"><img src="https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=500&auto=format&fit=crop&q=80" alt="Компютърно работно място" loading="lazy"><div><span class="tag">Компютри</span><h3>Какво се променя при модерните AI компютри</h3><span class="meta">22 септември · 6 мин</span></div></article>
+      <article class="mini" data-category="AI"><img src="https://images.unsplash.com/photo-1535378273068-9bb67d5beacd?w=500&auto=format&fit=crop&q=80" width="900" height="600" alt="Изкуствен интелект" loading="lazy" decoding="async"><div><span class="tag">AI</span><h3>Новото поколение AI асистенти идва с по-дълбок контекст</h3><span class="meta">24 септември · 4 мин</span></div></article>
+      <article class="mini" data-category="Мобилни"><img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500&auto=format&fit=crop&q=80" width="900" height="600" alt="Смартфон" loading="lazy" decoding="async"><div><span class="tag">Мобилни</span><h3>Следващата вълна смартфони залага на локален AI</h3><span class="meta">23 септември · 5 мин</span></div></article>
+      <article class="mini" data-category="Компютри"><img src="https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=500&auto=format&fit=crop&q=80" width="900" height="600" alt="Компютърно работно място" loading="lazy" decoding="async"><div><span class="tag">Компютри</span><h3>Какво се променя при модерните AI компютри</h3><span class="meta">22 септември · 6 мин</span></div></article>
     </div>
   </section>
 
   <section>
     <div class="section-head"><div><h2>Последни истории</h2><p id="resultText">Подбрани истории от света на технологиите</p></div></div>
     <div class="grid" id="articles">
-      <article class="card" data-category="AI" data-title="AI агенти автоматизация"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=900&auto=format&fit=crop&q=80" alt="AI визуализация" loading="lazy"><div class="card-body"><span class="tag">AI</span><h3>AI агентите преминават от чат към реална автоматизация</h3><p>Как агентните системи променят работните процеси и какво да следиш.</p><span class="meta">26 септември · 6 мин</span></div></article>
-      <article class="card" data-category="Технологии" data-title="квантови изчисления чипове"><img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=900&auto=format&fit=crop&q=80" alt="Абстрактна научна визуализация" loading="lazy"><div class="card-body"><span class="tag">Технологии</span><h3>Къде стоят квантовите изчисления през 2026</h3><p>Хардуерът, грешките и реалните приложения отвъд маркетинга.</p><span class="meta">25 септември · 7 мин</span></div></article>
-      <article class="card" data-category="Приложения" data-title="продуктивност приложения"><img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=900&auto=format&fit=crop&q=80" alt="Приложения на смартфон" loading="lazy"><div class="card-body"><span class="tag">Приложения</span><h3>5 тенденции, които променят продуктивността</h3><p>По-малко известия, повече автоматизация и по-добър контрол върху данните.</p><span class="meta">24 септември · 5 мин</span></div></article>
-      <article class="card" data-category="Мобилни" data-title="смартфони батерия устройства"><img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=900&auto=format&fit=crop&q=80" alt="Модерен смартфон" loading="lazy"><div class="card-body"><span class="tag">Мобилни</span><h3>Батерията отново става центърът на смартфон дизайна</h3><p>Как силициевите аноди и по-умното управление променят автономността.</p><span class="meta">23 септември · 5 мин</span></div></article>
-      <article class="card" data-category="Ревюта" data-title="лаптоп ревю производителност"><img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=900&auto=format&fit=crop&q=80" alt="Лаптоп на бюро" loading="lazy"><div class="card-body"><span class="tag">Ревюта</span><h3>Как да избереш лаптоп за AI работа и програмиране</h3><p>Практичен поглед към RAM, GPU, охлаждане, дисплей и автономност.</p><span class="meta">22 септември · 8 мин</span></div></article>
-      <article class="card" data-category="AI инструменти" data-title="AI инструменти разработчици"><img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=900&auto=format&fit=crop&q=80" alt="Код на монитор" loading="lazy"><div class="card-body"><span class="tag">AI инструменти</span><h3>Инструментите за кодиране с AI, които си струва да следиш</h3><p>Какво да гледаш при контекст, интеграции, контрол и цена.</p><span class="meta">21 септември · 7 мин</span></div></article>
+      <article class="card" data-category="AI" data-title="AI агенти автоматизация"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=900&auto=format&fit=crop&q=80" width="900" height="600" alt="AI визуализация" loading="lazy" decoding="async"><div class="card-body"><span class="tag">AI</span><h3>AI агентите преминават от чат към реална автоматизация</h3><p>Как агентните системи променят работните процеси и какво да следиш.</p><span class="meta">26 септември · 6 мин</span></div></article>
+      <article class="card" data-category="Технологии" data-title="квантови изчисления чипове"><img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=900&auto=format&fit=crop&q=80" width="900" height="600" alt="Абстрактна научна визуализация" loading="lazy" decoding="async"><div class="card-body"><span class="tag">Технологии</span><h3>Къде стоят квантовите изчисления през 2026</h3><p>Хардуерът, грешките и реалните приложения отвъд маркетинга.</p><span class="meta">25 септември · 7 мин</span></div></article>
+      <article class="card" data-category="Приложения" data-title="продуктивност приложения"><img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=900&auto=format&fit=crop&q=80" width="900" height="600" alt="Приложения на смартфон" loading="lazy" decoding="async"><div class="card-body"><span class="tag">Приложения</span><h3>5 тенденции, които променят продуктивността</h3><p>По-малко известия, повече автоматизация и по-добър контрол върху данните.</p><span class="meta">24 септември · 5 мин</span></div></article>
+      <article class="card" data-category="Мобилни" data-title="смартфони батерия устройства"><img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=900&auto=format&fit=crop&q=80" width="900" height="600" alt="Модерен смартфон" loading="lazy" decoding="async"><div class="card-body"><span class="tag">Мобилни</span><h3>Батерията отново става центърът на смартфон дизайна</h3><p>Как силициевите аноди и по-умното управление променят автономността.</p><span class="meta">23 септември · 5 мин</span></div></article>
+      <article class="card" data-category="Ревюта" data-title="лаптоп ревю производителност"><img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=900&auto=format&fit=crop&q=80" width="900" height="600" alt="Лаптоп на бюро" loading="lazy" decoding="async"><div class="card-body"><span class="tag">Ревюта</span><h3>Как да избереш лаптоп за AI работа и програмиране</h3><p>Практичен поглед към RAM, GPU, охлаждане, дисплей и автономност.</p><span class="meta">22 септември · 8 мин</span></div></article>
+      <article class="card" data-category="AI инструменти" data-title="AI инструменти разработчици"><img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=900&auto=format&fit=crop&q=80" width="900" height="600" alt="Код на монитор" loading="lazy" decoding="async"><div class="card-body"><span class="tag">AI инструменти</span><h3>Инструментите за кодиране с AI, които си струва да следиш</h3><p>Какво да гледаш при контекст, интеграции, контрол и цена.</p><span class="meta">21 септември · 7 мин</span></div></article>
     </div>
   </section>
 
@@ -148,6 +150,7 @@
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
+if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("/sw.js").catch(()=>{}));}
 const cards=[...document.querySelectorAll('#articles .card')];
 const minis=[...document.querySelectorAll('.mini')];
 const nav=[...document.querySelectorAll('#nav button')];
