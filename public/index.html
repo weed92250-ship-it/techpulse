@@ -1,124 +1,195 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="bg">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
-<link rel="canonical" href="https://techpulseon.site/">
-<meta property="og:type" content="website"><meta property="og:url" content="https://techpulseon.site/"><meta property="og:site_name" content="TechPulse"><meta name="twitter:card" content="summary_large_image"><meta name="theme-color" content="#070c18">
-    <title>TechPulse | Технологии, AI и дигитален свят</title><meta name="description" content="TechPulse — български технологичен портал за AI, софтуер, хардуер и дигитални тенденции.">
-    <style>
-    body {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-        background-color: #070c18;
-        color: #94a3b8;
-        margin: 0;
-        padding: 20px;
-        line-height: 1.7;
-    }
-    .container { max-width: 1180px; margin: 0 auto; }
-    .header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 15px; margin-bottom: 15px; }
-    .logo { font-size: 24px; font-weight: 800; color: #38bdf8; text-decoration: none; display: flex; align-items: center; gap: 8px; }
-    .search-box input { padding: 8px 16px; border-radius: 6px; border: 1px solid #1e293b; background-color: #0f172a; color: #f8fafc; width: 220px; font-size: 13px; outline: none; }
-    .nav-categories { display: flex; flex-wrap: wrap; gap: 18px; padding-bottom: 15px; border-bottom: 1px solid #1e293b; margin-bottom: 25px; }
-    .nav-link { color: #cbd5e1; text-decoration: none; font-size: 13px; font-weight: 500; }
-    .nav-link:hover, .nav-link.active { color: #38bdf8; }
-    .main-layout { display: grid; grid-template-columns: 1fr 340px; gap: 30px; }
-    .article-card, .static-card { background: #0f172a; border-radius: 10px; padding: 30px; border: 1px solid #1e293b; }
-    .article-image { width: 100%; height: 420px; object-fit: cover; border-radius: 6px; margin-bottom: 20px; }
-    .article-card h2, .static-card h1 { color: #f8fafc; margin-top: 10px; font-size: 28px; line-height: 1.3; }
-    .article-intro { font-size: 18px; color: #cbd5e1; margin-bottom: 25px; line-height: 1.8; font-weight: 400; }
-    .article-card p { margin-bottom: 18px; font-size: 15px; color: #94a3b8; }
-    ul, ol { padding-left: 20px; margin-bottom: 20px; color: #94a3b8; font-size: 15px; }
-    li { margin-bottom: 10px; }
-    .sidebar { background: #0f172a; border-radius: 10px; padding: 20px; border: 1px solid #1e293b; height: fit-content; }
-    .sidebar h3 { margin-top: 0; color: #f8fafc; font-size: 16px; border-bottom: 1px solid #1e293b; padding-bottom: 10px; margin-bottom: 18px; }
-    .similar-item { display: flex; gap: 12px; margin-bottom: 18px; align-items: flex-start; }
-    .similar-item img { width: 75px; height: 60px; border-radius: 4px; object-fit: cover; }
-    .similar-item-info h4 { margin: 0 0 4px 0; font-size: 13px; line-height: 1.3; }
-    .similar-item-info h4 a { color: #f8fafc; text-decoration: none; }
-    .similar-item-info h4 a:hover { color: #38bdf8; }
-    .similar-tag { color: #38bdf8; font-size: 11px; font-weight: bold; display: block; margin-bottom: 2px; }
-    .similar-item-info span { font-size: 11px; color: #64748b; }
-    footer { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #1e293b; color: #64748b; font-size: 13px; }
-    .footer-links a { color: #94a3b8; text-decoration: none; margin: 0 10px; }
-    .footer-links a:hover { color: #38bdf8; }
-    @media (max-width: 850px) { .main-layout { grid-template-columns: 1fr; } }
-</style>
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://techpulseon.site/#organization","name":"TechPulse","url":"https://techpulseon.site/"},{"@type":"WebSite","@id":"https://techpulseon.site/#website","url":"https://techpulseon.site/","name":"TechPulse","publisher":{"@id":"https://techpulseon.site/#organization"}}]}</script><style>:focus-visible{outline:3px solid #38bdf8;outline-offset:3px}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}</style></head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080b12">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <link rel="canonical" href="https://techpulseon.site/">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E⚡%3C/text%3E%3C/svg%3E">
+  <meta name="description" content="TechPulse събира най-важното от света на AI, технологиите, мобилните устройства, приложенията и хардуера на едно място.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="TechPulse | Технологиите без шум">
+  <meta property="og:description" content="AI, технологии, мобилни устройства, приложения и ревюта на едно място.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1600&auto=format&fit=crop&q=80">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>TechPulse | Технологиите без шум</title>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"NewsMediaOrganization",
+    "name":"TechPulse",
+    "url":"https://techpulseon.site/",
+    "description":"Български технологичен портал за AI и съвременни технологии"
+  }
+  </script>
+  <style>
+    .skip{position:absolute;left:-9999px;top:8px;padding:10px 14px;background:#fff;color:#000;border-radius:8px;z-index:100}.skip:focus{left:12px}
+    :root{--bg:#070a10;--surface:#0d121b;--surface2:#111824;--line:#202938;--text:#f5f7fb;--muted:#9aa6b8;--accent:#67e8f9;--accent2:#8b5cf6;--max:1180px}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:radial-gradient(circle at 80% -10%,rgba(103,232,249,.09),transparent 30%),radial-gradient(circle at 10% 10%,rgba(139,92,246,.08),transparent 25%),var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6}
+    a{color:inherit;text-decoration:none}
+    button,input{font:inherit}
+    .wrap{width:min(calc(100% - 40px),var(--max));margin:auto}
+    .top{position:sticky;top:0;z-index:20;background:rgba(7,10,16,.86);backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.06)}
+    .bar{height:72px;display:flex;align-items:center;gap:24px}
+    .logo{display:flex;align-items:center;gap:10px;font-family:Inter,ui-sans-serif,system-ui,sans-serif;font-weight:700;font-size:22px;white-space:nowrap}
+    .logo-mark{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#071017;font-weight:900;box-shadow:0 8px 30px rgba(103,232,249,.16)}
+    .search{position:relative;flex:1;max-width:390px;margin-left:auto}
+    .search input{width:100%;height:42px;padding:0 15px 0 40px;border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--text);outline:0}
+    .search input:focus{border-color:#3c6a76;box-shadow:0 0 0 3px rgba(103,232,249,.08)}
+    .search span{position:absolute;left:14px;top:9px;color:var(--muted)}
+    .nav{border-top:1px solid rgba(255,255,255,.04)}
+    .nav-inner{display:flex;gap:8px;overflow:auto;padding:10px 0;scrollbar-width:none}
+    .nav-inner::-webkit-scrollbar{display:none}
+    .nav button{border:0;background:transparent;color:var(--muted);padding:8px 12px;border-radius:9px;cursor:pointer;white-space:nowrap}
+    .nav button:hover,.nav button.active{background:var(--surface2);color:var(--text)}
+    main{padding:42px 0 70px}
+    .eyebrow{display:inline-flex;gap:8px;align-items:center;color:var(--accent);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.12em}
+    .hero{display:grid;grid-template-columns:1.45fr .75fr;gap:20px;margin:18px 0 36px}
+    .hero-main{min-height:460px;position:relative;overflow:hidden;border-radius:22px;border:1px solid var(--line);background:#0c1119}
+    .hero-main img{width:100%;height:100%;min-height:460px;object-fit:cover;opacity:.7}
+    .hero-main:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(4,7,11,.97),rgba(4,7,11,.08) 65%)}
+    .hero-copy{position:absolute;z-index:2;left:32px;right:32px;bottom:30px}
+    .hero-copy h1{font-family:"Space Grotesk";font-size:clamp(32px,4vw,52px);line-height:1.02;margin:12px 0;max-width:760px}
+    .hero-copy p{color:#c3ccd9;max-width:700px;margin:0 0 18px}
+    .tag{display:inline-flex;align-items:center;padding:6px 9px;border-radius:7px;background:rgba(103,232,249,.1);color:var(--accent);font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.06em}
+    .side{display:grid;gap:20px}
+    .mini{display:grid;grid-template-columns:120px 1fr;gap:14px;padding:14px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(145deg,var(--surface),#0a0f17)}
+    .mini img{width:120px;height:110px;object-fit:cover;border-radius:12px}
+    .mini h3{font-family:"Space Grotesk";font-size:17px;line-height:1.2;margin:7px 0}
+    .meta{font-size:12px;color:var(--muted)}
+    .section-head{display:flex;justify-content:space-between;align-items:end;margin:38px 0 16px}
+    .section-head h2{font-family:"Space Grotesk";font-size:28px;margin:0}
+    .section-head p{margin:4px 0 0;color:var(--muted);font-size:14px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{overflow:hidden;border:1px solid var(--line);border-radius:18px;background:var(--surface);transition:transform .2s,border-color .2s,box-shadow .2s}
+    .card:hover{transform:translateY(-3px);border-color:#334155;box-shadow:0 18px 40px rgba(0,0,0,.2)}
+    .card img{width:100%;height:190px;object-fit:cover;display:block}
+    .card-body{padding:17px}
+    .card h3{font-family:"Space Grotesk";font-size:19px;line-height:1.25;margin:10px 0 8px}
+    .card p{margin:0;color:var(--muted);font-size:14px}
+    .tools{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .tool{padding:18px;border:1px solid var(--line);border-radius:16px;background:var(--surface)}
+    .tool-icon{font-size:24px}.tool h3{font-size:16px;margin:10px 0 4px}.tool p{font-size:13px;color:var(--muted);margin:0}
+    .newsletter{margin-top:44px;padding:34px;border-radius:22px;border:1px solid #263444;background:linear-gradient(120deg,rgba(103,232,249,.08),rgba(139,92,246,.08))}
+    .newsletter h2{font-family:"Space Grotesk";font-size:30px;margin:0 0 8px}.newsletter p{color:var(--muted);margin:0 0 20px}
+    .signup{display:flex;gap:10px;max-width:620px}.signup input{flex:1;min-width:0;height:46px;padding:0 14px;border:1px solid var(--line);border-radius:11px;background:var(--bg);color:var(--text);outline:0}.signup button{height:46px;border:0;border-radius:11px;padding:0 18px;background:var(--text);color:#090d13;font-weight:800;cursor:pointer}
+    footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);font-size:13px}.foot{display:flex;justify-content:space-between;gap:20px}.foot-links{display:flex;gap:18px}.foot a:hover{color:var(--text)}
+    .empty{grid-column:1/-1;padding:35px;border:1px dashed var(--line);border-radius:16px;color:var(--muted);text-align:center}
+    .toast{position:fixed;right:20px;bottom:20px;z-index:50;padding:12px 16px;border-radius:12px;background:#f5f7fb;color:#080b12;font-weight:700;transform:translateY(20px);opacity:0;pointer-events:none;transition:.25s}.toast.show{transform:translateY(0);opacity:1}
+    @media(max-width:900px){.hero{grid-template-columns:1fr}.side{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:repeat(2,1fr)}.tools{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:620px){.wrap{width:min(calc(100% - 24px),var(--max))}.bar{height:64px}.search{display:none}.hero-main,.hero-main img{min-height:420px}.hero-copy{left:20px;right:20px;bottom:20px}.hero-copy h1{font-size:34px}.side,.grid,.tools{grid-template-columns:1fr}.mini{grid-template-columns:100px 1fr}.mini img{width:100px;height:100px}.signup{flex-direction:column}.foot{flex-direction:column}}
+  </style>
+</head>
 <body>
-    <div class="container">
-        <div class="header">
-            <a href="/" class="logo">⚡ TechPulse</a>
-            <div class="search-box"><input type="search" aria-label="Търсене в TechPulse" placeholder="🔍 Търсене..."></div>
-        </div>
-        <nav class="nav-categories">
-            <a href="/" class="nav-link active">Начало</a>
-            <a href="#" class="nav-link">AI</a>
-            <a href="#" class="nav-link">Технологии</a>
-            <a href="#" class="nav-link">Мобилни</a>
-            <a href="#" class="nav-link">Компютри</a>
-            <a href="#" class="nav-link">Приложения</a>
-            <a href="#" class="nav-link">AI инструменти</a>
-            <a href="#" class="nav-link">Ревюта</a>
-            <a href="#" class="nav-link">Новини</a>
-        </nav>
-        <div class="main-layout">
-            <div class="main-content">
-                <article class="article-card">
-                    <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1535378273068-9bb67d5beacd?w=800&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=800&auto=format&fit=crop';" alt="Как новите технологии променят начина, по който мислиме за софтуера" class="article-image">
-                    
-        <h2>Как новите технологии променят начина, по който мислиме за софтуера</h2>
-        <p class="article-intro">През последните месеци ставаме свидетели на тиха, но дълбока трансформация в технологичния свят. Това вече не е просто надпревара за по-бързи чипове, а фундаментална промяна в парадигмата на софтуерната инженерия.</p>
-        
-        <p>Когато обсъждаме развитието на съвременните системи, често забравяме колко бързо се изчерпват традиционните методи за оптимизация. Инженерите по целия свят се сблъскват с непреодолими физични и архитектурни бариери в класическите процесори. Личното ми наблюдение е, че индустрията дълго време разчиташе на груба сила вместо на елегантни софтуерни решения, но днес този подход започва да се пука по шевовете.</p>
-        
-        <p>Пътят напред изглежда е в симбиозата между различни изчислителни парадигми. Новите платформи успяват да обединят гъвкавостта на софтуера с бързината на хардуерното ускорение по начин, който доскоро изглеждаше невъзможен. Разговорите с експерти от бранша показват едно и също: бъдещето принадлежи на системите, които могат динамично да се адаптират към натоварването в реално време.</p>
-        
-        <p>В крайна сметка, всяка технологична революция има смисъл само ако улеснява живота на крайния потребител. В следващите месеци ще усетим промяната през по-интуитивни интерфейси, по-дълъг живот на батерията и приложения, които наистина ни разбират в дълбочина.</p>
-        
-        <p>Пътят напред няма да бъде лесен, а предизвикателствата пред разработчиците остават огромни. Въпреки това, енергията и иновативният дух в сектора показват, че най-интересното предстои да се случи на хоризонта.</p>
-        
-                </article>
-            </div>
-            <aside class="sidebar">
-                <h3>Още новини</h3>
-                
-        <div class="similar-item">
-            <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1518770660439-4636190af475?w=200&auto=format&fit=crop';" alt="Как новите технологии променят начина, по който мислиме за софтуера">
-            <div class="similar-item-info">
-                <span class="similar-tag">AI</span>
-                <h4><a href="/articles/kak-novite-tehnologii-promenyat-nachina-po-koyto-mislime-za-softuera.html">Как новите технологии променят начина, по който мислиме за софтуера</a></h4>
-                <span>2026-09-26</span>
-            </div>
-        </div>
-        
-        <div class="similar-item">
-            <img loading="lazy" decoding="async" src="https://picsum.photos/seed/%D0%9A%D0%B0%D0%BA%20%D0%BD%D0%BE%D0%B2%D0%B8%D1%82%D0%B5%20%D1%82%D0%B5%D1%85%D0%BD%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D0%B8%20%D0%BF%D1%80%D0%BE%D0%BC%D0%B5%D0%BD%D1%8F%D1%82%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%2C%20%D0%BF%D0%BE%20%D0%BA%D0%BE%D0%B9%D1%82%D0%BE%20%D0%BC%D0%B8%D1%81%D0%BB%D0%B8%D0%BC%D0%B5%20%D0%B7%D0%B0%20%D1%81%D0%BE%D1%84%D1%82%D1%83%D0%B5%D1%80%D0%B0/800/450" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1518770660439-4636190af475?w=200&auto=format&fit=crop';" alt="Как новите технологии променят начина, по който мислиме за софтуера">
-            <div class="similar-item-info">
-                <span class="similar-tag">AI</span>
-                <h4><a href="/articles/kak-novite-tehnologii-promenyat-nachina-po-koyto-mislime-za-softuera.html">Как новите технологии променят начина, по който мислиме за софтуера</a></h4>
-                <span>2026-09-26</span>
-            </div>
-        </div>
-        
-        <div class="similar-item">
-            <img loading="lazy" decoding="async" src="https://image.pollinations.ai/prompt/high%20tech%20modern%20%D0%9A%D0%B0%D0%BA%20%D0%BD%D0%BE%D0%B2%D0%B8%D1%82%D0%B5%20%D1%82%D0%B5%D1%85%D0%BD%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D0%B8%20%D0%BF%D1%80%D0%BE%D0%BC%D0%B5%D0%BD%D1%8F%D1%82%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%2C%20%D0%BF%D0%BE%20%D0%BA%D0%BE%D0%B9%D1%82%D0%BE%20%D0%BC%D0%B8%D1%81%D0%BB%D0%B8%D0%BC%D0%B5%20%D0%B7%D0%B0%20%D1%81%D0%BE%D1%84%D1%82%D1%83%D0%B5%D1%80%D0%B0%20cyber%20style%204k%20photography?width=800&height=450&model=flux&nologo=true" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1518770660439-4636190af475?w=200&auto=format&fit=crop';" alt="Как новите технологии променят начина, по който мислиме за софтуера">
-            <div class="similar-item-info">
-                <span class="similar-tag">AI</span>
-                <h4><a href="/articles/kak-novite-tehnologii-promenyat-nachina-po-koyto-mislime-za-softuera.html">Как новите технологии променят начина, по който мислиме за софтуера</a></h4>
-                <span>2026-09-26</span>
-            </div>
-        </div>
-        
-            </aside>
-        </div>
-        <footer>
-            <div class="footer-links">
-                <a href="/about.html">За нас</a> | <a href="/contacts.html">Контакти</a> | <a href="/privacy.html">Поверителност</a>
-            </div>
-            <p>© TechPulse. Всички права запазени.</p>
-        </footer>
+<header class="top">
+  <a class="skip" href="#content">Към основното съдържание</a>
+  <div class="wrap bar">
+    <a class="logo" href="/" aria-label="TechPulse начало"><span class="logo-mark">⚡</span>TechPulse</a>
+    <label class="search" aria-label="Търсене"><span>⌕</span><input id="search" type="search" placeholder="Търси новини, AI, устройства..." autocomplete="off"></label>
+  </div>
+  <nav class="nav"><div class="wrap nav-inner" id="nav">
+    <button class="active" data-filter="all">Начало</button>
+    <button data-filter="AI">AI</button><button data-filter="Технологии">Технологии</button><button data-filter="Мобилни">Мобилни</button><button data-filter="Компютри">Компютри</button><button data-filter="Приложения">Приложения</button><button data-filter="AI инструменти">AI инструменти</button><button data-filter="Ревюта">Ревюта</button>
+  </div></nav>
+</header>
+
+<main class="wrap" id="content">
+  <div class="eyebrow">● TechPulse · 26 септември 2026</div>
+  <section class="hero" aria-label="Водещи новини">
+    <article class="hero-main">
+      <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1600&auto=format&fit=crop&q=82" width="1600" height="900" alt="Модерен компютърен чип и технологии" fetchpriority="high" decoding="async">
+      <div class="hero-copy">
+        <span class="tag">AI · Анализ</span>
+        <h1>Как AI променя начина, по който изграждаме софтуер</h1>
+        <p>От код асистенти до автономни агенти: кои промени вече стигат до ежедневната работа на разработчиците.</p>
+        <span class="meta">8 мин четене · TechPulse</span>
+      </div>
+    </article>
+    <div class="side">
+      <article class="mini" data-category="AI"><img src="https://images.unsplash.com/photo-1535378273068-9bb67d5beacd?w=500&auto=format&fit=crop&q=80" width="900" height="600" alt="Изкуствен интелект" loading="lazy" decoding="async"><div><span class="tag">AI</span><h3>Новото поколение AI асистенти идва с по-дълбок контекст</h3><span class="meta">24 септември · 4 мин</span></div></article>
+      <article class="mini" data-category="Мобилни"><img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500&auto=format&fit=crop&q=80" width="900" height="600" alt="Смартфон" loading="lazy" decoding="async"><div><span class="tag">Мобилни</span><h3>Следващата вълна смартфони залага на локален AI</h3><span class="meta">23 септември · 5 мин</span></div></article>
+      <article class="mini" data-category="Компютри"><img src="https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=500&auto=format&fit=crop&q=80" width="900" height="600" alt="Компютърно работно място" loading="lazy" decoding="async"><div><span class="tag">Компютри</span><h3>Какво се променя при модерните AI компютри</h3><span class="meta">22 септември · 6 мин</span></div></article>
     </div>
+  </section>
+
+  <section>
+    <div class="section-head"><div><h2>Последни истории</h2><p id="resultText">Подбрани истории от света на технологиите</p></div></div>
+    <div class="grid" id="articles">
+      <article class="card" data-category="AI" data-title="AI агенти автоматизация"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=900&auto=format&fit=crop&q=80" width="900" height="600" alt="AI визуализация" loading="lazy" decoding="async"><div class="card-body"><span class="tag">AI</span><h3>AI агентите преминават от чат към реална автоматизация</h3><p>Как агентните системи променят работните процеси и какво да следиш.</p><span class="meta">26 септември · 6 мин</span></div></article>
+      <article class="card" data-category="Технологии" data-title="квантови изчисления чипове"><img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=900&auto=format&fit=crop&q=80" width="900" height="600" alt="Абстрактна научна визуализация" loading="lazy" decoding="async"><div class="card-body"><span class="tag">Технологии</span><h3>Къде стоят квантовите изчисления през 2026</h3><p>Хардуерът, грешките и реалните приложения отвъд маркетинга.</p><span class="meta">25 септември · 7 мин</span></div></article>
+      <article class="card" data-category="Приложения" data-title="продуктивност приложения"><img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=900&auto=format&fit=crop&q=80" width="900" height="600" alt="Приложения на смартфон" loading="lazy" decoding="async"><div class="card-body"><span class="tag">Приложения</span><h3>5 тенденции, които променят продуктивността</h3><p>По-малко известия, повече автоматизация и по-добър контрол върху данните.</p><span class="meta">24 септември · 5 мин</span></div></article>
+      <article class="card" data-category="Мобилни" data-title="смартфони батерия устройства"><img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=900&auto=format&fit=crop&q=80" width="900" height="600" alt="Модерен смартфон" loading="lazy" decoding="async"><div class="card-body"><span class="tag">Мобилни</span><h3>Батерията отново става центърът на смартфон дизайна</h3><p>Как силициевите аноди и по-умното управление променят автономността.</p><span class="meta">23 септември · 5 мин</span></div></article>
+      <article class="card" data-category="Ревюта" data-title="лаптоп ревю производителност"><img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=900&auto=format&fit=crop&q=80" width="900" height="600" alt="Лаптоп на бюро" loading="lazy" decoding="async"><div class="card-body"><span class="tag">Ревюта</span><h3>Как да избереш лаптоп за AI работа и програмиране</h3><p>Практичен поглед към RAM, GPU, охлаждане, дисплей и автономност.</p><span class="meta">22 септември · 8 мин</span></div></article>
+      <article class="card" data-category="AI инструменти" data-title="AI инструменти разработчици"><img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=900&auto=format&fit=crop&q=80" width="900" height="600" alt="Код на монитор" loading="lazy" decoding="async"><div class="card-body"><span class="tag">AI инструменти</span><h3>Инструментите за кодиране с AI, които си струва да следиш</h3><p>Какво да гледаш при контекст, интеграции, контрол и цена.</p><span class="meta">21 септември · 7 мин</span></div></article>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head"><div><h2>TechPulse Picks</h2><p>Категории, които си струва да следиш</p></div></div>
+    <div class="tools">
+      <a class="tool" href="#" data-jump="AI"><div class="tool-icon">◈</div><h3>AI</h3><p>Модели, агенти, инфраструктура и практични приложения.</p></a>
+      <a class="tool" href="#" data-jump="Мобилни"><div class="tool-icon">▣</div><h3>Мобилни</h3><p>Смартфони, носими устройства и мобилни платформи.</p></a>
+      <a class="tool" href="#" data-jump="Компютри"><div class="tool-icon">⌘</div><h3>Компютри</h3><p>Хардуер, чипове, лаптопи и работни станции.</p></a>
+      <a class="tool" href="#" data-jump="Приложения"><div class="tool-icon">◇</div><h3>Приложения</h3><p>Софтуер, продуктивност, сигурност и инструменти.</p></a>
+    </div>
+  </section>
+
+  <section class="newsletter">
+    <span class="eyebrow">Седмичен TechPulse</span>
+    <h2>Най-важното в твоя inbox</h2>
+    <p>Получавай подбрани технологични истории без информационен шум.</p>
+    <form class="signup" id="signup"><input type="email" required placeholder="Твоят имейл" aria-label="Имейл"><button>Абонирай се</button></form>
+  </section>
+</main>
+
+<footer><div class="wrap foot"><div>© 2026 TechPulse. Всички права запазени.</div><div class="foot-links"><a href="/about.html">За нас</a><a href="/contacts.html">Контакти</a><a href="/privacy.html">Поверителност</a></div></div></footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+const cards=[...document.querySelectorAll('#articles .card')];
+const minis=[...document.querySelectorAll('.mini')];
+const nav=[...document.querySelectorAll('#nav button')];
+const search=document.querySelector('#search');
+const resultText=document.querySelector('#resultText');
+const toast=document.querySelector('#toast');
+let active='all';
+
+function render(){
+  const q=(search.value||'').trim().toLowerCase();
+  let count=0;
+  [...cards,...minis].forEach(el=>{
+    const title=(el.dataset.title||el.querySelector('h3')?.textContent||'').toLowerCase();
+    const category=el.dataset.category||'';
+    const show=(active==='all'||category===active)&&(!q||title.includes(q)||category.toLowerCase().includes(q));
+    el.style.display=show?'':'none';
+    if(show && el.classList.contains('card')) count++;
+  });
+  resultText.textContent=q||active!=='all'?('Показани резултати: '+count):'Подбрани истории от света на технологиите';
+}
+nav.forEach(btn=>btn.addEventListener('click',()=>{
+  active=btn.dataset.filter;
+  nav.forEach(x=>x.classList.toggle('active',x===btn));
+  render();
+  document.querySelector('#articles').scrollIntoView({behavior:'smooth',block:'start'});
+}));
+search.addEventListener('input',render);
+document.querySelectorAll('[data-jump]').forEach(a=>a.addEventListener('click',e=>{
+  e.preventDefault();
+  const value=a.dataset.jump;
+  const btn=nav.find(x=>x.dataset.filter===value);
+  btn?.click();
+}));
+document.querySelector('#signup').addEventListener('submit',e=>{
+  e.preventDefault();
+  toast.textContent='Благодаря. Абонаментът е приет.';
+  toast.classList.add('show');
+  e.target.reset();
+  setTimeout(()=>toast.classList.remove('show'),3000);
+});
+</script>
 </body>
 </html>
