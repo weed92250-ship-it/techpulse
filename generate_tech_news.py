@@ -250,9 +250,18 @@ def generate_news():
         title_match = re.search(r'<h2>(.*?)</h2>', article_body)
         title_text = title_match.group(1) if title_match else "Технологична новина"
 
-    # Използваме Picsum Photos с уникален seed на база заглавието – гарантирано няма воден знак!
-    safe_seed = urllib.parse.quote(title_text)
-    main_image_url = f"https://picsum.photos/seed/{safe_seed}/800/450"
+    # База от гарантирано качествени и тематични технологични снимки (без водни знаци)
+    tech_images = [
+        "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&auto=format&fit=crop", # чипове/хардуер
+        "https://images.unsplash.com/photo-1535378273068-9bb67d5beacd?w=800&auto=format&fit=crop", # AI/код
+        "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop", # абстрактни технологии
+        "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&auto=format&fit=crop", # програмиране/код на екран
+        "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&auto=format&fit=crop", # киберсигурност / сървъри
+        "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&auto=format&fit=crop"  # технологичен офис / лаптопи
+    ]
+    
+    # Избираме на случаен принцип една от тематичните снимки
+    main_image_url = random.choice(tech_images)
 
     history = load_history()
     sidebar_items = history[:3] if len(history) >= 3 else DEFAULT_ARTICLES
@@ -279,7 +288,7 @@ def generate_news():
     })
     save_history(history)
     create_static_pages()
-    print("🎉 Успешно създадена статия с изчистени подзаглавия и напълно чиста картинка без водни знаци!")
+    print("🎉 Успешно създадена статия с тематична технологична снимка и без водни знаци!")
 
 if __name__ == "__main__":
     generate_news()
