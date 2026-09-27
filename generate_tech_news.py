@@ -207,6 +207,252 @@ def generate_news():
     print("TechPulse: търсене на актуална технологична тема чрез Google Search...")
     from google.genai import types
     prompt = """
+<role>
+Ти си опитен редактор на българско технологично издание. Напиши един завършен, задълбочен материал за реална и актуална технологична тема.
+</role>
+
+<research>
+Преди писането използвай Google Search. Избери конкретна тема с новинарска стойност от последните няколко дни в AI, чипове, квантови технологии, роботика, киберсигурност или потребителски технологии.
+Провери ключовите твърдения. Предпочитай първични източници: официални съобщения и документация на компании, научни публикации, регулаторни документи и изявления на организациите, за които се говори.
+Не измисляй факти, числа, дати, цитати, експерти, продукти, събития или резултати. Ако информацията не може да бъде надеждно потвърдена, не я представяй като факт.
+</research>
+
+<writing>
+Пиши на естествен български език, като редактор, който обяснява сложна тема на интелигентен читател, а не като генератор на SEO текст.
+Целевата дължина е 1600–2200 думи. Материалът трябва да е пълноценен, а не изкуствено удължен.
+Развий темата последователно: започни с конкретния факт или новина, дай необходимия контекст, обясни как работи технологията или какво точно се е променило, разгледай практическите последици и ограниченията и завърши с трезв извод какво означава това в по-широк контекст.
+Използвай конкретни примери, когато източниците ги позволяват.
+
+Абзаците трябва да са свързани и достатъчно развити. Не превръщай всяка мисъл в отделен кратък абзац.
+Не прекъсвай разказа с множество подзаглавия. Използвай най-много 3 <h3> подзаглавия и само ако действително помагат на читателя да се ориентира. За материал, който се чете по-добре като непрекъснат разказ, можеш да използваш само 1–2 или изобщо да няма <h3>.
+Не използвай списъци, освен когато информацията реално е по-ясна като списък.
+Не повтаряй една и съща идея с различни думи.
+
+Избягвай шаблонни и рекламни AI формулировки като „в днешния динамичен свят“, „революционизира“, „нова ера“, „играта се променя“, „не е просто X, а Y“, „това може да промени всичко“ и подобни фрази, освен ако са част от пряко цитирано твърдение.
+Не използвай първо лице. Не измисляй лично наблюдение, интервю или разговор с експерт.
+Не заявявай, че текстът е написан от човек или от AI. Просто пиши естествено и професионално.
+
+Важно: фактите, анализът и предположенията трябва да се различават. Не представяй бъдещи сценарии като сигурни резултати.
+</writing>
+
+<format>
+Върни само HTML, без Markdown и без code fences.
+Първият ред трябва да е <h2>Заглавие</h2>.
+След него постави един въвеждащ <p class="article-intro">...</p>.
+След това използвай нормални <p> абзаци и най-много 3 <h3> подзаглавия при реална нужда.
+Не добавяй секция „Източници“ — източниците ще бъдат добавени автоматично от системата.
+</format>
+
+Напиши материала така, че читателят да получи реално обяснение на темата, а не просто преразказ на новината.
+""" os
+import time
+import random
+import urllib.parse
+import re
+import json
+from google import genai
+
+api_key = os.environ.get("GEMINI_API_KEY")
+
+if not api_key:
+    raise ValueError("ГРЕШКА: Липсва GEMINI_API_KEY в Secrets!")
+
+client = genai.Client(api_key=api_key)
+
+PUBLIC_DIR = "public"
+ARTICLES_DIR = os.path.join(PUBLIC_DIR, "articles")
+HISTORY_FILE = os.path.join(PUBLIC_DIR, "articles.json")
+
+os.makedirs(ARTICLES_DIR, exist_ok=True)
+
+DEFAULT_ARTICLES = [
+    {
+        "title": "Meta представи малко носимо устройство за асистента си с изкуствен интелект",
+        "time": "2026-09-26",
+        "category": "AI",
+        "url": "#",
+        "img": "https://images.unsplash.com/photo-1535378273068-9bb67d5beacd?w=400&auto=format&fit=crop"
+    },
+    {
+        "title": "Qualcomm представи нови чипове за смартфони с фокус върху изкуствения интелект",
+        "time": "2026-09-26",
+        "category": "Мобилни",
+        "img": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&auto=format&fit=crop"
+    },
+    {
+        "title": "Snorkel AI набра 350 милиона долара за разширяване на платформата си",
+        "time": "2026-09-26",
+        "category": "AI",
+        "img": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=400&auto=format&fit=crop"
+    }
+]
+
+CSS_STYLES = """
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        background-color: #070c18;
+        color: #94a3b8;
+        margin: 0;
+        padding: 20px;
+        line-height: 1.7;
+    }
+    .container { max-width: 1180px; margin: 0 auto; }
+    .header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 15px; margin-bottom: 15px; }
+    .logo { font-size: 24px; font-weight: 800; color: #38bdf8; text-decoration: none; display: flex; align-items: center; gap: 8px; }
+    .search-box input { padding: 8px 16px; border-radius: 6px; border: 1px solid #1e293b; background-color: #0f172a; color: #f8fafc; width: 220px; font-size: 13px; outline: none; }
+    .nav-categories { display: flex; flex-wrap: wrap; gap: 18px; padding-bottom: 15px; border-bottom: 1px solid #1e293b; margin-bottom: 25px; }
+    .nav-link { color: #cbd5e1; text-decoration: none; font-size: 13px; font-weight: 500; }
+    .nav-link:hover, .nav-link.active { color: #38bdf8; }
+    .main-layout { display: grid; grid-template-columns: 1fr 340px; gap: 30px; }
+    .article-card, .static-card { background: #0f172a; border-radius: 10px; padding: 30px; border: 1px solid #1e293b; }
+    .article-image { width: 100%; height: 420px; object-fit: cover; border-radius: 6px; margin-bottom: 20px; }
+    .article-card h2, .static-card h1 { color: #f8fafc; margin-top: 10px; font-size: 28px; line-height: 1.3; }
+    .article-intro { font-size: 18px; color: #cbd5e1; margin-bottom: 25px; line-height: 1.8; font-weight: 400; }
+    .article-card p { margin-bottom: 18px; font-size: 15px; color: #94a3b8; }
+    ul, ol { padding-left: 20px; margin-bottom: 20px; color: #94a3b8; font-size: 15px; }
+    li { margin-bottom: 10px; }
+    .sidebar { background: #0f172a; border-radius: 10px; padding: 20px; border: 1px solid #1e293b; height: fit-content; }
+    .sidebar h3 { margin-top: 0; color: #f8fafc; font-size: 16px; border-bottom: 1px solid #1e293b; padding-bottom: 10px; margin-bottom: 18px; }
+    .similar-item { display: flex; gap: 12px; margin-bottom: 18px; align-items: flex-start; }
+    .similar-item img { width: 75px; height: 60px; border-radius: 4px; object-fit: cover; }
+    .similar-item-info h4 { margin: 0 0 4px 0; font-size: 13px; line-height: 1.3; }
+    .similar-item-info h4 a { color: #f8fafc; text-decoration: none; }
+    .similar-item-info h4 a:hover { color: #38bdf8; }
+    .similar-tag { color: #38bdf8; font-size: 11px; font-weight: bold; display: block; margin-bottom: 2px; }
+    .similar-item-info span { font-size: 11px; color: #64748b; }
+    footer { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #1e293b; color: #64748b; font-size: 13px; }
+    .footer-links a { color: #94a3b8; text-decoration: none; margin: 0 10px; }
+    .footer-links a:hover { color: #38bdf8; }
+    @media (max-width: 850px) { .main-layout { grid-template-columns: 1fr; } }
+"""
+
+def slugify(text):
+    bg_to_en = {
+        'а':'a','б':'b','в':'v','г':'g','д':'d','е':'e','ж':'zh','з':'z','и':'i','й':'y',
+        'к':'k','л':'l','м':'m','н':'n','о':'o','п':'p','р':'r','с':'s','т':'t','у':'u',
+        'ф':'f','х':'h','ц':'ts','ч':'ch','ш':'sh','щ':'sht','ъ':'a','ь':'y','ю':'yu','я':'ya'
+    }
+    slug = text.lower()
+    res = []
+    for char in slug:
+        if char in bg_to_en:
+            res.append(bg_to_en[char])
+        elif char.isalnum():
+            res.append(char)
+        elif char in [' ', '-']:
+            res.append('-')
+    slug_str = re.sub(r'-+', '-', ''.join(res)).strip('-')
+    return slug_str if slug_str else f"news-{int(time.time())}"
+
+def load_history():
+    if os.path.exists(HISTORY_FILE):
+        try:
+            with open(HISTORY_FILE, "r", encoding="utf-8") as f:
+                return json.load(f)
+        except Exception:
+            return []
+    return []
+
+def save_history(history):
+    with open(HISTORY_FILE, "w", encoding="utf-8") as f:
+        json.dump(history, f, ensure_ascii=False, indent=2)
+
+def create_static_pages():
+    pages = {
+        "about.html": ("За нас", "<h1>За TechPulse</h1><p>TechPulse е медия за изкуствен интелект, технологии и иновации.</p>"),
+        "contacts.html": ("Контакти", "<h1>Контакти</h1><p>Пишете ни на: contact@techpulseon.site</p>"),
+        "privacy.html": ("Поверителност", "<h1>Политика за поверителност</h1><p>Зачитаме вашата поверителност.</p>")
+    }
+    for filename, (title, content) in pages.items():
+        filepath = os.path.join(PUBLIC_DIR, filename)
+        html = f"""<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{title} — TechPulse</title>
+    <style>{CSS_STYLES}</style>
+</head>
+<body>
+    <div class="container">
+        <div class="header"><a href="/" class="logo">⚡ TechPulse</a></div>
+        <div class="static-card">{content}</div>
+        <footer>
+            <div class="footer-links">
+                <a href="/about.html">За нас</a> | <a href="/contacts.html">Контакти</a> | <a href="/privacy.html">Поверителност</a>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>"""
+        with open(filepath, "w", encoding="utf-8") as f:
+            f.write(html)
+
+def build_full_page(title, main_image_url, fallback_backup_img, article_body, sidebar_items):
+    sidebar_html = ""
+    for item in sidebar_items:
+        sidebar_html += f"""
+        <div class="similar-item">
+            <img src="{item.get('img', 'https://images.unsplash.com/photo-1535378273068-9bb67d5beacd?w=200&auto=format&fit=crop')}" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1518770660439-4636190af475?w=200&auto=format&fit=crop';" alt="{item.get('title', 'Новина')}">
+            <div class="similar-item-info">
+                <span class="similar-tag">{item.get('category', 'AI')}</span>
+                <h4><a href="{item.get('url', '#')}">{item.get('title', 'Новина')}</a></h4>
+                <span>{item.get('time', '2026-09-26')}</span>
+            </div>
+        </div>
+        """
+
+    return f"""<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{title} — TechPulse</title>
+    <style>{CSS_STYLES}</style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="/" class="logo">⚡ TechPulse</a>
+            <div class="search-box"><input type="text" placeholder="🔍 Търсене..."></div>
+        </div>
+        <nav class="nav-categories">
+            <a href="/" class="nav-link active">Начало</a>
+            <a href="#" class="nav-link">AI</a>
+            <a href="#" class="nav-link">Технологии</a>
+            <a href="#" class="nav-link">Мобилни</a>
+            <a href="#" class="nav-link">Компютри</a>
+            <a href="#" class="nav-link">Приложения</a>
+            <a href="#" class="nav-link">AI инструменти</a>
+            <a href="#" class="nav-link">Ревюта</a>
+            <a href="#" class="nav-link">Новини</a>
+        </nav>
+        <div class="main-layout">
+            <div class="main-content">
+                <article class="article-card">
+                    <img src="{main_image_url}" onerror="this.onerror=null;this.src='{fallback_backup_img}';" alt="{title}" class="article-image">
+                    {article_body}
+                </article>
+            </div>
+            <aside class="sidebar">
+                <h3>Още новини</h3>
+                {sidebar_html}
+            </aside>
+        </div>
+        <footer>
+            <div class="footer-links">
+                <a href="/about.html">За нас</a> | <a href="/contacts.html">Контакти</a> | <a href="/privacy.html">Поверителност</a>
+            </div>
+            <p>© TechPulse. Всички права запазени.</p>
+        </footer>
+    </div>
+</body>
+</html>"""
+
+def generate_news():
+    print("TechPulse: търсене на актуална технологична тема чрез Google Search...")
+    from google.genai import types
+    prompt = """
 Избери една актуална и значима тема от последните дни в областта на AI, чипове,
 квантови технологии, роботика, киберсигурност или потребителски технологии.
 Използвай Google Search задължително и базирай статията на проверими, актуални
@@ -238,17 +484,17 @@ def generate_news():
             response = client.models.generate_content(model=model_name, contents=prompt, config=config)
             if response and response.text:
                 cleaned = response.text.replace(chr(96)*3 + "html", "").replace(chr(96)*3, "").strip()
-                word_count = len(re.findall(r"\\b[\\wА-Яа-яЁё]+\\b", re.sub(r"<[^>]+>", " ", cleaned)))
-                if "<h2>" in cleaned and "<p" in cleaned and word_count >= 1000:
+                plain_text = re.sub(r"<[^>]+>", " ", cleaned)\n                plain_text = re.sub(r"\\s+", " ", plain_text).strip()\n                word_count = len(re.findall(r"(?u)\\b[\\wА-Яа-яЁё]+\\b", plain_text))
+                h3_count = len(re.findall(r"<h3\\b", cleaned, flags=re.I))\n                short_paragraphs = len(re.findall(r"<p\\b[^>]*>[^<]{1,120}</p>", cleaned, flags=re.I))\n                if (cleaned.count("<h2>") == 1 and "<p class="article-intro">" in cleaned and\n                        "<p>" in cleaned and word_count >= 1500 and word_count <= 2600 and\n                        h3_count <= 3 and short_paragraphs <= 8):
                     article_body = cleaned
                     if response.candidates:
                         grounding = getattr(response.candidates[0], "grounding_metadata", None)
-                    print(f"Получена статия: {word_count} думи чрез {model_name}.")
+                    print(f"Получена статия: {word_count} думи, {h3_count} подзаглавия чрез {model_name}.")
                     break
         except Exception as e:
             print(f"Грешка с {model_name}: {e}")
     if not article_body:
-        raise RuntimeError("Gemini не върна достатъчно дълга grounded статия. Няма да се публикува непроверен fallback материал.")
+        raise RuntimeError("Gemini не върна статия, която покрива редакционните критерии за дължина и структура. Няма да се публикува непроверен fallback материал.")
     source_links = []
     if grounding:
         for chunk in getattr(grounding, "grounding_chunks", []) or []:
