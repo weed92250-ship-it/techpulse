@@ -206,49 +206,97 @@ def build_full_page(title, main_image_url, fallback_backup_img, article_body, si
 def generate_news():
     print("TechPulse: търсене на актуална технологична тема чрез Google Search...")
     from google.genai import types
+
     prompt = """
-Избери една актуална и значима тема от последните дни в областта на AI, чипове,
-квантови технологии, роботика, киберсигурност или потребителски технологии.
-Използвай Google Search задължително и базирай статията на проверими, актуални
-източници. Предпочитай първични източници: официални блогове, документация,
-прессъобщения, научни публикации и изявления на самите компании.
+<role>
+Ти си опитен редактор на българско технологично издание. Напиши един завършен, задълбочен материал за реална и актуална технологична тема.
+</role>
 
-Напиши дълга българска технологична статия от поне 1200 думи.
-Стилът трябва да е естествен, редакционен и човешки, без шаблонни AI фрази.
-Не измисляй числа, цитати, експерти, събития или факти. Ако дадено твърдение
-не може да бъде потвърдено от намерените източници, не го включвай.
+<research>
+Преди писането използвай Google Search. Избери конкретна тема с новинарска стойност от последните няколко дни в AI, чипове, квантови технологии, роботика, киберсигурност или потребителски технологии.
+Провери ключовите твърдения. Предпочитай първични източници: официални съобщения и документация на компании, научни публикации, регулаторни документи и изявления на организациите, за които се говори.
+Не измисляй факти, числа, дати, цитати, експерти, продукти, събития или резултати. Ако информацията не може да бъде надеждно потвърдена, не я представяй като факт.
+</research>
 
-Формат:
-- първият ред е заглавието в <h2>...</h2>;
-- след него има <p class="article-intro">...</p>;
-- използвай <h3> за смисловите секции;
-- използвай нормални <p> абзаци и при нужда <ul>/<li>;
-- завърши с кратък извод, който ясно различава установените факти от анализа;
-- не използвай първо лице и не твърди, че авторът е разговарял лично с експерти;
-- върни само HTML, без Markdown и без code fences.
+<writing>
+Пиши на естествен български език, като редактор, който обяснява сложна тема на интелигентен читател, а не като генератор на SEO текст.
+Целевата дължина е 1600–2200 думи. Материалът трябва да е пълноценен, а не изкуствено удължен.
+Развий темата последователно: започни с конкретния факт или новина, дай необходимия контекст, обясни как работи технологията или какво точно се е променило, разгледай практическите последици и ограниченията и завърши с трезв извод какво означава това в по-широк контекст.
+Използвай конкретни примери, когато източниците ги позволяват.
 
-Темата трябва да е конкретна и да има реална новинарска стойност.
+Абзаците трябва да са свързани и достатъчно развити. Не превръщай всяка мисъл в отделен кратък абзац.
+Не прекъсвай разказа с множество подзаглавия. Използвай най-много 3 <h3> подзаглавия и само ако действително помагат на читателя да се ориентира. За материал, който се чете по-добре като непрекъснат разказ, можеш да използваш само 1–2 или изобщо да няма <h3>.
+Не използвай списъци, освен когато информацията реално е по-ясна като списък.
+Не повтаряй една и съща идея с различни думи.
+
+Избягвай шаблонни и рекламни AI формулировки като „в днешния динамичен свят“, „революционизира“, „нова ера“, „играта се променя“, „не е просто X, а Y“, „това може да промени всичко“ и подобни фрази, освен ако са част от пряко цитирано твърдение.
+Не използвай първо лице. Не измисляй лично наблюдение, интервю или разговор с експерт.
+Не заявявай, че текстът е написан от човек или от AI. Просто пиши естествено и професионално.
+
+Важно: фактите, анализът и предположенията трябва да се различават. Не представяй бъдещи сценарии като сигурни резултати.
+</writing>
+
+<format>
+Върни само HTML, без Markdown и без code fences.
+Първият ред трябва да е <h2>Заглавие</h2>.
+След него постави един въвеждащ <p class="article-intro">...</p>.
+След това използвай нормални <p> абзаци и най-много 3 <h3> подзаглавия при реална нужда.
+Не добавяй секция „Източници“ — източниците ще бъдат добавени автоматично от системата.
+</format>
+
+Напиши материала така, че читателят да получи реално обяснение на темата, а не просто преразказ на новината.
 """
+
     grounding_tool = types.Tool(google_search=types.GoogleSearch())
     config = types.GenerateContentConfig(tools=[grounding_tool])
     article_body = None
     grounding = None
+
     for model_name in ["gemini-2.5-flash", "gemini-2.5-pro"]:
         try:
-            response = client.models.generate_content(model=model_name, contents=prompt, config=config)
-            if response and response.text:
-                cleaned = response.text.replace(chr(96)*3 + "html", "").replace(chr(96)*3, "").strip()
-                word_count = len(re.findall(r"\\b[\\wА-Яа-яЁё]+\\b", re.sub(r"<[^>]+>", " ", cleaned)))
-                if "<h2>" in cleaned and "<p" in cleaned and word_count >= 1000:
-                    article_body = cleaned
-                    if response.candidates:
-                        grounding = getattr(response.candidates[0], "grounding_metadata", None)
-                    print(f"Получена статия: {word_count} думи чрез {model_name}.")
-                    break
+            response = client.models.generate_content(
+                model=model_name,
+                contents=prompt,
+                config=config,
+            )
+            if not response or not response.text:
+                continue
+
+            cleaned = response.text.replace(chr(96) * 3 + "html", "").replace(chr(96) * 3, "").strip()
+            plain_text = re.sub(r"<[^>]+>", " ", cleaned)
+            plain_text = re.sub(r"\s+", " ", plain_text).strip()
+            word_count = len(re.findall(r"(?u)\b[\wА-Яа-яЁё]+\b", plain_text))
+            h2_count = len(re.findall(r"<h2\b", cleaned, flags=re.I))
+            h3_count = len(re.findall(r"<h3\b", cleaned, flags=re.I))
+            short_paragraphs = len(re.findall(r"<p\b[^>]*>[^<]{1,120}</p>", cleaned, flags=re.I))
+
+            valid_structure = (
+                h2_count == 1
+                and '<p class="article-intro">' in cleaned
+                and "<p>" in cleaned
+                and word_count >= 1500
+                and word_count <= 2600
+                and h3_count <= 3
+                and short_paragraphs <= 8
+            )
+
+            if valid_structure:
+                article_body = cleaned
+                if response.candidates:
+                    grounding = getattr(response.candidates[0], "grounding_metadata", None)
+                print(f"Получена статия: {word_count} думи, {h3_count} подзаглавия чрез {model_name}.")
+                break
+
+            print(f"Отхвърлена статия от {model_name}: {word_count} думи, {h3_count} подзаглавия.")
         except Exception as e:
             print(f"Грешка с {model_name}: {e}")
+
     if not article_body:
-        raise RuntimeError("Gemini не върна достатъчно дълга grounded статия. Няма да се публикува непроверен fallback материал.")
+        raise RuntimeError(
+            "Gemini не върна статия, която покрива редакционните критерии за дължина и структура. "
+            "Няма да се публикува непроверен fallback материал."
+        )
+
     source_links = []
     if grounding:
         for chunk in getattr(grounding, "grounding_chunks", []) or []:
@@ -257,14 +305,24 @@ def generate_news():
             title = getattr(web, "title", None) if web else None
             if uri and uri not in [x["url"] for x in source_links]:
                 source_links.append({"title": title or uri, "url": uri})
-    if source_links:
-        source_html = '<section class="article-sources"><h3>Източници</h3><ul>'
-        for source in source_links[:6]:
-            source_html += f'<li><a href="{source["url"]}" rel="noopener noreferrer">{source["title"]}</a></li>'
-        source_html += "</ul></section>"
-        article_body += source_html
+
+    if len(source_links) < 2:
+        raise RuntimeError(
+            "Google Search grounding не върна поне два проверими уеб източника. Няма да се публикува."
+        )
+
+    source_html = '<section class="article-sources"><h3>Източници</h3><ul>'
+    for source in source_links[:6]:
+        source_html += (
+            f'<li><a href="{source["url"]}" rel="noopener noreferrer">'
+            f'{source["title"]}</a></li>'
+        )
+    source_html += "</ul></section>"
+    article_body += source_html
+
     title_match = re.search(r"<h2>(.*?)</h2>", article_body, re.S)
     title_text = re.sub(r"<[^>]+>", "", title_match.group(1)).strip() if title_match else "Технологична новина"
+
     tech_images = [
         "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&auto=format&fit=crop",
         "https://images.unsplash.com/photo-1535378273068-9bb67d5beacd?w=800&auto=format&fit=crop",
@@ -275,16 +333,21 @@ def generate_news():
     ]
     fallback_img = tech_images[0]
     main_image_url = random.choice(tech_images)
+
     history = load_history()
     sidebar_items = history[:3] if len(history) >= 3 else DEFAULT_ARTICLES
     full_html = build_full_page(title_text, main_image_url, fallback_img, article_body, sidebar_items)
+
     article_slug = slugify(title_text)
     article_file_path = os.path.join(ARTICLES_DIR, f"{article_slug}.html")
     article_url = f"/articles/{article_slug}.html"
+
     if os.path.exists(article_file_path):
         raise RuntimeError(f"Статията вече съществува: {article_file_path}")
+
     with open(article_file_path, "w", encoding="utf-8") as f:
         f.write(full_html)
+
     history.insert(0, {
         "title": title_text,
         "time": __import__("datetime").date.today().isoformat(),
@@ -295,6 +358,7 @@ def generate_news():
     })
     save_history(history[:200])
     print(f"Публикационният пакет е готов: {article_url}")
+
 
 if __name__ == "__main__":
     generate_news()
