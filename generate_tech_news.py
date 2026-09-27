@@ -204,7 +204,7 @@ def build_full_page(title, main_image_url, fallback_backup_img, article_body, si
 </html>"""
 
 def generate_news():
-    print("TechPulse: търсене на актуална технологична тема чрез Google Search...")
+    print("TechPulse: търсене на актуална технологична тема чрез Google Search (Free Tier)...")
     from google.genai import types
 
     prompt = """
@@ -252,7 +252,7 @@ def generate_news():
     article_body = None
     grounding = None
 
-    for model_name in ["gemini-3.8-flash", "gemini-3.1-pro-preview"]:
+    for model_name in ["gemini-2.5-flash"]:
         try:
             response = client.models.generate_content(
                 model=model_name,
