@@ -265,7 +265,7 @@ def generate_news():
         except Exception as e:
             print(f"RSS източникът не е достъпен: {e}")
     if not rss_items: raise RuntimeError("Не бяха получени актуални RSS новини. Няма да се публикува.")
-    rss_context = "\n".join(f"- {x["title"]} | {x["source"]} | {x["date"]} | {x["link"]}" for x in rss_items[:25])
+    rss_context = "\n".join(f'- {x["title"]} | {x["source"]} | {x["date"]} | {x["link"]}' for x in rss_items[:25])
     prompt = prompt.replace("{RSS_CONTEXT}", rss_context)
     article_body = None
     for model_name in ["gemini-3-flash-preview"]:
