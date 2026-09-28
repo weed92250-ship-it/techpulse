@@ -4,6 +4,8 @@ import random
 import urllib.parse
 import re
 import json
+import urllib.request
+import xml.etree.ElementTree as ET
 from google import genai
 
 api_key = os.environ.get("GEMINI_API_KEY")
@@ -204,8 +206,7 @@ def build_full_page(title, main_image_url, fallback_backup_img, article_body, si
 </html>"""
 
 def generate_news():
-    print("TechPulse: търсене на актуална технологична тема чрез Google Search (Free Tier)...")
-    from google.genai import types
+    print("TechPulse: търсене на актуална технологична тема чрез публични RSS източници (безплатен режим)...")
 
     prompt = """
 <role>
@@ -213,7 +214,7 @@ def generate_news():
 </role>
 
 <research>
-Преди писането използвай Google Search. Избери конкретна тема с новинарска стойност от последните няколко дни в AI, чипове, квантови технологии, роботика, киберсигурност или потребителски технологии.
+Използвай подадения RSS пакет като отправна точка. Избери конкретна тема с новинарска стойност от последните няколко дни в AI, чипове, квантови технологии, роботика, киберсигурност или потребителски технологии.
 Провери ключовите твърдения. Предпочитай първични източници: официални съобщения и документация на компании, научни публикации, регулаторни документи и изявления на организациите, за които се говори.
 Не измисляй факти, числа, дати, цитати, експерти, продукти, събития или резултати. Ако информацията не може да бъде надеждно потвърдена, не я представяй като факт.
 </research>
@@ -236,6 +237,10 @@ def generate_news():
 Важно: фактите, анализът и предположенията трябва да се различават. Не представяй бъдещи сценарии като сигурни резултати.
 </writing>
 
+<current_rss>
+{RSS_CONTEXT}
+</current_rss>
+
 <format>
 Върни само HTML, без Markdown и без code fences.
 Първият ред трябва да е <h2>Заглавие</h2>.
@@ -247,17 +252,27 @@ def generate_news():
 Напиши материала така, че читателят да получи реално обяснение на темата, а не просто преразказ на новината.
 """
 
-    grounding_tool = types.Tool(google_search=types.GoogleSearch())
-    config = types.GenerateContentConfig(tools=[grounding_tool])
+    rss_items = []
+    feeds = ["https://news.google.com/rss/search?q=AI+OR+artificial+intelligence&hl=en-US&gl=US&ceid=US:en", "https://news.google.com/rss/search?q=semiconductors+OR+chips&hl=en-US&gl=US&ceid=US:en", "https://news.google.com/rss/search?q=robotics+OR+quantum+computing&hl=en-US&gl=US&ceid=US:en", "https://news.google.com/rss/search?q=cybersecurity+OR+technology&hl=en-US&gl=US&ceid=US:en"]
+    for feed_url in feeds:
+        try:
+            with urllib.request.urlopen(feed_url, timeout=15) as response:
+                root = ET.fromstring(response.read())
+            for item in root.findall("./channel/item")[:8]:
+                title = item.findtext("title"); link = item.findtext("link"); pub_date = item.findtext("pubDate")
+                source = item.find("source"); source_name = source.text if source is not None else ""
+                if title and link: rss_items.append({"title": title, "link": link, "date": pub_date or "", "source": source_name})
+        except Exception as e:
+            print(f"RSS източникът не е достъпен: {e}")
+    if not rss_items: raise RuntimeError("Не бяха получени актуални RSS новини. Няма да се публикува.")
+    rss_context = "\n".join(f"- {x["title"]} | {x["source"]} | {x["date"]} | {x["link"]}" for x in rss_items[:25])
+    prompt = prompt.replace("{RSS_CONTEXT}", rss_context)
     article_body = None
-    grounding = None
-
-    for model_name in ["gemini-2.5-flash"]:
+    for model_name in ["gemini-3-flash-preview"]:
         try:
             response = client.models.generate_content(
                 model=model_name,
                 contents=prompt,
-                config=config,
             )
             if not response or not response.text:
                 continue
@@ -282,8 +297,6 @@ def generate_news():
 
             if valid_structure:
                 article_body = cleaned
-                if response.candidates:
-                    grounding = getattr(response.candidates[0], "grounding_metadata", None)
                 print(f"Получена статия: {word_count} думи, {h3_count} подзаглавия чрез {model_name}.")
                 break
 
@@ -298,18 +311,9 @@ def generate_news():
         )
 
     source_links = []
-    if grounding:
-        for chunk in getattr(grounding, "grounding_chunks", []) or []:
-            web = getattr(chunk, "web", None)
-            uri = getattr(web, "uri", None) if web else None
-            title = getattr(web, "title", None) if web else None
-            if uri and uri not in [x["url"] for x in source_links]:
-                source_links.append({"title": title or uri, "url": uri})
-
-    if len(source_links) < 2:
-        raise RuntimeError(
-            "Google Search grounding не върна поне два проверими уеб източника. Няма да се публикува."
-        )
+    for item in rss_items[:6]:
+        if item["link"] not in [x["url"] for x in source_links]: source_links.append({"title": item["title"], "url": item["link"]})
+    if len(source_links) < 2: raise RuntimeError("Няма достатъчно проверими RSS източници. Няма да се публикува.")
 
     source_html = '<section class="article-sources"><h3>Източници</h3><ul>'
     for source in source_links[:6]:
