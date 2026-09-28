@@ -277,6 +277,7 @@ def generate_news():
                     delay = 15 * (2 ** (attempt - 1))
                     print(f"Временен проблем с {model_name}; нов опит след {delay} секунди...")
                     time.sleep(delay)
+
                 response = client.models.generate_content(
                     model=model_name,
                     contents=prompt,
@@ -284,32 +285,37 @@ def generate_news():
                 if not response or not response.text:
                     continue
 
-            cleaned = response.text.replace(chr(96) * 3 + "html", "").replace(chr(96) * 3, "").strip()
-            plain_text = re.sub(r"<[^>]+>", " ", cleaned)
-            plain_text = re.sub(r"\s+", " ", plain_text).strip()
-            word_count = len(re.findall(r"(?u)\b[\wА-Яа-яЁё]+\b", plain_text))
-            h2_count = len(re.findall(r"<h2\b", cleaned, flags=re.I))
-            h3_count = len(re.findall(r"<h3\b", cleaned, flags=re.I))
-            short_paragraphs = len(re.findall(r"<p\b[^>]*>[^<]{1,120}</p>", cleaned, flags=re.I))
+                cleaned = response.text.replace(chr(96) * 3 + "html", "").replace(chr(96) * 3, "").strip()
+                plain_text = re.sub(r"<[^>]+>", " ", cleaned)
+                plain_text = re.sub(r"\s+", " ", plain_text).strip()
+                word_count = len(re.findall(r"(?u)\b[\wА-Яа-яЁё]+\b", plain_text))
+                h2_count = len(re.findall(r"<h2\b", cleaned, flags=re.I))
+                h3_count = len(re.findall(r"<h3\b", cleaned, flags=re.I))
+                short_paragraphs = len(re.findall(r"<p\b[^>]*>[^<]{1,120}</p>", cleaned, flags=re.I))
 
-            valid_structure = (
-                h2_count == 1
-                and '<p class="article-intro">' in cleaned
-                and "<p>" in cleaned
-                and word_count >= 1500
-                and word_count <= 2600
-                and h3_count <= 3
-                and short_paragraphs <= 8
-            )
+                valid_structure = (
+                    h2_count == 1
+                    and '<p class="article-intro">' in cleaned
+                    and "<p>" in cleaned
+                    and word_count >= 1500
+                    and word_count <= 2600
+                    and h3_count <= 3
+                    and short_paragraphs <= 8
+                )
 
-            if valid_structure:
-                article_body = cleaned
-                print(f"Получена статия: {word_count} думи, {h3_count} подзаглавия чрез {model_name}.")
-                break
+                if valid_structure:
+                    article_body = cleaned
+                    print(f"Получена статия: {word_count} думи, {h3_count} подзаглавия чрез {model_name}.")
+                    break
 
-            print(f"Отхвърлена статия от {model_name}: {word_count} думи, {h3_count} подзаглавия.")
-        except Exception as e:
-            print(f"Грешка с {model_name}: {e}")
+                print(f"Отхвърлена статия от {model_name}: {word_count} думи, {h3_count} подзаглавия.")
+            except Exception as e:
+                print(f"Грешка с {model_name} (опит {attempt + 1}/3): {e}")
+                if "503" not in str(e) and "UNAVAILABLE" not in str(e):
+                    break
+
+        if article_body:
+            break
 
     if not article_body:
         raise RuntimeError(
