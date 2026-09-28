@@ -268,14 +268,21 @@ def generate_news():
     rss_context = "\n".join(f'- {x["title"]} | {x["source"]} | {x["date"]} | {x["link"]}' for x in rss_items[:25])
     prompt = prompt.replace("{RSS_CONTEXT}", rss_context)
     article_body = None
-    for model_name in ["gemini-3-flash-preview"]:
-        try:
-            response = client.models.generate_content(
-                model=model_name,
-                contents=prompt,
-            )
-            if not response or not response.text:
-                continue
+    models = ["gemini-3-flash-preview", "gemini-3.5-flash-lite"]
+    for model_name in models:
+        for attempt in range(3):
+            try:
+                if attempt:
+                    import time
+                    delay = 15 * (2 ** (attempt - 1))
+                    print(f"Временен проблем с {model_name}; нов опит след {delay} секунди...")
+                    time.sleep(delay)
+                response = client.models.generate_content(
+                    model=model_name,
+                    contents=prompt,
+                )
+                if not response or not response.text:
+                    continue
 
             cleaned = response.text.replace(chr(96) * 3 + "html", "").replace(chr(96) * 3, "").strip()
             plain_text = re.sub(r"<[^>]+>", " ", cleaned)
