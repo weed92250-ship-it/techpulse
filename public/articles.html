@@ -33,7 +33,7 @@ footer{text-align:center;margin-top:40px;padding-top:20px;border-top:1px solid #
 <h1>Статии</h1>
 <p>Последни материали на TechPulse за изкуствен интелект, софтуер, квантови технологии и хардуер.</p>
 <form class="search" id="article-search"><input id="site-search" type="search" placeholder="Търси в статиите…" aria-label="Търси в статиите"><button type="submit">Търси</button></form>
-<nav class="filters" aria-label="Филтри по тема"><a href="#ai">AI</a><a href="#technologies">Технологии</a><a href="#hardware">Хардуер</a><a href="/articles.html">Всички</a></nav>
+<nav class="filters" aria-label="Филтри по тема"><a href="/articles.html?category=ai">AI</a><a href="/articles.html?category=technologies">Технологии</a><a href="/articles.html?category=hardware">Хардуер</a><a href="/articles.html">Всички</a></nav>
 <div class="article-list">
 <a id="technologies" data-category="technologies" data-search="технологии софтуер ai разработчици" href="/articles/kak-novite-tehnologii-promenyat-nachina-po-koyto-mislime-za-softuera.html"><span>Технологии</span>Как новите технологии променят начина, по който мислиме за софтуера<p>AI, специализирани ускорители и новият софтуерен стек.</p></a>
 <a id="ai" data-category="ai" data-search="ai изкуствен интелект следващо поколение" href="/articles/mashtaben-probiv-v-oblastta-na-sledvashtoto-pokolenie-izkustven-intelekt.html"><span>AI</span>Мащабен пробив в областта на следващото поколение изкуствен интелект<p>Как се развиват новите подходи към AI.</p></a>
@@ -60,13 +60,38 @@ footer{text-align:center;margin-top:40px;padding-top:20px;border-top:1px solid #
 <script>
 (function(){
  const form=document.getElementById('article-search'), input=document.getElementById('site-search');
- const cards=[...document.querySelectorAll('.article-list a')], empty=document.getElementById('empty-state');
- const params=new URLSearchParams(location.search); input.value=params.get('q')||'';
- function filter(){const q=input.value.trim().toLowerCase();let shown=0;cards.forEach(c=>{const ok=!q||c.dataset.search.includes(q);c.style.display=ok?'block':'none';if(ok)shown++;});empty.style.display=shown?'none':'block';}
- form.addEventListener('submit',e=>{e.preventDefault();const q=input.value.trim();history.replaceState(null,'',q?'?q='+encodeURIComponent(q):'/articles.html');filter();});
+ const cards=[...document.querySelectorAll('.article-list a[data-category]')], empty=document.getElementById('empty-state');
+ const params=new URLSearchParams(location.search);
+ const initialQuery=params.get('q')||'';
+ const initialCategory=params.get('category')||'';
+ input.value=initialQuery;
+
+ function filter(){
+   const q=input.value.trim().toLowerCase();
+   let shown=0;
+   cards.forEach(c=>{
+     const categoryOk=!initialCategory||c.dataset.category===initialCategory;
+     const textOk=!q||c.dataset.search.includes(q)||c.textContent.toLowerCase().includes(q);
+     const ok=categoryOk&&textOk;
+     c.style.display=ok?'block':'none';
+     if(ok)shown++;
+   });
+   empty.style.display=shown?'none':'block';
+ }
+
+ form.addEventListener('submit',e=>{
+   e.preventDefault();
+   const q=input.value.trim();
+   const next=new URLSearchParams();
+   if(q) next.set('q',q);
+   if(initialCategory) next.set('category',initialCategory);
+   history.replaceState(null,'',next.toString()?'/articles.html?'+next.toString():'/articles.html');
+   filter();
+ });
+
  filter();
 })();
-</script>
+</script>>
 <footer><div class="footer-links"><a href="/about.html">За нас</a> | <a href="/contacts.html">Контакти</a> | <a href="/privacy.html">Поверителност</a></div><p>© TechPulse. Всички права запазени.</p></footer>
 </div>
 </body>
