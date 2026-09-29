@@ -101,13 +101,42 @@ def slugify(text):
     return slug_str if slug_str else f"news-{int(time.time())}"
 
 def load_history():
-    if os.path.exists(HISTORY_FILE):
-        try:
-            with open(HISTORY_FILE, "r", encoding="utf-8") as f:
-                return json.load(f)
-        except Exception:
-            return []
-    return []
+    if not os.path.exists(HISTORY_FILE):
+        return []
+
+    try:
+        with open(HISTORY_FILE, "r", encoding="utf-8") as f:
+            raw = json.load(f)
+    except Exception:
+        return []
+
+    if not isinstance(raw, list):
+        return []
+
+    cleaned = []
+    seen_urls = set()
+
+    for item in raw:
+        if not isinstance(item, dict):
+            continue
+
+        url = item.get("url")
+        title = item.get("title")
+        if not isinstance(url, str) or not url.startswith("/articles/"):
+            continue
+        if not isinstance(title, str) or not title.strip():
+            continue
+        if url in seen_urls:
+            continue
+
+        article_path = os.path.join(PUBLIC_DIR, url.lstrip("/"))
+        if not os.path.isfile(article_path):
+            continue
+
+        seen_urls.add(url)
+        cleaned.append(item)
+
+    return cleaned
 
 def save_history(history):
     with open(HISTORY_FILE, "w", encoding="utf-8") as f:
@@ -174,14 +203,14 @@ def build_full_page(title, main_image_url, fallback_backup_img, article_body, si
         </div>
         <nav class="nav-categories">
             <a href="/" class="nav-link active">Начало</a>
-            <a href="#" class="nav-link">AI</a>
-            <a href="#" class="nav-link">Технологии</a>
-            <a href="#" class="nav-link">Мобилни</a>
-            <a href="#" class="nav-link">Компютри</a>
-            <a href="#" class="nav-link">Приложения</a>
-            <a href="#" class="nav-link">AI инструменти</a>
-            <a href="#" class="nav-link">Ревюта</a>
-            <a href="#" class="nav-link">Новини</a>
+            <a href="/articles.html?category=ai" class="nav-link">AI</a>
+            <a href="/articles.html?category=technologies" class="nav-link">Технологии</a>
+            <a href="/articles.html?category=hardware" class="nav-link">Мобилни</a>
+            <a href="/articles.html?category=hardware" class="nav-link">Компютри</a>
+            <a href="/articles.html?category=technologies" class="nav-link">Приложения</a>
+            <a href="/articles.html?category=ai" class="nav-link">AI инструменти</a>
+            <a href="/articles.html" class="nav-link">Ревюта</a>
+            <a href="/articles.html" class="nav-link">Новини</a>
         </nav>
         <div class="main-layout">
             <div class="main-content">
