@@ -72,22 +72,39 @@ jobs:
           date = item.get("time") or dt.date.today().isoformat()
           title = html.escape(item["title"])
           category = html.escape(item.get("category", "AI"))
+          category_slugs = {
+              "AI": "ai",
+              "Технологии": "technologies",
+              "Хардуер": "hardware",
+              "Квантови технологии": "quantum",
+              "Бъдещи технологии": "future",
+              "Киберсигурност": "cyber",
+          }
+          category_slug = item.get("category_slug") or category_slugs.get(item.get("category"), "technologies")
           image = item.get("img", "https://images.unsplash.com/photo-1535378273068-9bb67d5beacd?w=1200&auto=format&fit=crop")
           url = base + item["url"]
 
           raw = article_path.read_text(encoding="utf-8")
+          intro_match = re.search(r'<p class="article-intro">\s*(.*?)\s*</p>', raw, re.I | re.S)
+          description_text = re.sub(r"<[^>]+>", " ", intro_match.group(1) if intro_match else item["title"])
+          description_text = re.sub(r"\s+", " ", html.unescape(description_text)).strip()
+          description_text = description_text[:155].rstrip()
+          description = html.escape(description_text, quote=True)
           raw = raw.replace('<meta charset="UTF-8">',
                             '<meta charset="UTF-8"><meta name="robots" content="index,follow,max-image-preview:large">'
-                            f'<meta name="description" content="{title}"><link rel="canonical" href="{url}">'
+                            f'<meta name="description" content="{description}"><link rel="canonical" href="{url}">'
                             '<meta property="og:type" content="article">'
                             f'<meta property="og:url" content="{url}"><meta property="og:title" content="{title} — TechPulse">'
+                            f'<meta property="og:description" content="{description}">'
                             f'<meta property="og:image" content="{image}"><meta name="twitter:card" content="summary_large_image">'
+                            f'<meta name="twitter:title" content="{title} — TechPulse"><meta name="twitter:description" content="{description}">'
                             f'<meta name="twitter:image" content="{image}">' )
           raw = raw.replace('<img ', '<img width="1200" height="675" loading="eager" ', 1)
           article_path.write_text(raw, encoding="utf-8")
 
-          desc = html.escape(re.sub("<[^>]+>", " ", raw).strip()[:155])
-          card = f'<article class="article-card" data-search="{html.escape(item["title"].lower(), quote=True)}"><img loading="lazy" width="800" height="450" src="{image}" alt="{title}"><div class="article-body"><span class="tag">{category}</span><h3><a href="{item["url"]}">{title}</a></h3><p>{desc}</p><div class="meta">Автоматично публикуван материал · {date}</div></div></article>'
+          desc = description
+          search_text = html.escape((item["title"] + " " + item.get("category", "")).lower(), quote=True)
+          card = f'<article class="article-card" data-search="{search_text}"><img loading="lazy" width="800" height="450" src="{image}" alt="{title}"><div class="article-body"><span class="tag">{category}</span><h3><a href="{item["url"]}">{title}</a></h3><p>{desc}</p><div class="meta">Автоматично публикуван материал · {date}</div></div></article>'
 
           page = index_file.read_text(encoding="utf-8")
           marker = '<section id="articles" class="article-grid" aria-label="Последни статии">'
@@ -96,7 +113,7 @@ jobs:
           index_file.write_text(page, encoding="utf-8")
 
           page = articles_file.read_text(encoding="utf-8")
-          list_card = f'<a data-category="{category.lower()}" data-search="{html.escape(item["title"].lower(), quote=True)}" href="{item["url"]}"><span>{category}</span>{title}<p>{desc}</p></a>'
+          list_card = f'<a data-category="{category_slug}" data-search="{search_text}" href="{item["url"]}"><span>{category}</span>{title}<p>{desc}</p></a>'
           if item["url"] not in page:
               page = page.replace('<p class="empty" id="empty-state">', list_card + '\n<p class="empty" id="empty-state">', 1)
           articles_file.write_text(page, encoding="utf-8")
@@ -104,6 +121,8 @@ jobs:
           sitemap = sitemap_file.read_text(encoding="utf-8")
           if url not in sitemap:
               sitemap = sitemap.replace("</urlset>", f"  <url><loc>{url}</loc><lastmod>{date}</lastmod></url>\n</urlset>")
+          sitemap = re.sub(r"(<loc>https://techpulseon\.site/</loc><lastmod>)[^<]+",
+                           rf"\g<1>{date}", sitemap)
           sitemap = re.sub(r"(<loc>https://techpulseon\.site/articles\.html</loc><lastmod>)[^<]+",
                            rf"\g<1>{date}", sitemap)
           sitemap_file.write_text(sitemap, encoding="utf-8")
