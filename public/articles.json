@@ -4,139 +4,159 @@
     "time": "2026-09-26",
     "category": "Технологии",
     "url": "/articles/kak-novite-tehnologii-promenyat-nachina-po-koyto-mislime-za-softuera.html",
-    "img": "https://images.unsplash.com/photo-1535378273068-9bb67d5beacd?w=800&auto=format&fit=crop"
+    "img": "https://images.unsplash.com/photo-1535378273068-9bb67d5beacd?w=800&auto=format&fit=crop",
+    "category_slug": "technologies"
   },
   {
     "title": "Мащабен пробив в областта на следващото поколение изкуствен интелект",
     "time": "2026-09-26",
     "category": "AI",
     "url": "/articles/mashtaben-probiv-v-oblastta-na-sledvashtoto-pokolenie-izkustven-intelekt.html",
-    "img": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&auto=format&fit=crop"
+    "img": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&auto=format&fit=crop",
+    "category_slug": "ai"
   },
   {
     "title": "Нов пробив в квантовите компютри и изкуствения интелект",
     "time": "2026-09-26",
     "category": "AI",
     "url": "/articles/nov-probiv-v-kvantovite-kompyutri-i-izkustveniya-intelekt.html",
-    "img": "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&auto=format&fit=crop"
+    "img": "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&auto=format&fit=crop",
+    "category_slug": "ai"
   },
   {
     "title": "Следващо поколение невроморфни AI чипове революционизират автономните устройства и роботиката",
     "time": "2026-09-26",
     "category": "Хардуер",
     "url": "/articles/sledvashto-pokolenie-nevromorfni-ai-chipove-revolyutsionizirat-avtonomnite-ustroystva-i-robotikata.html",
-    "img": "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&auto=format&fit=crop"
+    "img": "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&auto=format&fit=crop",
+    "category_slug": "hardware"
   },
   {
     "title": "Какво всъщност се случва вътре в един модерен AI модел",
     "time": "2026-09-26",
     "category": "AI",
     "url": "/articles/kakvo-vsashtnost-se-sluchva-vatre-v-edin-moderen-ai-model.html",
-    "img": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop"
+    "img": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop",
+    "category_slug": "ai"
   },
   {
     "title": "Защо AI агентите са различни от обикновените чатботове",
     "time": "2026-09-26",
     "category": "AI",
     "url": "/articles/zashto-ai-agentite-sa-razlichni-ot-obiknovenite-chatbotove.html",
-    "img": "https://images.unsplash.com/photo-1535378273068-9bb67d5beacd?w=800&auto=format&fit=crop"
+    "img": "https://images.unsplash.com/photo-1535378273068-9bb67d5beacd?w=800&auto=format&fit=crop",
+    "category_slug": "ai"
   },
   {
     "title": "Локален AI: защо все повече изчисления се преместват към устройството",
     "time": "2026-09-26",
     "category": "AI",
     "url": "/articles/lokalen-ai-zashto-izchisleniyata-se-premestvat-kam-ustroystvoto.html",
-    "img": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&auto=format&fit=crop"
+    "img": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&auto=format&fit=crop",
+    "category_slug": "ai"
   },
   {
     "title": "AI чиповете: защо GPU вече не е единственият вариант",
     "time": "2026-09-26",
     "category": "Хардуер",
     "url": "/articles/ai-chipovete-zashto-gpu-ne-e-edinstveniyat-variant.html",
-    "img": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&auto=format&fit=crop"
+    "img": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&auto=format&fit=crop",
+    "category_slug": "hardware"
   },
   {
     "title": "Как се обучава голям езиков модел",
     "time": "2026-09-26",
     "category": "AI",
     "url": "/articles/kak-se-obuchava-golyam-ezikov-model.html",
-    "img": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&auto=format&fit=crop"
+    "img": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&auto=format&fit=crop",
+    "category_slug": "ai"
   },
   {
     "title": "Какво представлява квантовата грешка и защо е толкова трудна",
     "time": "2026-09-26",
     "category": "Квантови технологии",
     "url": "/articles/kakvo-predstavlyava-kvantovata-greshka.html",
-    "img": "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&auto=format&fit=crop"
+    "img": "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&auto=format&fit=crop",
+    "category_slug": "quantum"
   },
   {
     "title": "Могат ли квантовите компютри реално да бъдат полезни",
     "time": "2026-09-26",
     "category": "Квантови технологии",
     "url": "/articles/mogat-li-kvantovite-kompyutri-realno-da-badat-polezni.html",
-    "img": "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&auto=format&fit=crop"
+    "img": "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&auto=format&fit=crop",
+    "category_slug": "quantum"
   },
   {
     "title": "Как AI променя търсенето на информация",
     "time": "2026-09-26",
     "category": "AI",
     "url": "/articles/kak-ai-promenya-tarseneto-na-informatsiya.html",
-    "img": "https://images.unsplash.com/photo-1535378273068-9bb67d5beacd?w=800&auto=format&fit=crop"
+    "img": "https://images.unsplash.com/photo-1535378273068-9bb67d5beacd?w=800&auto=format&fit=crop",
+    "category_slug": "ai"
   },
   {
     "title": "Невроморфните компютри и идеята за машина, която мисли като мозъка",
     "time": "2026-09-26",
     "category": "Бъдещи технологии",
     "url": "/articles/nevromorfnite-kompyutri-i-ideyata-za-mashina-koyato-misli-kato-mozaka.html",
-    "img": "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&auto=format&fit=crop"
+    "img": "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&auto=format&fit=crop",
+    "category_slug": "future"
   },
   {
     "title": "Роботиката след появата на мултимодалния AI",
     "time": "2026-09-26",
     "category": "Бъдещи технологии",
     "url": "/articles/robotikata-sled-multimodalniya-ai.html",
-    "img": "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&auto=format&fit=crop"
+    "img": "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&auto=format&fit=crop",
+    "category_slug": "future"
   },
   {
     "title": "Как ще изглежда личният компютър след AI революцията",
     "time": "2026-09-26",
     "category": "Бъдещи технологии",
     "url": "/articles/kak-shte-izglezhda-lichniyat-kompyutar-sled-ai-revolyutsiyata.html",
-    "img": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&auto=format&fit=crop"
+    "img": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&auto=format&fit=crop",
+    "category_slug": "future"
   },
   {
     "title": "Как AI агентите ще променят работата на програмиста",
     "time": "2026-09-26",
     "category": "AI",
     "url": "/articles/kak-ai-agentite-shte-promenyat-rabotata-na-programista.html",
-    "img": "https://images.unsplash.com/photo-1535378273068-9bb67d5beacd?w=800&auto=format&fit=crop"
+    "img": "https://images.unsplash.com/photo-1535378273068-9bb67d5beacd?w=800&auto=format&fit=crop",
+    "category_slug": "ai"
   },
   {
     "title": "Защо паролите постепенно губят значение",
     "time": "2026-09-26",
     "category": "Киберсигурност",
     "url": "/articles/zashto-parolite-postepenno-gubyat-znachenie.html",
-    "img": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&auto=format&fit=crop"
+    "img": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&auto=format&fit=crop",
+    "category_slug": "cyber"
   },
   {
     "title": "Какво представлява Zero Trust на практика",
     "time": "2026-09-26",
     "category": "Киберсигурност",
     "url": "/articles/kakvo-predstavlyava-zero-trust-na-praktika.html",
-    "img": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&auto=format&fit=crop"
+    "img": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&auto=format&fit=crop",
+    "category_slug": "cyber"
   },
   {
     "title": "Как се изгражда надежден AI продукт",
     "time": "2026-09-26",
     "category": "AI",
     "url": "/articles/kak-se-izgrazhda-nadezhden-ai-produkt.html",
-    "img": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop"
+    "img": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop",
+    "category_slug": "ai"
   },
   {
     "title": "Какво следва след генеративния AI",
     "time": "2026-09-26",
     "category": "Бъдещи технологии",
     "url": "/articles/kakvo-sledva-sled-generativniya-ai.html",
-    "img": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop"
+    "img": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop",
+    "category_slug": "future"
   }
 ]
