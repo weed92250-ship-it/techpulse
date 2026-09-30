@@ -21,27 +21,22 @@ HISTORY_FILE = os.path.join(PUBLIC_DIR, "articles.json")
 
 os.makedirs(ARTICLES_DIR, exist_ok=True)
 
-DEFAULT_ARTICLES = [
-    {
-        "title": "Meta представи малко носимо устройство за асистента си с изкуствен интелект",
-        "time": "2026-09-26",
-        "category": "AI",
-        "url": "#",
-        "img": "https://images.unsplash.com/photo-1535378273068-9bb67d5beacd?w=400&auto=format&fit=crop"
-    },
-    {
-        "title": "Qualcomm представи нови чипове за смартфони с фокус върху изкуствения интелект",
-        "time": "2026-09-26",
-        "category": "Мобилни",
-        "img": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&auto=format&fit=crop"
-    },
-    {
-        "title": "Snorkel AI набра 350 милиона долара за разширяване на платформата си",
-        "time": "2026-09-26",
-        "category": "AI",
-        "img": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=400&auto=format&fit=crop"
-    }
+DEFAULT_ARTICLES = []
+
+CATEGORY_RULES = [
+    ("Квантови технологии", "quantum", ("квант", "qubit", "кубит")),
+    ("Киберсигурност", "cyber", ("киберсигур", "zero trust", "passkey", "парол")),
+    ("Хардуер", "hardware", ("чип", "gpu", "cpu", "npu", "процесор", "хардуер", "ускорител")),
+    ("Бъдещи технологии", "future", ("робот", "невроморф", "автоном", "мултимодал", "edge")),
+    ("AI", "ai", ("изкуствен интелект", " ai", "ai ", "модел", "агент", "llm")),
 ]
+
+def infer_category(title, article_html):
+    text = f" {title} {re.sub(r'<[^>]+>', ' ', article_html)} ".lower()
+    for label, slug, keywords in CATEGORY_RULES:
+        if any(keyword in text for keyword in keywords):
+            return label, slug
+    return "Технологии", "technologies"
 
 CSS_STYLES = """
     body {
@@ -199,18 +194,16 @@ def build_full_page(title, main_image_url, fallback_backup_img, article_body, si
     <div class="container">
         <div class="header">
             <a href="/" class="logo">⚡ TechPulse</a>
-            <div class="search-box"><input type="text" placeholder="🔍 Търсене..."></div>
+            <form class="search-box" action="/articles.html" method="get" role="search"><input type="search" name="q" placeholder="🔍 Търсене..." aria-label="Търсене в TechPulse"></form>
         </div>
-        <nav class="nav-categories">
+        <nav class="nav-categories" aria-label="Основна навигация">
             <a href="/" class="nav-link active">Начало</a>
+            <a href="/articles.html" class="nav-link">Статии</a>
             <a href="/articles.html?category=ai" class="nav-link">AI</a>
             <a href="/articles.html?category=technologies" class="nav-link">Технологии</a>
-            <a href="/articles.html?category=hardware" class="nav-link">Мобилни</a>
-            <a href="/articles.html?category=hardware" class="nav-link">Компютри</a>
-            <a href="/articles.html?category=technologies" class="nav-link">Приложения</a>
-            <a href="/articles.html?category=ai" class="nav-link">AI инструменти</a>
-            <a href="/articles.html" class="nav-link">Ревюта</a>
-            <a href="/articles.html" class="nav-link">Новини</a>
+            <a href="/articles.html?category=hardware" class="nav-link">Хардуер</a>
+            <a href="/about.html" class="nav-link">За нас</a>
+            <a href="/contacts.html" class="nav-link">Контакти</a>
         </nav>
         <div class="main-layout">
             <div class="main-content">
@@ -297,7 +290,7 @@ def generate_news():
     rss_context = "\n".join(f'- {x["title"]} | {x["source"]} | {x["date"]} | {x["link"]}' for x in rss_items[:25])
     prompt = prompt.replace("{RSS_CONTEXT}", rss_context)
     article_body = None
-    models = ["gemini-3-flash-preview", "gemini-3.5-flash-lite"]
+    models = ["gemini-3.5-flash-lite", "gemini-3.5-flash"]
     for model_name in models:
         for attempt in range(3):
             try:
@@ -394,10 +387,12 @@ def generate_news():
     with open(article_file_path, "w", encoding="utf-8") as f:
         f.write(full_html)
 
+    category_label, category_slug = infer_category(title_text, article_body)
     history.insert(0, {
         "title": title_text,
         "time": __import__("datetime").date.today().isoformat(),
-        "category": "AI",
+        "category": category_label,
+        "category_slug": category_slug,
         "url": article_url,
         "img": main_image_url,
         "sources": source_links[:6]
