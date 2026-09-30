@@ -33,7 +33,7 @@ footer{text-align:center;margin-top:40px;padding-top:20px;border-top:1px solid #
 <h1>Статии</h1>
 <p>Последни материали на TechPulse за изкуствен интелект, софтуер, квантови технологии и хардуер.</p>
 <form class="search" id="article-search"><input id="site-search" type="search" placeholder="Търси в статиите…" aria-label="Търси в статиите"><button type="submit">Търси</button></form>
-<nav class="filters" aria-label="Филтри по тема"><a href="/articles.html?category=ai">AI</a><a href="/articles.html?category=technologies">Технологии</a><a href="/articles.html?category=hardware">Хардуер</a><a href="/articles.html">Всички</a></nav>
+<nav class="filters" aria-label="Филтри по тема"><a href="/articles.html?category=ai">AI</a><a href="/articles.html?category=technologies">Технологии</a><a href="/articles.html?category=hardware">Хардуер</a><a href="/articles.html?category=quantum">Квантови технологии</a><a href="/articles.html?category=future">Бъдещи технологии</a><a href="/articles.html?category=cyber">Киберсигурност</a><a href="/articles.html">Всички</a></nav>
 <div class="article-list">
 <a id="technologies" data-category="technologies" data-search="технологии софтуер ai разработчици" href="/articles/kak-novite-tehnologii-promenyat-nachina-po-koyto-mislime-za-softuera.html"><span>Технологии</span>Как новите технологии променят начина, по който мислиме за софтуера<p>AI, специализирани ускорители и новият софтуерен стек.</p></a>
 <a id="ai" data-category="ai" data-search="ai изкуствен интелект следващо поколение" href="/articles/mashtaben-probiv-v-oblastta-na-sledvashtoto-pokolenie-izkustven-intelekt.html"><span>AI</span>Мащабен пробив в областта на следващото поколение изкуствен интелект<p>Как се развиват новите подходи към AI.</p></a>
@@ -59,22 +59,23 @@ footer{text-align:center;margin-top:40px;padding-top:20px;border-top:1px solid #
 </main>
 <script>
 (function(){
- const form=document.getElementById('article-search'), input=document.getElementById('site-search');
- const cards=[...document.querySelectorAll('.article-list a[data-category]')], empty=document.getElementById('empty-state');
+ const form=document.getElementById('article-search');
+ const input=document.getElementById('site-search');
+ const cards=[...document.querySelectorAll('.article-list a[data-category]')];
+ const empty=document.getElementById('empty-state');
  const params=new URLSearchParams(location.search);
- const initialQuery=params.get('q')||'';
- const initialCategory=params.get('category')||'';
- input.value=initialQuery;
+ let activeCategory=params.get('category')||'';
+ input.value=params.get('q')||'';
 
  function filter(){
    const q=input.value.trim().toLowerCase();
    let shown=0;
    cards.forEach(c=>{
-     const categoryOk=!initialCategory||c.dataset.category===initialCategory;
+     const categoryOk=!activeCategory||c.dataset.category===activeCategory;
      const textOk=!q||c.dataset.search.includes(q)||c.textContent.toLowerCase().includes(q);
      const ok=categoryOk&&textOk;
      c.style.display=ok?'block':'none';
-     if(ok)shown++;
+     if(ok) shown++;
    });
    empty.style.display=shown?'none':'block';
  }
@@ -84,15 +85,22 @@ footer{text-align:center;margin-top:40px;padding-top:20px;border-top:1px solid #
    const q=input.value.trim();
    const next=new URLSearchParams();
    if(q) next.set('q',q);
-   if(initialCategory) next.set('category',initialCategory);
-   history.replaceState(null,'',next.toString()?'/articles.html?'+next.toString():'/articles.html');
+   if(activeCategory) next.set('category',activeCategory);
+   const query=next.toString();
+   history.replaceState(null,'',query?'/articles.html?'+query:'/articles.html');
    filter();
+ });
+
+ document.querySelectorAll('.filters a').forEach(link=>{
+   link.addEventListener('click',()=>{
+     const url=new URL(link.href,location.origin);
+     activeCategory=url.searchParams.get('category')||'';
+   });
  });
 
  filter();
 })();
-</script>>
-<footer><div class="footer-links"><a href="/about.html">За нас</a> | <a href="/contacts.html">Контакти</a> | <a href="/privacy.html">Поверителност</a></div><p>© TechPulse. Всички права запазени.</p></footer>
+</script><footer><div class="footer-links"><a href="/about.html">За нас</a> | <a href="/contacts.html">Контакти</a> | <a href="/privacy.html">Поверителност</a></div><p>© TechPulse. Всички права запазени.</p></footer>
 </div>
 </body>
 </html>
