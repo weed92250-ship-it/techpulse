@@ -1,5 +1,39 @@
 [
   {
+    "title": "Орбиталният изчислителен облак: Защо изкуственият интелект напуска пределите на Земята",
+    "time": "2026-10-01",
+    "category": "Квантови технологии",
+    "category_slug": "quantum",
+    "url": "/articles/orbitalniyat-izchislitelen-oblak-zashto-izkustveniyat-intelekt-napuska-predelite-na-zemyata.html",
+    "img": "https://images.unsplash.com/photo-1535378273068-9bb67d5beacd?w=800&auto=format&fit=crop",
+    "sources": [
+      {
+        "title": "AI godfathers warn of runaway ‘intelligence explosion’ - The Guardian",
+        "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQMFNkQmpvTmdlZER6dDF6NXlNZ2x2WnpicUlHeDBvRjNRUzlaZy01OUI5Sm91YV9DRUh0Qmk4TzNwTTQ1alBveEdGOHNHcy0wa1pqR0lsZVR2dUxoQ3R1V1FnZTJuZG9MS1d3OWs3eTgxb0ZmUl96dGNiWkhzMk1wN3oyV0xFYjVrdGtIQ1Vzb0l0SWdBWlZEalo3WmxNbVpxNjJoX1dR?oc=5"
+      },
+      {
+        "title": "What Is Artificial Intelligence (AI)? - IBM",
+        "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNTFJQdEloZk9lRkhTOGFWaENtb0FJUzdMOUZRY0REMDhhOFZWT2h5STBzU01FQlY0d2htVXYtMzlqcURGdHRiZU1nZnZMWGYyamZaN0Q3REFTWVJvM1ZmeEtKb3JrRTZMX05mZUozeGduUFpWOW00eXVfSkRiQ2FuVFk0TkVqMEU?oc=5"
+      },
+      {
+        "title": "Opinion | A.I. Will Affect Your Social Life. Yes, Yours. - The New York Times",
+        "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxOdlMxM0hfLTFyTUxHTXA4eXJOUklfcFBKekFfSlotX3N6SVZxcWVtQ05CbmNwdnBiQ2tzV3FXRHNWMHlsSHV5YTlzY1h5ZXZxZDhSWUk4ck9LcV81VDg3a0ROZTlHV0dGWHR4NnRxcGVzUXN4RlQyOXpxMFpWbzhnZ3hQbGhYa3U1dGowMXlnLXlwQQ?oc=5"
+      },
+      {
+        "title": "Trump says the US is officially renaming AI to ‘super intelligence’ - The Verge",
+        "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQaUFoY2g1bnk4RHRWblhvbHhlUUlRaWtyV2x0cHZocHJ3Y2hKSlY3UTlVaFdFdTNUQkRERGRZTzh3SHdDSzhUd2tkemlTc1pGY0NkNXBJM1QwdkZ0X3hYcGUyN1V1R3puQ01fckkyNlA0Mlh4d05ORW5JY0RrS05rc3plUHZ6WmZrV2RKYjJ4X2xaX05OdFI0OQ?oc=5"
+      },
+      {
+        "title": "AI will transform capitalism – but how? | AI (artificial intelligence) - The Guardian",
+        "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxOX0FZa2NtaEdMSERqbGRwMDN4Q1doVzF4VXIyVFFvNzVVRVZoVUtEYUY0eTZtbmtZQ3dVRjVoSGduMXp6OFNCVXVwaFd2SG5ISEtDSGNvQktCTEsxQ1RsYUdaSkFad2FKUWVyN3RiV1BoSjk0XzBXY0NPTVJocDZ6Z0FvZXhjOVJKam02M29Wb2Y?oc=5"
+      },
+      {
+        "title": "Mark Zuckerberg doesn’t understand how to live - The Verge",
+        "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPanp4N1pyTFNXeE5WRTRhV0gxaUpQbC1Pc1NVYTZHNmJPU1hobm1xNE03b3RLOXlFaEYtX3o0SkNrUXNBeTE1eUtsNzlMdkxLUEQtQjJQTzItNFRwamFIVWRuTWV0cDgtbHdxNDhoTVhaUmVya0hlbEoxQzFBR3FUZkp1ZU1VY3Bmdm1aMXZWbTZaV3dkUl9oR2ZRdEtDV3c?oc=5"
+      }
+    ]
+  },
+  {
     "title": "Как новите технологии променят начина, по който мислиме за софтуера",
     "time": "2026-09-26",
     "category": "Технологии",
