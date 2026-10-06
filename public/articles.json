@@ -1,5 +1,39 @@
 [
   {
+    "title": "Навечерието на квантовия преход: Защо тайните служби и технологичните гиганти подменят основите на глобалната сигурност",
+    "time": "2026-10-06",
+    "category": "Квантови технологии",
+    "category_slug": "quantum",
+    "url": "/articles/navecherieto-na-kvantoviya-prehod-zashto-taynite-sluzhbi-i-tehnologichnite-giganti-podmenyat-osnovite-na-globalnata-sigurnost.html",
+    "img": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop",
+    "sources": [
+      {
+        "title": "Ignatian Examen on artificial intelligence, Oct. 7 - Marquette Today",
+        "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNYTItWnpBcUNjcHZKUlkzd2QzV2Y2anpCazFnbGI3Y2lYNHhlVDFlQUQ0QXlHMktmeU5UY3N0NHdYaVlfNkpMRmdtOHRpaWpsNkFTLUtQMlJnc0dnaC1IZkxXeWZwVHp4UlFNcWJCa1VVWDJkUzMyTWEzTENMWExPM2prYmtjVjFXU3ByNVNR?oc=5"
+      },
+      {
+        "title": "‘Evaluators’ are supposed to keep AI from killing us all. No pressure - CalMatters",
+        "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOQkhSclhqYVdESUlGOElibmRBdF9nSnIyRlNTdHVibnNEcjlYeWZPM1V5bFFOWldoMGpXN3BjOWRNMWcyZFJrc0dJZHVjNnh3dTFyRFA5Y0V5blRpaUtHZ04yZDYyMFA3bUpPQ1U4U3ZYWGkyUUF0cW50enpwek5Kd25nbjc2UlQ0VS1fRUxjS252OEpQWkpvR1dkMmNnbmxkbE1xZnJEUFdhMWxRcHVZZkhJUkhhekF4?oc=5"
+      },
+      {
+        "title": "Trump names national intelligence chief Jay Clayton as new AI czar - NPR",
+        "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE9XcWRJLUVQZ3ZVTDhReFJONG1jSmtyWkRKbDNWeGJLVEpuRHZNdGUxa0JjN0I5Vnc3S1VVakJaLWlaZS1oT3RhTXA0LWhHdEczTUd4bTlTa2lCU2NHMzRBaG9DTFBENUwtNlFkeE5HdkRWNDVodWFoUnhn?oc=5"
+      },
+      {
+        "title": "The Only 2 Artificial Intelligence (AI) Stocks I'd Buy With $1,000 Today and Never Sell - Yahoo Finance",
+        "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQVEFpMkVvbWR6aWJsZzlITXVOSEhmck9tRko1aFNIeVN0eTVaRDk1ei1DVUlwamUzQVhvLVNKLTI0akU1eTEtYm80WXlfR21YM28zbDZIcnA4LUlCSW5FMVVDV1ZPQVpLbU5hVFVsU0E5Ylk0ZEF5SVV4dkJfbHNDMlNoQzdYVDZWbENCTVViZlpCRkJFN3gyek1sa3J4dw?oc=5"
+      },
+      {
+        "title": "France's Mistral announces new AI model - Reuters",
+        "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNcjVFRUV6ZzZmeXFiN3NIWmZwUTBGWTR3ZUx1UUhjLWRLMC0wZThtLW00a1FYNjloa3BiSTFveFdZZFkxWnd5d283Qi04MnU1UC1IUl9KdlBkX2o2X3JpQ0pUZVRZQzJ3Uk1fRzR5VnJIdGhwVGI3Q0JWc2RWOGtBZTZzek4tcWQxRTAxZnB3eWJyV2gzY2FlNjdYVk95b2lQX2UtLVNWandvMDA?oc=5"
+      },
+      {
+        "title": "OPINIONS: How U.Va. should respond to the changing artificial intelligence landscape - The Cavalier Daily",
+        "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxOVS1XMlN2amtfOGZwMndpQTVwM1BicVI2VUZaYTBsNXlac0hyY29qY2xkb19hbTh4UDRwbXlsM2d4eGFMYjRKMTZWdFp6a3B6OXFIelBaQ0xSbWlsUFdEUk5qX25PeS1JTG1qSGhSX1ZSY0p2djlkWDVvQVBmWTMycVhZeXlsMGdsRno3SnpKbEk3U19qTjZsN05SVnVoSUV3cUplcHlwY0ptNmZnRldYU1JiYkppaEc3QUhnQ1dLX0dMVXNUeFE?oc=5"
+      }
+    ]
+  },
+  {
     "title": "Квантовият разлом в киберсигурността: Защо държавите бързат да подменят криптографските си основи",
     "time": "2026-10-03",
     "category": "Квантови технологии",
