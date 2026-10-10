@@ -243,7 +243,7 @@ def generate_news():
 
 <writing>
 Пиши на естествен български език, като редактор, който обяснява сложна тема на интелигентен читател, а не като генератор на SEO текст.
-Целевата дължина е 1400–2000 думи. Материалът трябва да е пълноценен, а не изкуствено удължен.
+Целевата дължина е 1400–2000 думи. Задължително напиши поне 1400 думи; не приключвай след кратко резюме. Материалът трябва да е пълноценен, а не изкуствено удължен.
 Развий темата последователно: започни с конкретния факт или новина, дай необходимия контекст, обясни как работи технологията или какво точно се е променило, разгледай практическите последици и ограниченията и завърши с трезв извод какво означава това в по-широк контекст.
 Използвай конкретни примери, когато източниците ги позволяват.
 
@@ -267,7 +267,7 @@ def generate_news():
 Върни само HTML, без Markdown и без code fences.
 Първият ред трябва да е <h2>Заглавие</h2>.
 След него постави един въвеждащ <p class="article-intro">...</p>.
-След това използвай нормални <p> абзаци и най-много 3 <h3> подзаглавия при реална нужда.
+След това използвай нормални <p> абзаци и най-много 4 <h3> подзаглавия при реална нужда.
 Не добавяй секция „Източници“ — източниците ще бъдат добавени автоматично от системата.
 </format>
 
@@ -290,6 +290,7 @@ def generate_news():
     rss_context = "\n".join(f'- {x["title"]} | {x["source"]} | {x["date"]} | {x["link"]}' for x in rss_items[:25])
     prompt = prompt.replace("{RSS_CONTEXT}", rss_context)
     article_body = None
+    short_draft = None
     models = ["gemini-3.5-flash-lite", "gemini-3.5-flash"]
     for model_name in models:
         for attempt in range(3):
@@ -300,9 +301,18 @@ def generate_news():
                     print(f"Временен проблем с {model_name}; нов опит след {delay} секунди...")
                     time.sleep(delay)
 
+                request_prompt = prompt
+                if short_draft:
+                    request_prompt = f"""
+Предишният отговор беше прекалено кратък. Разшири го до 1400–2000 думи, като запазиш проверимите факти и естествения български стил.
+Не повтаряй вече казаното. Добави технически контекст, конкретни практически последици, ограничения и нюанси. Не измисляй факти.
+Върни целия завършен материал отначало, само като HTML, със заглавие <h2>, един <p class="article-intro">, нормални <p> абзаци и максимум 4 <h3>.
+Чернова за разширяване:
+{short_draft}
+"""
                 response = client.models.generate_content(
                     model=model_name,
-                    contents=prompt,
+                    contents=request_prompt,
                 )
                 if not response or not response.text:
                     continue
@@ -344,6 +354,8 @@ def generate_news():
                 if short_paragraphs > 8:
                     reasons.append(f"кратки абзаци={short_paragraphs} (максимум 8)")
                 print(f"Отхвърлена статия от {model_name}: {word_count} думи, {h3_count} подзаглавия. Причина: {', '.join(reasons) or 'непозната структурна грешка'}.")
+                if 250 <= word_count < 1300 and h2_count == 1 and '<p class="article-intro">' in cleaned:
+                    short_draft = cleaned
             except Exception as e:
                 print(f"Грешка с {model_name} (опит {attempt + 1}/3): {e}")
                 if "503" not in str(e) and "UNAVAILABLE" not in str(e):
