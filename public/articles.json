@@ -1,5 +1,39 @@
 [
   {
+    "title": "Квантовата заплаха пред криптографията: защо индустрията започва трескаво да преосмисля сигурността си",
+    "time": "2026-10-15",
+    "category": "Квантови технологии",
+    "category_slug": "quantum",
+    "url": "/articles/kvantovata-zaplaha-pred-kriptografiyata-zashto-industriyata-zapochva-treskavo-da-preosmislya-sigurnostta-si.html",
+    "img": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&auto=format&fit=crop",
+    "sources": [
+      {
+        "title": "Open to AI: Hollywood Is Embracing Artificial Intelligence Tools Despite Doomsday Fears - Variety",
+        "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQemx1NUo3WjFCNkJBYXY3ZERReHRXSzBXTmhBMXlFTEltaF9STHI3NGhYNDZ1c0pnekt4RGlpOHRlbThqNU1pVlN4dlBZOUFwcHYwd3pJcWxwZlV0VTNwSWZXN0Y1M1ZiNTJUX1ZHQjVpV3JRS0tGUURsSnFIUG4tV1F0dDBYcWVkNWNOODdjcXlqNzRnU2E3V2U3RHQzRVFx?oc=5"
+      },
+      {
+        "title": "Letter: AI: Artificial intelligence or absolute insanity? - Shaw Local",
+        "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQLVFJTGZYRDhlaXJlekwzOHBYQTloMnlNV05pZHBDREZLZjZiLU9MSS1uMU1pRDdINWVsQXZ3T1NCVU9OWkJwZkdVanI5N2tHc3lhYldpS2tXc2tzN3dtWjRGdDdlczBLNTN2bGVEdmt5N2U1T09pLV8wUmZOeHJDYTlOTWxoMlp4TV83ZGkzU0loZjhPaEhMQmV3ekdacjJsdnJvVEszWHM4dEd3RWc?oc=5"
+      },
+      {
+        "title": "US Justice Dept tells staff to call AI 'super intelligence' under Trump order - Reuters",
+        "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxPN0M0T3dic0tvbGhzbmx3WVNKNm9iU2l0ZUNBUk5jbzZCM24zT0FOV3RFYXpVQ3NPS1BuMU1zOXNzSmdvbE9falZVOTZja2hqMGtVQWxpXzg2VE15T1FVT0pCc0NLRVowMnBKY0J4dTl0WkJTWUlsbXFOeE1VZjJTUlpEOHlldTE3MTdrMGVRQjF3NEo1aDZxUFNJa21Zb0hMdWFLSjY5dVA5YUlBQjltbmcwSDRZV1M1S2xPQUtWSXVGd2M?oc=5"
+      },
+      {
+        "title": "Our minds aren’t equipped to handle AI - The Verge",
+        "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQbk96WWh1eUxOUjhwX0VtdV9UQlNrdzRTeldSOFl6ODBKVUVWNjVmU0R0ZmZocklWdmxLWG5YQk0wQW1VSGE4N0Q0YVowd3RSS2J3ZFNvZ3lYeFBnanVxSFdTbFpzSjNqcXF4Um9POHdMME8xZWhuY3BWNEhYOC15dFRGQkVwQTVNOVpqLU9NdlY2YWZHMjZBSkdWLW1aN3BfWVE?oc=5"
+      },
+      {
+        "title": "AI godfathers warn of runaway ‘intelligence explosion’ - The Guardian",
+        "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQMFNkQmpvTmdlZER6dDF6NXlNZ2x2WnpicUlHeDBvRjNRUzlaZy01OUI5Sm91YV9DRUh0Qmk4TzNwTTQ1alBveEdGOHNHcy0wa1pqR0lsZVR2dUxoQ3R1V1FnZTJuZG9MS1d3OWs3eTgxb0ZmUl96dGNiWkhzMk1wN3oyV0xFYjVrdGtIQ1Vzb0l0SWdBWlZEalo3WmxNbVpxNjJoX1dR?oc=5"
+      },
+      {
+        "title": "Silicon Valley is falling in line with Trump’s attempt to rename AI - The Verge",
+        "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxPSFI5aTdXbnUyZ19zc2RLZ1ZZZi1pcVhYRlJSR0tXZU9RaUZSYVRxM0JnY0E1YU5hYXFYS1NLRTRpNmRITFE3N1IzZVZSeFRJbHpxWkU5Tng1TDR6ZjVudm5MMGpQa1ZVbzJobUFhUXRwaENJVmpyR21PYjc3Tl9tc2llWlA4OENESTdHOU52c1lQOEJSMG5GLWFnZGc3TFRFR21iWDRqbHV6YjcxcVBFbi1xWEFVRThxRExTSmY1RUdUX1c5?oc=5"
+      }
+    ]
+  },
+  {
     "title": "Стратегическият обрат в квантовите технологии: Сливанията и устойчивостта в индустрията",
     "time": "2026-10-14",
     "category": "Квантови технологии",
