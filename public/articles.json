@@ -1,5 +1,39 @@
 [
   {
+    "title": "Пробив в квантовите изчисления: Нова техника смалява грешките в „магическите състояния“",
+    "time": "2026-10-16",
+    "category": "Квантови технологии",
+    "category_slug": "quantum",
+    "url": "/articles/probiv-v-kvantovite-izchisleniya-nova-tehnika-smalyava-greshkite-v-magicheskite-sastoyaniya.html",
+    "img": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop",
+    "sources": [
+      {
+        "title": "Steven Spielberg and Stanley Kubrick's Near-Perfect Sci-Fi Fairytale Is Officially Back on Streaming - Polygon.com",
+        "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxOZTdXeXFWcXo0eUtaR0k4OFAyandneDNOeXpGRVV5RkN0SzhBejRWUW5TNGtkYlVwaTNRWDYwc2FXRXlqcHZWa1FwWVZTNlRvdUYxU3J5TXRKeFUwem14cjJIb0dWZTFSeGJRVnhyT2hFUWdJR3kzOVNRcUd1dk53dWxvY25WN0FPbzM0WVRQR3V3eDg?oc=5"
+      },
+      {
+        "title": "Open to AI: Hollywood Is Embracing Artificial Intelligence Tools Despite Doomsday Fears - Variety",
+        "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQemx1NUo3WjFCNkJBYXY3ZERReHRXSzBXTmhBMXlFTEltaF9STHI3NGhYNDZ1c0pnekt4RGlpOHRlbThqNU1pVlN4dlBZOUFwcHYwd3pJcWxwZlV0VTNwSWZXN0Y1M1ZiNTJUX1ZHQjVpV3JRS0tGUURsSnFIUG4tV1F0dDBYcWVkNWNOODdjcXlqNzRnU2E3V2U3RHQzRVFx?oc=5"
+      },
+      {
+        "title": "Our minds aren’t equipped to handle AI - The Verge",
+        "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQbk96WWh1eUxOUjhwX0VtdV9UQlNrdzRTeldSOFl6ODBKVUVWNjVmU0R0ZmZocklWdmxLWG5YQk0wQW1VSGE4N0Q0YVowd3RSS2J3ZFNvZ3lYeFBnanVxSFdTbFpzSjNqcXF4Um9POHdMME8xZWhuY3BWNEhYOC15dFRGQkVwQTVNOVpqLU9NdlY2YWZHMjZBSkdWLW1aN3BfWVE?oc=5"
+      },
+      {
+        "title": "Trump AI deal rebrands ‘artificial intelligence’ as ‘superintelligence’ - The Guardian",
+        "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNOFVZQVZWMk1XVVREWXRWcVZaWGZrb0dGSURLVkl4MUg0ZHFoTHNWckY5WU9hWXJuOXhnU21xY1NHM0hMM2FiQkRKdUtmWlpRcHdGbEg1MmphUXFWaEE1VC1YSGgwTlJIVlhwX0tOcl9HV2F1UnhMOHZPV3hQMkEwdWI3c2N6TGxYOWVJS052Q3E3UmM?oc=5"
+      },
+      {
+        "title": "Silicon Valley is falling in line with Trump’s attempt to rename AI - The Verge",
+        "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxPSFI5aTdXbnUyZ19zc2RLZ1ZZZi1pcVhYRlJSR0tXZU9RaUZSYVRxM0JnY0E1YU5hYXFYS1NLRTRpNmRITFE3N1IzZVZSeFRJbHpxWkU5Tng1TDR6ZjVudm5MMGpQa1ZVbzJobUFhUXRwaENJVmpyR21PYjc3Tl9tc2llWlA4OENESTdHOU52c1lQOEJSMG5GLWFnZGc3TFRFR21iWDRqbHV6YjcxcVBFbi1xWEFVRThxRExTSmY1RUdUX1c5?oc=5"
+      },
+      {
+        "title": "AI godfathers warn of runaway ‘intelligence explosion’ - The Guardian",
+        "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQMFNkQmpvTmdlZER6dDF6NXlNZ2x2WnpicUlHeDBvRjNRUzlaZy01OUI5Sm91YV9DRUh0Qmk4TzNwTTQ1alBveEdGOHNHcy0wa1pqR0lsZVR2dUxoQ3R1V1FnZTJuZG9MS1d3OWs3eTgxb0ZmUl96dGNiWkhzMk1wN3oyV0xFYjVrdGtIQ1Vzb0l0SWdBWlZEalo3WmxNbVpxNjJoX1dR?oc=5"
+      }
+    ]
+  },
+  {
     "title": "Квантовата заплаха пред криптографията: защо индустрията започва трескаво да преосмисля сигурността си",
     "time": "2026-10-15",
     "category": "Квантови технологии",
