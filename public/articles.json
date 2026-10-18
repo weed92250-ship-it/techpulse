@@ -1,5 +1,39 @@
 [
   {
+    "title": "Квантова ефективност с езикови модели: Как изкуственият интелект променя проектирането на кубити",
+    "time": "2026-10-18",
+    "category": "Квантови технологии",
+    "category_slug": "quantum",
+    "url": "/articles/kvantova-efektivnost-s-ezikovi-modeli-kak-izkustveniyat-intelekt-promenya-proektiraneto-na-kubiti.html",
+    "img": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&auto=format&fit=crop",
+    "sources": [
+      {
+        "title": "FSB finalises sound practices for the responsible adoption of artificial intelligence (AI) - Financial Stability Board",
+        "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNYlowZTZteDU0NjQ1YU9jVWhWVi1WS2gzUlFyN1c0T01CTTBNb0tkeUZfdWJEQ09NNnUtV1VyQ0NDcC1pZ0VnUWt6MnB4cWxhMVJZdDc5SGdrR2I3clFHVHJLa1U4cVlYTXg2djVIVnR5ZU5Mb2VGOGI0aFZocWVFeWJyNWpHVnNYaWN2UW1RQzdKYVBZa1lwSWpVN2RocnpjbkVqdlNuakVxMC1yeEJTVUpBS0JZWVBJ?oc=5"
+      },
+      {
+        "title": "Artificial intelligence-enabled clinical phenotyping of human brown fat - Nature",
+        "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE9GZTlIVXVnazYxNTFrWEppcUVrV3ZIVUVNY2RQQURkSGtDR29wcnJ1SUxqSnNlc0ZTVFpnN0RORDBqNFRHWFZBTXZiMWp0TnBPMC1uZnZIWkJwTHI2UGJn?oc=5"
+      },
+      {
+        "title": "Epstein gave $100K to UNM for artificial intelligence research in 2001 - Santa Fe New Mexican",
+        "url": "https://news.google.com/rss/articles/CBMi_gFBVV95cUxPRUFHdGRMNnJYSjI1U2lqRF9IeTF0MjRTQTdPanVkMV9sRW16RmFvTnBpSXdxSWVtbFc0T0NvSU1Rek5PeGhEY1JNRGlWYTVtSG4wbjM4bk5FSFBVdTQ2aC1wa2FVZ3h0NVlTejZUUTByeEZIb3BMSlpvMmZYM094ZE5BZUQ4Um5mR0NFeW9Cc0JBaXRoVmxGMzV4N1RCMVZyQkVuZ3I3VEk2anVEc1Q4dUVpYzRrUTltNmlXcGZVM1dKN2lWUnI2cWVZclNwQ0p4YUhDOW5uNFpzVFA1cWppcUgxN0lCVnVhZU9URk9TbV9xeGs2ZTVGVXhuRE9aUQ?oc=5"
+      },
+      {
+        "title": "Norfolk uses artificial intelligence to handle thousands of non-emergency calls - WTKR",
+        "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxPZnpLaFM3N2JXVmZHd19CZEdrLVFMOGRJdVdyeE5XOHVmY3dpWThXRmp3UlFTakNmUGktdnAtWEQyR2tPZDM0dzY5RmJHSHJsLWdVVVI5SmRIQUdDd0NEYTRvTlFiLThGZzRkN0sxTlZWYVhZR2RfYnN0UTRWWDlISzEweTNzTndIVEljalktdzJ3c0lza2lxVUtsa2REbzlYbVZkMkdvaVU2WkFYTjNqSVRWWFZMdzZ3TlVWNDg1cUJzQkNmQjRTd3lB?oc=5"
+      },
+      {
+        "title": "Delay the deployment of artificial intelligence (Voice of the people) - Lakeland Ledger",
+        "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxOV2NhSmFHeF84RnA2bGRMRWR2cFBHZWl4OGg1MUdnSExFZFZNdGpycy1qcHZEY2xFUm5sdU9GcWJUaC0yQ0RoMTlPNHhrejVXS1gtVUR1SnNKRURoNHI1dURjSWVwODlLY3NxUEJGWTUzckd5Z3VaZDVpWFBiUzRnOW1IRHplV2RJQ2dsS0dRSEtSbDBsRWE1aUo3ZW5TX3NwMEF3WEcwcElyRm56OFMzNFBoM0VESmVHNlN5MDZIU28yZXNIaU1ybjFKeWxjWUI2?oc=5"
+      },
+      {
+        "title": "President Trump Sells Micron Stock and Buys Another Mega-Cap Artificial Intelligence (AI) Stock - The Motley Fool",
+        "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQZkR2YldmSlVIWGFUSmJSRmREanIzaFhwMWNyYk5HQk50SFB5cjVSbVcyZnVyY3ZjNXllMVFEUGQtY205MlZRblZRbjFwLU5BUUw5bUdKXzVDN1lfdm10dHBzNmJiUXBsRk5GRlIwenprZEJBcEZTdHJZSmFjR0RSeXJYZzh6Nnp0WldCb21uQ1FzR0hicGFR?oc=5"
+      }
+    ]
+  },
+  {
     "title": "Преодоляване на фундаменталната бариера: как квантовите компютри се доближават до практически приложения",
     "time": "2026-10-17",
     "category": "Квантови технологии",
