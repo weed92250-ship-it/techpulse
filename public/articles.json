@@ -1,5 +1,39 @@
 [
   {
+    "title": "Квантовият пробив: Как корекцията на грешки доближава машинните изчисления до хоризонта на 2029 година",
+    "time": "2026-10-21",
+    "category": "Квантови технологии",
+    "category_slug": "quantum",
+    "url": "/articles/kvantoviyat-probiv-kak-korektsiyata-na-greshki-doblizhava-mashinnite-izchisleniya-do-horizonta-na-2029-godina.html",
+    "img": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&auto=format&fit=crop",
+    "sources": [
+      {
+        "title": "Writing Artificial Intelligence Into Constitutions: A Global Constitutional Moment for the Algorithmic State - www.iconnectblog.com",
+        "url": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxOYkpNYzYxc2h1TzBFdDRXTXZqR3dQQnB1VUg2YUF2d2VoZW8taURPSjFRd3V0X0gtVmlmMG8zb19jeUdaNWY5bVFyaFFrcjNSV1JNNG5WWjlSMTN0NlgxZXdCcHYwMlViZFp6Qk5sRzFrXzlWUGpNUUVScmlRcFo2SUpPOHJycUM5N0w3WGVkNmc0Z3V1UzE1S0FpUjh4cnJXbEE4YlVUM1RkM2tFd0N5dml1VmV4WUEyU1pfeEJ6SnZDZFBaeTBtX3ZVT3pFSU9MTUtz?oc=5"
+      },
+      {
+        "title": "NVIDIA, Nokia and Leading Telecom Operators Turn Networks Into Distributed Intelligence Platforms - NVIDIA Newsroom",
+        "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQMkxkdXNwTlJma0NkUEN1VHVqa0k2TTBtZWhrTDV4ODg2a09uTmo2MzdvTzNPVHFMUEd0MFNuZnBPWTgybEl0Y3lUQXAzMG1zUXl1Q0kyQjhEWndINFVfWm03dmo1Vm9zRHhZalZyWTdzenNsMUQyRjVGc1g5NTMzZEpoU0FZZE8zdGE3UlFraG1pWi1HYTlZU1EtaVhiX2JmcXROMGhBbk04R3hIQVhmbHZTNU1UWW9yckhTek1xclN5TWZ5eHBtdjBQQQ?oc=5"
+      },
+      {
+        "title": "Artificial Intelligence freeze walkouts hit Denver, Golden, and Fort Collins as part of nationwide protests - Denver7",
+        "url": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxNbTNNc1hmTTJPXzdHOFZEcUkwak5ickJfZ3ktV1pYa0tfWm05R0pOaTJCU0RjRmp1TWg5bmR5MDlpRDY5VFhpLWpJX0lzSlh1d0EyOGd0LXp6SmZKT0d2NEhQMWhSY0l6UUoyUHV5eFdYTlozVldTOEtMWVA1UVgyU1hYSmNYbUlkSHZhaWwybTFzSHlLNDM0aXpqNElIVlNueFM1YUtaNlc3NHNER0VObzlTb2UzdXpPRlI4aFl0SHRQQko2eTBhRnVjdkxEY0NvaDFFOFpIZDd1VXZNMmstWGIxVzBwZw?oc=5"
+      },
+      {
+        "title": "How America's AI Trust Issues Could Impact the Midterms - Time Magazine",
+        "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOdno5RXU1dVc1X2RiVUhPcU5TaWtrMXhpZlZhWEV1STd5NXRENEZKbnByMVYxdUxyTUVpbmlBVzJaT1hyOVpuZDhrUG5SUG8xWU5oSmlZeWVTd0tvQXBQeG1xV2pTLXZVcFdOaUtaSTFsQmRRTktVR2VWRFRKOVVHRi1HY3EySmFsUS1QbXpBQTU0cTgtVDI0?oc=5"
+      },
+      {
+        "title": "Virtual summit addresses artificial intelligence and racial bias in health care - WDET 101.9 FM",
+        "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPWTJlRDY2WW1KZDhrMmozMnpUUU0zVVhNTFU1MXhId0lsUkE4ZkpRemhqcjRleGItdGE3S3AzdVY1LWFsdXQ4NkRlZEpDXzBEZGx1RG56MEw5UlJZUmxxSF9ZVlJvTWZqUVdLa2tSSlRYbGp4X1RQa2FjOFBIajg0RTlCRE1pOVlBWTlZWVJMbjd4SV96cUFNTUVfNi1taFVTeWU1d0ZYV1N6TmQt?oc=5"
+      },
+      {
+        "title": "If I Could Only Buy 1 Artificial Intelligence (AI) Semiconductor Stock to Buy Before 2027, It Would Be This One - The Motley Fool",
+        "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNV0lGckltbmw2UFM3ZC1LeERWWDhPS0NGS2NYZzdtS0hHZ1RnTTU1cWJMWjV6MVJ4TWxobVRjMVF4dHBOV01PQjFYaWpzWHZjal9YTGhFdmpQYTZlRTdvVDFXa2NHckNyZTRrNUVHVFFSM2lxWlZiaDZRaEc4Y1ViRV9hYzlKZVZJaW1MdmdOdmp5SlBSTFlwWA?oc=5"
+      }
+    ]
+  },
+  {
     "title": "Квантова ефективност с езикови модели: Как изкуственият интелект променя проектирането на кубити",
     "time": "2026-10-18",
     "category": "Квантови технологии",
