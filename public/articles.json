@@ -1,5 +1,39 @@
 [
   {
+    "title": "Повратната точка в квантовите изчисления: Новият скок към устойчиви системи",
+    "time": "2026-10-22",
+    "category": "Квантови технологии",
+    "category_slug": "quantum",
+    "url": "/articles/povratnata-tochka-v-kvantovite-izchisleniya-noviyat-skok-kam-ustoychivi-sistemi.html",
+    "img": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop",
+    "sources": [
+      {
+        "title": "Experts: How are climate scientists using artificial intelligence? - Carbon Brief",
+        "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPa3loTFZhbUZ6X1NzNnBZQXMwUGVwbHFvMmM0TVl6QTgyeUVYUHJjQ3dsX2ZWRS1DYmp2b29lMUdaTHl4RDMyYVVyT2V5YnE0d0thajZtU0x4ZDN3N3VuS2JqeTB5TXhhdXREcDAzUUlmb0NweC1ZdHdyODZEaXRCbkVLak5vWEk3NnRua3haakZWaEpnTm1n?oc=5"
+      },
+      {
+        "title": "Judges explore Artificial Intelligence but keep decision-making human - The Florida Bar",
+        "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQQXQ5V3F4ZjI2eWExdGpld1M5ekhwajdHME9TZ3RLSmtRYXhBQWlxOFQxcnIxdjNnV0tnYnhHQlRienB5cFZqWklIQ21EMXRraFIyc1NuSUEzMGVnaDU5UDZjZzRyaW1SRjYzWHo4emdzNVh0RzdNUmhpM3hWV0UtUFlPaXFlWWtlNFp6Zl91TWtHZ0RrVVdmUzVWWFNHckpSTXBvY3hVTl9BSHo4TnMyVG1FVUlWaTdSNXc?oc=5"
+      },
+      {
+        "title": "HUDS Expands Artificial Intelligence System to Reduce Food Waste - The Harvard Crimson",
+        "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9SRm9GejN3NzU3WlZDVFRJTmJETzh6UFBaU3dOSkF6UzBQMkVUOVdqQlozYlhXcXlvdlptVm1NbEJaUWdOcF9ERXRyNVFQMkhjR1ZacTJJdG1fY3NXN0FwT19fV2lwVXVFSTFyenFQcjVURG16Nnc?oc=5"
+      },
+      {
+        "title": "Nvidia Has 80% of Its Portfolio Invested in 2 Artificial Intelligence (AI) Stocks - Yahoo Finance",
+        "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOTlJaWE4wMTdlM1gySHFMcjlzbEt2RU9kaGpma0hqa0c3d1J4TE9KN29kMzcza25YYUlTd0Fkb3Y1UGFJQm1Ha29kcTlyeXh2SjBvNVRNaWY5UmVpUEtRRHZxbG5jaVA3TlFfbk1Pd0VzY1ZzOHpsT0Z4a2N4cHhsVnNzNXp0dWhqRXItTVRxQXkzay1XY1pxSlhB?oc=5"
+      },
+      {
+        "title": "5 classic movies that saw our AI future coming - MSU Denver RED",
+        "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxQdEFuUFdOU0t4YlM1cURTekpRUndldWlhM21wWUVqd05MWFcxOFUza285STNwV3dXZWxIenZKZy1zX0t6OWZmWE1XMl9GcTJzdmtxeVhhRVZFTVB3S0dlbHZ1YkZ6dVU1WmVSQXI0cy1qTTJMSEdIMDY3ZVduUjdqbDk4THQ?oc=5"
+      },
+      {
+        "title": "AI-Generated Evidence in Drug Discovery: Reliability, Legal Risk & FDA Compliance - Crowell & Moring LLP",
+        "url": "https://news.google.com/rss/articles/CBMi8wFBVV95cUxPXzNkV2c5dk43d1d5alhkOW9BbkJyY2h1VHNEd283dVJZdEc5dGhqbkpjNU1jUHpjXzZDRk5PTndtUmtUZ0hIVWxuRmlLMzN5OGczVlB4b1dWZDloMkV2eWc5ZEJVRkRvNkZ3MXYyOC1QMFRqTWJzTUZkVUl6cHJ1VVVyMk9TZ0xDOGs5eGRMWFVCWFZHUF9TLWJfMnhSbGNrSVVyWWJicGtNT3BvQmRJYlFGT1pkTVJuQWlITUg5MHRKMlRtREprc2xBTEZ2Wno3NU5yQlhYZGNrd3I3bzFlY2NhQWZtazhrWW1nbktxTlNDakE?oc=5"
+      }
+    ]
+  },
+  {
     "title": "Квантовият пробив: Как корекцията на грешки доближава машинните изчисления до хоризонта на 2029 година",
     "time": "2026-10-21",
     "category": "Квантови технологии",
