@@ -1,5 +1,39 @@
 [
   {
+    "title": "Нов хоризонт за изкуствения интелект: моделирането на човешкия ум",
+    "time": "2026-10-23",
+    "category": "Квантови технологии",
+    "category_slug": "quantum",
+    "url": "/articles/nov-horizont-za-izkustveniya-intelekt-modeliraneto-na-choveshkiya-um.html",
+    "img": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&auto=format&fit=crop",
+    "sources": [
+      {
+        "title": "Civil Beat’s Artificial Intelligence Policy - Honolulu Civil Beat",
+        "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxNNFU3Q1VwU18wc2ludzRwd1hWSmkwaUFYVDV3VWd2T2t6ZFRQOFpJVjA5VXFjYVZsdTlRM2hzZElIQ2k3Z19sWElwd29zWE5kUTItU2JSdFF5X0lkX28wNHB5MndEakJYTzhIT0d5SWcxVExNR3ltaE9WWGZKSXF5cE5TTQ?oc=5"
+      },
+      {
+        "title": "China urges government agencies to mitigate AI job displacement - Reuters",
+        "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxOMlVIUEhSdHd1VnZ4dUN2RE1iODlDNUs4YWJyTklNajFoYnhjSzNveTQtcmo3SDNhem5vSi1VNng0Y2YtdzlEM3JhcEZQM3U5elN5RWZHTFBwdFZ4UklWdzZkTEdvdkVhM21DTW1oMUdKYzloVnNiaE1LcEs1Z21rRXVkeHI3aldFM21RbEhmMzdDU3BQRm5HSWRaUkNMNkQ0V0lDZDU4VVVYRm1SSnJLQkhiQ0FkbGJzRmdv?oc=5"
+      },
+      {
+        "title": "Etsy bans AI-generated recipes and patterns from its online marketplace - CNBC",
+        "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPTTdYYVdqODdCNU5BbmVvekNKRGdZanduWXpncXVDZHdORm5HRGZCU1lSZ25jbk5jT1lkVFpjay1uRk5nWDR6SC1qYjItRGxIYlFyckg3eDVMcEZPdC1UUjVJODRVRDl3MGpLWEVnRDllUG1FLThjcXpCMnBfRnplb0dpcE85ZU82SER6MEZqc1hmQnROdlVrQWpWcEphZGlWS3d6bHY2c9IBrAFBVV95cUxPQ0gydG9zSThVYWlzWHlhUDF2ZFFrVF9nMEpnTHl4dVZtNHJDNEZTZWxrbWRXdzRhRjN0a0R6NTV6blE3WTV6YWZuUEhCalNjUnRiOUJWYkNjelNBZkpBVFVrblpFMlZWSjhPS29RaVVLaUdLVFZFcDFfbFJmUXBsSXNhWWhKZy1KV25FS25VTU1ZQXh1T3gyRTZaa3lfeUMxLUVxdWs2YkZ0c28x?oc=5"
+      },
+      {
+        "title": "Nasdaq Futures Steady as AI Selloff Pauses - WSJ",
+        "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPZ0VLcjUyVmtISG5uUVBpbjNndFBQV1ZqV3RqY0xwZjhvVFlfZ3dFdjYtNV9CNHdVek4wMUtYQnFLc0xEcnpZTWZRLWw3cm01cG9YaU4zcjdLeVFKZEE2MlNwWXJHaWY4M0IxS25iSjlCbUdmYmZBdVFrY0lFZmQ2RUtYc2NGV21FcjNWQU4wMA?oc=5"
+      },
+      {
+        "title": "In higher education, the race is on to offer AI as an undergraduate major - WBUR",
+        "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5LaGNMQ1JGV2dpb3dRaVpSS1NHQ0hyVk11Tm5VRk5XU1lVUmRkQ1ZkZG16anVUbHoyY0ZxMnBMUnprczFFZllUTy1NWlB1dEp0QVBzekRpSkJUTVlIbWY3UUtmS1JVT29qb0YtUGJaMDNhOGVlaGc?oc=5"
+      },
+      {
+        "title": "‘Klara and the Sun’ star Jenna Ortega: ‘Artificial intelligence isn’t creative’ - Los Angeles Times",
+        "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxNbXNyZGJ5aGs4blVBRDIwSTh4VVpGdldNSENmY2tfZlEwZ2JTamlkTTJXazFBYkFlT0c3QlFHQURrZ0tQSkNaRkhlQU1uS1J3ajMwZ3FTa3ZjWkhuU2MzMUZzWF92YjhxM3BUV3ZEYVlZNWFRUmlPVlIwbGl4YVI1X0oxdDRtOVN6Q1FsV0pxV3FtLUsxV3lOcENKS1VPN0k3N040OG11SUplLTVmOVM3TGM2dXJrSzRJampjSGExbw?oc=5"
+      }
+    ]
+  },
+  {
     "title": "Повратната точка в квантовите изчисления: Новият скок към устойчиви системи",
     "time": "2026-10-22",
     "category": "Квантови технологии",
