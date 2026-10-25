@@ -1,5 +1,39 @@
 [
   {
+    "title": "Новата фаза на квантовите технологии: между държавните инвестиции и търговската реализация",
+    "time": "2026-10-25",
+    "category": "Квантови технологии",
+    "category_slug": "quantum",
+    "url": "/articles/novata-faza-na-kvantovite-tehnologii-mezhdu-darzhavnite-investitsii-i-targovskata-realizatsiya.html",
+    "img": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&auto=format&fit=crop",
+    "sources": [
+      {
+        "title": "Why Trump’s Rebrand of Artificial Intelligence to Super Intelligence Matters - Time Magazine",
+        "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNdmpXSEdxRG93Z3B2V3NtZFF3X01rRkR5d2M0MHpQcDFFLXdCMHNHb1Jza3FyQmF4ME9HMHRWSjNXX1FIeFpMa0JGVGM1RC1aTV9fUkZSMW56dDgwNXhUVE5MUEVDOGlOVVZ1Y2xaNGhJeFlnYzBGeEVId3l2OV85RWZJUFBOaUU2UVZRZGstN0VGVFZaU2Vkb0x5UVp1RWU3aURnc1Z3VVkxYkJUV2ZoT1lR?oc=5"
+      },
+      {
+        "title": "SpaceX Just Shared Great News for Artificial Intelligence (AI) Investors. Here Are 2 Stocks That Could Benefit - Yahoo Finance",
+        "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxOVHU5T18tS3F5UFdTNEpMc0lONG5EaE56SFQ2V2ZreUtyR1BiTElPUnpVNjZsbngxU3V4YTdKbmpDcV91S0NfQkpuZ25kNkdyUVdGZmh0R01kNl8xYi1VNnBCejltd2Q1TmI3d2dMUS1jcnBPbmZJM0RSZ0JxNFFZNUpETEYwRXVOMjBpRTR6ejI5WExCYUNmVQ?oc=5"
+      },
+      {
+        "title": "SpaceX Just Shared Great News for Artificial Intelligence (AI) Investors. Here Are 2 Stocks That Could Benefit - The Motley Fool",
+        "url": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxNZ0RSekczdjlTWEJJUldpMnlMRndRNjUtdFN6a0FXQVBfdjV6dGJGVm1wQXlXN3AyRVl4MW1JNGdqM2YwRV8tWmlSSEZ2QnV2dzBnNks3ZHBvQVBHZjdOUnlYN1oyenZXbVFjWHlhQzIwem5HU1ZaekxPbWVIcGRNMlIwVDlfbC0tcTVTZlNWRjZyZXZscGpMYnowTDVuaGZXR0J1V09ZdzU5SHhYQnU0N0ZIZWNKZl9FdFVHSTh6VXlHZWpEOVdHc0EyV2xmZS1LejBoLXRUTWNrd2U2T09GSzd3X2s?oc=5"
+      },
+      {
+        "title": "As vote nears, Trump’s AI gamble fuels economic uncertainty - Los Angeles Times",
+        "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxOR2FOOGZVX1JSQnZIanlHbmlpQUFmMl9Eb2NqbGJyb1lpWUFkVXNjQndJak5iN002VGxZRjBnc1ZDZEFSNVEwQ2twUEZnR3VZTlF6YlRIX25iMHpuRE1TbUNNWWZIQkJrNlVTTlhBZUNtR18wdzMwQWtPWGVvQUtFaU5hOGtPdlc2V0J6cUF1M0dyY2JBMUp5anJWamdVOFYyLTVNMmNfejhDU1E?oc=5"
+      },
+      {
+        "title": "Super Intelligence - U.S. Department of War (.gov)",
+        "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE8wZ2otZUZNdk9MbGMtVlpSTXZSS05kV2x2RWR5bTU1ZlVsY1hTTTcwV04xOXA1TmJfdlhIVVZLZHFibklnYkJ4TWpjR2ZoVWxMcHpFR1dFd2VlRmVjcTdv?oc=5"
+      },
+      {
+        "title": "Wall Street Is Getting Very Nervous About AI - Jacobin",
+        "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxQWGkya2xZTEx0YWNBVXRVNUxTaXRHazI4ZGQ0WlpsOUxBMzhvM1U3WmdVM3loM05TR0FDWWFYZl9MMVV2MGpHay1DeEZ5YkFUQkw5aTVxSUctdDhUblZRd3FBTjJRQmVfclNDUENjeU9ZUWF1ZXpkbmd5c3VCWXVJR3d3?oc=5"
+      }
+    ]
+  },
+  {
     "title": "Квантовите компютри и тяхната най-голяма бариера: как изкуственият интелект се намесва в корекцията на грешки",
     "time": "2026-10-24",
     "category": "Квантови технологии",
