@@ -1,5 +1,39 @@
 [
   {
+    "title": "Мащабната надпревара за изчислителна мощ достигна нови измерения с капиталовите инжекции в AI инфраструктурата",
+    "time": "2026-10-26",
+    "category": "Квантови технологии",
+    "category_slug": "quantum",
+    "url": "/articles/mashtabnata-nadprevara-za-izchislitelna-mosht-dostigna-novi-izmereniya-s-kapitalovite-inzhektsii-v-ai-infrastrukturata.html",
+    "img": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop",
+    "sources": [
+      {
+        "title": "Illustration shows \"AI Artificial Intelligence\" words and keyboard - The Lufkin Daily News",
+        "url": "https://news.google.com/rss/articles/CBMi9AFBVV95cUxQSW5ibl92RHRsRWVBODI2WWQ4b2FXTkxLbHMzcWpIQllFOEtjNHJJSHRaLVhEZ3ZuUU1fZjdWM3RJbl8wc0pkN3hoTl9wX3laUlF6TGNtZm9lOUYxc3lXRUpPbU5WaV8yTWFmZTJoejdLRHZyejBNbEZFVjYtcDZuOTh0U0VCUGZPbWVDc2MtYzA2eFFRZUZnWW1ZT0VmdnJLX1FZSmNFbVNNMTE3S2FWSjQxVm1uZ0hkeGRrUE5neG1rTUw4dnBvdDNHUXlfNG5uMDQ4cmwtVS1TaGtFbi13UGNpSmpMYzdIeG1yZHJYQ1JGNVYw?oc=5"
+      },
+      {
+        "title": "AI will transform capitalism – but how? - The Guardian",
+        "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxOX0FZa2NtaEdMSERqbGRwMDN4Q1doVzF4VXIyVFFvNzVVRVZoVUtEYUY0eTZtbmtZQ3dVRjVoSGduMXp6OFNCVXVwaFd2SG5ISEtDSGNvQktCTEsxQ1RsYUdaSkFad2FKUWVyN3RiV1BoSjk0XzBXY0NPTVJocDZ6Z0FvZXhjOVJKam02M29Wb2Y?oc=5"
+      },
+      {
+        "title": "What are the five pros and cons of artificial intelligence? - Al Jazeera",
+        "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPUkJUcjZydEhPb3Itel9PUVFhWFpZcm5GRE1UYUhQQWxRYjdLbmp0RTg4T050Q0N3UGtral9HSFEzc2NXcWFnd3FwOUhPS0tpc0k4cXFZOHJuWHJ1TUYzN1ItMUNxMGRDbDNiMlZYV205eERMTk9uUjg3NzJleUdYOG0zSEIzU2RHTDZCRjROMU9qZW14MXh1SnU1MlFrWkkt0gGmAUFVX3lxTE1PXy1fNFdzYUxKLUVpWWN0RjhGaEp4ZnJXOFVEOGZ6RkxYb0NKUDR5SkliWmZTSXpYR3U1RFdVc0ZPM0FuVll2cF9lbnRpcTN5ZWVWbm1mTVdobklyaVlqUGdRSlFaMEg5SVNTa1AyR25HN0pOUHptdnVmY01JQmRDZUxUbTV1OXl1Z2JjRDI5UXBRR1N5MzJqZWRHd1gxN1ZZZ1U2cHc?oc=5"
+      },
+      {
+        "title": "OpenAI’s next big AI model has ‘entered the AGI era’ - The Verge",
+        "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPZ2hnTl9HSkEyWms5WjFLRmpfRW5acEMzRzRwQ01xY0ZKZ3ZiMG5sZk5QMUp5SVI2OWhkQkNlTUs2QVBzMlItaTN1M0VZbXVDYml2alVIUHNxc0hOcm85SWdUVC1XUFEwaEV2UGc3RlhwaWdEcElHcUZiZW5zLXFjUmpCQUFxanYtS2QxZThn?oc=5"
+      },
+      {
+        "title": "I’m a father of three who studies the impact of artificial intelligence: this is what parents need to know about AI - The Guardian",
+        "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxNZUp6TVFuemZ5UmY1aXQ3a1dSRzhKTk5FbDRvUktyYkNPQnpEZFhJWjh3Ym1EamdrVVNWdkh4MEhyN0w0aVpWRi13THcyQkh2Q05xLUVZUDlaekt6aUF6LVlId2liVXVTZC1fa09aM3E4RWtYclBkeG5kUVFVOEQtaFI4X3laOFJNemlGUlI1RG0yY3NJc0RncU1sYVpvR2VNdV9nNlpoZ0FDUTc2ajhPX3pQeDBTN2FqT0M3Ylo5cGUwSzJnOE1lMVlNVQ?oc=5"
+      },
+      {
+        "title": "World Bank says ‘small AI’ could transform developing countries - The Guardian",
+        "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQYlhMNzlYUUZNc1F4dTZiUktjcDhOc3FMVlVxblc5Yi1sSnN0bWp5dU4zczhReDh4Ym5LbDJVZl8xT2k2TGVveW9CMkFfV2ZvZlA3cC1oQjY0NHh4MDRtRzRCM2xodFoxSjBtR1R5SnJvZDdPRU9BQTFaYXo2LXRyY0lNN1NGSzl1UWpHWkdWQVNVS1BGVnBYd05aV3NUdkJBQ1U4N3VzYllfUQ?oc=5"
+      }
+    ]
+  },
+  {
     "title": "Новата фаза на квантовите технологии: между държавните инвестиции и търговската реализация",
     "time": "2026-10-25",
     "category": "Квантови технологии",
