@@ -1,5 +1,39 @@
 [
   {
+    "title": "Придобиването на Classiq от Intel чертае нови очертания в комерсиализацията на квантовите технологии",
+    "time": "2026-10-27",
+    "category": "Квантови технологии",
+    "category_slug": "quantum",
+    "url": "/articles/pridobivaneto-na-classiq-ot-intel-chertae-novi-ochertaniya-v-komersializatsiyata-na-kvantovite-tehnologii.html",
+    "img": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&auto=format&fit=crop",
+    "sources": [
+      {
+        "title": "Illustration shows \"AI Artificial Intelligence\" words and keyboard - The Lufkin Daily News",
+        "url": "https://news.google.com/rss/articles/CBMi9AFBVV95cUxQSW5ibl92RHRsRWVBODI2WWQ4b2FXTkxLbHMzcWpIQllFOEtjNHJJSHRaLVhEZ3ZuUU1fZjdWM3RJbl8wc0pkN3hoTl9wX3laUlF6TGNtZm9lOUYxc3lXRUpPbU5WaV8yTWFmZTJoejdLRHZyejBNbEZFVjYtcDZuOTh0U0VCUGZPbWVDc2MtYzA2eFFRZUZnWW1ZT0VmdnJLX1FZSmNFbVNNMTE3S2FWSjQxVm1uZ0hkeGRrUE5neG1rTUw4dnBvdDNHUXlfNG5uMDQ4cmwtVS1TaGtFbi13UGNpSmpMYzdIeG1yZHJYQ1JGNVYw?oc=5"
+      },
+      {
+        "title": "Trump says the US is officially renaming AI to ‘super intelligence’ - The Verge",
+        "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQaUFoY2g1bnk4RHRWblhvbHhlUUlRaWtyV2x0cHZocHJ3Y2hKSlY3UTlVaFdFdTNUQkRERGRZTzh3SHdDSzhUd2tkemlTc1pGY0NkNXBJM1QwdkZ0X3hYcGUyN1V1R3puQ01fckkyNlA0Mlh4d05ORW5JY0RrS05rc3plUHZ6WmZrV2RKYjJ4X2xaX05OdFI0OQ?oc=5"
+      },
+      {
+        "title": "Could AI pose a serious threat to our existence? | Letters - The Guardian",
+        "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQMUVzaDBWS09WZWNFRkNlS3RObzI4S2RhaDJweFZVWFpGaFVUU2REUlN1SDVFWWFVWUMxV3JNZTVTLTZVYTVFa3dXSGczalFiQVQ1R0cyOU9LQks0Qm5XczV0aDBUNVFBZ2Z5MlBDc2pDRy1ZeGxVemxSdGdPTFBUWkF2ZFVJRkFFcm40RG9vYTJEVGJranlBREVoTHRGV0U?oc=5"
+      },
+      {
+        "title": "What are the five pros and cons of artificial intelligence? - Al Jazeera",
+        "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPUkJUcjZydEhPb3Itel9PUVFhWFpZcm5GRE1UYUhQQWxRYjdLbmp0RTg4T050Q0N3UGtral9HSFEzc2NXcWFnd3FwOUhPS0tpc0k4cXFZOHJuWHJ1TUYzN1ItMUNxMGRDbDNiMlZYV205eERMTk9uUjg3NzJleUdYOG0zSEIzU2RHTDZCRjROMU9qZW14MXh1SnU1MlFrWkkt0gGmAUFVX3lxTE1PXy1fNFdzYUxKLUVpWWN0RjhGaEp4ZnJXOFVEOGZ6RkxYb0NKUDR5SkliWmZTSXpYR3U1RFdVc0ZPM0FuVll2cF9lbnRpcTN5ZWVWbm1mTVdobklyaVlqUGdRSlFaMEg5SVNTa1AyR25HN0pOUHptdnVmY01JQmRDZUxUbTV1OXl1Z2JjRDI5UXBRR1N5MzJqZWRHd1gxN1ZZZ1U2cHc?oc=5"
+      },
+      {
+        "title": "World Bank says ‘small AI’ could transform developing countries | AI (artificial intelligence) - The Guardian",
+        "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQYlhMNzlYUUZNc1F4dTZiUktjcDhOc3FMVlVxblc5Yi1sSnN0bWp5dU4zczhReDh4Ym5LbDJVZl8xT2k2TGVveW9CMkFfV2ZvZlA3cC1oQjY0NHh4MDRtRzRCM2xodFoxSjBtR1R5SnJvZDdPRU9BQTFaYXo2LXRyY0lNN1NGSzl1UWpHWkdWQVNVS1BGVnBYd05aV3NUdkJBQ1U4N3VzYllfUQ?oc=5"
+      },
+      {
+        "title": "I’m a father of three who studies the impact of artificial intelligence: this is what parents need to know about AI - The Guardian",
+        "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxNZUp6TVFuemZ5UmY1aXQ3a1dSRzhKTk5FbDRvUktyYkNPQnpEZFhJWjh3Ym1EamdrVVNWdkh4MEhyN0w0aVpWRi13THcyQkh2Q05xLUVZUDlaekt6aUF6LVlId2liVXVTZC1fa09aM3E4RWtYclBkeG5kUVFVOEQtaFI4X3laOFJNemlGUlI1RG0yY3NJc0RncU1sYVpvR2VNdV9nNlpoZ0FDUTc2ajhPX3pQeDBTN2FqT0M3Ylo5cGUwSzJnOE1lMVlNVQ?oc=5"
+      }
+    ]
+  },
+  {
     "title": "Мащабната надпревара за изчислителна мощ достигна нови измерения с капиталовите инжекции в AI инфраструктурата",
     "time": "2026-10-26",
     "category": "Квантови технологии",
