@@ -1,5 +1,39 @@
 [
   {
+    "title": "Модулният квантов пробив: Защо преходът към свързани процесори променя правилата в индустрията",
+    "time": "2026-10-30",
+    "category": "Квантови технологии",
+    "category_slug": "quantum",
+    "url": "/articles/modulniyat-kvantov-probiv-zashto-prehodat-kam-svarzani-protsesori-promenya-pravilata-v-industriyata.html",
+    "img": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&auto=format&fit=crop",
+    "sources": [
+      {
+        "title": "Trump Wants to Ban Use of the Term 'Artificial Intelligence' and 'AI' - Variety",
+        "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNU1NaRHNKaV9MWk9DVTdZSERQX0F5SmwxYS1Jc09JaVMzX1lTV090VVptNi1WcTRKTk9hREs3MVczakIzbzNsbjFLUmxjeTdVWlpGcklXXzZqWmFsLTBsUmFLY2NLLWp4WjJnMk9HTzhMc0psaEpWaU55dlhCRDFRbzF3dV9ib1N5ZER3SEpGcDlXYjlERU1xWE9PdmVtNjFfVDBhRA?oc=5"
+      },
+      {
+        "title": "Tech leaders to UN: For the sake of humanity, please control the AI technology we created - AP News",
+        "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPSHBObE1ZM3ZSc0QwNURQWkZkS2tORVNRMHhNUUhvNjNZRjR4RHNIVWlyUE5qZV82WVowbEFFX2RhR09TeE5WMHQ4S3l0TkdZTjN3YWdvVUNfRUZYdTZVOW9jc3YtQlNHdWNjcFh4cl9jNlk4VDkxMlFJc18ybzlLN3B4NjZxZVB3cFNBTy1mSXlLVmZlbDRpdXd4WVljVEtaZGxkRHpIMTBSZw?oc=5"
+      },
+      {
+        "title": "Trump says US will form 'AI Force' and appoint an artificial intelligence tsar - BBC",
+        "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE5EY3VnMXl3UWxCSEdXd19kVUx1UDAzdS0xY2RrdFh6NWRINDRXb29xNjdPLW5CMDRQbE9TdHMtMXY4MC1yb01kcHpwSlNLQVI0TndKaVM1Q2xFWmM?oc=5"
+      },
+      {
+        "title": "Trump says the US is officially renaming AI to ‘super intelligence’ - The Verge",
+        "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQaUFoY2g1bnk4RHRWblhvbHhlUUlRaWtyV2x0cHZocHJ3Y2hKSlY3UTlVaFdFdTNUQkRERGRZTzh3SHdDSzhUd2tkemlTc1pGY0NkNXBJM1QwdkZ0X3hYcGUyN1V1R3puQ01fckkyNlA0Mlh4d05ORW5JY0RrS05rc3plUHZ6WmZrV2RKYjJ4X2xaX05OdFI0OQ?oc=5"
+      },
+      {
+        "title": "Could AI pose a serious threat to our existence? | Letters - The Guardian",
+        "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQMUVzaDBWS09WZWNFRkNlS3RObzI4S2RhaDJweFZVWFpGaFVUU2REUlN1SDVFWWFVWUMxV3JNZTVTLTZVYTVFa3dXSGczalFiQVQ1R0cyOU9LQks0Qm5XczV0aDBUNVFBZ2Z5MlBDc2pDRy1ZeGxVemxSdGdPTFBUWkF2ZFVJRkFFcm40RG9vYTJEVGJranlBREVoTHRGV0U?oc=5"
+      },
+      {
+        "title": "What are the five pros and cons of artificial intelligence? - Al Jazeera",
+        "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPUkJUcjZydEhPb3Itel9PUVFhWFpZcm5GRE1UYUhQQWxRYjdLbmp0RTg4T050Q0N3UGtral9HSFEzc2NXcWFnd3FwOUhPS0tpc0k4cXFZOHJuWHJ1TUYzN1ItMUNxMGRDbDNiMlZYV205eERMTk9uUjg3NzJleUdYOG0zSEIzU2RHTDZCRjROMU9qZW14MXh1SnU1MlFrWkkt0gGmAUFVX3lxTE1PXy1fNFdzYUxKLUVpWWN0RjhGaEp4ZnJXOFVEOGZ6RkxYb0NKUDR5SkliWmZTSXpYR3U1RFdVc0ZPM0FuVll2cF9lbnRpcTN5ZWVWbm1mTVdobklyaVlqUGdRSlFaMEg5SVNTa1AyR25HN0pOUHptdnVmY01JQmRDZUxUbTV1OXl1Z2JjRDI5UXBRR1N5MzJqZWRHd1gxN1ZZZ1U2cHc?oc=5"
+      }
+    ]
+  },
+  {
     "title": "Новият график на NIST изправя криптографията пред квантовата заплаха",
     "time": "2026-10-28",
     "category": "Квантови технологии",
