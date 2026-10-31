@@ -1,5 +1,39 @@
 [
   {
+    "title": "Модулният подход в квантовите изчисления набира скорост с нови архитектурни решения",
+    "time": "2026-10-31",
+    "category": "Квантови технологии",
+    "category_slug": "quantum",
+    "url": "/articles/modulniyat-podhod-v-kvantovite-izchisleniya-nabira-skorost-s-novi-arhitekturni-resheniya.html",
+    "img": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&auto=format&fit=crop",
+    "sources": [
+      {
+        "title": "Big Tech's AI bill comes due, but Michigan automakers see a rebound - Detroit Free Press",
+        "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQUC1URVlaSzR4T3lZbFhGeW5Hb3U5SEg1N2xPcXJpMEZSX3g5aUVIUUNlanRQX0lTV2Vudm56cVh2UEZiSFp6V1hXSm5mSGxMZWZBNTcyUmNjRkVYc1hEMkJra2NXVEhHSklEX1JIczlDWERxeGtNeHRDNkc0WmR5bWJKdko2TFVFYjN6Z185WTI2Y3JfaUUwZm1DZFFzRGFVMmtKc01pUHJaWEctcmZYVw?oc=5"
+      },
+      {
+        "title": "Musk and Zuckerberg echo Trump's push to rebrand AI as 'super intelligence' on earnings calls. Others do not - CNBC",
+        "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNZXZlRGxMZ3BzTFB6M2kxdWMtZDNTQUZqRmRSRTVUTnN5OUxycXdjSFNveEEwR3ZNVnFqZzlsVWhQbVB6emVRT29mUEhyd0g1am1zb1VGTTFGeXItRklfUVphc19JcTlsVFNWWmxhaHQzcUQxMkRXUFNNMW9ObFhFbER3VUg5UmxZSWthbUo4MVF2akIxcUQwZWNXUEoxU1IxSnVkNm5B0gGrAUFVX3lxTE1OR0kySFBiZEQ4eTZPTDR2MEpmMXlVbmVqVVFGbWpBTXBWM252d2wtWFRBYUE3M3dvWHloWHF5bU9penBtQkVkYXVFaTRSb0dtaTdQSTEzT2dtcUJyaktfYk55VU5aT0VSVFRSYlZVWF9oLU5yUDFfb1ZoUW0yVXk1elpWQnU2NTR0Y2E2MnBQWTFjYlN1cERNOUdiQU9Gc0thdkpMYWFMOWlRYw?oc=5"
+      },
+      {
+        "title": "Artificial Intelligence is a Horror Story - Literary Hub",
+        "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9fSTRQUGFjdVBtcHlhR3JzcnFBNktqa2VBb3FaV0I2RWJfRWdUMEZMLVJDckJrbUlQTHcwRzNFLWQzZ2Jna2RQTnJHcEswNlprZWM3QjNPRkl3S0VuVnU4UDFaYXZESjFHUjBHT3N3?oc=5"
+      },
+      {
+        "title": "Looking at the future of artificial intelligence in the workplace - Local 3 News",
+        "url": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxPeXdqOFNnU2RhYUN2eG9mb1dubVRjWDRMV2JxSDVqMDl3RVRJY280R05zc3djRjBnT252YUcteXVlN1l5VmhrWjRUNi1sWkpINWpjbndiSUMwSG9YdUJiX3RtMVR1a2E1VEdnZndqVHNhbWtodHIzN1BWWkJOakZ1TFNnV3pMSUlSNzF5OVNYR0xjZnlVcTkwX3VOdElRQXF4N3RoTjFtcGN5SUhvd1o3M0VfcHVEYkxCTTQ5ZXlmeEY3RnFwYlhhSGREQjllaXBOZ2l4UU1fTlR0RmFTZEl1aDJxNnRLaEIy?oc=5"
+      },
+      {
+        "title": "Opinion | SI is the future of AI – just not in the way Trump thinks - South China Morning Post",
+        "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxNOWNfNFdUU0c3WDlEV016RnM5SWhXaGxZeGJRdThyY1BvcWNXZXNrelpuS3BQSWlnWnZnV3BRMkRjTkE5TzBYdC1peU41VDJ3UVVmV3RsbE9IS0RlUXpSaVpORFNYNWFCVGRrdmtGQjZMV08zMWxveTRSaFZhRXVhQUhhZnRnQzgtSF8zOGwtTWhQcElzVmh2eERWNVdxQdIBngFBVV95cUxOUFZFaDhCREhxSFh5dnZqTTBQWlU1NGVYZ3lYX2wzSk91ZUVpRkc2T0lnWTliZDU0SjRTTWNGYXE2TEF5VmdoZUVYN3FYeHFqWW5zVmxPdE5QdmwzQ1gtVmkxMlJuOHhDd0g0bHB2NjAwUXp1RElfcXdWbFpKdjlPUDFUU0VlMENHNmdtQUE4SVM0Rk13Q1ZwbVlqejlFZw?oc=5"
+      },
+      {
+        "title": "Reader's View: Delay deployment of artificial intelligence - Duluth News Tribune",
+        "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOVlplSWhoSXc3UEVpTjduN0FQaXljVUMwbjZobDBXWkpRaXAxU0lPc3FudUc0bFN5VGkyZTZKbk5Kc1RRRExac2UxNTE0YTNsemEzTHV2bHhHUVRrY0NGd0RqdkI2c2U0MElLVXlENXZPX0gyR1lVd2pOOG1GSldaRVRGMmZrTXdRRzhqX2pCYmJnYkFFdlpXSXB4Ukpfc0loY3JZNjNhZzJqUQ?oc=5"
+      }
+    ]
+  },
+  {
     "title": "Модулният квантов пробив: Защо преходът към свързани процесори променя правилата в индустрията",
     "time": "2026-10-30",
     "category": "Квантови технологии",
