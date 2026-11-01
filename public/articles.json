@@ -1,5 +1,39 @@
 [
   {
+    "title": "Модулният квантов пробив на IBM: Как l-couplers променят архитектурата на изчислителните системи",
+    "time": "2026-11-01",
+    "category": "Квантови технологии",
+    "category_slug": "quantum",
+    "url": "/articles/modulniyat-kvantov-probiv-na-ibm-kak-l-couplers-promenyat-arhitekturata-na-izchislitelnite-sistemi.html",
+    "img": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop",
+    "sources": [
+      {
+        "title": "Musk and Zuckerberg echo Trump's push to rebrand AI as 'super intelligence' on earnings calls. Others do not - CNBC",
+        "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNZXZlRGxMZ3BzTFB6M2kxdWMtZDNTQUZqRmRSRTVUTnN5OUxycXdjSFNveEEwR3ZNVnFqZzlsVWhQbVB6emVRT29mUEhyd0g1am1zb1VGTTFGeXItRklfUVphc19JcTlsVFNWWmxhaHQzcUQxMkRXUFNNMW9ObFhFbER3VUg5UmxZSWthbUo4MVF2akIxcUQwZWNXUEoxU1IxSnVkNm5B0gGrAUFVX3lxTE1OR0kySFBiZEQ4eTZPTDR2MEpmMXlVbmVqVVFGbWpBTXBWM252d2wtWFRBYUE3M3dvWHloWHF5bU9penBtQkVkYXVFaTRSb0dtaTdQSTEzT2dtcUJyaktfYk55VU5aT0VSVFRSYlZVWF9oLU5yUDFfb1ZoUW0yVXk1elpWQnU2NTR0Y2E2MnBQWTFjYlN1cERNOUdiQU9Gc0thdkpMYWFMOWlRYw?oc=5"
+      },
+      {
+        "title": "Artificial Intelligence is a Horror Story - Literary Hub",
+        "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9fSTRQUGFjdVBtcHlhR3JzcnFBNktqa2VBb3FaV0I2RWJfRWdUMEZMLVJDckJrbUlQTHcwRzNFLWQzZ2Jna2RQTnJHcEswNlprZWM3QjNPRkl3S0VuVnU4UDFaYXZESjFHUjBHT3N3?oc=5"
+      },
+      {
+        "title": "Artificial Intelligence is overthrowing the purpose of schooling. Now what? - New University",
+        "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQY3Nuc050dkQ4YjJlOVVlZkVNLUFnY3RkcHhjbkJ2cDhaRk5MMHpSOEdBYU5PMWZlRHZIR25jaGFHRm9QN3o5ckJveGM1R1RjQlRhbmhCZ3FWLTYtYlBnNWp1VzVmQ3BpM3F1QnlGTWhyZFZ6UnF2RThUME5ON21SUFdqWE9UeDQtaG05Z1ZvekJQUUt0ZE1RaUV4TWY4YkpqSnpvb2NRcDFrRWtBbm5TeQ?oc=5"
+      },
+      {
+        "title": "NYSBA Releases In-Depth Guidelines To Advise Attorneys on Ethical Use of AI - New York State Bar Association",
+        "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNbGloX0xSbUxSNEpYaWZNTmRJUmdQMGZxY2JoX1c3a0d1endoZ0Q5N1VhNnJ0Njl5U0hfdW5NbEpkZllSUXNkYlI1QXdfRHRjNUowWUNEX1ZqZW1mSXl0bkxwVnJTaC1vWnc0WDctZ0htTGxsWGo2RDZUa2NpVGpEdzNMWDVLNEhvSWUwcGVLcHd4LUdmQ0JLWGp3?oc=5"
+      },
+      {
+        "title": "One of the Fastest-Growing Segments of the Crypto Market Involves Artificial Intelligence. Here's the 1 Cryptocurrency I'm Buying Now. - The Motley Fool",
+        "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQUklsY25Zb20yOVdCdXJCeHNaOEYyUktSSEJSam1iQkNST2hyUEFtZU9RdU9xTFFyMHZCM24zbWxEVEhPWFpwdnMzOUc2VDFoX3RSVEo3N2FfQWdRaHdBb1Q3OEJ4TGpmMEF1QWR0QXRJSUl6ZUxqUjd3c2ZwczdhRzdRek9qeG9SX0g4TS1HUkRPRG9yTENn?oc=5"
+      },
+      {
+        "title": "Why artificial intelligence can’t replace your financial planner - The South Dakota Standard",
+        "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQZEZnZHBQY1FER3c2UlVMekJKYkZPN3VYcVZXaV9wVkEybmRlQl96UldxV3hFUUFTVHRRajlRM0w4bjZLc2E4d3M1TG45SWsxQkdvV2pHNlBhM3NiUHZvbm1pTS1CMUVNXzFyazdzbEJOVkpDcTBoVXNyUkRUQXhaVFhvM0dHbDFwRHB0MnJEZm8wZzNJRTNPYVhTTUMwNzg?oc=5"
+      }
+    ]
+  },
+  {
     "title": "Модулният подход в квантовите изчисления набира скорост с нови архитектурни решения",
     "time": "2026-10-31",
     "category": "Квантови технологии",
