@@ -1,5 +1,39 @@
 [
   {
+    "title": "Квантовите технологии срещу ограниченията на данните: как изследователи използват нови методи за ранна диагностика на белодробен карцином",
+    "time": "2026-11-02",
+    "category": "Квантови технологии",
+    "category_slug": "quantum",
+    "url": "/articles/kvantovite-tehnologii-sreshtu-ogranicheniyata-na-dannite-kak-izsledovateli-izpolzvat-novi-metodi-za-ranna-diagnostika-na-belodroben-kartsinom.html",
+    "img": "https://images.unsplash.com/photo-1535378273068-9bb67d5beacd?w=800&auto=format&fit=crop",
+    "sources": [
+      {
+        "title": "Artificial intelligence use doubles among rural Nebraskans - Nebraska Public Media",
+        "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQR1FaTElaMHo3UjdkdlZEMFB3V1pDTkJ1VVVMQ1ZjX1Rqa0lNOF9La2ZkMlBZTVJzb29EMkY0RERrN1g5WF9SRTd1ZW1nVEs2TWEzWGZuY3ZxbWp1UUJxWnBxcVVnU25SUDNfd2JEc3NoNXBhYnVEQ3FualdUNW1VaFc1cUVEcGgtRW1BdjJ4NjhnUGlHbmJDN2FhM1NmZGpuRzhuRTY5WUI2OElHOHlCQXZiVQ?oc=5"
+      },
+      {
+        "title": "Generative Artificial Intelligence in Clinical Reasoning Education: A Focused Review and Framework - Cureus",
+        "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxOTjdmaWJjVHEwYlVXTnFjZTVaMTZlalRTYXQ4LTc3NS1UUnpQQVQ0clJPLVVyZ3ZOZG1ZRVlzbUduWTVzSERLaWIzMjJoLVpHaFVlcmg1Q0U0TzF6NGVvX3ZMMzdNQWZhVUpsanpld01XcGVva2k2Ung2Z19va3E5bHBxWl8wTjRLblBIX082U1UzczZTTWl5d202djJEUVEtSzQxWlNmUGhsT1F6THZaWVZlLTU4c1RGMGwzdFRDS2VTSnlwN1BRamRIamZCLVFnenc?oc=5"
+      },
+      {
+        "title": "Students for Human Intelligence platforms AI concerns for Mizzou - Columbia Missourian",
+        "url": "https://news.google.com/rss/articles/CBMigAJBVV95cUxNaWJyOFNXVE1STVJzckIxTlZEbFBMWkdqbnEwZlA2S0tFMGhia2pTR3l1QTRDVm9CNW5xOVM1SHZpUFpvWTlheFN3d1ZQTldidjRodUMybDQ5SkgyejE2NHdzS1BweHd2cXZtanN2M2YwZ3U5ZEVtbE9ISlowazl6UEVGbVluZjFSbHZyS1NYanJzUmtGcERUUzFBSE5qVHNvYmxLNk0yYXMwZEZya1FWd0VyMjlQWWlhOTJxaFdQMkdZYmRkaHlBQUxiSno2bkkwSTRjQlE0Z2w3VUU1SEJSb1BLOEkxajU1Nk5KbjdDQWZhb1FBLXRKNm4tU180R2NZ?oc=5"
+      },
+      {
+        "title": "Will artificial intelligence make caddies a thing of the past? - Yahoo Sports",
+        "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxOZVdMdXp4SjZETnhDSzItM3RnRHlDUE01ZHZleXlDdWZQaVNVcEZOUTNxVWZ6aUIxSlppZUwweXU2bjI2TzVLcXB4UzhWZWI2R3BqZ1VXVVhyQTY2cHJnZFhsNVNxN25SQ3M2LWUtY05QNkJQM3ZUOENCSjBYVmpTTTg1LTViRXkzWmUwejBZSkkzOVl2Tnc?oc=5"
+      },
+      {
+        "title": "I asked Artificial Intelligence what it thought of New Jersey - New Jersey 101.5",
+        "url": "https://news.google.com/rss/articles/CBMiSkFVX3lxTFAxaFVDcXlMN3owbzQtakoxamJkSjVFb2pOQ0RxZC0yUU0yWHRaX2hrem00VF9BTmh3QkVpckprR0NvMTMxR2lyR3ZB?oc=5"
+      },
+      {
+        "title": "Rise of artificial intelligence in Athens affects local artists - The Post",
+        "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxQRjlzQ1NCZURyTThKOHdhU3JFblhCeDAtVllKWnVkZ2NGZWdZVlVsT09vbEtiMS1ORHk4VWYyTG9zVGJMLTQtZHRYaHRfa0RWUmxXNnVkYU5Xd284aTItaW5KUTYxVVVKanFVTURXR3NQNU5sdml3RmtlczVuSWxuSGhVcmdvMHVCLW1tUnFkblF3NkZO?oc=5"
+      }
+    ]
+  },
+  {
     "title": "Модулният квантов пробив на IBM: Как l-couplers променят архитектурата на изчислителните системи",
     "time": "2026-11-01",
     "category": "Квантови технологии",
