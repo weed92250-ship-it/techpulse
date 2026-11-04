@@ -1,4 +1,13 @@
 User-agent: *
 Allow: /
 
+User-agent: Googlebot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Mediapartners-Google
+Allow: /
+
 Sitemap: https://techpulseon.site/sitemap.xml
