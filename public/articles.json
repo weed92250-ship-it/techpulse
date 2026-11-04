@@ -1,5 +1,39 @@
 [
   {
+    "title": "Сложната логистика на технологичните ограничения: как забранените чипове намират път до пазарите",
+    "time": "2026-11-04",
+    "category": "Киберсигурност",
+    "category_slug": "cyber",
+    "url": "/articles/slozhnata-logistika-na-tehnologichnite-ogranicheniya-kak-zabranenite-chipove-namirat-pat-do-pazarite.html",
+    "img": "https://images.unsplash.com/photo-1535378273068-9bb67d5beacd?w=800&auto=format&fit=crop",
+    "sources": [
+      {
+        "title": "Advancing software engineering education with artificial intelligence - Augusta University",
+        "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPNU5EUUxGbHdfb0tDbTduOXJVLUhWZkhwRmJ1OENKaFFRU2VMODl6OWJ3NlAtd193Q0h1VW1iTTNaNzVzc2s4SmRhbWFRZTVIZEZaUmx2LVJzbFNuLS1HOGlvbFN2VWk3czVBZy1sTjFOcU9DSXhCcHR2WnhHbmlRdC1sZXp2ZlVndUxINmFTa1otY25MSk9RTFNuWGF2RkE?oc=5"
+      },
+      {
+        "title": "Google says there’s no way to use Search without using artificial intelligence - The Guardian",
+        "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQejExRlAwVmpXSkJOMFppQ3NXOFRGT2lkOGQ3LURUVS16UjRQa3llY01OY3FxdW1TYWVHZUR4c3NXbTRIT0pUQ2hIZGxlYzRFS2Q1ZG5qRTNNbDV0cnZJMHJaOFRfU1RzTzkzWFF1OVhUaUVhWFh1anhEV0JTb2lSLWJ0UEo5X3pyeWhNTkFSMWMtUQ?oc=5"
+      },
+      {
+        "title": "Lawyers offer recommendations on proposed AI ethics opinion - The Florida Bar",
+        "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxOclNjeFJjd3dJVXZRa1VoUFZMU3VrMHpRTHVOX1ozcVV4akZwWjVScnA0a2RveVN0Rk1hUHhsX0lsZ1RrN1ZQUk5qNWt0aHR6N0o5SE1BNjJBOHo1ekJrWjBRQTZ1R05jZkd3SFJPWWU2bEV0R0pPdU9UdmNMT1RFX0dwVkRweUExdDNIRThnOGFRZUJpNkR0N1lrdDlRMnhfQW43VFBjSzZOYjdH?oc=5"
+      },
+      {
+        "title": "HCPSS Teams Up with Student Group to Drive Student Interest in and Understanding of Coding, Computer Science, and Artificial Intelligence - HCPSS",
+        "url": "https://news.google.com/rss/articles/CBMiigJBVV95cUxQNlhtR3hHUVJLcG14dkQ4YWY1SnJEUHVwaDJGSTRjd0pqbWJ4NXVfbDgzSG52LXc1dDQxa3liY3d5dVJHbEN5TlRELWk3R2xyUDNIX1p2RmRoWTNZLXdSVDZvT2JkNnRmTDlCWk1Ya2h0WGhkc2toWlU1LUNJdWFjeU5ONFJDRk1XM0p2bEhKLVd1SXRUSjk2UXpBSjVYTW5WYnFCRmhrckNCTjdiRi1zY2hsUHdDa2VIdU9qcHV1dkVTQjdnN05Zb1ZyWE5CRDVKWEVrZkx0YkJxWnF0MDRuU2ZfQVB0bElURjBySGljaFgyZEJ4Z3FWbDEwS3RDZllxM2thZEVXUHROdw?oc=5"
+      },
+      {
+        "title": "DOE Explains...Artificial Intelligence - Department of Energy (.gov)",
+        "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE41OVprOE5tN2lBVzZuck52RDRvRU9FU0JvNThpald0enFRaUNzSHBxY0QzVmVhWnJMMHNEUXAzUlNrRnFmOFBtNkpTUVhTQ1lkdFVFeXJpRUZodHAwWTZwMDQ1UzNfMThKTFZqSjZuWkxtOEl2?oc=5"
+      },
+      {
+        "title": "EU rules on Artificial intelligence devices will apply in NI - BBC",
+        "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9XLVFyNmp2WG1CSG1aU2NodnRlRUt0QjBsaHYtb0pFTEpkQlFUUWcwZ2dQWmFzaU5IajJ6VlMxZDNiTVFST1ZhQTduXzFCR1liLVNNTkQ2Um5jY28?oc=5"
+      }
+    ]
+  },
+  {
     "title": "Битката за квантова стабилност навлиза в нов етап с постижения в потискането на грешките",
     "time": "2026-11-03",
     "category": "Квантови технологии",
