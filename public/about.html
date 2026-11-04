@@ -44,16 +44,14 @@
     .footer-links a { color: #94a3b8; text-decoration: none; margin: 0 10px; }
     .footer-links a:hover { color: #38bdf8; }
     @media (max-width: 850px) { .main-layout { grid-template-columns: 1fr; } }
-</style>
+.main-nav{display:flex;flex-wrap:wrap;gap:16px;align-items:center}.main-nav a{color:#cbd5e1;text-decoration:none;font-size:13px;font-weight:600}.main-nav a:hover{color:#38bdf8}.footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:14px}.footer-links a{margin:0}@media(max-width:700px){.header{align-items:flex-start;flex-direction:column;gap:14px}.main-nav{gap:10px 14px}}</style>
 </head>
 <body>
     <div class="container">
-        <div class="header"><a href="/" class="logo">⚡ TechPulse</a></div>
+        <div class="header"><a href="/" class="logo">⚡ TechPulse</a><nav class="main-nav" aria-label="Главна навигация"><a href="/">Начало</a><a href="/articles">Статии</a><a href="/about">За нас</a><a href="/contacts">Контакти</a><a href="/privacy">Поверителност</a><a href="/terms">Условия</a></nav></div>
         <div class="static-card"><h1>За TechPulse</h1><p>TechPulse е български технологичен портал за изкуствен интелект, софтуер, хардуер, квантови технологии и дигитални тенденции.</p><p>Публикуваме обяснителни материали, анализи и новини с фокус върху ясното представяне на фактите и посочването на източници, когато материалът се основава на външно изследване.</p><p><a href="/articles.html" style="color:#38bdf8">Разгледай всички статии →</a></p></div>
         <footer>
-            <div class="footer-links">
-                <a href="/about.html">За нас</a> | <a href="/contacts.html">Контакти</a> | <a href="/privacy.html">Поверителност</a> | <a href="/terms.html">Условия</a>
-            </div>
+            <div class="footer-links"><a href="/">Начало</a><a href="/articles">Статии</a><a href="/about">За нас</a><a href="/contacts">Контакти</a><a href="/privacy">Поверителност</a><a href="/terms">Условия</a></div>
         </footer>
     </div>
 </body>

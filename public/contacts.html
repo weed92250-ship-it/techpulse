@@ -44,16 +44,14 @@
     .footer-links a { color: #94a3b8; text-decoration: none; margin: 0 10px; }
     .footer-links a:hover { color: #38bdf8; }
     @media (max-width: 850px) { .main-layout { grid-template-columns: 1fr; } }
-</style>
+.main-nav{display:flex;flex-wrap:wrap;gap:16px;align-items:center}.main-nav a{color:#cbd5e1;text-decoration:none;font-size:13px;font-weight:600}.main-nav a:hover{color:#38bdf8}.footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:14px}.footer-links a{margin:0}@media(max-width:700px){.header{align-items:flex-start;flex-direction:column;gap:14px}.main-nav{gap:10px 14px}}.static-card form{margin-top:18px}.static-card label{display:inline-block;margin:10px 0 6px;color:#cbd5e1;font-weight:600}.static-card input,.static-card textarea{box-sizing:border-box;width:100%;max-width:680px;padding:12px 14px;border:1px solid #334155;border-radius:10px;background:#070c18;color:#f8fafc;font:inherit;outline:none}.static-card input:focus,.static-card textarea:focus{border-color:#38bdf8;box-shadow:0 0 0 3px rgba(56,189,248,.15)}.static-card textarea{resize:vertical}.static-card button{margin-top:12px;padding:12px 20px;border:0;border-radius:10px;background:#0284c7;color:#fff;font:600 15px inherit;cursor:pointer}.static-card button:hover{background:#0369a1}.static-card button:focus-visible{outline:3px solid #7dd3fc;outline-offset:3px}</style>
 </head>
 <body>
     <div class="container">
-        <div class="header"><a href="/" class="logo">⚡ TechPulse</a></div>
+        <div class="header"><a href="/" class="logo">⚡ TechPulse</a><nav class="main-nav" aria-label="Главна навигация"><a href="/">Начало</a><a href="/articles">Статии</a><a href="/about">За нас</a><a href="/contacts">Контакти</a><a href="/privacy">Поверителност</a><a href="/terms">Условия</a></nav></div>
         <div class="static-card"><h1>Контакти</h1><p><strong>Локация:</strong> Бургас, България</p><p>За въпроси, корекции или обратна връзка: <a href="mailto:contact@techpulseon.site" style="color:#38bdf8">contact@techpulseon.site</a></p><p>Ако сигнализирате за неточност в публикация, посочете конкретната статия и твърдението, за да можем да го проверим.</p><h2>Изпрати запитване</h2><p>Формата отваря приложението ти за електронна поща с подготвено съобщение.</p><form action="mailto:contact@techpulseon.site" method="post" enctype="text/plain"><label for="contact-name">Име</label><br><input id="contact-name" name="Име" required maxlength="100"><br><label for="contact-email">Имейл</label><br><input id="contact-email" name="Имейл" type="email" required maxlength="200"><br><label for="contact-message">Съобщение</label><br><textarea id="contact-message" name="Съобщение" required rows="6" maxlength="5000"></textarea><br><button type="submit">Отвори имейл</button></form><p>Ако формата не се отваря, изпрати имейл директно на <a href="mailto:contact@techpulseon.site">contact@techpulseon.site</a>.</p></div>
         <footer>
-            <div class="footer-links">
-                <a href="/about.html">За нас</a> | <a href="/contacts.html">Контакти</a> | <a href="/privacy.html">Поверителност</a> | <a href="/terms.html">Условия</a>
-            </div>
+            <div class="footer-links"><a href="/">Начало</a><a href="/articles">Статии</a><a href="/about">За нас</a><a href="/contacts">Контакти</a><a href="/privacy">Поверителност</a><a href="/terms">Условия</a></div>
         </footer>
     </div>
 </body>
