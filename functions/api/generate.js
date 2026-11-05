@@ -19,7 +19,7 @@ export async function onRequestPost({ request, env }) {
 
     const prompt = `Ти си главен редактор на технологичния портал TechPulse. Напиши задълбочена, професионална статия на български език на следната тема: "${topic}".
     
-Върни САМО валиден JSON формат, без никакъв друг текст, обяснения или markdown codeblocks (никакви бранкети \`\`\`json). Форматът трябва да е точно следният:
+Върни САМО валиден JSON формат, без никакъв друг текст, обяснения или markdown codeblocks. Форматът трябва да е точно следният:
 {
   "title": "Заглавие на статията",
   "category": "AI",
@@ -28,7 +28,7 @@ export async function onRequestPost({ request, env }) {
 }`;
 
     const geminiRes = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${env.GEMINI_API_KEY}`,
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key=${env.GEMINI_API_KEY}`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -46,10 +46,8 @@ export async function onRequestPost({ request, env }) {
 
     let rawText = data.candidates?.[0]?.content?.parts?.[0]?.text || "";
 
-    // Премахваме евентуални markdown блокове за сигурност
     rawText = rawText.replace(/```json/g, '').replace(/```/g, '').trim();
 
-    // Намираме само JSON частта, ако има страничен текст
     const jsonStart = rawText.indexOf('{');
     const jsonEnd = rawText.lastIndexOf('}');
     if (jsonStart !== -1 && jsonEnd !== -1) {
