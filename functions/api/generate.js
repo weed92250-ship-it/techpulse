@@ -27,21 +27,34 @@ export async function onRequestPost({ request, env }) {
   "content": "<p>Първи параграф...</p><p>Втори параграф...</p>"
 }`;
 
-    const geminiRes = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key=${env.GEMINI_API_KEY}`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          contents: [{ parts: [{ text: prompt }] }]
-        })
-      }
-    );
+    // Опитваме първо с gemini-3.8-flash, а при претоварване ще опитаме друг модел
+    const models = ["gemini-3.8-flash", "gemini-2.5-flash"];
+    let data = null;
+    let lastError = "";
 
-    const data = await geminiRes.json();
-    
-    if (data.error) {
-      return new Response(JSON.stringify({ error: "Gemini API грешка: " + (data.error.message || JSON.stringify(data.error)) }), { status: 500, headers: { 'content-type': 'application/json' } });
+    for (const model of models) {
+      const geminiRes = await fetch(
+        `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${env.GEMINI_API_KEY}`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            contents: [{ parts: [{ text: prompt }] }]
+          })
+        }
+      );
+
+      data = await geminiRes.json();
+      if (!data.error) {
+        lastError = "";
+        break;
+      } else {
+        lastError = data.error.message || JSON.stringify(data.error);
+      }
+    }
+
+    if (lastError) {
+      return new Response(JSON.stringify({ error: "Gemini API грешка: " + lastError }), { status: 500, headers: { 'content-type': 'application/json' } });
     }
 
     let rawText = data.candidates?.[0]?.content?.parts?.[0]?.text || "";
