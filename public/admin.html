@@ -1,1 +1,65 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechPulse AI Контролен Панел</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #070c18; color: #f8fafc; margin: 0; padding: 40px; }
+        .container { max-width: 800px; margin: 0 auto; background: #0f172a; padding: 30px; border-radius: 12px; border: 1px solid #1e293b; }
+        h1 { color: #38bdf8; margin-top: 0; font-size: 24px; }
+        input, textarea { width: 100%; padding: 12px; margin-bottom: 15px; background: #070c18; border: 1px solid #334155; border-radius: 8px; color: #f8fafc; font-size: 15px; }
+        button { background: #38bdf8; color: #070c17; border: 0; padding: 12px 24px; font-weight: bold; border-radius: 8px; cursor: pointer; font-size: 15px; }
+        button:hover { background: #7dd3fc; }
+        #result { margin-top: 25px; background: #0b132b; padding: 20px; border-radius: 8px; border: 1px solid #1e293b; white-space: pre-wrap; display: none; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>⚡ TechPulse AI Контролен Панел</h1>
+        <p>Дай ми тема или задача, и аз ще я изготвя за сайта:</p>
+        
+        <input type="password" id="adminKey" placeholder="Въведи админ паролата (ADMIN_PASSWORD)">
+        <input type="text" id="topicInput" placeholder="Напр: Бъдещето на квантовите чипове през 2026...">
+        <button onclick="generateArticle()">Генерирай с Gemini</button>
 
+        <div id="result"></div>
+    </div>
+
+    <script>
+        async function generateArticle() {
+            const key = document.getElementById('adminKey').value;
+            const topic = document.getElementById('topicInput').value;
+            const resultBox = document.getElementById('result');
+
+            if (!key) {
+                alert('Моля, въведи паролата!');
+                return;
+            }
+
+            resultBox.style.display = 'block';
+            resultBox.textContent = 'Генерирам статията чрез Gemini... Моля, изчакай няколко секунди.';
+
+            try {
+                const res = await fetch('/api/generate', {
+                    method: 'POST',
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'x-admin-key': key
+                    },
+                    body: JSON.stringify({ topic })
+                });
+
+                const data = await res.json();
+                if (res.ok) {
+                    resultBox.innerHTML = `<strong>Успешно генерирано!</strong>\n\nЗаглавие: ${data.article.title}\n\nКатегория: ${data.article.category}\n\nРезюме: ${data.article.excerpt}`;
+                } else {
+                    resultBox.textContent = 'Грешка: ' + (data.error || 'Неуспешна заявка');
+                }
+            } catch (err) {
+                resultBox.textContent = 'Мрежова грешка: ' + err.message;
+            }
+        }
+    </script>
+</body>
+</html>
