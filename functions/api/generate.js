@@ -17,9 +17,9 @@ export async function onRequestPost({ request, env }) {
     const body = await request.json();
     const topic = body.topic || "Последни иновации в изкуствения интелект и технологиите";
 
-    const prompt = `Ти си главен редактор на технологичния портал TechPulse. Напиши задълбочена, професионална статия на български език (около 1000-1400 думи) на следната тема: "${topic}".
+    const prompt = `Ти си главен редактор на технологичния портал TechPulse. Напиши задълбочена, професионална статия на български език на следната тема: "${topic}".
     
-Върни САМО валиден JSON без никакъв друг текст или markdown codeblocks, по следния формат:
+Върни САМО валиден JSON формат, без никакъв друг текст, обяснения или markdown codeblocks (никакви бранкети \`\`\`json). Форматът трябва да е точно следният:
 {
   "title": "Заглавие на статията",
   "category": "AI",
@@ -39,10 +39,21 @@ export async function onRequestPost({ request, env }) {
     );
 
     const data = await geminiRes.json();
+    
+    if (data.error) {
+      return new Response(JSON.stringify({ error: "Gemini API грешка: " + (data.error.message || JSON.stringify(data.error)) }), { status: 500, headers: { 'content-type': 'application/json' } });
+    }
+
     let rawText = data.candidates?.[0]?.content?.parts?.[0]?.text || "";
 
-    if (rawText.startsWith('```')) {
-      rawText = rawText.replace(/^```(json)?/, '').replace(/```$/, '').trim();
+    // Премахваме евентуални markdown блокове за сигурност
+    rawText = rawText.replace(/```json/g, '').replace(/```/g, '').trim();
+
+    // Намираме само JSON частта, ако има страничен текст
+    const jsonStart = rawText.indexOf('{');
+    const jsonEnd = rawText.lastIndexOf('}');
+    if (jsonStart !== -1 && jsonEnd !== -1) {
+      rawText = rawText.substring(jsonStart, jsonEnd + 1);
     }
 
     const articleData = JSON.parse(rawText);
@@ -50,6 +61,6 @@ export async function onRequestPost({ request, env }) {
     return Response.json({ success: true, article: articleData });
 
   } catch (err) {
-    return new Response(JSON.stringify({ error: err.message }), { status: 500 });
+    return new Response(JSON.stringify({ error: "Грешка при обработката: " + err.message }), { status: 500, headers: { 'content-type': 'application/json' } });
   }
 }
