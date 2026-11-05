@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8"><meta name="robots" content="index,follow,max-image-preview:large"><meta name="description" content="Обявяването на съвместната платформа за проектиране на системи за квантова корекция на грешки от Националната лаборатория Oak Ridge, IBM и AMD маркира фунд"><link rel="canonical" href="https://techpulseon.site/articles/tihiyat-probiv-v-kvantovite-izchisleniya-zashto-ibm-amd-i-laboratoriyata-oak-ridge-obedinyavat-sili-sreshtu-dekoherentsiyata.html"><meta property="og:type" content="article"><meta property="og:url" content="https://techpulseon.site/articles/tihiyat-probiv-v-kvantovite-izchisleniya-zashto-ibm-amd-i-laboratoriyata-oak-ridge-obedinyavat-sili-sreshtu-dekoherentsiyata.html"><meta property="og:title" content="Тихият пробив в квантовите изчисления: Защо IBM, AMD и лабораторията Oak Ridge обединяват сили срещу декохеренцията — TechPulse"><meta property="og:description" content="Обявяването на съвместната платформа за проектиране на системи за квантова корекция на грешки от Националната лаборатория Oak Ridge, IBM и AMD маркира фунд"><meta property="og:image" content="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&auto=format&fit=crop"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Тихият пробив в квантовите изчисления: Защо IBM, AMD и лабораторията Oak Ridge обединяват сили срещу декохеренцията — TechPulse"><meta name="twitter:description" content="Обявяването на съвместната платформа за проектиране на системи за квантова корекция на грешки от Националната лаборатория Oak Ridge, IBM и AMD маркира фунд"><meta name="twitter:image" content="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&auto=format&fit=crop">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тихият пробив в квантовите изчисления: Защо IBM, AMD и лабораторията Oak Ridge обединяват сили срещу декохеренцията — TechPulse</title>
+    <style>
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        background-color: #070c18;
+        color: #94a3b8;
+        margin: 0;
+        padding: 20px;
+        line-height: 1.7;
+    }
+    .container { max-width: 1180px; margin: 0 auto; }
+    .header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 15px; margin-bottom: 15px; }
+    .logo { font-size: 24px; font-weight: 800; color: #38bdf8; text-decoration: none; display: flex; align-items: center; gap: 8px; }
+    .search-box input { padding: 8px 16px; border-radius: 6px; border: 1px solid #1e293b; background-color: #0f172a; color: #f8fafc; width: 220px; font-size: 13px; outline: none; }
+    .nav-categories { display: flex; flex-wrap: wrap; gap: 18px; padding-bottom: 15px; border-bottom: 1px solid #1e293b; margin-bottom: 25px; }
+    .nav-link { color: #cbd5e1; text-decoration: none; font-size: 13px; font-weight: 500; }
+    .nav-link:hover, .nav-link.active { color: #38bdf8; }
+    .main-layout { display: grid; grid-template-columns: 1fr 340px; gap: 30px; }
+    .article-card, .static-card { background: #0f172a; border-radius: 10px; padding: 30px; border: 1px solid #1e293b; }
+    .article-image { width: 100%; height: 420px; object-fit: cover; border-radius: 6px; margin-bottom: 20px; }
+    .article-card h2, .static-card h1 { color: #f8fafc; margin-top: 10px; font-size: 28px; line-height: 1.3; }
+    .article-intro { font-size: 18px; color: #cbd5e1; margin-bottom: 25px; line-height: 1.8; font-weight: 400; }
+    .article-card p { margin-bottom: 18px; font-size: 15px; color: #94a3b8; }
+    ul, ol { padding-left: 20px; margin-bottom: 20px; color: #94a3b8; font-size: 15px; }
+    li { margin-bottom: 10px; }
+    .sidebar { background: #0f172a; border-radius: 10px; padding: 20px; border: 1px solid #1e293b; height: fit-content; }
+    .sidebar h3 { margin-top: 0; color: #f8fafc; font-size: 16px; border-bottom: 1px solid #1e293b; padding-bottom: 10px; margin-bottom: 18px; }
+    .similar-item { display: flex; gap: 12px; margin-bottom: 18px; align-items: flex-start; }
+    .similar-item img { width: 75px; height: 60px; border-radius: 4px; object-fit: cover; }
+    .similar-item-info h4 { margin: 0 0 4px 0; font-size: 13px; line-height: 1.3; }
+    .similar-item-info h4 a { color: #f8fafc; text-decoration: none; }
+    .similar-item-info h4 a:hover { color: #38bdf8; }
+    .similar-tag { color: #38bdf8; font-size: 11px; font-weight: bold; display: block; margin-bottom: 2px; }
+    .similar-item-info span { font-size: 11px; color: #64748b; }
+    footer { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #1e293b; color: #64748b; font-size: 13px; }
+    .footer-links a { color: #94a3b8; text-decoration: none; margin: 0 10px; }
+    .footer-links a:hover { color: #38bdf8; }
+    @media (max-width: 850px) { .main-layout { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="/" class="logo">⚡ TechPulse</a>
+            <form class="search-box" action="/articles.html" method="get" role="search"><input type="search" name="q" placeholder="🔍 Търсене..." aria-label="Търсене в TechPulse"></form>
+        </div>
+        <nav class="nav-categories" aria-label="Основна навигация">
+            <a href="/" class="nav-link active">Начало</a>
+            <a href="/articles.html" class="nav-link">Статии</a>
+            <a href="/articles.html?category=ai" class="nav-link">AI</a>
+            <a href="/articles.html?category=technologies" class="nav-link">Технологии</a>
+            <a href="/articles.html?category=hardware" class="nav-link">Хардуер</a>
+            <a href="/about.html" class="nav-link">За нас</a>
+            <a href="/contacts.html" class="nav-link">Контакти</a>
+        </nav>
+        <div class="main-layout">
+            <div class="main-content">
+                <article class="article-card">
+                    <img width="1200" height="675" loading="eager" src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&auto=format&fit=crop';" alt="Тихият пробив в квантовите изчисления: Защо IBM, AMD и лабораторията Oak Ridge обединяват сили срещу декохеренцията" class="article-image">
+                    <h2>Тихият пробив в квантовите изчисления: Защо IBM, AMD и лабораторията Oak Ridge обединяват сили срещу декохеренцията</h2>
+
+<p class="article-intro">Обявяването на съвместната платформа за проектиране на системи за квантова корекция на грешки от Националната лаборатория Oak Ridge, IBM и AMD маркира фундаментална промяна в стратегията за развитие на квантовите технологии. Фокусът на индустрията постепенно се измества от надпреварата за суров брой физически кубити към преодоляването на най-голямото инженерно препятствие пред практическото квантово предимство — нестабилността на квантовата информация и необходимостта от нейното обработване в реално време чрез класически суперкомпютърни архитектури.</p>
+
+<h3>Квантовият шум и илюзията за суровия брой кубити</h3>
+
+<p>През последното десетилетие публичният разказ за квантовите изчисления се въртеше почти изцяло около числото на кубитите. Технологичните компании и академичните лаборатории се състезаваха да обявяват процесори с 50, 100, 433 и над 1000 физически кубита. В инженерната реалност обаче това състезание бързо достигна граница, отвъд която простото увеличаване на елементите върху чипа вече не носи съществена изчислителна полза. Физическите кубити — независимо дали са изградени от свръхпроводящи вериги, уловени йони или неутрални атоми — са изключително чувствителни към външната среда. Всяко незначително термично колебание, електромагнитно излъчване или микроскопична дефектност в електронните контроли причинява декохеренция, при която квантовото състояние се срива, а съхраняваната информация се губи за микросекунди.</p>
+
+<p>Това състояние на технологията, известно в научните среди като ера на шумните квантови системи с междинен мащаб (Noisy Intermediate-Scale Quantum — NISQ), постави ясни граници пред решаването на реални индустриални задачи. Тъй като физическите грешки се натрупват експоненциално с увеличаване на броя изпълнени квантови гейтове, по-дълбоките алгоритми стават неизползваеми — крайният резултат от тях се размива в чист фонов шум. Единственият познат във физиката и информатиката начин за преодоляване на този проблем е квантовата корекция на грешки (Quantum Error Correction — QEC). Тя разчита на идеята информацията да не се съхранява в един-единствен физически кубит, а да бъде кодирана топологично в ансамбъл от множество физически кубити, които съвместно образуват един стабилен логически кубит.</p>
+
+<p>Изграждането на устойчив на грешки логически кубит обаче изисква огромно количество ресурси. В съвременните концепции за повърхностни кодове (surface codes) един-единствен логически кубит може да изисква от стотици до хиляди спомагателни кубити, наречени синдромни кубити, и кубити за данни. Но докато физическите принципи на QEC са теоретично обосновани още през 90-те години на миналия век, тяхното практическо прилагане в реални системи разкри нов, изключително труден проблем. Този проблем не се състои в самите квантови чипове, а в скоростта, с която класическите компютърни системи могат да прочетат, анализират и коригират възникващите грешки.</p>
+
+<p>В продължение на години квантовият хардуер и класическият контролен хардуер бяха разработвани като два отделни свята. Квантовите физици се фокусираха върху увеличаването на времето за кохерентност на чиповете, докато компютърните инженери работеха върху конвенционални процесори и ускорители. Когато обаче опитите за квантова корекция на грешки излязоха от сферата на теорията и навлязоха в експерименталните лаборатории, стана ясно, че класическият контролен цикъл се превръща в основното тесно гърло на цялата система. Без радикална промяна в начина, по който класическите и квантовите компоненти комуникират помежду си, постигането на практично квантово изчислително предимство остава неосъществимо.</p>
+
+<h3>Квантовата корекция на грешки като класически изчислителен проблем</h3>
+
+<p>За да се разбере защо лабораторията Oak Ridge, IBM и AMD създават обща платформа за съвместно проектиране (co-design), е необходимо да се погледне под повърхността на самия физически механизъм за корекция на грешки. За разлика от класическите компютри, където грешката е просто обърнат бит (от 0 в 1) и може лесно да бъде прочетена и дублирана, в квантовия свят директното измерване на кубит с данни унищожава неговата суперпозиция. Поради тази причина квантовата корекция разчита на косвено измерване: наблюдават се само така наречените синдромни кубити, разположени пространствено между кубитите с данни.</p>
+
+<p>Тези синдромни измервания генерират непрекъснат поток от класически бинарни данни, известни като синдроми на грешката. Синдромите показват дали е настъпило обръщане на бита (X-грешка), обръщане на фазата (Z-грешка) или комбинация от двете, както и къде в решетката от кубити се е случило събитието. Потокът от синдроми обаче не съдържа директното решение за корекция. Той трябва непрекъснато да бъде предаван към външен класически процесор, който изпълнява сложни графични и матрични алгоритми за декодиране — каквито са алгоритмите от типа Minimum Weight Perfect Matching (MWPM) или Union-Find.</p>
+
+<p>Точно тук възниква така нареченото тесно гърло на закъснението (latency bottleneck). При свръхпроводящите кубити, каквито използва IBM, времето за изпълнение на един квантов гейт е от порядъка на десетки наносекунди, а времето на кохерентност на физическия кубит е в рамките на броени микросекунди. Това означава, че целият цикъл на QEC — от прочитането на синдромните измервания през преноса на данните извън криогенния охладител, декодирането от класическия процесор до генерирането и изпращането на обратен корегиращ сигнал към квантовия чип — трябва да се извърши в рамките на този кратък прозорец от време.</p>
+
+<p>Ако класическият декодер не успее да обработи синдромите с необходимата скорост, натрупващите се грешки надвишават капацитета на системата за корекция. В такъв случай квантовата памет деградира необратимо, а квантовият процесор е принуден да изчака своя класически контролер, което окончателно унищожава всяко изчислително предимство. По този начин корекцията на квантови грешки в реално време се превръща в изключително тежък класически изчислителен проблем с изисквания за ултраниска латентност, голяма изчислителна мощност и висока пропускателна способност на данните.</p>
+
+<p>Мащабът на този класически изчислителен проблем часто се подценява в популярните дискусии. При квантова система с хиляди логически кубити общият поток от синдромни данни, генериран всяка микросекунда, достига терабити в секунда. Този поток трябва да бъде декодиран без забавяне, без изпускане на пакети и без допускане на грешки в самата класическа алгоритмична логика. Точно тази задача изисква напълно нова архитектурна интеграция между класическите суперкомпютри и квантовите процесори.</p>
+
+<h3>Архитектурата на съвместно проектиране: Ролите на Oak Ridge, IBM и AMD</h3>
+
+<p>Обявената съвместна инициатива между Националната лаборатория Oak Ridge (ORNL), IBM и AMD адресира точно тази критична пресечна точка между квантовата физика и суперкомпютърните архитектури. Концепцията за съвместно проектиране (co-design) означава, че квантовият хардуер, класическият изчислителен хардуер, електронните контролери и алгоритмите за декодиране ще се разработват едновременно, вместо да се опитват да се напасват постфактум. Всеки от трите участника носи уникален ресурс и експертиза в този съюз.</p>
+
+<p>IBM предоставя своя квантов хардуерен и софтуерен стек, включително свръхпроводящите архитектури, платформите за контрол на импулсите и програмната среда Qiskit. Като компания с опит в изграждането на реални квантови процесори и тяхното предоставяне през облака, IBM разполага с емпирични данни за физическите профили на грешките при различни типове кубити. Тези данни са от съществено значение за създаването на реалистични симулационни модели и за настройката на детекцията на синдроми.</p>
+
+<p>AMD участва със своята експертиза във високопроизводителния класически хардуер и специализираните архитектури. От ключово значение тук са програмируемите вентилни матрици (FPGA) и адаптивните системи на чип, развивани от компанията след придобиването на Xilinx, както и мощните сървърни процесори AMD EPYC и графичните ускорители Instinct. FPGA чиповете са особено подходящи за задачата, тъй като позволяват хардуерна реализация на декодиращи алгоритми с детерминирано закъснение под една микросекунда. Тяхната гъвкавост позволява на изследователите да променят логиката на декодиране директно в чипа, когато физическите алгоритми за QEC се развиват.</p>
+
+<p>Националната лаборатория Oak Ridge, известна със стопанисването на суперкомпютъра Frontier, поема ролята на системен интегратор, софтуерен архитект и научноизследователски координатор. ORNL разполага с изчислителни ресурси и академичен потенциал за разработване на нови паралелни алгоритми за декодиране, както и с опит в симулирането на екстремно големи системи. Ролята на лабораторията е да създаде единен стандартизиран тестови комплекс (testbed), в който софтуерните декодери и хардуерните интерфейси могат да бъдат подлагани на стрес-тестове при реални натоварвания.</p>
+
+<p>Чрез този тристранен съюз партньорите се опитват да изградят отворена и мащабируема платформа за QEC. Вместо всяка компания да създава проприетарна и затворена система, целта е да се дефинират нови стандарти за пренос на данни между криогенния охладител и класическия изчислителен рак, както и да се оптимизира използването на стандартни суперкомпютърни интерфейси за квантови приложения.</p>
+
+<h3>Физически ограничения и преосмисляне на времевите хоризонти</h3>
+
+<p>Въпреки че концепцията за съвместно проектиране е логична стъпка напред, нейната практическа реализация е изправена пред тежки физически и инженерни ограничения. Първото от тях е свързано с фундаменталната разлика в оперативната среда на квантовите и класическите компоненти. Квантовите процесори на IBM функционират във вътрешността на криостати с разреждане при температури около 15 миликелвина — по-студено от дълбокия космос. В същото време класическите FPGA, CPU и GPU чипове на AMD работят при стайна температура или с конвенционално водно охлаждане.</p>
+
+<p>Свързването на хиляди синдромни кубити от криогенната зона с външните класически декодери изисква прекарването на широк асортимент от коаксиални или оптични кабели през различните термични стъпала на охладителя. Всеки меден проводник обаче пренася паразитна топлина отвън навътре. Ако броят на кабелите се увеличи правопропорционално на броя кубити, охлаждащият капацитет на криостата бързо се изчерпва. Това налага разработването на криогенна контролна електроника, разположена в междинните термични зони на охладителя (например при 4 келвина), или преминаване към високоефективни силициево-фотонни интерфейси с нисък термичен отпечаток.</p>
+
+<p>Второто голямо предизвикателство е свързано с консумацията на енергия от страна на класическия изчислителен комплекс. Ако за обработката на синдромните данни за един-единствен логически кубит е необходима непрекъснатата работа на няколко FPGA чипа или високопроизводителни нишки на процесора, енергийният бюджет на една бъдеща квантова система с хиляди логически кубити би достигнал мегавати класическа електроенергия. Това би изправило индустрията пред парадокс: квантовите компютри, обявявани като енергийно ефективна алтернатива за сложни симулации, биха изисквали масивна класическа инфраструктура само за поддържане на собствената си стабилност.</p>
+
+<p>Третото ограничение произтича от неравномерния характер на самите квантови грешки. В реална среда грешките не настъпват с предвидимо и равномерно темпо. Космическите лъчи, преминаващи през чипа, или колебанията в управляващите магнитни полета могат да причинят временни каскади от грешки (burst errors), засягащи десетки или стотици кубити едновременно. Класическият декодер трябва да разполага с достатъчно изчислителен резерв, за да обработи тези неочаквани пикове, без да натрупва опашки от данни и без да превишава стриктния времеви прозорец на кохерентност.</p>
+
+<p>Обединяването на усилията между Oak Ridge, IBM и AMD е индикатор за навлизането на квантовите технологии в по-зряла инженерна фаза. Периодът на гръмките обещания за бърз пробив чрез чисто количествено натрупване на физически кубити постепенно отстъпва място на систематична работа по изграждането на критичната инфраструктура. Квантовата корекция на грешки вече не се разглежда като теоретичен софтуерен слой, който ще бъде добавен на по-късен етап, а като интегрална част от архитектурата на самата система.</p>
+
+<p>Този напредък променя и концепцията за това как ще изглежда един квантов суперкомпютър в бъдеще. Всички индикации сочат, че квантовите устройства няма да съществуват как автономни машини, които напълно заместват класическата електронно-изчислителна техника. Вместо това те ще функционират като високоспециализирани копроцесори и ускорители, плътно интегрирани в класическите суперкомпютърни центрове чрез бързи и с ниско закъснение връзки. Класическите силициеви процесори ще продължат да изпълняват по-голямата част от задачите — от подготовката на данните и управлението на алгоритмичните потоци до непрекъснатото декодиране на квантовите грешки.</p>
+
+<p>За индустриалните потребители, изследователските институти и инвеститорите тази промяна носи по-трезв и реалистичен поглед върху времевите хоризонти. Преходът от днешните шумни NISQ системи към устойчиви на грешки квантови компютри (Fault-Tolerant Quantum Computing) е фундаментален инженерен марш, чийто успех зависи не само от откритията във физиката на твърдото тяло, но и от напредъка в класическите микропроцесори, оптичните комуникации и паралелните алгоритми. Новата инициатива за съвместно проектиране показва, че мостът между тези два изчислителни свята вече се изгражда.</p><section class="article-sources"><h3>Източници</h3><ul><li><a href="https://news.google.com/rss/articles/CBMilwFBVV95cUxOeEZKNXRhRHlsaDNzd21DZF9XcERZN2ZaRkZHSHp1UTNZZHVIbDFCbE85emFWaFkxMjN0MWFvOHBoRGpWUWNoMFI4VllsdUI5THczRVZpc0RETWtIeXlzcVAyVVBaSlI5ZW5fR3JJS1FlU29vREV4Nk82Unh2MTBpcGk2YUo2NEp6S3BhYXJsNjlLbzRTNWMw?oc=5" rel="noopener noreferrer">Michigan can use artificial intelligence to improve lives - Mackinac Center</a></li><li><a href="https://news.google.com/rss/articles/CBMixwFBVV95cUxPckw5Yml2X0hxNU5DcnBqSGtkRjM1UHVEc2JzU3ZPYXc1MGVWSF9kTXFMeGZXeXNvVk05U0Z3VWdWZkJtemhreDlOY21Fclc3YlBXbHB6bGgxLUdMOVBqMnJOZFVXVXA2YmFSWGU2bkJaYTBRY2NHc1lFdVRVZi0za2IxMFprc0RGS2FwUHhZSEZjYUNSd1B2LVdEdVdjN3hSVW9jalhvZEJ2TDZoTW1TTzg2TlE1YjdubGpUMUtISTNTOXRmVFZr?oc=5" rel="noopener noreferrer">AI chip demand powers third-quarter growth at chemical, industrial gas makers - Reuters</a></li><li><a href="https://news.google.com/rss/articles/CBMigwFBVV95cUxOQnJxQlRoYl9pdlBxX1hVSWdhUWhVT3hpTkJIeXFveWxQb3I1V3NvM0lQTlMteGdkQXAwc1JHNW1WQ0ZFMGtXQWg1aTJ5Z0N6bXV0RmYycFhjbW1Rc1ptN3FFZG04QmJGMWh3YWlveDEtRDUyUXgtVEx2YWQtdUlIOWZKOA?oc=5" rel="noopener noreferrer">Column: Artificial intelligence becomes artificial connection, too - The Daily Tar Heel</a></li><li><a href="https://news.google.com/rss/articles/CBMi0AFBVV95cUxOMGZBcGxPaGptOGFleTZTbVo4SU5QMEJxWExVRy0tY2p0WVUtLUJLNmRjNnl3VHdNa19fcXBzNGo3NGdTbm5mMUEydkJEME1JZ1dycndTdDZ3VkJrd3lfU29nMjFUeklyS0ZMdExJV2dMR096NTFLZzZUSVU0TUVPQWVpNDNLdG1oaTNXS0RzRnkwSUU3d0VPb2pmQzZoUTRFY2dLR2hIbGlmRzZXcVhmSGlKSVFUSWNuU3kyQmFNZDJsMVF5anVzdHFCUkRBbjJh?oc=5" rel="noopener noreferrer">The real test for the artificial-intelligence buildout is what happens in 2028, analysts say - MarketWatch</a></li><li><a href="https://news.google.com/rss/articles/CBMieEFVX3lxTE92TjlzQm5nbmZjOEdkM2RUaTlZWmJ0WHJDQlpvWHI2X1VwMnV3ZlBQWGxZdHNSSnNlVFJMUFVBbnNpNWFkWWxkSllvRWl2TEFESGptTmc4Z25yMlR5VlRHMU5rd1NGSk9NekEwcEdLNmp4cFFpMnJXMQ?oc=5" rel="noopener noreferrer">Outsmart Artificial Intelligence with CEDMO Game! - CEDMO</a></li><li><a href="https://news.google.com/rss/articles/CBMizgFBVV95cUxNdXFsQ2t6aW1VX0ZEUDFmdkxmMFZEMHhYMzBDNVR1ZnY3WWwtUG5SZXM1LTVuUlU5bkp2c3RqamdpQzdUeGFXY1NjNlNqdmR1WVFiTTh4eFhIVGZsNWY4TWQ0RXdKS3VvT1dsMFFiUnIxbUZvRXZvZzR2QWVLMXhsWFVnWHF1bVBVc0ZLb1FNVUVNWGF6dlZlZ3ZxSUxuWDdKVHJhdExsYXR0aVdnM1BXYnNOaGZZbFhuclpKeEt1cGgwUXIxWlVYZ0N0TzVWZw?oc=5" rel="noopener noreferrer">Little Friends: Artificial Intelligence and Human Services… a Lot To Think About! - Positively Naperville</a></li></ul></section>
+                </article>
+            </div>
+            <aside class="sidebar">
+                <h3>Още новини</h3>
+                
+        <div class="similar-item">
+            <img src="https://images.unsplash.com/photo-1535378273068-9bb67d5beacd?w=800&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1518770660439-4636190af475?w=200&auto=format&fit=crop';" alt="Сложната логистика на технологичните ограничения: как забранените чипове намират път до пазарите">
+            <div class="similar-item-info">
+                <span class="similar-tag">Киберсигурност</span>
+                <h4><a href="/articles/slozhnata-logistika-na-tehnologichnite-ogranicheniya-kak-zabranenite-chipove-namirat-pat-do-pazarite.html">Сложната логистика на технологичните ограничения: как забранените чипове намират път до пазарите</a></h4>
+                <span>2026-11-04</span>
+            </div>
+        </div>
+        
+        <div class="similar-item">
+            <img src="https://images.unsplash.com/photo-1535378273068-9bb67d5beacd?w=800&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1518770660439-4636190af475?w=200&auto=format&fit=crop';" alt="Битката за квантова стабилност навлиза в нов етап с постижения в потискането на грешките">
+            <div class="similar-item-info">
+                <span class="similar-tag">Квантови технологии</span>
+                <h4><a href="/articles/bitkata-za-kvantova-stabilnost-navliza-v-nov-etap-s-postizheniya-v-potiskaneto-na-greshkite.html">Битката за квантова стабилност навлиза в нов етап с постижения в потискането на грешките</a></h4>
+                <span>2026-11-03</span>
+            </div>
+        </div>
+        
+        <div class="similar-item">
+            <img src="https://images.unsplash.com/photo-1535378273068-9bb67d5beacd?w=800&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1518770660439-4636190af475?w=200&auto=format&fit=crop';" alt="Квантовите технологии срещу ограниченията на данните: как изследователи използват нови методи за ранна диагностика на белодробен карцином">
+            <div class="similar-item-info">
+                <span class="similar-tag">Квантови технологии</span>
+                <h4><a href="/articles/kvantovite-tehnologii-sreshtu-ogranicheniyata-na-dannite-kak-izsledovateli-izpolzvat-novi-metodi-za-ranna-diagnostika-na-belodroben-kartsinom.html">Квантовите технологии срещу ограниченията на данните: как изследователи използват нови методи за ранна диагностика на белодробен карцином</a></h4>
+                <span>2026-11-02</span>
+            </div>
+        </div>
+        
+            </aside>
+        </div>
+        <footer>
+            <div class="footer-links">
+                <a href="/about.html">За нас</a> | <a href="/contacts.html">Контакти</a> | <a href="/privacy.html">Поверителност</a>
+            </div>
+            <p>© TechPulse. Всички права запазени.</p>
+        </footer>
+    </div>
+</body>
+</html>

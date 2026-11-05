@@ -1,5 +1,39 @@
 [
   {
+    "title": "Тихият пробив в квантовите изчисления: Защо IBM, AMD и лабораторията Oak Ridge обединяват сили срещу декохеренцията",
+    "time": "2026-11-05",
+    "category": "Квантови технологии",
+    "category_slug": "quantum",
+    "url": "/articles/tihiyat-probiv-v-kvantovite-izchisleniya-zashto-ibm-amd-i-laboratoriyata-oak-ridge-obedinyavat-sili-sreshtu-dekoherentsiyata.html",
+    "img": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&auto=format&fit=crop",
+    "sources": [
+      {
+        "title": "Michigan can use artificial intelligence to improve lives - Mackinac Center",
+        "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOeEZKNXRhRHlsaDNzd21DZF9XcERZN2ZaRkZHSHp1UTNZZHVIbDFCbE85emFWaFkxMjN0MWFvOHBoRGpWUWNoMFI4VllsdUI5THczRVZpc0RETWtIeXlzcVAyVVBaSlI5ZW5fR3JJS1FlU29vREV4Nk82Unh2MTBpcGk2YUo2NEp6S3BhYXJsNjlLbzRTNWMw?oc=5"
+      },
+      {
+        "title": "AI chip demand powers third-quarter growth at chemical, industrial gas makers - Reuters",
+        "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPckw5Yml2X0hxNU5DcnBqSGtkRjM1UHVEc2JzU3ZPYXc1MGVWSF9kTXFMeGZXeXNvVk05U0Z3VWdWZkJtemhreDlOY21Fclc3YlBXbHB6bGgxLUdMOVBqMnJOZFVXVXA2YmFSWGU2bkJaYTBRY2NHc1lFdVRVZi0za2IxMFprc0RGS2FwUHhZSEZjYUNSd1B2LVdEdVdjN3hSVW9jalhvZEJ2TDZoTW1TTzg2TlE1YjdubGpUMUtISTNTOXRmVFZr?oc=5"
+      },
+      {
+        "title": "Column: Artificial intelligence becomes artificial connection, too - The Daily Tar Heel",
+        "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxOQnJxQlRoYl9pdlBxX1hVSWdhUWhVT3hpTkJIeXFveWxQb3I1V3NvM0lQTlMteGdkQXAwc1JHNW1WQ0ZFMGtXQWg1aTJ5Z0N6bXV0RmYycFhjbW1Rc1ptN3FFZG04QmJGMWh3YWlveDEtRDUyUXgtVEx2YWQtdUlIOWZKOA?oc=5"
+      },
+      {
+        "title": "The real test for the artificial-intelligence buildout is what happens in 2028, analysts say - MarketWatch",
+        "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxOMGZBcGxPaGptOGFleTZTbVo4SU5QMEJxWExVRy0tY2p0WVUtLUJLNmRjNnl3VHdNa19fcXBzNGo3NGdTbm5mMUEydkJEME1JZ1dycndTdDZ3VkJrd3lfU29nMjFUeklyS0ZMdExJV2dMR096NTFLZzZUSVU0TUVPQWVpNDNLdG1oaTNXS0RzRnkwSUU3d0VPb2pmQzZoUTRFY2dLR2hIbGlmRzZXcVhmSGlKSVFUSWNuU3kyQmFNZDJsMVF5anVzdHFCUkRBbjJh?oc=5"
+      },
+      {
+        "title": "Outsmart Artificial Intelligence with CEDMO Game! - CEDMO",
+        "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE92TjlzQm5nbmZjOEdkM2RUaTlZWmJ0WHJDQlpvWHI2X1VwMnV3ZlBQWGxZdHNSSnNlVFJMUFVBbnNpNWFkWWxkSllvRWl2TEFESGptTmc4Z25yMlR5VlRHMU5rd1NGSk9NekEwcEdLNmp4cFFpMnJXMQ?oc=5"
+      },
+      {
+        "title": "Little Friends: Artificial Intelligence and Human Services… a Lot To Think About! - Positively Naperville",
+        "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxNdXFsQ2t6aW1VX0ZEUDFmdkxmMFZEMHhYMzBDNVR1ZnY3WWwtUG5SZXM1LTVuUlU5bkp2c3RqamdpQzdUeGFXY1NjNlNqdmR1WVFiTTh4eFhIVGZsNWY4TWQ0RXdKS3VvT1dsMFFiUnIxbUZvRXZvZzR2QWVLMXhsWFVnWHF1bVBVc0ZLb1FNVUVNWGF6dlZlZ3ZxSUxuWDdKVHJhdExsYXR0aVdnM1BXYnNOaGZZbFhuclpKeEt1cGgwUXIxWlVYZ0N0TzVWZw?oc=5"
+      }
+    ]
+  },
+  {
     "title": "Сложната логистика на технологичните ограничения: как забранените чипове намират път до пазарите",
     "time": "2026-11-04",
     "category": "Киберсигурност",
