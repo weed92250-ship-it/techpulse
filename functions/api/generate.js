@@ -1,4 +1,14 @@
-import { checkAuth, unauthorized } from '../_utils.js';
+function checkAuth(request, env) {
+  const key = request.headers.get('x-admin-key');
+  return !!key && key === env.ADMIN_PASSWORD;
+}
+
+function unauthorized() {
+  return new Response(JSON.stringify({ error: 'Unauthorized' }), {
+    status: 401,
+    headers: { 'content-type': 'application/json' },
+  });
+}
 
 export async function onRequestPost({ request, env }) {
   if (!checkAuth(request, env)) return unauthorized();
