@@ -1,4 +1,4 @@
-import { checkAuth, unauthorized } from './_utils.js';
+import { checkAuth, unauthorized } from '../_utils.js';
 
 export async function onRequestPost({ request, env }) {
   if (!checkAuth(request, env)) return unauthorized();
@@ -17,7 +17,6 @@ export async function onRequestPost({ request, env }) {
   "content": "<p>Първи параграф...</p><p>Втори параграф...</p>"
 }`;
 
-    // Използваме твоя Gemini API ключ директно от Cloudflare Environment Variables
     const geminiRes = await fetch(
       `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${env.GEMINI_API_KEY}`,
       {
