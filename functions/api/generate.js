@@ -27,8 +27,8 @@ export async function onRequestPost({ request, env }) {
   "content": "<p>Първи параграф...</p><p>Втори параграф...</p>"
 }`;
 
-    // Опитваме първо с gemini-3.8-flash, а при претоварване ще опитаме друг модел
-    const models = ["gemini-3.8-flash", "gemini-2.5-flash"];
+    // Използваме актуалния модел gemini-3.8-flash
+    const models = ["gemini-3.8-flash"];
     let data = null;
     let lastError = "";
 
