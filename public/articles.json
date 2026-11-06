@@ -1,5 +1,39 @@
 [
   {
+    "title": "Новата бойна линия в полупроводниковата индустрия: Как напредналото опаковане на чипове се превърна в критичен фактор за изкуствения интелект",
+    "time": "2026-11-06",
+    "category": "Квантови технологии",
+    "category_slug": "quantum",
+    "url": "/articles/novata-boyna-liniya-v-poluprovodnikovata-industriya-kak-naprednaloto-opakovane-na-chipove-se-prevarna-v-kritichen-faktor-za-izkustveniya-intelekt.html",
+    "img": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop",
+    "sources": [
+      {
+        "title": "How the College Board Is Fighting A.I. Cheating on the SAT Tests - The New York Times",
+        "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTFA5cl9rZGtiaV9ncXlkRUF3SlJNQmRGQW4wdlJZbXZzaVVPU0lCU2dFV0NISkY1ZWV6Y29Xb1F6MnUxeFJ0cWV4dzFhazB2X1NibXdWT1NlNmxfZmg2QVI1TFBhRWh6WjJrUmhZUlNHQ3o2ZklfMVcyVA?oc=5"
+      },
+      {
+        "title": "Watch live: Stock market reacts amid concerns about artificial intelligence spending - NBC News",
+        "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQRXlNZzFDNDc1dHRFN05zeTVQOVF2TEZGVWhEcmt3SlRaSWhQcTdNbDAwVGZCZHRnTDdPTHBORVRheER2bmNYRkdYa2FocVE0aW1pbVRZRElFYkJyWFZHd0VMX2xhTV9QM0dxM3BRNVQzUXRSejhjQUhFRHMzdkg3YUF4UmlvZ0JiZUtrLTByc2hlMzN1ZUpkeGppUktEcGFXSC1yZmFKbVZMY3QyQ2IxVE1NTVp3Zw?oc=5"
+      },
+      {
+        "title": "Responsible use of artificial intelligence - Nature",
+        "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTFA1MWNlUnlUc3NDTjV5dk5zQUZHYkU4aVk1N1B0ZFAxRVYyR3V4T2ttS2x2SEZhdXNfSnBrZElyM2J0OVJCUEdqX0pRaHhFa25MY2FxOGpodVZEX2ltYnVR?oc=5"
+      },
+      {
+        "title": "Artificial intelligence points researchers toward new disease targets hidden in mitochondria - AgriLife Today",
+        "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxNMVJpd2hYUmNnOEFET2U1cjBuTzJWSWZVNy0yLWRYMlhDYWFSLVFOa2VHQWFpYUl4UHRnOE1OOURPMEJPWFVScVQ5ckZTNFZQM1ZSMzFXMnJiY0FmdnhFejNOblYzcklhc2hkUTF5cUNwcUlYY25xU1h0eFdxRkZ5MEJEeG5Mc3gxRmx1aDhlZDFVUjBvYVNCTFJHNTN4d0RDYzNaT0t2QW5MdVhRVVVJcWd5eFhQa2N0blFTY0pYeTh0Ulg5NzJENXpKYVhQaWJx?oc=5"
+      },
+      {
+        "title": "Column: Artificial intelligence becomes artificial connection, too - The Daily Tar Heel",
+        "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxOQnJxQlRoYl9pdlBxX1hVSWdhUWhVT3hpTkJIeXFveWxQb3I1V3NvM0lQTlMteGdkQXAwc1JHNW1WQ0ZFMGtXQWg1aTJ5Z0N6bXV0RmYycFhjbW1Rc1ptN3FFZG04QmJGMWh3YWlveDEtRDUyUXgtVEx2YWQtdUlIOWZKOA?oc=5"
+      },
+      {
+        "title": "How Big Tech Lost the Midterms - Politico",
+        "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQQmEySUJ0aE1vd1N5bWF3TFRPWGVLNmRVQnhXaUZQTWRjWHZIa0tIR2Q4VXh3LWxIOXd0cDVFVTNkVFhwQmtVS2F1dzVDNVU1QnF0bHVGNDVlSEV4QnpRX0pMSG0yUTJNU1BZZFFEUXhRdm96VVd2MUFSQ0ExN0JKRWVhdFE4WDBXYVlRWVdLU19JUEdHQ1BlMENlVEtZalh1azZN?oc=5"
+      }
+    ]
+  },
+  {
     "title": "Тихият пробив в квантовите изчисления: Защо IBM, AMD и лабораторията Oak Ridge обединяват сили срещу декохеренцията",
     "time": "2026-11-05",
     "category": "Квантови технологии",
