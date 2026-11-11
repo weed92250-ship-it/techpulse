@@ -1,5 +1,39 @@
 [
   {
+    "title": "Сложната геополитика на чиповете: Как една китайска университетска покупка изостри дебата около износния контрол",
+    "time": "2026-11-11",
+    "category": "Киберсигурност",
+    "category_slug": "cyber",
+    "url": "/articles/slozhnata-geopolitika-na-chipovete-kak-edna-kitayska-universitetska-pokupka-izostri-debata-okolo-iznosniya-kontrol.html",
+    "img": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&auto=format&fit=crop",
+    "sources": [
+      {
+        "title": "How artificial intelligence is changing healthcare - MPR News",
+        "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPTGZzbUl2YXdwVFJDTlYtX29MNDNpbGt1SmFfVlYtd0hzVUxuZ3FYdUxKN3IzUHQwcnNMLXRINlVST0pLcVhsZC1XZHNCbkEzYnZnWGQyakxSYVNvSGFyVzNreHRvb2RyT0JVN2lwQTc4N09STXA3dmNWWVhQYnlGa1Z1eU1kb05yWnFpUXJDVFVOTEZxVk4zMTZB?oc=5"
+      },
+      {
+        "title": "Greg Morrisett to co-lead new NYS AI safety research center - Cornell Chronicle",
+        "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQLUhvQ283dnZCUVR1dTBab1MwZ1BwUHFsczJmQWlaOXlvYlVWS1dhRll3YjdqZUdJQzZSYnZ5Vk9XNFVOdi1ZSkpuNDJSLU1WVW5pSUlaUm1MelFRanJaM3BOVkh2UEEtSXpUZ2wwbldCOTlpQmthY3BOQVcySnZBblg5dXIyeHg1UEd4LUhCcWlWdzE2WHRVaF9ZNHdjZw?oc=5"
+      },
+      {
+        "title": "US and China should stay clear-eyed on AI cooperation and competition, Bessent says - Reuters",
+        "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQWUdDU2JVSnpLTmIzYVRmNm5Wb2Y3UC1vVElXMTZwdlM4M2YwRGZKT2tkYXI5YVlzRk1GZm5HRmY3NDlPQm1UaC1McjQ3STR0ME1LeDJCQ2NPQlVyU1RBa0RkSUotV2tSWndkN3NiQmdsVFFoVENFUVdFTExITml0bnc3RVdGcU1mSTB1T1gzcHpWMUM4MXFnSm1oWTdhZ0I2TG11M1JBU0xfUUtYLTNDRlcxeFpWcWZSUFVz?oc=5"
+      },
+      {
+        "title": "Ohio likely won’t pass AI regulations before year ends - Ohio Capital Journal",
+        "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNaVJUanM2MXM4cU80RllTU1YxZl91dlZnaFF1SzBuSlhFVnRtMFlSblE3RjhmbzA0cjlKUzd3T1hfdnZuZTIyRjFIN1M0dXdFUHJkTXp6Vk91M3RzaVdTZG1ETF8yUVRKN0xscnJJNGVpenZDa08tQ1JpcDFQV2l5eDY1NDU5M09CZkxyUlJfTExQSzJiSXoyYmVBamU?oc=5"
+      },
+      {
+        "title": "Rice researchers among scholars showcasing expertise in surgical robotics, AI and imaging at Houston Methodist summit - Rice University",
+        "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNT2FzSDhGcTNwNkttcGRkTjFid05IRUdNZTRNZ3pxc1kxUUZLRUhnTzRBd25VLVRERnNTYlVsc3JHMjRoT0JXX1laRThHWjhUWW1adVdRc3lsRHpQeFdXWHRNMzdyOHpYQ2ViUTV3M1RKX2NaYjNJSEYxcUNaTlVOcE1UM0p4NFZDT3A2enVvR0hyOGRlS2lIRWpuN2pQaDl2Z0Z4d3ZERkVWbUF0QmxyOWNINExuMGNw?oc=5"
+      },
+      {
+        "title": "What May Artificial Intelligence Do for Writers? - Daily Nous",
+        "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNX2tGcm9maEVBcHRJRDZfRG1qU1F4Q213ZHRnM3FoaDlfdTAzdWJTVFpHdFVNbDB5ZXNkb09uQnFRX1ItUnBlai1yS0tHa0EtRHpPSXl4SWVFeThMQnd5Tm9wbk9CSkE0Q3I5dXZlel9BZHJJcmJSdGFvZ3FtQ0ZyeUFDT05zTmd0?oc=5"
+      }
+    ]
+  },
+  {
     "title": "Google засилва натиска върху Nvidia с нови специализирани чипове на фона на облачния бум",
     "time": "2026-11-09",
     "category": "Квантови технологии",
