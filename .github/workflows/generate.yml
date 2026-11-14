@@ -2,7 +2,7 @@ name: TechPulse AI Publisher
 
 on:
   schedule:
-    - cron: '15 9 * * *'
+    - cron: '15 9,15 * * *'
       timezone: 'Europe/Sofia'
   workflow_dispatch:
 
@@ -16,6 +16,7 @@ concurrency:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -82,13 +83,18 @@ jobs:
           }
           category_slug = item.get("category_slug") or category_slugs.get(item.get("category"), "technologies")
           image = item.get("img", "https://images.unsplash.com/photo-1535378273068-9bb67d5beacd?w=1200&auto=format&fit=crop")
-          url = base + item["url"]
+          url = base + re.sub(r"\.html$", "", item["url"])
 
           raw = article_path.read_text(encoding="utf-8")
           intro_match = re.search(r'<p class="article-intro">\s*(.*?)\s*</p>', raw, re.I | re.S)
           description_text = re.sub(r"<[^>]+>", " ", intro_match.group(1) if intro_match else item["title"])
           description_text = re.sub(r"\s+", " ", html.unescape(description_text)).strip()
-          description_text = description_text[:155].rstrip()
+          def truncate_words(value, limit=155):
+              if len(value) <= limit:
+                  return value
+              shortened = value[:limit].rsplit(' ', 1)[0].rstrip(' ,.;:')
+              return shortened + '…'
+          description_text = truncate_words(description_text, 155)
           description = html.escape(description_text, quote=True)
           raw = raw.replace('<meta charset="UTF-8">',
                             '<meta charset="UTF-8"><meta name="robots" content="index,follow,max-image-preview:large">'
@@ -118,20 +124,42 @@ jobs:
               page = page.replace('<p class="empty" id="empty-state">', list_card + '\n<p class="empty" id="empty-state">', 1)
           articles_file.write_text(page, encoding="utf-8")
 
-          sitemap = sitemap_file.read_text(encoding="utf-8")
-          if url not in sitemap:
-              sitemap = sitemap.replace("</urlset>", f"  <url><loc>{url}</loc><lastmod>{date}</lastmod></url>\n</urlset>")
-          sitemap = re.sub(r"(<loc>https://techpulseon\.site/</loc><lastmod>)[^<]+",
-                           rf"\g<1>{date}", sitemap)
-          sitemap = re.sub(r"(<loc>https://techpulseon\.site/articles\.html</loc><lastmod>)[^<]+",
-                           rf"\g<1>{date}", sitemap)
-          sitemap_file.write_text(sitemap, encoding="utf-8")
+          import xml.etree.ElementTree as ET
+          sitemap_tree = ET.parse(sitemap_file)
+          sitemap_root = sitemap_tree.getroot()
+          ns = "{http://www.sitemaps.org/schemas/sitemap/0.9}"
+          seen = set()
+          article_loc = url
+          for node in list(sitemap_root.findall(f"{ns}url")):
+              loc_node = node.find(f"{ns}loc")
+              if loc_node is None or not loc_node.text:
+                  continue
+              loc_value = loc_node.text.rstrip("/")
+              if loc_value == base:
+                  lastmod_node = node.find(f"{ns}lastmod")
+                  if lastmod_node is None:
+                      lastmod_node = ET.SubElement(node, f"{ns}lastmod")
+                  lastmod_node.text = date
+              if loc_value == article_loc.rstrip("/"):
+                  lastmod_node = node.find(f"{ns}lastmod")
+                  if lastmod_node is None:
+                      lastmod_node = ET.SubElement(node, f"{ns}lastmod")
+                  lastmod_node.text = date
+              if loc_value in seen:
+                  sitemap_root.remove(node)
+              else:
+                  seen.add(loc_value)
+          if article_loc.rstrip("/") not in seen:
+              entry = ET.SubElement(sitemap_root, f"{ns}url")
+              ET.SubElement(entry, f"{ns}loc").text = article_loc
+              ET.SubElement(entry, f"{ns}lastmod").text = date
+          sitemap_tree.write(sitemap_file, encoding="UTF-8", xml_declaration=True)
           PY
 
       - name: Commit and push
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add public/
+          git add public/articles.json public/index.html public/articles.html public/sitemap.xml public/articles/*.html
           git diff --cached --quiet || git commit -m "Автоматично публикуване на нов TechPulse материал"
           git push

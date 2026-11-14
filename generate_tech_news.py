@@ -7,13 +7,14 @@ import json
 import urllib.request
 import xml.etree.ElementTree as ET
 from google import genai
+from google.genai import types
 
 api_key = os.environ.get("GEMINI_API_KEY")
 
 if not api_key:
     raise ValueError("ГРЕШКА: Липсва GEMINI_API_KEY в Secrets!")
 
-client = genai.Client(api_key=api_key)
+client = genai.Client(api_key=api_key, http_options=types.HttpOptions(timeout=90000))
 
 PUBLIC_DIR = "public"
 ARTICLES_DIR = os.path.join(PUBLIC_DIR, "articles")
@@ -370,19 +371,24 @@ def generate_news():
             "Няма да се публикува непроверен fallback материал."
         )
 
+    # Записвай само RSS източници, към които статията има изричен линк.
+    # RSS контекстът сам по себе си не доказва, че даден материал е използван.
     source_links = []
-    for item in rss_items[:6]:
-        if item["link"] not in [x["url"] for x in source_links]: source_links.append({"title": item["title"], "url": item["link"]})
-    if len(source_links) < 2: raise RuntimeError("Няма достатъчно проверими RSS източници. Няма да се публикува.")
+    for candidate in rss_items:
+        link_pattern = r'href=["\\']' + re.escape(candidate["link"]) + r'["\\']'
+        if re.search(link_pattern, article_body, re.I):
+            if candidate["link"] not in [x["url"] for x in source_links]:
+                source_links.append({"title": candidate["title"], "url": candidate["link"]})
 
-    source_html = '<section class="article-sources"><h3>Източници</h3><ul>'
-    for source in source_links[:6]:
-        source_html += (
-            f'<li><a href="{source["url"]}" rel="noopener noreferrer">'
-            f'{source["title"]}</a></li>'
-        )
-    source_html += "</ul></section>"
-    article_body += source_html
+    if source_links:
+        source_html = '<section class="article-sources"><h3>Източници</h3><ul>'
+        for source in source_links:
+            source_html += (
+                f'<li><a href="{source["url"]}" rel="noopener noreferrer">'
+                f'{source["title"]}</a></li>'
+            )
+        source_html += "</ul></section>"
+        article_body += source_html
 
     title_match = re.search(r"<h2>(.*?)</h2>", article_body, re.S)
     title_text = re.sub(r"<[^>]+>", "", title_match.group(1)).strip() if title_match else "Технологична новина"
