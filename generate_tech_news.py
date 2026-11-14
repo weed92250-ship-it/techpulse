@@ -228,6 +228,44 @@ def save_history(history):
     with open(HISTORY_FILE, "w", encoding="utf-8") as f:
         json.dump(history, f, ensure_ascii=False, indent=2)
 
+COOKIE_CONSENT_HTML = r"""<style id="tp-cookie-style">
+#tp-cookie-banner{position:fixed;z-index:99999;left:16px;right:16px;bottom:16px;max-width:900px;margin:auto;padding:18px 20px;background:#0f172a;color:#e2e8f0;border:1px solid #334155;border-radius:12px;box-shadow:0 12px 40px rgba(0,0,0,.38);font:14px/1.55 system-ui,sans-serif}
+#tp-cookie-banner[hidden]{display:none}#tp-cookie-banner p{margin:0 0 12px}#tp-cookie-banner a{color:#7dd3fc;text-decoration:underline}
+#tp-cookie-banner .tp-cookie-actions{display:flex;flex-wrap:wrap;gap:10px}
+#tp-cookie-banner button{border:1px solid #475569;border-radius:7px;padding:9px 14px;font-weight:650;cursor:pointer}
+#tp-cookie-accept{background:#0284c7;color:white;border-color:#0284c7}#tp-cookie-reject{background:#1e293b;color:#e2e8f0}
+.site-footer{margin-top:36px;padding:22px 0;border-top:1px solid #1e293b;text-align:center;color:#64748b;font-size:13px}
+.site-footer .footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 18px}
+.site-footer .footer-links a{color:#94a3b8;text-decoration:none;margin:0}
+.site-footer .footer-links a:hover{color:#38bdf8}
+@media(max-width:600px){#tp-cookie-banner{left:8px;right:8px;bottom:8px;padding:14px}.site-footer .footer-links{gap:10px 14px}}
+</style>
+<section id="tp-cookie-banner" role="dialog" aria-modal="false" aria-labelledby="tp-cookie-title" aria-describedby="tp-cookie-copy" hidden>
+<strong id="tp-cookie-title">Настройки за бисквитки</strong>
+<p id="tp-cookie-copy">TechPulse използва необходими бисквитки и, само след твое съгласие, рекламни бисквитки на Google AdSense. Рекламните технологии могат да обработват информация за устройството и посещенията ти, включително за персонализиране на реклами. Прочети <a href="/privacy.html">Политиката за поверителност и бисквитки</a> и <a href="https://business.safety.google/privacy/" target="_blank" rel="noopener noreferrer">как Google използва данните</a>.</p>
+<div class="tp-cookie-actions"><button type="button" id="tp-cookie-reject">Отказвам рекламните бисквитки</button><button type="button" id="tp-cookie-accept">Приемам рекламните бисквитки</button></div>
+</section>
+<script>
+(function(){
+ const KEY="techpulse_cookie_choice_v1";
+ const banner=document.getElementById("tp-cookie-banner");
+ if(!banner)return;
+ let choice=null;try{choice=localStorage.getItem(KEY)}catch(e){}
+ function loadAds(){
+  if(document.querySelector("script[data-tp-ads-loaded]"))return;
+  const s=document.createElement("script");s.async=true;
+  s.src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8109991761364968";
+  s.crossOrigin="anonymous";s.setAttribute("data-tp-ads-loaded","true");document.head.appendChild(s);
+ }
+ function save(value){try{localStorage.setItem(KEY,value)}catch(e){}location.reload()}
+ if(choice==="accepted")loadAds();else if(choice!=="rejected")banner.hidden=false;
+ document.getElementById("tp-cookie-accept").addEventListener("click",()=>save("accepted"));
+ document.getElementById("tp-cookie-reject").addEventListener("click",()=>save("rejected"));
+ const settings=document.getElementById("tp-cookie-settings");
+ if(settings)settings.addEventListener("click",e=>{e.preventDefault();banner.hidden=false});
+})();
+</script>"""
+
 def create_static_pages():
     pages = {
         "about.html": ("За нас", "<h1>За TechPulse</h1><p>TechPulse е медия за изкуствен интелект, технологии и иновации.</p>"),
@@ -250,7 +288,7 @@ def create_static_pages():
         <div class="static-card">{content}</div>
         <footer>
             <div class="footer-links">
-                <a href="/about.html">За нас</a> | <a href="/contacts.html">Контакти</a> | <a href="/privacy.html">Поверителност</a>
+                <a href="/">Начало</a> | <a href="/articles.html">Статии</a> | <a href="/about.html">За нас</a> | <a href="/contacts.html">Контакти</a> | <a href="/privacy.html">Поверителност и бисквитки</a> | <a href="/terms.html">Общи условия</a> | <a href="#" id="tp-cookie-settings">Настройки за бисквитки</a>
             </div>
         </footer>
     </div>
@@ -314,6 +352,7 @@ def build_full_page(title, main_image_url, fallback_backup_img, article_body, si
             </div>
             <p>© TechPulse. Всички права запазени.</p>
         </footer>
+        {COOKIE_CONSENT_HTML}
     </div>
 </body>
 </html>"""
