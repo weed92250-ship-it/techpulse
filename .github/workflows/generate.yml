@@ -130,7 +130,9 @@ jobs:
           import xml.etree.ElementTree as ET
           sitemap_tree = ET.parse(sitemap_file)
           sitemap_root = sitemap_tree.getroot()
-          ns = "{http://www.sitemaps.org/schemas/sitemap/0.9}"
+          ns_uri = "http://www.sitemaps.org/schemas/sitemap/0.9"
+          ET.register_namespace("", ns_uri)
+          ns = "{" + ns_uri + "}"
           seen = set()
           article_loc = url
           for node in list(sitemap_root.findall(f"{ns}url")):
@@ -138,6 +140,9 @@ jobs:
               if loc_node is None or not loc_node.text:
                   continue
               loc_value = loc_node.text.rstrip("/")
+              if loc_value.endswith(".html"):
+                  loc_value = loc_value[:-5]
+                  loc_node.text = loc_value
               if loc_value == base:
                   lastmod_node = node.find(f"{ns}lastmod")
                   if lastmod_node is None:
