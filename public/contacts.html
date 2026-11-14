@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="bg">
 <head>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8109991761364968" crossorigin="anonymous"></script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Свържете се с екипа на TechPulse.">
@@ -50,9 +50,44 @@
     <div class="container">
         <div class="header"><a href="/" class="logo">⚡ TechPulse</a><nav class="main-nav" aria-label="Главна навигация"><a href="/">Начало</a><a href="/articles">Статии</a><a href="/about">За нас</a><a href="/contacts">Контакти</a><a href="/privacy">Поверителност</a><a href="/terms">Условия</a></nav></div>
         <div class="static-card"><h1>Контакти</h1><p><strong>Локация:</strong> Бургас, България</p><p>За въпроси, корекции или обратна връзка: <a href="mailto:contact@techpulseon.site" style="color:#38bdf8">contact@techpulseon.site</a></p><p>Ако сигнализирате за неточност в публикация, посочете конкретната статия и твърдението, за да можем да го проверим.</p><h2>Изпрати запитване</h2><p>Формата отваря приложението ти за електронна поща с подготвено съобщение.</p><form action="mailto:contact@techpulseon.site" method="post" enctype="text/plain"><label for="contact-name">Име</label><br><input id="contact-name" name="Име" required maxlength="100"><br><label for="contact-email">Имейл</label><br><input id="contact-email" name="Имейл" type="email" required maxlength="200"><br><label for="contact-message">Съобщение</label><br><textarea id="contact-message" name="Съобщение" required rows="6" maxlength="5000"></textarea><br><button type="submit">Отвори имейл</button></form><p>Ако формата не се отваря, изпрати имейл директно на <a href="mailto:contact@techpulseon.site">contact@techpulseon.site</a>.</p></div>
-        <footer>
-            <div class="footer-links"><a href="/">Начало</a><a href="/articles">Статии</a><a href="/about">За нас</a><a href="/contacts">Контакти</a><a href="/privacy">Поверителност</a><a href="/terms">Условия</a></div>
-        </footer>
+        <footer class="site-footer"><nav class="footer-links" aria-label="Полезни връзки"><a href="/">Начало</a><a href="/articles.html">Статии</a><a href="/about.html">За нас</a><a href="/contacts.html">Контакти</a><a href="/privacy.html">Поверителност и бисквитки</a><a href="/terms.html">Общи условия</a><a href="#" id="tp-cookie-settings">Настройки за бисквитки</a></nav><p>© TechPulse. Всички права запазени.</p></footer>
     </div>
+<style id="tp-cookie-style">
+#tp-cookie-banner{position:fixed;z-index:99999;left:16px;right:16px;bottom:16px;max-width:900px;margin:auto;padding:18px 20px;background:#0f172a;color:#e2e8f0;border:1px solid #334155;border-radius:12px;box-shadow:0 12px 40px rgba(0,0,0,.38);font:14px/1.55 system-ui,sans-serif}
+#tp-cookie-banner[hidden]{display:none}#tp-cookie-banner p{margin:0 0 12px}#tp-cookie-banner a{color:#7dd3fc;text-decoration:underline}
+#tp-cookie-banner .tp-cookie-actions{display:flex;flex-wrap:wrap;gap:10px}
+#tp-cookie-banner button{border:1px solid #475569;border-radius:7px;padding:9px 14px;font-weight:650;cursor:pointer}
+#tp-cookie-accept{background:#0284c7;color:white;border-color:#0284c7}#tp-cookie-reject{background:#1e293b;color:#e2e8f0}
+.site-footer{margin-top:36px;padding:22px 0;border-top:1px solid #1e293b;text-align:center;color:#64748b;font-size:13px}
+.site-footer .footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 18px}
+.site-footer .footer-links a{color:#94a3b8;text-decoration:none;margin:0}
+.site-footer .footer-links a:hover{color:#38bdf8}
+@media(max-width:600px){#tp-cookie-banner{left:8px;right:8px;bottom:8px;padding:14px}.site-footer .footer-links{gap:10px 14px}}
+</style>
+<section id="tp-cookie-banner" role="dialog" aria-modal="false" aria-labelledby="tp-cookie-title" aria-describedby="tp-cookie-copy" hidden>
+<strong id="tp-cookie-title">Настройки за бисквитки</strong>
+<p id="tp-cookie-copy">TechPulse използва необходими бисквитки и, само след твое съгласие, рекламни бисквитки на Google AdSense. Рекламните технологии могат да обработват информация за устройството и посещенията ти, включително за персонализиране на реклами. Прочети <a href="/privacy.html">Политиката за поверителност и бисквитки</a> и <a href="https://business.safety.google/privacy/" target="_blank" rel="noopener noreferrer">как Google използва данните</a>.</p>
+<div class="tp-cookie-actions"><button type="button" id="tp-cookie-reject">Отказвам рекламните бисквитки</button><button type="button" id="tp-cookie-accept">Приемам рекламните бисквитки</button></div>
+</section>
+<script>
+(function(){
+ const KEY="techpulse_cookie_choice_v1";
+ const banner=document.getElementById("tp-cookie-banner");
+ if(!banner)return;
+ let choice=null;try{choice=localStorage.getItem(KEY)}catch(e){}
+ function loadAds(){
+  if(document.querySelector("script[data-tp-ads-loaded]"))return;
+  const s=document.createElement("script");s.async=true;
+  s.src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8109991761364968";
+  s.crossOrigin="anonymous";s.setAttribute("data-tp-ads-loaded","true");document.head.appendChild(s);
+ }
+ function save(value){try{localStorage.setItem(KEY,value)}catch(e){}location.reload()}
+ if(choice==="accepted")loadAds();else if(choice!=="rejected")banner.hidden=false;
+ document.getElementById("tp-cookie-accept").addEventListener("click",()=>save("accepted"));
+ document.getElementById("tp-cookie-reject").addEventListener("click",()=>save("rejected"));
+ const settings=document.getElementById("tp-cookie-settings");
+ if(settings)settings.addEventListener("click",e=>{e.preventDefault();banner.hidden=false});
+})();
+</script>
 </body>
 </html>
