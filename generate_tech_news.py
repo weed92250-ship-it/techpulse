@@ -32,12 +32,35 @@ CATEGORY_RULES = [
     ("AI", "ai", ("изкуствен интелект", " ai", "ai ", "модел", "агент", "llm")),
 ]
 
-def infer_category(title, article_html):
+def infer_category(title, article_html, history=None):
     text = f" {title} {re.sub(r'<[^>]+>', ' ', article_html)} ".lower()
+    history = history or []
+
+    scored = []
     for label, slug, keywords in CATEGORY_RULES:
-        if any(keyword in text for keyword in keywords):
-            return label, slug
-    return "Технологии", "technologies"
+        score = sum(text.count(keyword) for keyword in keywords)
+        if score:
+            scored.append((score, label, slug))
+
+    if not scored:
+        return "Технологии", "technologies"
+
+    scored.sort(key=lambda item: item[0], reverse=True)
+    preferred = scored[0]
+    today = __import__("datetime").date.today().isoformat()
+    latest_today = next(
+        (item for item in history if item.get("time") == today and item.get("category_slug")),
+        None
+    )
+
+    # Avoid assigning consecutive same-day stories to one category
+    # when the current article contains evidence for another category.
+    if latest_today and preferred[2] == latest_today.get("category_slug"):
+        alternatives = [item for item in scored if item[2] != latest_today.get("category_slug")]
+        if alternatives:
+            preferred = alternatives[0]
+
+    return preferred[1], preferred[2]
 
 CSS_STYLES = """
     body {
@@ -133,6 +156,73 @@ def load_history():
         cleaned.append(item)
 
     return cleaned
+
+IMAGE_POOLS = {
+    "quantum": [
+        "https://images.unsplash.com/photo-1535378273068-9bb67d5beacd?w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop"
+    ],
+    "cyber": [
+        "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1510511459019-5dda7724fd87?w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&auto=format&fit=crop"
+    ],
+    "hardware": [
+        "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1591405351990-4726e331f141?w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&auto=format&fit=crop"
+    ],
+    "future": [
+        "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1535223289827-42f1e9919769?w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1523961131990-5ea7c61b2107?w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1535378620166-273708d44e4c?w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&auto=format&fit=crop"
+    ],
+    "ai": [
+        "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1676299081847-824916de030a?w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop"
+    ],
+    "technologies": [
+        "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&auto=format&fit=crop"
+    ]
+}
+
+def choose_article_images(category_slug, history):
+    recent_images = {
+        item.get("img") for item in history[:5]
+        if isinstance(item, dict) and isinstance(item.get("img"), str)
+    }
+
+    category_images = IMAGE_POOLS.get(category_slug, [])
+    available_category = [url for url in category_images if url not in recent_images]
+    available_all = list(dict.fromkeys(
+        url for urls in IMAGE_POOLS.values() for url in urls
+        if url not in recent_images
+    ))
+
+    if not available_all:
+        raise RuntimeError("Няма свободна снимка извън последните 5 публикации.")
+
+    main_image = random.choice(available_category or available_all)
+    fallback_candidates = [url for url in available_all if url != main_image]
+    fallback_image = random.choice(fallback_candidates) if fallback_candidates else main_image
+    return main_image, fallback_image
+
 
 def save_history(history):
     with open(HISTORY_FILE, "w", encoding="utf-8") as f:
@@ -398,18 +488,10 @@ def generate_news():
     title_match = re.search(r"<h2>(.*?)</h2>", article_body, re.S)
     title_text = re.sub(r"<[^>]+>", "", title_match.group(1)).strip() if title_match else "Технологична новина"
 
-    tech_images = [
-        "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1535378273068-9bb67d5beacd?w=800&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&auto=format&fit=crop"
-    ]
-    fallback_img = tech_images[0]
-    main_image_url = random.choice(tech_images)
-
     history = load_history()
+    category_label, category_slug = infer_category(title_text, article_body, history)
+    main_image_url, fallback_img = choose_article_images(category_slug, history)
+
     sidebar_items = history[:3] if len(history) >= 3 else DEFAULT_ARTICLES
     full_html = build_full_page(title_text, main_image_url, fallback_img, article_body, sidebar_items)
 
@@ -423,7 +505,6 @@ def generate_news():
     with open(article_file_path, "w", encoding="utf-8") as f:
         f.write(full_html)
 
-    category_label, category_slug = infer_category(title_text, article_body)
     history.insert(0, {
         "title": title_text,
         "time": __import__("datetime").date.today().isoformat(),
