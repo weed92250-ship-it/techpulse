@@ -270,7 +270,6 @@ def create_static_pages():
     pages = {
         "about.html": ("За нас", "<h1>За TechPulse</h1><p>TechPulse е медия за изкуствен интелект, технологии и иновации.</p>"),
         "contacts.html": ("Контакти", "<h1>Контакти</h1><p>Пишете ни на: contact@techpulseon.site</p>"),
-        "privacy.html": ("Поверителност", "<h1>Политика за поверителност</h1><p>Зачитаме вашата поверителност.</p>")
     }
     for filename, (title, content) in pages.items():
         filepath = os.path.join(PUBLIC_DIR, filename)
@@ -291,6 +290,7 @@ def create_static_pages():
                 <a href="/">Начало</a> | <a href="/articles.html">Статии</a> | <a href="/about.html">За нас</a> | <a href="/contacts.html">Контакти</a> | <a href="/privacy.html">Поверителност и бисквитки</a> | <a href="/terms.html">Общи условия</a> | <a href="#" id="tp-cookie-settings">Настройки за бисквитки</a>
             </div>
         </footer>
+        {COOKIE_CONSENT_HTML}
     </div>
 </body>
 </html>"""
