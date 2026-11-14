@@ -321,7 +321,7 @@ def sync_article_footers():
             with open(filepath, "r", encoding="utf-8") as article_file:
                 content = article_file.read()
             updated, count = re.subn(
-                r"<footer\\b[^>]*>[\\s\\S]*?</footer>",
+                r"<footer\b[^>]*>[\s\S]*?</footer>",
                 footer,
                 content,
                 count=1,
