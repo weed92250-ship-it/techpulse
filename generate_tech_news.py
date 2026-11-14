@@ -359,7 +359,12 @@ def generate_news():
                     short_draft = cleaned
             except Exception as e:
                 print(f"Грешка с {model_name} (опит {attempt + 1}/3): {e}")
-                if "503" not in str(e) and "UNAVAILABLE" not in str(e):
+                error_text = str(e).upper()
+                transient = any(token in error_text for token in (
+                    "503", "UNAVAILABLE", "429", "RESOURCE_EXHAUSTED",
+                    "TIMEOUT", "DEADLINE", "CONNECTION", "500", "502", "504"
+                ))
+                if not transient:
                     break
 
         if article_body:
@@ -375,7 +380,7 @@ def generate_news():
     # RSS контекстът сам по себе си не доказва, че даден материал е използван.
     source_links = []
     for candidate in rss_items:
-        link_pattern = r'href=["\\']' + re.escape(candidate["link"]) + r'["\\']'
+        link_pattern = r"""href=["']""" + re.escape(candidate["link"]) + r"""["']"""
         if re.search(link_pattern, article_body, re.I):
             if candidate["link"] not in [x["url"] for x in source_links]:
                 source_links.append({"title": candidate["title"], "url": candidate["link"]})
