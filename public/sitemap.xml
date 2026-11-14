@@ -2,10 +2,10 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://techpulseon.site/</loc><lastmod>2026-11-14</lastmod></url>
   <url><loc>https://techpulseon.site/articles</loc><lastmod>2026-11-04</lastmod></url>
-  <url><loc>https://techpulseon.site/about</loc></url>
-  <url><loc>https://techpulseon.site/contacts</loc></url>
-  <url><loc>https://techpulseon.site/privacy</loc></url>
-  <url><loc>https://techpulseon.site/terms</loc></url>
+    <url><loc>https://techpulseon.site/about.html</loc><lastmod>2026-11-14</lastmod></url>
+    <url><loc>https://techpulseon.site/contacts.html</loc><lastmod>2026-11-14</lastmod></url>
+    <url><loc>https://techpulseon.site/privacy.html</loc><lastmod>2026-11-14</lastmod></url>
+    <url><loc>https://techpulseon.site/terms.html</loc><lastmod>2026-11-14</lastmod></url>
   <url><loc>https://techpulseon.site/articles/bitkata-za-kvantova-stabilnost-navliza-v-nov-etap-s-postizheniya-v-potiskaneto-na-greshkite</loc><lastmod>2026-11-03</lastmod></url>
   <url><loc>https://techpulseon.site/articles/kvantovite-tehnologii-sreshtu-ogranicheniyata-na-dannite-kak-izsledovateli-izpolzvat-novi-metodi-za-ranna-diagnostika-na-belodroben-kartsinom</loc><lastmod>2026-11-02</lastmod></url>
   <url><loc>https://techpulseon.site/articles/modulniyat-kvantov-probiv-na-ibm-kak-l-couplers-promenyat-arhitekturata-na-izchislitelnite-sistemi</loc><lastmod>2026-11-01</lastmod></url>
