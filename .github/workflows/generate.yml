@@ -1,6 +1,9 @@
 name: TechPulse AI Publisher
 
 on:
+  push:
+    paths:
+      - '.github/workflows/generate.yml'
   schedule:
     - cron: '15 9,15 * * *'
       timezone: 'Europe/Sofia'
