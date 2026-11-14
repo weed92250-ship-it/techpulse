@@ -297,6 +297,44 @@ def create_static_pages():
         with open(filepath, "w", encoding="utf-8") as f:
             f.write(html)
 
+def sync_article_footers():
+    """Bring existing article footers in line with the site-wide legal/navigation links."""
+    footer = """<footer class="site-footer">
+<nav class="footer-links" aria-label="Полезни връзки">
+<a href="/">Начало</a>
+<a href="/articles.html">Статии</a>
+<a href="/about.html">За нас</a>
+<a href="/contacts.html">Контакти</a>
+<a href="/privacy.html">Поверителност и бисквитки</a>
+<a href="/terms.html">Общи условия</a>
+<a href="#" id="tp-cookie-settings">Настройки за бисквитки</a>
+</nav>
+<p>© TechPulse. Всички права запазени.</p>
+</footer>"""
+    if not os.path.isdir(ARTICLES_DIR):
+        return
+    for filename in os.listdir(ARTICLES_DIR):
+        if not filename.lower().endswith(".html"):
+            continue
+        filepath = os.path.join(ARTICLES_DIR, filename)
+        try:
+            with open(filepath, "r", encoding="utf-8") as article_file:
+                content = article_file.read()
+            updated, count = re.subn(
+                r"<footer\\b[^>]*>[\\s\\S]*?</footer>",
+                footer,
+                content,
+                count=1,
+                flags=re.IGNORECASE,
+            )
+            if count and updated != content:
+                with open(filepath, "w", encoding="utf-8") as article_file:
+                    article_file.write(updated)
+                print(f"Обновен футър: {filename}")
+        except (OSError, UnicodeError) as error:
+            print(f"Неуспешно обновяване на футъра в {filename}: {error}")
+
+
 def build_full_page(title, main_image_url, fallback_backup_img, article_body, sidebar_items):
     sidebar_html = ""
     for item in sidebar_items:
@@ -346,10 +384,16 @@ def build_full_page(title, main_image_url, fallback_backup_img, article_body, si
                 {sidebar_html}
             </aside>
         </div>
-        <footer>
-            <div class="footer-links">
-                <a href="/about.html">За нас</a> | <a href="/contacts.html">Контакти</a> | <a href="/privacy.html">Поверителност</a>
-            </div>
+        <footer class="site-footer">
+            <nav class="footer-links" aria-label="Полезни връзки">
+                <a href="/">Начало</a>
+                <a href="/articles.html">Статии</a>
+                <a href="/about.html">За нас</a>
+                <a href="/contacts.html">Контакти</a>
+                <a href="/privacy.html">Поверителност и бисквитки</a>
+                <a href="/terms.html">Общи условия</a>
+                <a href="#" id="tp-cookie-settings">Настройки за бисквитки</a>
+            </nav>
             <p>© TechPulse. Всички права запазени.</p>
         </footer>
         {COOKIE_CONSENT_HTML}
@@ -543,6 +587,9 @@ def generate_news():
 
     with open(article_file_path, "w", encoding="utf-8") as f:
         f.write(full_html)
+
+    # Update legal/navigation links in all existing article pages without touching article text.
+    sync_article_footers()
 
     history.insert(0, {
         "title": title_text,
