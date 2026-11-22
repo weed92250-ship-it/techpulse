@@ -589,9 +589,6 @@ def validate_article(article_html):
     ]:
         if phrase not in lower:
             reasons.append(label)
-    if h3 != 3:
-        reasons.append(f"FAQ H3={h3}, изискват се точно 3")
-
     cliches = [
         "на фона на засилената глобална конкуренция",
         "динамиката в технологичната индустрия",
@@ -605,8 +602,11 @@ def validate_article(article_html):
         reasons.append("клишета: " + "; ".join(found))
 
     faq = build_faq_json_ld(article_html)
-    if faq is None:
-        reasons.append("FAQ секцията трябва да съдържа точно 3 двойки H3 въпрос и P отговор")
+    faq_count = len(faq.get("mainEntity", [])) if faq else 0
+    if faq_count != 3:
+        reasons.append(
+            f"FAQ въпроси и отговори={faq_count}, изискват се точно 3 двойки H3/P"
+        )
     return not reasons, reasons, words, h2, faq
 
 
