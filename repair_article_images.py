@@ -165,7 +165,7 @@ def commons_candidates(query, used, limit=50):
 
 def replace_meta(content, name, url, prop=False):
     attr = "property" if prop else "name"
-    pattern = rf'<meta\\s+{attr}=["\\']{re.escape(name)}["\\']\\s+content=["\\'][^"\\']*["\\']\\s*/?>'
+    pattern = rf'<meta\s+{attr}=["\']{re.escape(name)}["\']\s+content=["\'][^"\']*["\']\s*/?>'
     tag = f'<meta {attr}="{name}" content="{html.escape(url, quote=True)}">'
     if re.search(pattern, content, re.I):
         return re.sub(pattern, tag, content, count=1, flags=re.I)
@@ -245,7 +245,7 @@ def main():
         content = article_path.read_text(encoding="utf-8")
         content = replace_meta(content, "og:image", url, prop=True)
         content = replace_meta(content, "twitter:image", url)
-        img_pattern = r'(<img\\b[^>]*?\\bsrc=["\\'])[^"\\']+((?:["\\']))'
+        img_pattern = r'(<img\b[^>]*?\bsrc=["\'])[^"\']+((?:["\']))'
         content, count = re.subn(
             img_pattern, lambda m: m.group(1) + url + m.group(2),
             content, count=1, flags=re.I
@@ -260,12 +260,12 @@ def main():
         for article_url, url in updates.items():
             if article_url in block:
                 return re.sub(
-                    r'(<img\\b[^>]*?\\bsrc=["\\'])[^"\\']+((?:["\\']))',
+                    r'(<img\b[^>]*?\bsrc=["\'])[^"\']+((?:["\']))',
                     lambda m: m.group(1) + url + m.group(2),
                     block, count=1, flags=re.I
                 )
         return block
-    page = re.sub(r"<article\\b[\\s\\S]*?</article>", update_card, page, flags=re.I)
+    page = re.sub(r"<article\b[\s\S]*?</article>", update_card, page, flags=re.I)
     if recent:
         page = replace_meta(page, "og:image", recent[0]["img"], prop=True)
     INDEX_FILE.write_text(page, encoding="utf-8")
@@ -274,7 +274,7 @@ def main():
     for item in recent:
         article_url, url = item["url"], item["img"]
         href = re.escape(article_url)
-        pattern = re.compile(rf'(<a\\b[^>]*\\bhref=["\\']{href}["\\'][^>]*>)', re.I)
+        pattern = re.compile(rf'(<a\b[^>]*\bhref=["\']{href}["\'][^>]*>)', re.I)
         thumb = (
             f'<img class="article-thumb" loading="lazy" width="320" height="180" '
             f'src="{html.escape(url, quote=True)}" '
@@ -289,7 +289,7 @@ def main():
             1
         )
     LIST_FILE.write_text(page, encoding="utf-8")
-    HISTORY_FILE.write_text(json.dumps(history, ensure_ascii=False, indent=2) + "\\n", encoding="utf-8")
+    HISTORY_FILE.write_text(json.dumps(history, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"Обновени са снимките на {len(recent)} статии, HTML метаданните, началната страница и архивът.")
 
 if __name__ == "__main__":
