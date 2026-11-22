@@ -494,6 +494,122 @@ def build_full_page(title, main_image_url, fallback_backup_img, article_body, si
 </body>
 </html>"""
 
+def extract_image_query(response_text, article_html=""):
+    lines = (response_text or "").lstrip("\ufeff").splitlines()
+    image_query = ""
+    if lines:
+        match = re.match(r"^\s*IMAGE_QUERY\s*:\s*(.*?)\s*$", lines[0], re.I)
+        if match:
+            image_query = re.sub(r"[^A-Za-z ]", " ", match.group(1))
+            image_query = re.sub(r"\s+", " ", image_query).strip()
+            lines = lines[1:]
+    html = "\n".join(lines).strip()
+    fence = chr(96) * 3
+    html = re.sub(r"^\s*" + re.escape(fence) + r"(?:html)?\s*", "", html, flags=re.I)
+    html = re.sub(r"\s*" + re.escape(fence) + r"\s*$", "", html)
+    if not 2 <= len(image_query.split()) <= 4:
+        title_match = re.search(r"<h1\b[^>]*>(.*?)</h1>", html, re.I | re.S)
+        title = re.sub(r"<[^>]+>", " ", title_match.group(1)).strip() if title_match else ""
+        _, slug = infer_category(title, html)
+        image_query = {
+            "quantum": "quantum computer laboratory",
+            "cyber": "cybersecurity server room",
+            "hardware": "semiconductor microchip wafer",
+            "future": "humanoid robotics laboratory",
+            "ai": "artificial intelligence data center",
+            "technologies": "technology research laboratory",
+        }.get(slug, "technology research laboratory")
+    return image_query, html
+
+
+def _html_text(value):
+    import html as html_module
+    return re.sub(r"\s+", " ", html_module.unescape(re.sub(r"<[^>]+>", " ", value))).strip()
+
+
+def build_faq_json_ld(article_html):
+    heading = re.search(
+        r"<h[1-6]\b[^>]*>\s*Често\s+задаван[иия]+\s+въпроси\s*</h[1-6]>",
+        article_html, re.I
+    )
+    if not heading:
+        return None
+    tail = article_html[heading.end():]
+    next_h2 = re.search(r"<h2\b", tail, re.I)
+    faq_html = tail[:next_h2.start()] if next_h2 else tail
+    pairs = re.findall(
+        r"<h3\b[^>]*>(.*?)</h3>\s*<p\b[^>]*>([\s\S]*?)</p>",
+        faq_html, re.I
+    )
+    if len(pairs) != 3:
+        return None
+    entities = []
+    for q_html, a_html in pairs:
+        question, answer = _html_text(q_html), _html_text(a_html)
+        if not question or not answer:
+            return None
+        entities.append({
+            "@type": "Question",
+            "name": question,
+            "acceptedAnswer": {"@type": "Answer", "text": answer},
+        })
+    return {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": entities,
+    }
+
+
+def validate_article(article_html):
+    reasons = []
+    if not article_html or not article_html.strip():
+        return False, ["празен HTML отговор"], 0, 0, None
+
+    plain = _html_text(article_html)
+    words = len(re.findall(r"(?u)\b[\wА-Яа-яЁё]+\b", plain))
+    h1 = len(re.findall(r"<h1\b", article_html, re.I))
+    h2 = len(re.findall(r"<h2\b", article_html, re.I))
+    h3 = len(re.findall(r"<h3\b", article_html, re.I))
+    lower = plain.lower()
+
+    if h1 != 1:
+        reasons.append(f"h1={h1}, изисква се точно 1")
+    if not 3 <= h2 <= 8:
+        reasons.append(f"H2={h2}, допустими са 3–8")
+    if not 650 <= words <= 1800:
+        reasons.append(f"думи={words}, допустими са 650–1800")
+    if not re.search(r'<p\b[^>]*class=["\']article-intro["\']', article_html, re.I):
+        reasons.append('липсва уводен абзац с class="article-intro"')
+    if not re.search(r"<p\b", article_html, re.I):
+        reasons.append("липсват абзаци <p>")
+    for phrase, label in [
+        ("ключови изводи", "липсва секция „Ключови изводи“"),
+        ("какво означава това на практика", "липсва секция „Какво означава това на практика“"),
+        ("често задавани въпроси", "липсва секция „Често задавани въпроси“"),
+    ]:
+        if phrase not in lower:
+            reasons.append(label)
+    if h3 != 3:
+        reasons.append(f"FAQ H3={h3}, изискват се точно 3")
+
+    cliches = [
+        "на фона на засилената глобална конкуренция",
+        "динамиката в технологичната индустрия",
+        "в съвременния дигитален свят",
+        "в днешния динамичен свят",
+        "революционизира", "нова ера", "играта се променя",
+        "това променя всичко",
+    ]
+    found = [phrase for phrase in cliches if phrase in lower]
+    if found:
+        reasons.append("клишета: " + "; ".join(found))
+
+    faq = build_faq_json_ld(article_html)
+    if faq is None:
+        reasons.append("FAQ секцията трябва да съдържа точно 3 двойки H3 въпрос и P отговор")
+    return not reasons, reasons, words, h2, faq
+
+
 def generate_news():
     print("TechPulse: търсене на актуална технологична тема чрез публични RSS източници (безплатен режим)...")
 
@@ -501,190 +617,156 @@ def generate_news():
 <role>
 Ти си опитен редактор на българско технологично издание. Напиши един завършен, задълбочен материал за реална и актуална технологична тема.
 </role>
-
 <research>
 Използвай подадения RSS пакет като отправна точка. Избери конкретна тема с новинарска стойност от последните няколко дни в AI, чипове, квантови технологии, роботика, киберсигурност или потребителски технологии.
 Провери ключовите твърдения. Предпочитай първични източници: официални съобщения и документация на компании, научни публикации, регулаторни документи и изявления на организациите, за които се говори.
 Не измисляй факти, числа, дати, цитати, експерти, продукти, събития или резултати. Ако информацията не може да бъде надеждно потвърдена, не я представяй като факт.
 </research>
-
 <writing>
-Пиши на естествен и точен български език. Забранени са шаблонните AI клишета и общите фрази, включително „На фона на засилената глобална конкуренция“, „Динамиката в технологичната индустрия“, „В съвременния дигитален свят“, „в днешния динамичен свят“, „революционизира“, „нова ера“, „играта се променя“ и „това променя всичко“. Не започвай с общи приказки. Започни с конкретен проверен факт, число, техническа промяна или практическа ситуация.
-Целта е 950–1200 думи. Валидаторът допуска 700–1600 думи, но се стреми към целевия диапазон. Не повтаряй една теза с различни думи и не добавяй празни абзаци за обем.
-Задължителна структура: конкретно въведение; 4–8 логични подзаглавия H2; всяка основна H2 секция трябва да съдържа по 2–3 плътни, съдържателни абзаца с факти, обяснения и примери. Тази дълбочина трябва естествено да доведе до около 950–1200 думи. Включи сравнителен блок или списък „Ключови изводи“; отделна секция „Какво означава това на практика“; FAQ с точно 3 въпроса и ясни отговори.
-Обясни механизма, контекста, предимствата, недостатъците, разходите и ограниченията, когато са приложими. Включи конкретни сценарии и критерии за решение. Разграничавай факт, анализ и прогноза. Не измисляй тестове, личен опит, цитати, експерти или числа. Ако липсват надеждни данни, кажи го изрично.
+Пиши на естествен и точен български език. Забранени са клишетата „На фона на засилената глобална конкуренция“, „Динамиката в технологичната индустрия“, „В съвременния дигитален свят“, „в днешния динамичен свят“, „революционизира“, „нова ера“, „играта се променя“ и „това променя всичко“. Започни с конкретен проверен факт, число, техническа промяна или практическа ситуация.
+Целта е 950–1200 думи. Валидаторът допуска 650–1800 думи. Не повтаряй една теза и не добавяй празни абзаци.
+Задължителна структура: конкретно въведение; 3–8 логични H2 секции; съдържателни абзаци с факти, обяснения и примери; „Ключови изводи“; „Какво означава това на практика“; FAQ „Често задавани въпроси“ с точно 3 въпроса като H3 и отговор за всеки в следващия P.
+Обясни механизма, контекста, предимствата, недостатъците, разходите и ограниченията, когато са приложими. Разграничавай факт, анализ и прогноза. Не измисляй тестове, личен опит, цитати, експерти или числа.
 </writing>
-
 <current_rss>
 {RSS_CONTEXT}
 </current_rss>
-
 <format>
-Върни валиден JSON обект без Markdown и code fences. Форматът е точно: {"article_html":"Пълният HTML материал...","image_query":"2–3 конкретни английски думи"}. В article_html запази следната структура: първият елемент е <h1>, следван от точно един <p class="article-intro">, после 4–8 смислени <h2> секции с по 2–3 плътни абзаца, секция „Ключови изводи“, отделна секция „Какво означава това на практика“ и FAQ с точно 3 въпроса като <h3> и <p>, плюс валиден FAQPage JSON-LD. image_query трябва да е кратка фраза на английски с 2–3 думи, описваща конкретния обект/сцена в статията (например "quantum computer lab", "microchip silicon wafer", "cybersecurity server room"). Не връщай URL в image_query и не включвай изображение в HTML.
+Първият ред трябва да е IMAGE_QUERY: последван от 2–4 конкретни английски думи за подходяща хоризонтална снимка.
+На следващия ред започни директно с чист HTML. Не връщай JSON, Markdown или code fences. HTML започва с един H1 и един P с class="article-intro", после 3–8 смислени H2 секции. Включи изискваните секции и точно три FAQ двойки H3/P. Не генерирай script или JSON-LD. Не включвай изображение в HTML.
 </format>
-
-Напиши материала така, че читателят да получи реално обяснение на темата, а не просто преразказ на новината.
+Напиши материала като задълбочен редакционен анализ, а не като преразказ на новината.
 """
 
     rss_items = []
-    feeds = ["https://news.google.com/rss/search?q=AI+OR+artificial+intelligence&hl=en-US&gl=US&ceid=US:en", "https://news.google.com/rss/search?q=semiconductors+OR+chips&hl=en-US&gl=US&ceid=US:en", "https://news.google.com/rss/search?q=robotics+OR+quantum+computing&hl=en-US&gl=US&ceid=US:en", "https://news.google.com/rss/search?q=cybersecurity+OR+technology&hl=en-US&gl=US&ceid=US:en"]
+    feeds = [
+        "https://news.google.com/rss/search?q=AI+OR+artificial+intelligence&hl=en-US&gl=US&ceid=US:en",
+        "https://news.google.com/rss/search?q=semiconductors+OR+chips&hl=en-US&gl=US&ceid=US:en",
+        "https://news.google.com/rss/search?q=robotics+OR+quantum+computing&hl=en-US&gl=US&ceid=US:en",
+        "https://news.google.com/rss/search?q=cybersecurity+OR+technology&hl=en-US&gl=US&ceid=US:en",
+    ]
     for feed_url in feeds:
         try:
             with urllib.request.urlopen(feed_url, timeout=15) as response:
                 root = ET.fromstring(response.read())
             for item in root.findall("./channel/item")[:8]:
-                title = item.findtext("title"); link = item.findtext("link"); pub_date = item.findtext("pubDate")
-                source = item.find("source"); source_name = source.text if source is not None else ""
-                if title and link: rss_items.append({"title": title, "link": link, "date": pub_date or "", "source": source_name})
-        except Exception as e:
-            print(f"RSS източникът не е достъпен: {e}")
-    if not rss_items: raise RuntimeError("Не бяха получени актуални RSS новини. Няма да се публикува.")
-    rss_context = "\n".join(f'- {x["title"]} | {x["source"]} | {x["date"]} | {x["link"]}' for x in rss_items[:25])
+                title = item.findtext("title")
+                link = item.findtext("link")
+                pub_date = item.findtext("pubDate")
+                source = item.find("source")
+                source_name = source.text if source is not None else ""
+                if title and link:
+                    rss_items.append({
+                        "title": title, "link": link,
+                        "date": pub_date or "", "source": source_name,
+                    })
+        except Exception as error:
+            print(f"RSS източникът не е достъпен: {error}")
+
+    if not rss_items:
+        raise RuntimeError("Не бяха получени актуални RSS новини. Няма да се публикува.")
+
+    rss_context = "\n".join(
+        f'- {item["title"]} | {item["source"]} | {item["date"]} | {item["link"]}'
+        for item in rss_items[:25]
+    )
     prompt = prompt.replace("{RSS_CONTEXT}", rss_context)
+
     article_body = None
+    image_query = "technology research laboratory"
     retry_feedback = None
     models = ["gemini-3.5-flash-lite", "gemini-3.5-flash"]
-    for model_name in models:
-        for attempt in range(3):
-            try:
-                if attempt:
-                    import time
-                    delay = 15 * (2 ** (attempt - 1))
-                    print(f"Временен проблем с {model_name}; нов опит след {delay} секунди...")
-                    time.sleep(delay)
 
+    for model_name in models:
+        editorial_attempts = 0
+        transient_retries = 0
+        transient_delays = [15, 30, 45, 60]
+
+        while editorial_attempts < 3:
+            try:
                 request_prompt = prompt
                 if retry_feedback:
                     request_prompt += f"""
 
-БЕЛЕЖКА ОТ ПРЕДИШНИЯ ОПИТ: Предишният вариант беше отхвърлен поради: {retry_feedback}.
-Коригирай точно този проблем в новия пълен HTML материал. При недостатъчен брой думи развий основните H2 секции с по 2–3 плътни абзаца и се стреми към 950–1200 думи. При грешен брой H2 добави или премахни смислени секции така, че да има 4–8. Запази проверимите факти, без повторения и без измисляне.
-Върни целия завършен материал отначало.
+РЕДАКЦИОННА КОРЕКЦИЯ: Предишният материал не покрива тези критерии: {retry_feedback}.
+Поправи всяка посочена причина. Запази проверимите факти, без повторения и без измисляне.
+Върни целия материал отначало със същия формат IMAGE_QUERY на първия ред и чист HTML след него.
 """
+
                 response = client.models.generate_content(
                     model=model_name,
                     contents=request_prompt,
-                    config=types.GenerateContentConfig(
-                        max_output_tokens=8192,
-                        response_mime_type="application/json",
-                    ),
+                    config=types.GenerateContentConfig(max_output_tokens=8192),
                 )
                 if not response or not response.text:
+                    editorial_attempts += 1
+                    retry_feedback = "Gemini върна празен отговор"
+                    print(f"Празен отговор от {model_name}, редакционен опит {editorial_attempts}/3.")
                     continue
 
-                payload = json.loads(response.text)
-                cleaned = str(payload.get("article_html", "")).strip()
-                image_query = str(payload.get("image_query", "")).strip()
-                image_query = re.sub(r"[^A-Za-z ]", " ", image_query)
-                image_query = re.sub(r"\\s+", " ", image_query).strip()
-                if not 2 <= len(image_query.split()) <= 3:
-                    image_query = " ".join(re.findall(r"[A-Za-z]+", title_text if "title_text" in locals() else "technology innovation")[:3]) or "technology innovation"
-                if not cleaned:
-                    raise ValueError("JSON отговорът няма article_html")
-                plain_text = re.sub(r"<[^>]+>", " ", cleaned)
-                plain_text = re.sub(r"\s+", " ", plain_text).strip()
-                word_count = len(re.findall(r"(?u)\b[\wА-Яа-яЁё]+\b", plain_text))
-                h2_count = len(re.findall(r"<h2\b", cleaned, flags=re.I))
-                h3_count = len(re.findall(r"<h3\b", cleaned, flags=re.I))
-                short_paragraphs = len(re.findall(r"<p\b[^>]*>[^<]{1,120}</p>", cleaned, flags=re.I))
+                image_query, cleaned = extract_image_query(response.text)
+                valid, reasons, word_count, h2_count, faq_schema = validate_article(cleaned)
+                editorial_attempts += 1
 
-                h1_count = len(re.findall(r"<h1\b", cleaned, flags=re.I))
-                faq_schema_valid = False
-                faq_payloads = re.findall(
-                    r'<script\b[^>]*type=["\']application/ld\+json["\'][^>]*>([\s\S]*?)</script>',
-                    cleaned,
-                    flags=re.I,
-                )
-                for faq_payload in faq_payloads:
-                    try:
-                        faq_data = json.loads(faq_payload)
-                        faq_type = faq_data.get("@type", "")
-                        faq_items = faq_data.get("mainEntity", [])
-                        if (
-                            (faq_type == "FAQPage" or str(faq_type).endswith("/FAQPage"))
-                            and len(faq_items) == 3
-                            and all(
-                                (
-                                    item.get("@type") == "Question"
-                                    or str(item.get("@type", "")).endswith("/Question")
-                                )
-                                and (
-                                    item.get("acceptedAnswer", {}).get("@type") == "Answer"
-                                    or str(item.get("acceptedAnswer", {}).get("@type", "")).endswith("/Answer")
-                                )
-                                for item in faq_items
-                            )
-                        ):
-                            faq_schema_valid = True
-                            break
-                    except (json.JSONDecodeError, AttributeError, TypeError):
-                        continue
-
-                valid_structure = (
-                    h1_count == 1
-                    and 4 <= h2_count <= 8
-                    and "Ключови изводи" in cleaned
-                    and "Какво означава това на практика" in cleaned
-                    and "Често задавани въпроси" in cleaned
-                    and faq_schema_valid
-                    and '<p class="article-intro">' in cleaned
-                    and "<p>" in cleaned
-                    and word_count >= 700
-                    and word_count <= 1600
-                    and h3_count == 3
-                    and short_paragraphs <= 8
-                )
-
-                if valid_structure:
+                if valid:
                     article_body = cleaned
-                    print(f"Получена статия: {word_count} думи, {h3_count} подзаглавия чрез {model_name}.")
+                    print(f"Получена статия: {word_count} думи, {h2_count} H2 секции чрез {model_name}.")
                     break
 
-                reasons = []
-                if h1_count != 1:
-                    reasons.append(f"h1={h1_count} (трябва точно 1)")
-                if h2_count < 4 or h2_count > 8:
-                    reasons.append(f"h2={h2_count} (допустими 4–8)")
-                if not faq_schema_valid:
-                    reasons.append("FAQPage JSON-LD е невалиден или няма точно 3 въпроса")
-                if '<p class="article-intro">' not in cleaned:
-                    reasons.append("липсва article-intro")
-                if "<p>" not in cleaned:
-                    reasons.append("липсват стандартни абзаци")
-                if word_count < 700 or word_count > 1600:
-                    reasons.append(f"думи={word_count} (допустими 700–1600)")
-                if h3_count != 3:
-                    reasons.append(f"h3={h3_count} (трябва точно 3 FAQ въпроса)")
-                if short_paragraphs > 8:
-                    reasons.append(f"кратки абзаци={short_paragraphs} (максимум 8)")
-                print(f"Отхвърлена статия от {model_name}: {word_count} думи, {h3_count} подзаглавия. Причина: {', '.join(reasons) or 'непозната структурна грешка'}.")
-                retry_feedback = ", ".join(reasons) or "структурата не покрива критериите"
-            except Exception as e:
-                print(f"Грешка с {model_name} (опит {attempt + 1}/3): {e}")
-                error_text = str(e).upper()
-                transient = any(token in error_text for token in (
+                retry_feedback = "; ".join(reasons)
+                print(
+                    f"Отхвърлена статия от {model_name}: {word_count} думи, "
+                    f"{h2_count} H2. Причина: {retry_feedback}."
+                )
+
+            except Exception as error:
+                error_text = f"{type(error).__name__}: {error}"
+                upper_error = error_text.upper()
+                transient = any(token in upper_error for token in (
                     "503", "UNAVAILABLE", "429", "RESOURCE_EXHAUSTED",
-                    "TIMEOUT", "DEADLINE", "CONNECTION", "500", "502", "504"
+                    "TIMEOUT", "DEADLINE", "CONNECTION", "NETWORK",
+                    "500", "502", "504", "INTERNAL SERVER ERROR",
                 ))
-                if not transient:
-                    break
+                if transient and transient_retries < len(transient_delays):
+                    delay = transient_delays[transient_retries]
+                    transient_retries += 1
+                    print(
+                        f"Временна API/мрежова грешка при {model_name}: {error_text}. "
+                        f"Повторение {transient_retries}/4 след {delay} секунди."
+                    )
+                    time.sleep(delay)
+                    continue
+
+                editorial_attempts += 1
+                retry_feedback = f"грешка при заявката или парсването: {error_text}"
+                print(
+                    f"Грешка с {model_name} (редакционен опит "
+                    f"{editorial_attempts}/3): {error_text}"
+                )
 
         if article_body:
             break
+        print(f"Моделът {model_name} изчерпа редакционните си опити. Преминавам към резервния модел.")
 
     if not article_body:
         raise RuntimeError(
-            "Gemini не върна статия, която покрива редакционните критерии за дължина и структура. "
+            "Gemini не върна статия, която покрива редакционните критерии. "
             "Няма да се публикува непроверен fallback материал."
         )
 
-    # Записвай само RSS източници, към които статията има изричен линк.
-    # RSS контекстът сам по себе си не доказва, че даден материал е използван.
+    faq_schema = build_faq_json_ld(article_body)
+    if faq_schema:
+        article_body += (
+            '<script type="application/ld+json">'
+            + json.dumps(faq_schema, ensure_ascii=False)
+            + "</script>"
+        )
+
     source_links = []
     for candidate in rss_items:
         link_pattern = r"""href=["']""" + re.escape(candidate["link"]) + r"""["']"""
         if re.search(link_pattern, article_body, re.I):
-            if candidate["link"] not in [x["url"] for x in source_links]:
+            if candidate["link"] not in [item["url"] for item in source_links]:
                 source_links.append({"title": candidate["title"], "url": candidate["link"]})
 
     if source_links:
@@ -697,26 +779,42 @@ def generate_news():
         source_html += "</ul></section>"
         article_body += source_html
 
-    title_match = re.search(r"<h1>(.*?)</h1>", article_body, re.S)
-    title_text = re.sub(r"<[^>]+>", "", title_match.group(1)).strip() if title_match else "Технологична новина"
-    article_plain_for_reading = re.sub(r"<[^>]+>", " ", article_body)
-    article_words_for_reading = len(re.findall(r"(?u)\b[\wА-Яа-яЁё]+\b", article_plain_for_reading))
-    reading_minutes = max(1, round(article_words_for_reading / 200))
+    title_match = re.search(r"<h1\b[^>]*>(.*?)</h1>", article_body, re.I | re.S)
+    title_text = _html_text(title_match.group(1)) if title_match else "Технологична новина"
+    article_words = len(re.findall(r"(?u)\b[\wА-Яа-яЁё]+\b", _html_text(article_body)))
+    reading_minutes = max(1, round(article_words / 200))
     published_date = __import__("datetime").date.today().strftime("%d.%m.%Y")
     byline = f'<p class="meta">Редакция TechPulse · {published_date} · {reading_minutes} мин. четене</p>'
     article_body = re.sub(r"(</h1>)", r"\1" + byline, article_body, count=1, flags=re.I)
 
     history = load_history()
     category_label, category_slug = infer_category(title_text, article_body, history)
-    main_image_url, fallback_img, image_source = choose_article_images(category_slug, history, image_query)
+    main_image_url, fallback_img, image_source = choose_article_images(
+        category_slug, history, image_query
+    )
 
     sidebar_items = history[:3] if len(history) >= 3 else DEFAULT_ARTICLES
-    related_items = [x for x in history if x.get("category_slug") == category_slug][:3]
-    related_links = "".join('<li><a href="' + x.get("url", "#") + '">' + x.get("title", "Още по темата") + "</a></li>" for x in related_items)
-    editorial = '<section class="author-box"><h2>Редакция и авторство</h2><p><strong>Редакция TechPulse</strong></p><p>Материалът е подготвен от редакционния екип на TechPulse. Фактите се разграничават от анализа, а източниците дават възможност за самостоятелна проверка.</p></section>'
-    related = '<section class="related-articles"><h2>Свързани статии</h2><ul>' + related_links + "</ul></section>" if related_links else ""
+    related_items = [item for item in history if item.get("category_slug") == category_slug][:3]
+    related_links = "".join(
+        '<li><a href="' + item.get("url", "#") + '">'
+        + item.get("title", "Още по темата") + "</a></li>"
+        for item in related_items
+    )
+    editorial = (
+        '<section class="author-box"><h2>Редакция и авторство</h2>'
+        '<p><strong>Редакция TechPulse</strong></p>'
+        '<p>Материалът е подготвен от редакционния екип на TechPulse. '
+        'Фактите се разграничават от анализа, а източниците дават възможност '
+        'за самостоятелна проверка.</p></section>'
+    )
+    related = (
+        '<section class="related-articles"><h2>Свързани статии</h2><ul>'
+        + related_links + "</ul></section>"
+    ) if related_links else ""
     article_body += editorial + related
-    full_html = build_full_page(title_text, main_image_url, fallback_img, article_body, sidebar_items)
+    full_html = build_full_page(
+        title_text, main_image_url, fallback_img, article_body, sidebar_items
+    )
 
     article_slug = slugify(title_text)
     article_file_path = os.path.join(ARTICLES_DIR, f"{article_slug}.html")
@@ -725,10 +823,9 @@ def generate_news():
     if os.path.exists(article_file_path):
         raise RuntimeError(f"Статията вече съществува: {article_file_path}")
 
-    with open(article_file_path, "w", encoding="utf-8") as f:
-        f.write(full_html)
+    with open(article_file_path, "w", encoding="utf-8") as article_file:
+        article_file.write(full_html)
 
-    # Update legal/navigation links in all existing article pages without touching article text.
     sync_article_footers()
 
     history.insert(0, {
@@ -740,7 +837,7 @@ def generate_news():
         "img": main_image_url,
         "image_source": image_source,
         "image_query": image_query,
-        "sources": source_links[:6]
+        "sources": source_links[:6],
     })
     save_history(history[:200])
     print(f"Публикационният пакет е готов: {article_url}")
