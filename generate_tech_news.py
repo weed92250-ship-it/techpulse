@@ -569,7 +569,6 @@ def validate_article(article_html):
     words = len(re.findall(r"(?u)\b[\wА-Яа-яЁё]+\b", plain))
     h1 = len(re.findall(r"<h1\b", article_html, re.I))
     h2 = len(re.findall(r"<h2\b", article_html, re.I))
-    h3 = len(re.findall(r"<h3\b", article_html, re.I))
     lower = plain.lower()
 
     if h1 != 1:
