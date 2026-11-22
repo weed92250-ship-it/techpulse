@@ -520,8 +520,14 @@ def generate_news():
                             (faq_type == "FAQPage" or str(faq_type).endswith("/FAQPage"))
                             and len(faq_items) == 3
                             and all(
-                                item.get("@type") == "Question"
-                                and item.get("acceptedAnswer", {}).get("@type") == "Answer"
+                                (
+                                    item.get("@type") == "Question"
+                                    or str(item.get("@type", "")).endswith("/Question")
+                                )
+                                and (
+                                    item.get("acceptedAnswer", {}).get("@type") == "Answer"
+                                    or str(item.get("acceptedAnswer", {}).get("@type", "")).endswith("/Answer")
+                                )
                                 for item in faq_items
                             )
                         ):
