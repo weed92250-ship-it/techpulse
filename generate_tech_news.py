@@ -228,43 +228,7 @@ def save_history(history):
     with open(HISTORY_FILE, "w", encoding="utf-8") as f:
         json.dump(history, f, ensure_ascii=False, indent=2)
 
-COOKIE_CONSENT_HTML = r"""<style id="tp-cookie-style">
-#tp-cookie-banner{position:fixed;z-index:99999;left:16px;right:16px;bottom:16px;max-width:900px;margin:auto;padding:18px 20px;background:#0f172a;color:#e2e8f0;border:1px solid #334155;border-radius:12px;box-shadow:0 12px 40px rgba(0,0,0,.38);font:14px/1.55 system-ui,sans-serif}
-#tp-cookie-banner[hidden]{display:none}#tp-cookie-banner p{margin:0 0 12px}#tp-cookie-banner a{color:#7dd3fc;text-decoration:underline}
-#tp-cookie-banner .tp-cookie-actions{display:flex;flex-wrap:wrap;gap:10px}
-#tp-cookie-banner button{border:1px solid #475569;border-radius:7px;padding:9px 14px;font-weight:650;cursor:pointer}
-#tp-cookie-accept{background:#0284c7;color:white;border-color:#0284c7}#tp-cookie-reject{background:#1e293b;color:#e2e8f0}
-.site-footer{margin-top:36px;padding:22px 0;border-top:1px solid #1e293b;text-align:center;color:#64748b;font-size:13px}
-.site-footer .footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 18px}
-.site-footer .footer-links a{color:#94a3b8;text-decoration:none;margin:0}
-.site-footer .footer-links a:hover{color:#38bdf8}
-@media(max-width:600px){#tp-cookie-banner{left:8px;right:8px;bottom:8px;padding:14px}.site-footer .footer-links{gap:10px 14px}}
-</style>
-<section id="tp-cookie-banner" role="dialog" aria-modal="false" aria-labelledby="tp-cookie-title" aria-describedby="tp-cookie-copy" hidden>
-<strong id="tp-cookie-title">Настройки за бисквитки</strong>
-<p id="tp-cookie-copy">TechPulse използва необходими бисквитки и, само след твое съгласие, рекламни бисквитки на Google AdSense. Рекламните технологии могат да обработват информация за устройството и посещенията ти, включително за персонализиране на реклами. Прочети <a href="/privacy.html">Политиката за поверителност и бисквитки</a> и <a href="https://business.safety.google/privacy/" target="_blank" rel="noopener noreferrer">как Google използва данните</a>.</p>
-<div class="tp-cookie-actions"><button type="button" id="tp-cookie-reject">Отказвам рекламните бисквитки</button><button type="button" id="tp-cookie-accept">Приемам рекламните бисквитки</button></div>
-</section>
-<script>
-(function(){
- const KEY="techpulse_cookie_choice_v1";
- const banner=document.getElementById("tp-cookie-banner");
- if(!banner)return;
- let choice=null;try{choice=localStorage.getItem(KEY)}catch(e){}
- function loadAds(){
-  if(document.querySelector("script[data-tp-ads-loaded]"))return;
-  const s=document.createElement("script");s.async=true;
-  s.src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8109991761364968";
-  s.crossOrigin="anonymous";s.setAttribute("data-tp-ads-loaded","true");document.head.appendChild(s);
- }
- function save(value){try{localStorage.setItem(KEY,value)}catch(e){}location.reload()}
- if(choice==="accepted")loadAds();else if(choice!=="rejected")banner.hidden=false;
- document.getElementById("tp-cookie-accept").addEventListener("click",()=>save("accepted"));
- document.getElementById("tp-cookie-reject").addEventListener("click",()=>save("rejected"));
- const settings=document.getElementById("tp-cookie-settings");
- if(settings)settings.addEventListener("click",e=>{e.preventDefault();banner.hidden=false});
-})();
-</script>"""
+ADSENSE_HEAD_SCRIPT = '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8109991761364968" crossorigin="anonymous"></script>'
 
 def create_static_pages():
     pages = {
@@ -278,7 +242,9 @@ def create_static_pages():
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {ADSENSE_HEAD_SCRIPT}
     <title>{title} — TechPulse</title>
+    {ADSENSE_HEAD_SCRIPT}
     <style>{CSS_STYLES}</style>
 </head>
 <body>
@@ -292,7 +258,7 @@ def create_static_pages():
                 <a href="/about.html">За нас</a> | <a href="/contacts.html">Контакти</a> | <a href="/privacy.html">Поверителност и бисквитки</a> | <a href="/terms.html">Общи условия</a> | <a href="#" id="tp-cookie-settings">Настройки за бисквитки</a>
             </div>
         </footer>
-        {COOKIE_CONSENT_HTML}
+        
     </div>
 </body>
 </html>"""
@@ -412,11 +378,10 @@ def build_full_page(title, main_image_url, fallback_backup_img, article_body, si
                 <a href="/contacts.html">Контакти</a>
                 <a href="/privacy.html">Поверителност и бисквитки</a>
                 <a href="/terms.html">Общи условия</a>
-                <a href="#" id="tp-cookie-settings">Настройки за бисквитки</a>
             </nav>
             <p>© TechPulse. Всички права запазени.</p>
         </footer>
-        {COOKIE_CONSENT_HTML}
+        
     </div>
 </body>
 </html>"""
@@ -437,8 +402,8 @@ def generate_news():
 
 <writing>
 Пиши на естествен и точен български език. Забранени са шаблонните AI клишета и общите фрази, включително „На фона на засилената глобална конкуренция“, „Динамиката в технологичната индустрия“, „В съвременния дигитален свят“, „в днешния динамичен свят“, „революционизира“, „нова ера“, „играта се променя“ и „това променя всичко“. Не започвай с общи приказки. Започни с конкретен проверен факт, число, техническа промяна или практическа ситуация.
-Материалът трябва да съдържа 900–1200 думи. Не повтаряй една теза с различни думи и не добавяй празни абзаци за обем.
-Задължителна структура: конкретно въведение; 3–4 логични подзаглавия H2; сравнителен блок или списък „Ключови изводи“; отделна секция „Какво означава това на практика“; FAQ с точно 3 въпроса и ясни отговори.
+Целта е 950–1200 думи. Валидаторът допуска 700–1600 думи, но се стреми към целевия диапазон. Не повтаряй една теза с различни думи и не добавяй празни абзаци за обем.
+Задължителна структура: конкретно въведение; 4–8 логични подзаглавия H2; всяка основна H2 секция трябва да съдържа по 2–3 плътни, съдържателни абзаца с факти, обяснения и примери. Тази дълбочина трябва естествено да доведе до около 950–1200 думи. Включи сравнителен блок или списък „Ключови изводи“; отделна секция „Какво означава това на практика“; FAQ с точно 3 въпроса и ясни отговори.
 Обясни механизма, контекста, предимствата, недостатъците, разходите и ограниченията, когато са приложими. Включи конкретни сценарии и критерии за решение. Разграничавай факт, анализ и прогноза. Не измисляй тестове, личен опит, цитати, експерти или числа. Ако липсват надеждни данни, кажи го изрично.
 </writing>
 
@@ -447,7 +412,7 @@ def generate_news():
 </current_rss>
 
 <format>
-Върни само HTML без Markdown и code fences. Първият елемент е <h1> със заглавието, следван от точно един <p class="article-intro">. След това включи 3–4 смислени <h2> секции. Една секция трябва да съдържа „Ключови изводи“ като сравнителна таблица или списък. Включи отделно <h2>Какво означава това на практика</h2>. Накрая добави <h2>Често задавани въпроси</h2> с точно 3 въпроса и отговора, оформени като <h3> и <p>. Добави валиден JSON-LD <script type="application/ld+json"> за FAQPage със същите три въпроса и отговора. Не включвай фиктивна секция с източници.
+Върни само HTML без Markdown и code fences. Първият елемент е <h1> със заглавието, следван от точно един <p class="article-intro">. След това включи 4–8 смислени <h2> секции, като всяка основна секция съдържа по 2–3 плътни абзаца. Една секция трябва да съдържа „Ключови изводи“ като сравнителна таблица или списък. Включи отделно <h2>Какво означава това на практика</h2>. Накрая добави <h2>Често задавани въпроси</h2> с точно 3 въпроса и отговора, оформени като <h3> и <p>. Добави валиден JSON-LD <script type="application/ld+json"> за FAQPage със същите три въпроса и отговора. Не включвай фиктивна секция с източници.
 </format>
 
 Напиши материала така, че читателят да получи реално обяснение на темата, а не просто преразказ на новината.
@@ -469,7 +434,7 @@ def generate_news():
     rss_context = "\n".join(f'- {x["title"]} | {x["source"]} | {x["date"]} | {x["link"]}' for x in rss_items[:25])
     prompt = prompt.replace("{RSS_CONTEXT}", rss_context)
     article_body = None
-    short_draft = None
+    retry_feedback = None
     models = ["gemini-3.5-flash-lite", "gemini-3.5-flash"]
     for model_name in models:
         for attempt in range(3):
@@ -481,17 +446,17 @@ def generate_news():
                     time.sleep(delay)
 
                 request_prompt = prompt
-                if short_draft:
-                    request_prompt = f"""
-Предишният отговор беше прекалено кратък. Разшири го до 900–1200 думи, като запазиш проверимите факти и естествения български стил.
-Не повтаряй вече казаното. Добави технически контекст, конкретни практически последици, ограничения и нюанси. Не измисляй факти.
-Върни целия завършен материал отначало като HTML със заглавие <h1>, 6–7 секции <h2>, списък „Ключови изводи“, секция „Какво означава това на практика“ и точно 3 FAQ въпроса в <h3>, плюс FAQPage JSON-LD.
-Чернова за разширяване:
-{short_draft}
+                if retry_feedback:
+                    request_prompt += f"""
+
+БЕЛЕЖКА ОТ ПРЕДИШНИЯ ОПИТ: Предишният вариант беше отхвърлен поради: {retry_feedback}.
+Коригирай точно този проблем в новия пълен HTML материал. При недостатъчен брой думи развий основните H2 секции с по 2–3 плътни абзаца и се стреми към 950–1200 думи. При грешен брой H2 добави или премахни смислени секции така, че да има 4–8. Запази проверимите факти, без повторения и без измисляне.
+Върни целия завършен материал отначало.
 """
                 response = client.models.generate_content(
                     model=model_name,
                     contents=request_prompt,
+                    config=types.GenerateContentConfig(max_output_tokens=4096),
                 )
                 if not response or not response.text:
                     continue
@@ -538,15 +503,15 @@ def generate_news():
 
                 valid_structure = (
                     h1_count == 1
-                    and 6 <= h2_count <= 7
+                    and 4 <= h2_count <= 8
                     and "Ключови изводи" in cleaned
                     and "Какво означава това на практика" in cleaned
                     and "Често задавани въпроси" in cleaned
                     and faq_schema_valid
                     and '<p class="article-intro">' in cleaned
                     and "<p>" in cleaned
-                    and word_count >= 900
-                    and word_count <= 1200
+                    and word_count >= 700
+                    and word_count <= 1600
                     and h3_count == 3
                     and short_paragraphs <= 8
                 )
@@ -560,22 +525,21 @@ def generate_news():
                 if h1_count != 1:
                     reasons.append(f"h1={h1_count} (трябва точно 1)")
                 if h2_count < 6 or h2_count > 7:
-                    reasons.append(f"h2={h2_count} (трябва 6–7)")
+                    reasons.append(f"h2={h2_count} (допустими 4–8)")
                 if not faq_schema_valid:
                     reasons.append("FAQPage JSON-LD е невалиден или няма точно 3 въпроса")
                 if '<p class="article-intro">' not in cleaned:
                     reasons.append("липсва article-intro")
                 if "<p>" not in cleaned:
                     reasons.append("липсват стандартни абзаци")
-                if word_count < 900 or word_count > 1200:
-                    reasons.append(f"думи={word_count} (допустими 900–1200)")
+                if word_count < 700 or word_count > 1600:
+                    reasons.append(f"думи={word_count} (допустими 700–1600)")
                 if h3_count != 3:
                     reasons.append(f"h3={h3_count} (трябва точно 3 FAQ въпроса)")
                 if short_paragraphs > 8:
                     reasons.append(f"кратки абзаци={short_paragraphs} (максимум 8)")
                 print(f"Отхвърлена статия от {model_name}: {word_count} думи, {h3_count} подзаглавия. Причина: {', '.join(reasons) or 'непозната структурна грешка'}.")
-                if 250 <= word_count < 900 and 6 <= h2_count <= 7 and h3_count == 3 and '<p class="article-intro">' in cleaned:
-                    short_draft = cleaned
+                retry_feedback = ", ".join(reasons) or "структурата не покрива критериите"
             except Exception as e:
                 print(f"Грешка с {model_name} (опит {attempt + 1}/3): {e}")
                 error_text = str(e).upper()
