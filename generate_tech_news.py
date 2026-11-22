@@ -496,8 +496,14 @@ def generate_news():
                 h3_count = len(re.findall(r"<h3\b", cleaned, flags=re.I))
                 short_paragraphs = len(re.findall(r"<p\b[^>]*>[^<]{1,120}</p>", cleaned, flags=re.I))
 
+                h1_count = len(re.findall(r"<h1\\b", cleaned, flags=re.I))
                 valid_structure = (
-                    h2_count >= 3
+                    h1_count == 1
+                    and 4 <= h2_count <= 6
+                    and "Ключови изводи" in cleaned
+                    and "Какво означава това на практика" in cleaned
+                    and "Често задавани въпроси" in cleaned
+                    and "FAQPage" in cleaned
                     and '<p class="article-intro">' in cleaned
                     and "<p>" in cleaned
                     and word_count >= 900
@@ -512,8 +518,12 @@ def generate_news():
                     break
 
                 reasons = []
-                if h2_count != 1:
-                    reasons.append(f"h2={h2_count} (трябва точно 1)")
+                if h1_count != 1:
+                    reasons.append(f"h1={h1_count} (трябва точно 1)")
+                if h2_count < 4 or h2_count > 6:
+                    reasons.append(f"h2={h2_count} (трябва 4–6)")
+                if "FAQPage" not in cleaned:
+                    reasons.append("липсва FAQPage schema")
                 if '<p class="article-intro">' not in cleaned:
                     reasons.append("липсва article-intro")
                 if "<p>" not in cleaned:
