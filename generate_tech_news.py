@@ -303,6 +303,8 @@ def sync_article_footers():
 <nav class="footer-links" aria-label="Полезни връзки">
 <a href="/">Начало</a>
 <a href="/articles.html">Статии</a>
+<a href="/tools.html">Инструменти</a>
+<a href="/glossary.html">Речник</a>
 <a href="/about.html">За нас</a>
 <a href="/contacts.html">Контакти</a>
 <a href="/privacy.html">Поверителност и бисквитки</a>
