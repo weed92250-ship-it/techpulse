@@ -287,7 +287,7 @@ def create_static_pages():
         <div class="static-card">{content}</div>
         <footer>
             <div class="footer-links">
-                <a href="/">Начало</a> | <a href="/articles.html">Статии</a> | <a href="/about.html">За нас</a> | <a href="/contacts.html">Контакти</a> | <a href="/privacy.html">Поверителност и бисквитки</a> | <a href="/terms.html">Общи условия</a> | <a href="#" id="tp-cookie-settings">Настройки за бисквитки</a>
+                <a href="/">Начало</a> | <a href="/articles.html">Статии</a> | <a href="/tools.html">Инструменти</a>\n                <a href="/glossary.html">Речник</a>\n                <a href="/about.html">За нас</a> | <a href="/contacts.html">Контакти</a> | <a href="/privacy.html">Поверителност и бисквитки</a> | <a href="/terms.html">Общи условия</a> | <a href="#" id="tp-cookie-settings">Настройки за бисквитки</a>
             </div>
         </footer>
         {COOKIE_CONSENT_HTML}
@@ -327,10 +327,22 @@ def sync_article_footers():
                 count=1,
                 flags=re.IGNORECASE,
             )
-            if count and updated != content:
+            if count:
+                content = updated
+            if "author-box" not in content:
+                content = content.replace("</main>", '<section class="author-box"><h2>Редакция и авторство</h2><p><strong>Редакция TechPulse</strong></p><p>Материалът е подготвен от редакционния екип на TechPulse. Проверимите факти се разграничават от анализа.</p></section></main>', 1)
+            if "related-articles" not in content:
+                history = load_history()
+                current = next((x for x in history if x.get("url", "").endswith(filename)), None)
+                related = [x for x in history if current and x.get("category_slug") == current.get("category_slug") and x.get("url") != current.get("url")][:3]
+                if related:
+                    links = "".join('<li><a href="' + x.get("url", "#") + '">' + x.get("title", "Още по темата") + "</a></li>" for x in related)
+                    block = '<section class="related-articles"><h2>Свързани статии</h2><ul>' + links + "</ul></section>"
+                    content = content.replace("</main>", block + "</main>", 1)
+            if content != updated or count:
                 with open(filepath, "w", encoding="utf-8") as article_file:
-                    article_file.write(updated)
-                print(f"Обновен футър: {filename}")
+                    article_file.write(content)
+                print(f"Обновена редакционна информация: {filename}")
         except (OSError, UnicodeError) as error:
             print(f"Неуспешно обновяване на футъра в {filename}: {error}")
 
@@ -369,7 +381,7 @@ def build_full_page(title, main_image_url, fallback_backup_img, article_body, si
             <a href="/articles.html?category=ai" class="nav-link">AI</a>
             <a href="/articles.html?category=technologies" class="nav-link">Технологии</a>
             <a href="/articles.html?category=hardware" class="nav-link">Хардуер</a>
-            <a href="/about.html" class="nav-link">За нас</a>
+            <a href="/tools.html" class="nav-link">Инструменти</a>\n            <a href="/glossary.html" class="nav-link">Речник</a>\n            <a href="/about.html" class="nav-link">За нас</a>
             <a href="/contacts.html" class="nav-link">Контакти</a>
         </nav>
         <div class="main-layout">
@@ -561,6 +573,11 @@ def generate_news():
     main_image_url, fallback_img = choose_article_images(category_slug, history)
 
     sidebar_items = history[:3] if len(history) >= 3 else DEFAULT_ARTICLES
+    related_items = [x for x in history if x.get("category_slug") == category_slug][:3]
+    related_links = "".join('<li><a href="' + x.get("url", "#") + '">' + x.get("title", "Още по темата") + "</a></li>" for x in related_items)
+    editorial = '<section class="author-box"><h2>Редакция и авторство</h2><p><strong>Редакция TechPulse</strong></p><p>Материалът е подготвен от редакционния екип на TechPulse. Фактите се разграничават от анализа, а източниците дават възможност за самостоятелна проверка.</p></section>'
+    related = '<section class="related-articles"><h2>Свързани статии</h2><ul>' + related_links + "</ul></section>" if related_links else ""
+    article_body += editorial + related
     full_html = build_full_page(title_text, main_image_url, fallback_img, article_body, sidebar_items)
 
     article_slug = slugify(title_text)
