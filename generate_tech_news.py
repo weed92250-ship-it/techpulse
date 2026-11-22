@@ -263,7 +263,9 @@ def fetch_rss_feed(feed_url, source_name, category_slug):
             parsed = []
             for entry in entries[:12]:
                 title = entry.findtext("title") or entry.findtext("{http://www.w3.org/2005/Atom}title")
-                link_element = entry.find("link") or entry.find("{http://www.w3.org/2005/Atom}link")
+                link_element = entry.find("link")
+                if link_element is None:
+                    link_element = entry.find("{http://www.w3.org/2005/Atom}link")
                 link = (
                     link_element.attrib.get("href", "")
                     if link_element is not None and link_element.attrib
