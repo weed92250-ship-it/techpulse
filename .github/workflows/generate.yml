@@ -109,8 +109,11 @@ jobs:
           article_path.write_text(raw, encoding="utf-8")
 
           desc = description
+          plain_for_reading = re.sub(r"<[^>]+>", " ", raw)
+          reading_words = len(re.findall(r"(?u)\b[\wА-Яа-яЁё]+\b", plain_for_reading))
+          reading_minutes = max(1, round(reading_words / 200))
           search_text = html.escape((item["title"] + " " + item.get("category", "")).lower(), quote=True)
-          card = f'<article class="article-card" data-search="{search_text}"><img loading="lazy" width="800" height="450" src="{image}" alt="{title}"><div class="article-body"><span class="tag">{category}</span><h3><a href="{item["url"]}">{title}</a></h3><p>{desc}</p><div class="meta">Редакция TechPulse · {date} · 6 мин. четене</div></div></article>'
+          card = f'<article class="article-card" data-search="{search_text}"><img loading="lazy" width="800" height="450" src="{image}" alt="{title}"><div class="article-body"><span class="tag">{category}</span><h3><a href="{item["url"]}">{title}</a></h3><p>{desc}</p><div class="meta">Редакция TechPulse · {date} · {reading_minutes} мин. четене</div></div></article>'
 
           page = index_file.read_text(encoding="utf-8")
           marker = '<section id="articles" class="article-grid" aria-label="Последни статии">'
