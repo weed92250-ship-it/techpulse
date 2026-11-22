@@ -1,6 +1,8 @@
 import html
 import json
 import re
+# Triggered repair workflow: revalidate candidate URLs before touching published files.
+import urllib.parse
 import urllib.request
 from pathlib import Path
 
@@ -59,6 +61,36 @@ def main():
             chosen.append(candidate)
             if len(chosen) == len(recent):
                 break
+    # If the curated fallback pool has fewer than 30 live images, fill the gap
+    # with fresh, commercially usable wide images from Openverse.
+    if len(chosen) < len(recent):
+        used_all = {x.get("img") for x in history if isinstance(x, dict)}
+        queries = ["technology server room", "microchip silicon wafer", "quantum computer lab", "artificial intelligence data center"]
+        for query in queries:
+            endpoint = (
+                "https://api.openverse.org/v1/images/?q="
+                + urllib.parse.quote(query)
+                + "&aspect_ratio=wide&license_type=commercial,modification&page_size=50"
+            )
+            try:
+                req = urllib.request.Request(endpoint, headers={"User-Agent": "TechPulseImageRepair/1.0"})
+                with urllib.request.urlopen(req, timeout=18) as response:
+                    data = json.loads(response.read().decode("utf-8")) if response.status == 200 else {}
+                for hit in data.get("results", []):
+                    url = hit.get("url")
+                    width, height = hit.get("width", 0), hit.get("height", 0)
+                    if (isinstance(url, str) and url.startswith("https://")
+                            and url not in used_all and url not in chosen
+                            and (not width or not height or width > height)
+                            and is_live(url)):
+                        chosen.append(url)
+                        if len(chosen) == len(recent):
+                            break
+            except Exception as exc:
+                print(f"Openverse не върна резервни изображения за '{query}': {exc}")
+            if len(chosen) == len(recent):
+                break
+
     if len(chosen) < len(recent):
         raise RuntimeError(f"Намерени са само {len(chosen)} проверени уникални снимки за {len(recent)} статии. Не записвам частичен ремонт.")
 

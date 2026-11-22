@@ -1,0 +1,32 @@
+name: TechPulse Image Repair
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'repair_article_images.py'
+
+permissions:
+  contents: write
+
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Repair duplicate article images
+        run: python repair_article_images.py
+      - name: Commit repaired article images
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/articles.json public/index.html public/articles.html public/articles/*.html
+          git diff --cached --quiet || git commit -m "Изчистване на повтарящите се снимки в TechPulse"
+          git push
