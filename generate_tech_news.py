@@ -578,11 +578,11 @@ def generate_news():
     title_match = re.search(r"<h1>(.*?)</h1>", article_body, re.S)
     title_text = re.sub(r"<[^>]+>", "", title_match.group(1)).strip() if title_match else "Технологична новина"
     article_plain_for_reading = re.sub(r"<[^>]+>", " ", article_body)
-    article_words_for_reading = len(re.findall(r"(?u)\\b[\\wА-Яа-яЁё]+\\b", article_plain_for_reading))
+    article_words_for_reading = len(re.findall(r"(?u)\b[\wА-Яа-яЁё]+\b", article_plain_for_reading))
     reading_minutes = max(1, round(article_words_for_reading / 200))
     published_date = __import__("datetime").date.today().strftime("%d.%m.%Y")
     byline = f'<p class="meta">Редакция TechPulse · {published_date} · {reading_minutes} мин. четене</p>'
-    article_body = re.sub(r"(</h1>)", r"\\1" + byline, article_body, count=1, flags=re.I)
+    article_body = re.sub(r"(</h1>)", r"\1" + byline, article_body, count=1, flags=re.I)
 
     history = load_history()
     category_label, category_slug = infer_category(title_text, article_body, history)
