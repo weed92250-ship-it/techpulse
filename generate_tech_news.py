@@ -727,15 +727,21 @@ def generate_news():
                     "TIMEOUT", "DEADLINE", "CONNECTION", "NETWORK",
                     "500", "502", "504", "INTERNAL SERVER ERROR",
                 ))
-                if transient and transient_retries < len(transient_delays):
-                    delay = transient_delays[transient_retries]
-                    transient_retries += 1
+                if transient:
+                    if transient_retries < len(transient_delays):
+                        delay = transient_delays[transient_retries]
+                        transient_retries += 1
+                        print(
+                            f"Временна API/мрежова грешка при {model_name}: {error_text}. "
+                            f"Повторение {transient_retries}/4 след {delay} секунди."
+                        )
+                        time.sleep(delay)
+                        continue
                     print(
-                        f"Временна API/мрежова грешка при {model_name}: {error_text}. "
-                        f"Повторение {transient_retries}/4 след {delay} секунди."
+                        f"Изчерпани са 4 временни повторения за {model_name}. "
+                        "Преминавам към резервния модел."
                     )
-                    time.sleep(delay)
-                    continue
+                    break
 
                 editorial_attempts += 1
                 retry_feedback = f"грешка при заявката или парсването: {error_text}"
