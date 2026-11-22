@@ -27,9 +27,35 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Check Python syntax
-        run: python -m py_compile generate_tech_news.py repair_article_images.py repair_article_templates.py
+      - name: Check Python syntax and Unsplash catalog
+        run: |
+          python -m py_compile generate_tech_news.py repair_article_images.py repair_article_templates.py
+          python - <<'PY'
+          import ast, re
+          from pathlib import Path
+
+          repair = ast.parse(Path("repair_article_images.py").read_text(encoding="utf-8"))
+          namespace = {}
+          exec(compile(repair, "repair_article_images.py", "exec"), namespace)
+          ids = namespace["UNSPLASH_IDS"]
+          urls = [
+              f'https://images.unsplash.com/{photo}?auto=format&fit=crop&w=1200&h=675&q=82'
+              for photo in ids
+          ]
+          assert len(ids) >= 50, f"Само {len(ids)} Unsplash ID"
+          assert len(ids) == len(set(ids)), "Има дублирани Unsplash ID"
+          assert all(url.startswith("https://images.unsplash.com/photo-") for url in urls)
+          assert all(url.count("http") == 1 for url in urls)
+          assert len(urls) == len(set(urls)), "Има дублирани URL адреси"
+          for path in ("generate_tech_news.py", "repair_article_images.py"):
+              source = Path(path).read_text(encoding="utf-8").lower()
+              assert "cdn.pixabay.com" not in source, f"Открит е cdn.pixabay.com в {path}"
+              assert "openverse" not in source, f"Открит е Openverse в {path}"
+          print(f"Каталогът премина проверката: {len(urls)} уникални Unsplash URL адреса.")
+          PY
       - name: Repair duplicate article images
+        env:
+          PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
         run: python repair_article_images.py
       - name: Normalize legacy article pages
         run: python repair_article_templates.py
