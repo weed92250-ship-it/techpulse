@@ -151,7 +151,7 @@ def filter_recent_topics(rss_items, history):
             continue
         seen_rss_urls.add(normalized_link)
 
-        category = classify_topic_category(title)
+        category = item.get("category_hint") or classify_topic_category(title)
         if category in blocked_categories:
             rejected["recent_category"] += 1
             continue
@@ -196,6 +196,122 @@ def filter_recent_topics(rss_items, history):
         f"{CATEGORY_ROTATION[rotation_start][0]}."
     )
     return accepted
+
+RSS_HEADERS = {
+    "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "Accept": "application/rss+xml, application/atom+xml, application/xml, text/xml;q=0.9, */*;q=0.8",
+    "Accept-Language": "en-US,en;q=0.9",
+    "Cache-Control": "no-cache",
+}
+
+CATEGORY_FEEDS = {
+    "ai": [
+        ("TechCrunch AI", "https://techcrunch.com/category/artificial-intelligence/feed/"),
+        ("MIT Technology Review", "https://www.technologyreview.com/feed/"),
+        ("VentureBeat AI", "https://venturebeat.com/category/ai/feed/"),
+    ],
+    "hardware": [
+        ("Tom's Hardware", "https://www.tomshardware.com/feeds/all"),
+        ("Ars Technica Technology Lab", "https://feeds.arstechnica.com/arstechnica/technology-lab"),
+    ],
+    "cyber": [
+        ("BleepingComputer", "https://www.bleepingcomputer.com/feed/"),
+        ("The Hacker News", "https://feeds.feedburner.com/TheHackerNews"),
+    ],
+    "technologies": [
+        ("The Verge", "https://www.theverge.com/rss/index.xml"),
+        ("Ars Technica", "https://feeds.arstechnica.com/arstechnica/index"),
+        ("WIRED", "https://www.wired.com/feed/rss"),
+    ],
+    "quantum": [
+        ("Phys.org Technology", "https://phys.org/rss-feed/technology-news/"),
+        ("ScienceDaily Computers & Math", "https://www.sciencedaily.com/rss/computers_math.xml"),
+        ("The Quantum Insider", "https://thequantuminsider.com/feed/"),
+    ],
+    "future": [
+        ("Phys.org Technology", "https://phys.org/rss-feed/technology-news/"),
+        ("ScienceDaily Computers & Math", "https://www.sciencedaily.com/rss/computers_math.xml"),
+        ("The Quantum Insider", "https://thequantuminsider.com/feed/"),
+    ],
+}
+
+GOOGLE_NEWS_FALLBACKS = [
+    ("Google News AI", "https://news.google.com/rss/search?q=AI+OR+artificial+intelligence&hl=en-US&gl=US&ceid=US:en", "ai"),
+    ("Google News Hardware", "https://news.google.com/rss/search?q=semiconductors+OR+chips&hl=en-US&gl=US&ceid=US:en", "hardware"),
+    ("Google News Cybersecurity", "https://news.google.com/rss/search?q=cybersecurity&hl=en-US&gl=US&ceid=US:en", "cyber"),
+    ("Google News Technology", "https://news.google.com/rss/search?q=technology+OR+robotics+OR+quantum&hl=en-US&gl=US&ceid=US:en", "technologies"),
+]
+
+
+def fetch_rss_feed(feed_url, source_name, category_slug):
+    for attempt in range(2):
+        try:
+            request = urllib.request.Request(feed_url, headers=RSS_HEADERS)
+            with urllib.request.urlopen(request, timeout=20) as response:
+                payload = response.read()
+            root = ET.fromstring(payload)
+            entries = root.findall("./channel/item")
+            if not entries:
+                entries = root.findall(".//{http://www.w3.org/2005/Atom}entry")
+            parsed = []
+            for entry in entries[:12]:
+                title = entry.findtext("title")
+                link = entry.findtext("link")
+                if link is not None and link.attrib:
+                    link = link.attrib.get("href", "")
+                pub_date = entry.findtext("pubDate") or entry.findtext("published") or entry.findtext("updated") or ""
+                if title and link:
+                    parsed.append({
+                        "title": title.strip(), "link": link.strip(),
+                        "date": pub_date, "source": source_name,
+                        "category_hint": category_slug,
+                    })
+            print(f"RSS OK: {feed_url} — {len(parsed)} записа.")
+            return parsed
+        except urllib.error.HTTPError as error:
+            print(f"RSS грешка {error.code} за URL {feed_url}: {error}")
+            if error.code in (429, 503) and attempt == 0:
+                time.sleep(random.uniform(1.0, 2.0))
+                continue
+            return []
+        except Exception as error:
+            print(f"RSS грешка за URL {feed_url}: {type(error).__name__}: {error}")
+            return []
+    return []
+
+
+def collect_category_news(history):
+    blocked = {item.get("category_slug") for item in (history or [])[:3] if item.get("category_slug")}
+    rotation = [slug for _, slug in CATEGORY_ROTATION]
+    latest_slug = (history or [{}])[0].get("category_slug")
+    start = (rotation.index(latest_slug) + 1) % len(rotation) if latest_slug in rotation else 0
+    ordered = rotation[start:] + rotation[:start]
+    eligible = [slug for slug in ordered if slug not in blocked]
+
+    for category_slug in eligible:
+        category_items = []
+        feeds = CATEGORY_FEEDS.get(category_slug, [])
+        print(f"RSS категория: {category_slug}; източници: {len(feeds)}.")
+        for index, (source_name, feed_url) in enumerate(feeds):
+            if index:
+                time.sleep(random.uniform(1.0, 2.0))
+            category_items.extend(fetch_rss_feed(feed_url, source_name, category_slug))
+        accepted = filter_recent_topics(category_items, history)
+        if accepted:
+            print(f"Избрана RSS категория: {category_slug}; допустими теми: {len(accepted)}.")
+            return accepted
+        print(f"Няма подходящи достъпни теми за {category_slug}; преминавам към следващата категория.")
+
+    print("Всички директни RSS категории са изчерпани. Google News е последна резерва.")
+    fallback_items = []
+    for index, (source_name, feed_url, category_slug) in enumerate(GOOGLE_NEWS_FALLBACKS):
+        if category_slug in blocked:
+            continue
+        if index:
+            time.sleep(random.uniform(1.0, 2.0))
+        fallback_items.extend(fetch_rss_feed(feed_url, source_name, category_slug))
+    return filter_recent_topics(fallback_items, history)
+
 
 CSS_STYLES = """
     body {
@@ -776,35 +892,12 @@ def generate_news():
 Напиши материала като задълбочен редакционен анализ, а не като преразказ на новината.
 """
 
-    rss_items = []
-    feeds = [
-        "https://news.google.com/rss/search?q=AI+OR+artificial+intelligence&hl=en-US&gl=US&ceid=US:en",
-        "https://news.google.com/rss/search?q=semiconductors+OR+chips&hl=en-US&gl=US&ceid=US:en",
-        "https://news.google.com/rss/search?q=robotics+OR+quantum+computing&hl=en-US&gl=US&ceid=US:en",
-        "https://news.google.com/rss/search?q=cybersecurity+OR+technology&hl=en-US&gl=US&ceid=US:en",
-    ]
-    for feed_url in feeds:
-        try:
-            with urllib.request.urlopen(feed_url, timeout=15) as response:
-                root = ET.fromstring(response.read())
-            for item in root.findall("./channel/item")[:8]:
-                title = item.findtext("title")
-                link = item.findtext("link")
-                pub_date = item.findtext("pubDate")
-                source = item.find("source")
-                source_name = source.text if source is not None else ""
-                if title and link:
-                    rss_items.append({
-                        "title": title, "link": link,
-                        "date": pub_date or "", "source": source_name,
-                    })
-        except Exception as error:
-            print(f"RSS източникът не е достъпен: {error}")
+    history = load_history()
+    rss_items = collect_category_news(history)
 
     if not rss_items:
         raise RuntimeError("Не бяха получени актуални RSS новини. Няма да се публикува.")
 
-    history = load_history()
     rss_items = filter_recent_topics(rss_items, history)
     if not rss_items:
         raise RuntimeError(
