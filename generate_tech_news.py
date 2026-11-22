@@ -243,7 +243,14 @@ GOOGLE_NEWS_FALLBACKS = [
 ]
 
 
+_RSS_REQUESTED = False
+
+
 def fetch_rss_feed(feed_url, source_name, category_slug):
+    global _RSS_REQUESTED
+    if _RSS_REQUESTED:
+        time.sleep(random.uniform(1.0, 2.0))
+    _RSS_REQUESTED = True
     for attempt in range(2):
         try:
             request = urllib.request.Request(feed_url, headers=RSS_HEADERS)
@@ -256,9 +263,12 @@ def fetch_rss_feed(feed_url, source_name, category_slug):
             parsed = []
             for entry in entries[:12]:
                 title = entry.findtext("title")
-                link = entry.findtext("link")
-                if link is not None and link.attrib:
-                    link = link.attrib.get("href", "")
+                link_element = entry.find("link")
+                link = (
+                    link_element.attrib.get("href", "")
+                    if link_element is not None and link_element.attrib
+                    else (link_element.text if link_element is not None else "")
+                )
                 pub_date = entry.findtext("pubDate") or entry.findtext("published") or entry.findtext("updated") or ""
                 if title and link:
                     parsed.append({
@@ -292,9 +302,7 @@ def collect_category_news(history):
         category_items = []
         feeds = CATEGORY_FEEDS.get(category_slug, [])
         print(f"RSS категория: {category_slug}; източници: {len(feeds)}.")
-        for index, (source_name, feed_url) in enumerate(feeds):
-            if index:
-                time.sleep(random.uniform(1.0, 2.0))
+        for source_name, feed_url in feeds:
             category_items.extend(fetch_rss_feed(feed_url, source_name, category_slug))
         accepted = filter_recent_topics(category_items, history)
         if accepted:
@@ -304,11 +312,9 @@ def collect_category_news(history):
 
     print("Всички директни RSS категории са изчерпани. Google News е последна резерва.")
     fallback_items = []
-    for index, (source_name, feed_url, category_slug) in enumerate(GOOGLE_NEWS_FALLBACKS):
+    for source_name, feed_url, category_slug in GOOGLE_NEWS_FALLBACKS:
         if category_slug in blocked:
             continue
-        if index:
-            time.sleep(random.uniform(1.0, 2.0))
         fallback_items.extend(fetch_rss_feed(feed_url, source_name, category_slug))
     return filter_recent_topics(fallback_items, history)
 
