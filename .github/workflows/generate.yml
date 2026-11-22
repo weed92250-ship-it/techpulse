@@ -2,7 +2,7 @@ name: TechPulse AI Publisher
 
 on:
   schedule:
-    - cron: '15 9,15 * * *'
+    - cron: '15 9 * * *'
       timezone: 'Europe/Sofia'
   workflow_dispatch:
 
@@ -110,7 +110,7 @@ jobs:
 
           desc = description
           search_text = html.escape((item["title"] + " " + item.get("category", "")).lower(), quote=True)
-          card = f'<article class="article-card" data-search="{search_text}"><img loading="lazy" width="800" height="450" src="{image}" alt="{title}"><div class="article-body"><span class="tag">{category}</span><h3><a href="{item["url"]}">{title}</a></h3><p>{desc}</p><div class="meta">Автоматично публикуван материал · {date}</div></div></article>'
+          card = f'<article class="article-card" data-search="{search_text}"><img loading="lazy" width="800" height="450" src="{image}" alt="{title}"><div class="article-body"><span class="tag">{category}</span><h3><a href="{item["url"]}">{title}</a></h3><p>{desc}</p><div class="meta">Редакция TechPulse · {date} · 6 мин. четене</div></div></article>'
 
           page = index_file.read_text(encoding="utf-8")
           marker = '<section id="articles" class="article-grid" aria-label="Последни статии">'
