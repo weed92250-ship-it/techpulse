@@ -537,7 +537,7 @@ def generate_news():
                 if short_paragraphs > 8:
                     reasons.append(f"кратки абзаци={short_paragraphs} (максимум 8)")
                 print(f"Отхвърлена статия от {model_name}: {word_count} думи, {h3_count} подзаглавия. Причина: {', '.join(reasons) or 'непозната структурна грешка'}.")
-                if 250 <= word_count < 900 and h2_count == 1 and '<p class="article-intro">' in cleaned:
+                if 250 <= word_count < 900 and 6 <= h2_count <= 7 and h3_count == 3 and '<p class="article-intro">' in cleaned:
                     short_draft = cleaned
             except Exception as e:
                 print(f"Грешка с {model_name} (опит {attempt + 1}/3): {e}")
