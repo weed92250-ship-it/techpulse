@@ -172,7 +172,8 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add public/articles.json public/index.html public/articles.html public/sitemap.xml public/articles/*.html public/images/articles/*.jpg
+          mkdir -p public/images/articles
+          git add public/articles.json public/index.html public/articles.html public/sitemap.xml public/articles/*.html public/images/articles/
           git diff --cached --quiet || git commit -m "Автоматично публикуване на нов TechPulse материал"
           git pull --rebase origin main
           git push
