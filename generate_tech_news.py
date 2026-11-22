@@ -580,6 +580,9 @@ def build_full_page(title, main_image_url, fallback_backup_img, article_body, si
             <a href="/articles.html?category=ai" class="nav-link">AI</a>
             <a href="/articles.html?category=technologies" class="nav-link">Технологии</a>
             <a href="/articles.html?category=hardware" class="nav-link">Хардуер</a>
+            <a href="/articles.html?category=quantum" class="nav-link">Квантови технологии</a>
+            <a href="/articles.html?category=future" class="nav-link">Бъдещи технологии</a>
+            <a href="/articles.html?category=cyber" class="nav-link">Киберсигурност</a>
             <a href="/tools.html" class="nav-link">Инструменти</a>
             <a href="/glossary.html" class="nav-link">Речник</a>
             <a href="/about.html" class="nav-link">За нас</a>
@@ -797,7 +800,7 @@ def generate_news():
 
     rss_context = "\n".join(
         f'- {item["title"]} | {item["source"]} | {item["date"]} | {item["link"]}'
-        for item in rss_items[:25]
+        for item in rss_items[:1]
     )
     prompt = prompt.replace("{RSS_CONTEXT}", rss_context)
 
@@ -937,7 +940,12 @@ def generate_news():
     )
 
     sidebar_items = history[:3] if len(history) >= 3 else DEFAULT_ARTICLES
-    related_items = [item for item in history if item.get("category_slug") == category_slug][:3]
+    sidebar_urls = {item.get("url") for item in sidebar_items}
+    related_items = [
+        item for item in history
+        if item.get("category_slug") == category_slug
+        and item.get("url") not in sidebar_urls
+    ][:3]
     related_links = "".join(
         '<li><a href="' + item.get("url", "#") + '">'
         + item.get("title", "Още по темата") + "</a></li>"
