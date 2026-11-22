@@ -1,12 +1,24 @@
 [
   {
+    "title": "Квантовите изчисления насочват фокуса си към енергийния сектор",
+    "time": "2026-11-22",
+    "category": "Хардуер",
+    "category_slug": "hardware",
+    "url": "/articles/kvantovite-izchisleniya-nasochvat-fokusa-si-kam-energiyniya-sektor.html",
+    "img": "https://images.unsplash.com/photo-1535378273068-9bb67d5beacd?auto=format&fit=crop&w=1200&h=675&q=82",
+    "image_source": "unsplash_fallback",
+    "image_query": "quantum computing energy grid",
+    "sources": []
+  },
+  {
     "title": "Квантовите изчисления насочват фокуса към енергийния сектор вместо към биофармацевтиката",
     "time": "2026-11-22",
     "category": "Квантови технологии",
     "category_slug": "quantum",
     "url": "/articles/kvantovite-izchisleniya-nasochvat-fokusa-kam-energiyniya-sektor-vmesto-kam-biofarmatsevtikata.html",
-    "img": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&auto=format&fit=crop",
-    "sources": []
+    "img": "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=1200&h=675&q=82",
+    "sources": [],
+    "image_source": "unsplash_fallback"
   },
   {
     "title": "Квантовият спринт: Накъде водят академичните пробиви и правителствените инициативи",
@@ -14,8 +26,9 @@
     "category": "Квантови технологии",
     "category_slug": "quantum",
     "url": "/articles/kvantoviyat-sprint-nakade-vodyat-akademichnite-probivi-i-pravitelstvenite-initsiativi.html",
-    "img": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&auto=format&fit=crop",
-    "sources": []
+    "img": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&h=675&q=82",
+    "sources": [],
+    "image_source": "unsplash_fallback"
   },
   {
     "title": "Квантови граници и класически ограничения: Изкуственият интелект потвърждава физическите бариери пред изчислителната мощ",
@@ -23,8 +36,9 @@
     "category": "Квантови технологии",
     "category_slug": "quantum",
     "url": "/articles/kvantovi-granitsi-i-klasicheski-ogranicheniya-izkustveniyat-intelekt-potvarzhdava-fizicheskite-barieri-pred-izchislitelnata-mosht.html",
-    "img": "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&auto=format&fit=crop",
-    "sources": []
+    "img": "https://images.unsplash.com/photo-1523961131990-5ea7c61b2107?auto=format&fit=crop&w=1200&h=675&q=82",
+    "sources": [],
+    "image_source": "unsplash_fallback"
   },
   {
     "title": "Новата инфраструктура на квантовите изчисления и пресечната точка с изкуствения интелект",
@@ -32,8 +46,9 @@
     "category": "Хардуер",
     "category_slug": "hardware",
     "url": "/articles/novata-infrastruktura-na-kvantovite-izchisleniya-i-presechnata-tochka-s-izkustveniya-intelekt.html",
-    "img": "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=800&auto=format&fit=crop",
-    "sources": []
+    "img": "https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&w=1200&h=675&q=82",
+    "sources": [],
+    "image_source": "unsplash_fallback"
   },
   {
     "title": "Министерството на търговията на САЩ финализира грант от 100 милиона долара за квантови изследвания",
@@ -41,8 +56,9 @@
     "category": "Квантови технологии",
     "category_slug": "quantum",
     "url": "/articles/ministerstvoto-na-targoviyata-na-sasht-finalizira-grant-ot-100-miliona-dolara-za-kvantovi-izsledvaniya.html",
-    "img": "https://images.unsplash.com/photo-1535378273068-9bb67d5beacd?w=800&auto=format&fit=crop",
-    "sources": []
+    "img": "https://images.unsplash.com/photo-1535378620166-273708d44e4c?auto=format&fit=crop&w=1200&h=675&q=82",
+    "sources": [],
+    "image_source": "unsplash_fallback"
   },
   {
     "title": "Стратегическият сблъсък за технологично превъзходство в сянката на нови ограничения и квантови инвестиции",
@@ -50,8 +66,9 @@
     "category": "Технологии",
     "category_slug": "technologies",
     "url": "/articles/strategicheskiyat-sblasak-za-tehnologichno-prevazhodstvo-v-syankata-na-novi-ogranicheniya-i-kvantovi-investitsii.html",
-    "img": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop",
-    "sources": []
+    "img": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&h=675&q=82",
+    "sources": [],
+    "image_source": "unsplash_fallback"
   },
   {
     "title": "Квантовото предимство пред нови ограничения: Изкуственият интелект очертава реалните граници на компютрите на бъдещето",
@@ -59,8 +76,9 @@
     "category": "Квантови технологии",
     "category_slug": "quantum",
     "url": "/articles/kvantovoto-predimstvo-pred-novi-ogranicheniya-izkustveniyat-intelekt-ochertava-realnite-granitsi-na-kompyutrite-na-badeshteto.html",
-    "img": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&auto=format&fit=crop",
-    "sources": []
+    "img": "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=1200&h=675&q=82",
+    "sources": [],
+    "image_source": "unsplash_fallback"
   },
   {
     "title": "Сложната геополитика на чиповете: Как една китайска университетска покупка изостри дебата около износния контрол",
@@ -68,7 +86,7 @@
     "category": "Киберсигурност",
     "category_slug": "cyber",
     "url": "/articles/slozhnata-geopolitika-na-chipovete-kak-edna-kitayska-universitetska-pokupka-izostri-debata-okolo-iznosniya-kontrol.html",
-    "img": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&auto=format&fit=crop",
+    "img": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&h=675&q=82",
     "sources": [
       {
         "title": "How artificial intelligence is changing healthcare - MPR News",
@@ -94,7 +112,8 @@
         "title": "What May Artificial Intelligence Do for Writers? - Daily Nous",
         "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNX2tGcm9maEVBcHRJRDZfRG1qU1F4Q213ZHRnM3FoaDlfdTAzdWJTVFpHdFVNbDB5ZXNkb09uQnFRX1ItUnBlai1yS0tHa0EtRHpPSXl4SWVFeThMQnd5Tm9wbk9CSkE0Q3I5dXZlel9BZHJJcmJSdGFvZ3FtQ0ZyeUFDT05zTmd0?oc=5"
       }
-    ]
+    ],
+    "image_source": "unsplash_fallback"
   },
   {
     "title": "Google засилва натиска върху Nvidia с нови специализирани чипове на фона на облачния бум",
@@ -102,7 +121,7 @@
     "category": "Квантови технологии",
     "category_slug": "quantum",
     "url": "/articles/google-zasilva-natiska-varhu-nvidia-s-novi-spetsializirani-chipove-na-fona-na-oblachniya-bum.html",
-    "img": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&auto=format&fit=crop",
+    "img": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&h=675&q=82",
     "sources": [
       {
         "title": "Nvidia Opens Investigation Into Jensen Huang’s Relationship With Suspected Chinese Spy - The New York Times",
@@ -128,7 +147,8 @@
         "title": "Artificial Intelligence at Quest Diagnostics – Two Use Cases - Emerj Artificial Intelligence Research",
         "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxOY3Ficzl5YlJDVl8tX3ZzdE83eHF0SXBxMVZvTFd2OU1vTFlXcnN5VVIyRnB4QWlxVGhYT0xzZlJhZTFOZkMyQThYbjk2OWFodkZRQUlMR0ZsMTJzNF9pbWM3c0RJYk1uUUpVUDhxaFljTnZQcHE1ZWlMWnMwazZiSTVUSQ?oc=5"
       }
-    ]
+    ],
+    "image_source": "unsplash_fallback"
   },
   {
     "title": "Изкуственият интелект срещу квантовите загадки: Как непубликуван модел разреши сериозно теоретично уравнение",
@@ -136,7 +156,7 @@
     "category": "Квантови технологии",
     "category_slug": "quantum",
     "url": "/articles/izkustveniyat-intelekt-sreshtu-kvantovite-zagadki-kak-nepublikuvan-model-razreshi-seriozno-teoretichno-uravnenie.html",
-    "img": "https://images.unsplash.com/photo-1535378273068-9bb67d5beacd?w=800&auto=format&fit=crop",
+    "img": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&h=675&q=82",
     "sources": [
       {
         "title": "Data Precedes Artificial Intelligence - Defense.info",
@@ -162,7 +182,8 @@
         "title": "Asia Power Snapshot: China, the United States, and the race for AI dominance - Lowy Institute",
         "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPazB4N0xfcVFvcjJzZFpfR3dWRzZXUjlhV3NZdnpwbjZWZjZDYWNydDl1djZubWVQUnRaZnpkMUEtQXlXOFZ1R3RNaDZ3Q1FwTWt6TXU4OTFmY3Zpd2tGc3ZxRHVfQUU3SHppN0FjU2dibVBlUjlxVDRNWXhGcllzUzIwdWNVeHBhYWZYaHdDQWRVX2FrUHNLdVNpbXBXV2p0amRWcktCdHZDMlVzbVVabmdWQ3ZvSFk?oc=5"
       }
-    ]
+    ],
+    "image_source": "unsplash_fallback"
   },
   {
     "title": "Изкуственият интелект зад златния стандарт в квантовите изчисления: Разрешаване на десетилетната загадка за ускоренията",
@@ -170,7 +191,7 @@
     "category": "Квантови технологии",
     "category_slug": "quantum",
     "url": "/articles/izkustveniyat-intelekt-zad-zlatniya-standart-v-kvantovite-izchisleniya-razreshavane-na-desetiletnata-zagadka-za-uskoreniyata.html",
-    "img": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&auto=format&fit=crop",
+    "img": "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=1200&h=675&q=82",
     "sources": [
       {
         "title": "OCC Issues Supervisory Framework for Banks’ Use of “Super Intelligence”: A Risk-Based Approach to Generative and Agentic AI - Consumer Finance Monitor",
@@ -196,7 +217,8 @@
         "title": "George Kurtz Just Announced Incredible News for CrowdStrike Investors and the Artificial Intelligence (AI) Industry - The Motley Fool",
         "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxQd29JYkdFdWMxSEplVVhFTUtHeDFuSkZNaTFQU2hSdlFnak0yN0ZsVWFhR3cwSG9CMnRfWm51dnpLNEpuWDR5TDAyS0Q0ak5NeVZyWnNCSW85azItRmR3UldGUXNXVURSZFpKSFJZd3MzRFNlSl9Za1RGX0JsQ0tkWFMwM3VVdTZQMDlzRTlxbmZ5TXBjSUE?oc=5"
       }
-    ]
+    ],
+    "image_source": "unsplash_fallback"
   },
   {
     "title": "Новата бойна линия в полупроводниковата индустрия: Как напредналото опаковане на чипове се превърна в критичен фактор за изкуствения интелект",
@@ -204,7 +226,7 @@
     "category": "Квантови технологии",
     "category_slug": "quantum",
     "url": "/articles/novata-boyna-liniya-v-poluprovodnikovata-industriya-kak-naprednaloto-opakovane-na-chipove-se-prevarna-v-kritichen-faktor-za-izkustveniya-intelekt.html",
-    "img": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop",
+    "img": "https://images.unsplash.com/photo-1510511459019-5dda7724fd87?auto=format&fit=crop&w=1200&h=675&q=82",
     "sources": [
       {
         "title": "How the College Board Is Fighting A.I. Cheating on the SAT Tests - The New York Times",
@@ -230,7 +252,8 @@
         "title": "How Big Tech Lost the Midterms - Politico",
         "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQQmEySUJ0aE1vd1N5bWF3TFRPWGVLNmRVQnhXaUZQTWRjWHZIa0tIR2Q4VXh3LWxIOXd0cDVFVTNkVFhwQmtVS2F1dzVDNVU1QnF0bHVGNDVlSEV4QnpRX0pMSG0yUTJNU1BZZFFEUXhRdm96VVd2MUFSQ0ExN0JKRWVhdFE4WDBXYVlRWVdLU19JUEdHQ1BlMENlVEtZalh1azZN?oc=5"
       }
-    ]
+    ],
+    "image_source": "unsplash_fallback"
   },
   {
     "title": "Тихият пробив в квантовите изчисления: Защо IBM, AMD и лабораторията Oak Ridge обединяват сили срещу декохеренцията",
@@ -238,7 +261,7 @@
     "category": "Квантови технологии",
     "category_slug": "quantum",
     "url": "/articles/tihiyat-probiv-v-kvantovite-izchisleniya-zashto-ibm-amd-i-laboratoriyata-oak-ridge-obedinyavat-sili-sreshtu-dekoherentsiyata.html",
-    "img": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&auto=format&fit=crop",
+    "img": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&h=675&q=82",
     "sources": [
       {
         "title": "Michigan can use artificial intelligence to improve lives - Mackinac Center",
@@ -264,7 +287,8 @@
         "title": "Little Friends: Artificial Intelligence and Human Services… a Lot To Think About! - Positively Naperville",
         "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxNdXFsQ2t6aW1VX0ZEUDFmdkxmMFZEMHhYMzBDNVR1ZnY3WWwtUG5SZXM1LTVuUlU5bkp2c3RqamdpQzdUeGFXY1NjNlNqdmR1WVFiTTh4eFhIVGZsNWY4TWQ0RXdKS3VvT1dsMFFiUnIxbUZvRXZvZzR2QWVLMXhsWFVnWHF1bVBVc0ZLb1FNVUVNWGF6dlZlZ3ZxSUxuWDdKVHJhdExsYXR0aVdnM1BXYnNOaGZZbFhuclpKeEt1cGgwUXIxWlVYZ0N0TzVWZw?oc=5"
       }
-    ]
+    ],
+    "image_source": "unsplash_fallback"
   },
   {
     "title": "Сложната логистика на технологичните ограничения: как забранените чипове намират път до пазарите",
@@ -272,7 +296,7 @@
     "category": "Киберсигурност",
     "category_slug": "cyber",
     "url": "/articles/slozhnata-logistika-na-tehnologichnite-ogranicheniya-kak-zabranenite-chipove-namirat-pat-do-pazarite.html",
-    "img": "https://images.unsplash.com/photo-1535378273068-9bb67d5beacd?w=800&auto=format&fit=crop",
+    "img": "https://images.unsplash.com/photo-1550439062-609e1531270e?auto=format&fit=crop&w=1200&h=675&q=82",
     "sources": [
       {
         "title": "Advancing software engineering education with artificial intelligence - Augusta University",
@@ -298,7 +322,8 @@
         "title": "EU rules on Artificial intelligence devices will apply in NI - BBC",
         "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9XLVFyNmp2WG1CSG1aU2NodnRlRUt0QjBsaHYtb0pFTEpkQlFUUWcwZ2dQWmFzaU5IajJ6VlMxZDNiTVFST1ZhQTduXzFCR1liLVNNTkQ2Um5jY28?oc=5"
       }
-    ]
+    ],
+    "image_source": "unsplash_fallback"
   },
   {
     "title": "Битката за квантова стабилност навлиза в нов етап с постижения в потискането на грешките",
@@ -306,7 +331,7 @@
     "category": "Квантови технологии",
     "category_slug": "quantum",
     "url": "/articles/bitkata-za-kvantova-stabilnost-navliza-v-nov-etap-s-postizheniya-v-potiskaneto-na-greshkite.html",
-    "img": "https://images.unsplash.com/photo-1535378273068-9bb67d5beacd?w=800&auto=format&fit=crop",
+    "img": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&h=675&q=82",
     "sources": [
       {
         "title": "Steven Spielberg's A.I. ARTIFICIAL INTELLIGENCE to Make 4K UHD Debut in December 2026 - Get Your Comic On",
@@ -332,7 +357,8 @@
         "title": "What are the five pros and cons of artificial intelligence? - Al Jazeera",
         "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPUkJUcjZydEhPb3Itel9PUVFhWFpZcm5GRE1UYUhQQWxRYjdLbmp0RTg4T050Q0N3UGtral9HSFEzc2NXcWFnd3FwOUhPS0tpc0k4cXFZOHJuWHJ1TUYzN1ItMUNxMGRDbDNiMlZYV205eERMTk9uUjg3NzJleUdYOG0zSEIzU2RHTDZCRjROMU9qZW14MXh1SnU1MlFrWkkt0gGmAUFVX3lxTE1PXy1fNFdzYUxKLUVpWWN0RjhGaEp4ZnJXOFVEOGZ6RkxYb0NKUDR5SkliWmZTSXpYR3U1RFdVc0ZPM0FuVll2cF9lbnRpcTN5ZWVWbm1mTVdobklyaVlqUGdRSlFaMEg5SVNTa1AyR25HN0pOUHptdnVmY01JQmRDZUxUbTV1OXl1Z2JjRDI5UXBRR1N5MzJqZWRHd1gxN1ZZZ1U2cHc?oc=5"
       }
-    ]
+    ],
+    "image_source": "unsplash_fallback"
   },
   {
     "title": "Квантовите технологии срещу ограниченията на данните: как изследователи използват нови методи за ранна диагностика на белодробен карцином",
@@ -340,7 +366,7 @@
     "category": "Квантови технологии",
     "category_slug": "quantum",
     "url": "/articles/kvantovite-tehnologii-sreshtu-ogranicheniyata-na-dannite-kak-izsledovateli-izpolzvat-novi-metodi-za-ranna-diagnostika-na-belodroben-kartsinom.html",
-    "img": "https://images.unsplash.com/photo-1535378273068-9bb67d5beacd?w=800&auto=format&fit=crop",
+    "img": "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?auto=format&fit=crop&w=1200&h=675&q=82",
     "sources": [
       {
         "title": "Artificial intelligence use doubles among rural Nebraskans - Nebraska Public Media",
@@ -366,7 +392,8 @@
         "title": "Rise of artificial intelligence in Athens affects local artists - The Post",
         "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxQRjlzQ1NCZURyTThKOHdhU3JFblhCeDAtVllKWnVkZ2NGZWdZVlVsT09vbEtiMS1ORHk4VWYyTG9zVGJMLTQtZHRYaHRfa0RWUmxXNnVkYU5Xd284aTItaW5KUTYxVVVKanFVTURXR3NQNU5sdml3RmtlczVuSWxuSGhVcmdvMHVCLW1tUnFkblF3NkZO?oc=5"
       }
-    ]
+    ],
+    "image_source": "unsplash_fallback"
   },
   {
     "title": "Модулният квантов пробив на IBM: Как l-couplers променят архитектурата на изчислителните системи",
@@ -374,7 +401,7 @@
     "category": "Квантови технологии",
     "category_slug": "quantum",
     "url": "/articles/modulniyat-kvantov-probiv-na-ibm-kak-l-couplers-promenyat-arhitekturata-na-izchislitelnite-sistemi.html",
-    "img": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop",
+    "img": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1200&h=675&q=82",
     "sources": [
       {
         "title": "Musk and Zuckerberg echo Trump's push to rebrand AI as 'super intelligence' on earnings calls. Others do not - CNBC",
@@ -400,7 +427,8 @@
         "title": "Why artificial intelligence can’t replace your financial planner - The South Dakota Standard",
         "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQZEZnZHBQY1FER3c2UlVMekJKYkZPN3VYcVZXaV9wVkEybmRlQl96UldxV3hFUUFTVHRRajlRM0w4bjZLc2E4d3M1TG45SWsxQkdvV2pHNlBhM3NiUHZvbm1pTS1CMUVNXzFyazdzbEJOVkpDcTBoVXNyUkRUQXhaVFhvM0dHbDFwRHB0MnJEZm8wZzNJRTNPYVhTTUMwNzg?oc=5"
       }
-    ]
+    ],
+    "image_source": "unsplash_fallback"
   },
   {
     "title": "Модулният подход в квантовите изчисления набира скорост с нови архитектурни решения",
@@ -408,7 +436,7 @@
     "category": "Квантови технологии",
     "category_slug": "quantum",
     "url": "/articles/modulniyat-podhod-v-kvantovite-izchisleniya-nabira-skorost-s-novi-arhitekturni-resheniya.html",
-    "img": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&auto=format&fit=crop",
+    "img": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&h=675&q=82",
     "sources": [
       {
         "title": "Big Tech's AI bill comes due, but Michigan automakers see a rebound - Detroit Free Press",
@@ -434,7 +462,8 @@
         "title": "Reader's View: Delay deployment of artificial intelligence - Duluth News Tribune",
         "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOVlplSWhoSXc3UEVpTjduN0FQaXljVUMwbjZobDBXWkpRaXAxU0lPc3FudUc0bFN5VGkyZTZKbk5Kc1RRRExac2UxNTE0YTNsemEzTHV2bHhHUVRrY0NGd0RqdkI2c2U0MElLVXlENXZPX0gyR1lVd2pOOG1GSldaRVRGMmZrTXdRRzhqX2pCYmJnYkFFdlpXSXB4Ukpfc0loY3JZNjNhZzJqUQ?oc=5"
       }
-    ]
+    ],
+    "image_source": "unsplash_fallback"
   },
   {
     "title": "Модулният квантов пробив: Защо преходът към свързани процесори променя правилата в индустрията",
@@ -442,7 +471,7 @@
     "category": "Квантови технологии",
     "category_slug": "quantum",
     "url": "/articles/modulniyat-kvantov-probiv-zashto-prehodat-kam-svarzani-protsesori-promenya-pravilata-v-industriyata.html",
-    "img": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&auto=format&fit=crop",
+    "img": "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=1200&h=675&q=82",
     "sources": [
       {
         "title": "Trump Wants to Ban Use of the Term 'Artificial Intelligence' and 'AI' - Variety",
@@ -468,7 +497,8 @@
         "title": "What are the five pros and cons of artificial intelligence? - Al Jazeera",
         "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPUkJUcjZydEhPb3Itel9PUVFhWFpZcm5GRE1UYUhQQWxRYjdLbmp0RTg4T050Q0N3UGtral9HSFEzc2NXcWFnd3FwOUhPS0tpc0k4cXFZOHJuWHJ1TUYzN1ItMUNxMGRDbDNiMlZYV205eERMTk9uUjg3NzJleUdYOG0zSEIzU2RHTDZCRjROMU9qZW14MXh1SnU1MlFrWkkt0gGmAUFVX3lxTE1PXy1fNFdzYUxKLUVpWWN0RjhGaEp4ZnJXOFVEOGZ6RkxYb0NKUDR5SkliWmZTSXpYR3U1RFdVc0ZPM0FuVll2cF9lbnRpcTN5ZWVWbm1mTVdobklyaVlqUGdRSlFaMEg5SVNTa1AyR25HN0pOUHptdnVmY01JQmRDZUxUbTV1OXl1Z2JjRDI5UXBRR1N5MzJqZWRHd1gxN1ZZZ1U2cHc?oc=5"
       }
-    ]
+    ],
+    "image_source": "unsplash_fallback"
   },
   {
     "title": "Новият график на NIST изправя криптографията пред квантовата заплаха",
@@ -476,7 +506,7 @@
     "category": "Квантови технологии",
     "category_slug": "quantum",
     "url": "/articles/noviyat-grafik-na-nist-izpravya-kriptografiyata-pred-kvantovata-zaplaha.html",
-    "img": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&auto=format&fit=crop",
+    "img": "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=1200&h=675&q=82",
     "sources": [
       {
         "title": "Trump Wants to Ban Use of the Term 'Artificial Intelligence' and 'AI' - Variety",
@@ -502,7 +532,8 @@
         "title": "What are the five pros and cons of artificial intelligence? - Al Jazeera",
         "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPUkJUcjZydEhPb3Itel9PUVFhWFpZcm5GRE1UYUhQQWxRYjdLbmp0RTg4T050Q0N3UGtral9HSFEzc2NXcWFnd3FwOUhPS0tpc0k4cXFZOHJuWHJ1TUYzN1ItMUNxMGRDbDNiMlZYV205eERMTk9uUjg3NzJleUdYOG0zSEIzU2RHTDZCRjROMU9qZW14MXh1SnU1MlFrWkkt0gGmAUFVX3lxTE1PXy1fNFdzYUxKLUVpWWN0RjhGaEp4ZnJXOFVEOGZ6RkxYb0NKUDR5SkliWmZTSXpYR3U1RFdVc0ZPM0FuVll2cF9lbnRpcTN5ZWVWbm1mTVdobklyaVlqUGdRSlFaMEg5SVNTa1AyR25HN0pOUHptdnVmY01JQmRDZUxUbTV1OXl1Z2JjRDI5UXBRR1N5MzJqZWRHd1gxN1ZZZ1U2cHc?oc=5"
       }
-    ]
+    ],
+    "image_source": "unsplash_fallback"
   },
   {
     "title": "Придобиването на Classiq от Intel чертае нови очертания в комерсиализацията на квантовите технологии",
@@ -510,7 +541,7 @@
     "category": "Квантови технологии",
     "category_slug": "quantum",
     "url": "/articles/pridobivaneto-na-classiq-ot-intel-chertae-novi-ochertaniya-v-komersializatsiyata-na-kvantovite-tehnologii.html",
-    "img": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&auto=format&fit=crop",
+    "img": "https://images.unsplash.com/photo-1591405351990-4726e331f141?auto=format&fit=crop&w=1200&h=675&q=82",
     "sources": [
       {
         "title": "Illustration shows \"AI Artificial Intelligence\" words and keyboard - The Lufkin Daily News",
@@ -536,7 +567,8 @@
         "title": "I’m a father of three who studies the impact of artificial intelligence: this is what parents need to know about AI - The Guardian",
         "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxNZUp6TVFuemZ5UmY1aXQ3a1dSRzhKTk5FbDRvUktyYkNPQnpEZFhJWjh3Ym1EamdrVVNWdkh4MEhyN0w0aVpWRi13THcyQkh2Q05xLUVZUDlaekt6aUF6LVlId2liVXVTZC1fa09aM3E4RWtYclBkeG5kUVFVOEQtaFI4X3laOFJNemlGUlI1RG0yY3NJc0RncU1sYVpvR2VNdV9nNlpoZ0FDUTc2ajhPX3pQeDBTN2FqT0M3Ylo5cGUwSzJnOE1lMVlNVQ?oc=5"
       }
-    ]
+    ],
+    "image_source": "unsplash_fallback"
   },
   {
     "title": "Мащабната надпревара за изчислителна мощ достигна нови измерения с капиталовите инжекции в AI инфраструктурата",
@@ -544,7 +576,7 @@
     "category": "Квантови технологии",
     "category_slug": "quantum",
     "url": "/articles/mashtabnata-nadprevara-za-izchislitelna-mosht-dostigna-novi-izmereniya-s-kapitalovite-inzhektsii-v-ai-infrastrukturata.html",
-    "img": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop",
+    "img": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1200&h=675&q=82",
     "sources": [
       {
         "title": "Illustration shows \"AI Artificial Intelligence\" words and keyboard - The Lufkin Daily News",
@@ -570,7 +602,8 @@
         "title": "World Bank says ‘small AI’ could transform developing countries - The Guardian",
         "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQYlhMNzlYUUZNc1F4dTZiUktjcDhOc3FMVlVxblc5Yi1sSnN0bWp5dU4zczhReDh4Ym5LbDJVZl8xT2k2TGVveW9CMkFfV2ZvZlA3cC1oQjY0NHh4MDRtRzRCM2xodFoxSjBtR1R5SnJvZDdPRU9BQTFaYXo2LXRyY0lNN1NGSzl1UWpHWkdWQVNVS1BGVnBYd05aV3NUdkJBQ1U4N3VzYllfUQ?oc=5"
       }
-    ]
+    ],
+    "image_source": "unsplash_fallback"
   },
   {
     "title": "Новата фаза на квантовите технологии: между държавните инвестиции и търговската реализация",
@@ -578,7 +611,7 @@
     "category": "Квантови технологии",
     "category_slug": "quantum",
     "url": "/articles/novata-faza-na-kvantovite-tehnologii-mezhdu-darzhavnite-investitsii-i-targovskata-realizatsiya.html",
-    "img": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&auto=format&fit=crop",
+    "img": "https://images.unsplash.com/photo-1581092335878-2d9ff86ca2bf?auto=format&fit=crop&w=1200&h=675&q=82",
     "sources": [
       {
         "title": "Why Trump’s Rebrand of Artificial Intelligence to Super Intelligence Matters - Time Magazine",
@@ -604,7 +637,8 @@
         "title": "Wall Street Is Getting Very Nervous About AI - Jacobin",
         "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxQWGkya2xZTEx0YWNBVXRVNUxTaXRHazI4ZGQ0WlpsOUxBMzhvM1U3WmdVM3loM05TR0FDWWFYZl9MMVV2MGpHay1DeEZ5YkFUQkw5aTVxSUctdDhUblZRd3FBTjJRQmVfclNDUENjeU9ZUWF1ZXpkbmd5c3VCWXVJR3d3?oc=5"
       }
-    ]
+    ],
+    "image_source": "unsplash_fallback"
   },
   {
     "title": "Квантовите компютри и тяхната най-голяма бариера: как изкуственият интелект се намесва в корекцията на грешки",
@@ -612,7 +646,7 @@
     "category": "Квантови технологии",
     "category_slug": "quantum",
     "url": "/articles/kvantovite-kompyutri-i-tyahnata-nay-golyama-bariera-kak-izkustveniyat-intelekt-se-namesva-v-korektsiyata-na-greshki.html",
-    "img": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&auto=format&fit=crop",
+    "img": "https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=1200&h=675&q=82",
     "sources": [
       {
         "title": "Why Trump’s Rebrand of Artificial Intelligence to Super Intelligence Matters - Time Magazine",
@@ -638,7 +672,8 @@
         "title": "Wall Street Is Getting Very Nervous About AI - Jacobin",
         "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxQWGkya2xZTEx0YWNBVXRVNUxTaXRHazI4ZGQ0WlpsOUxBMzhvM1U3WmdVM3loM05TR0FDWWFYZl9MMVV2MGpHay1DeEZ5YkFUQkw5aTVxSUctdDhUblZRd3FBTjJRQmVfclNDUENjeU9ZUWF1ZXpkbmd5c3VCWXVJR3d3?oc=5"
       }
-    ]
+    ],
+    "image_source": "unsplash_fallback"
   },
   {
     "title": "Нов хоризонт за изкуствения интелект: моделирането на човешкия ум",
@@ -646,7 +681,7 @@
     "category": "Квантови технологии",
     "category_slug": "quantum",
     "url": "/articles/nov-horizont-za-izkustveniya-intelekt-modeliraneto-na-choveshkiya-um.html",
-    "img": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&auto=format&fit=crop",
+    "img": "https://images.unsplash.com/photo-1597733336794-12d05021d510?auto=format&fit=crop&w=1200&h=675&q=82",
     "sources": [
       {
         "title": "Civil Beat’s Artificial Intelligence Policy - Honolulu Civil Beat",
@@ -672,7 +707,8 @@
         "title": "‘Klara and the Sun’ star Jenna Ortega: ‘Artificial intelligence isn’t creative’ - Los Angeles Times",
         "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxNbXNyZGJ5aGs4blVBRDIwSTh4VVpGdldNSENmY2tfZlEwZ2JTamlkTTJXazFBYkFlT0c3QlFHQURrZ0tQSkNaRkhlQU1uS1J3ajMwZ3FTa3ZjWkhuU2MzMUZzWF92YjhxM3BUV3ZEYVlZNWFRUmlPVlIwbGl4YVI1X0oxdDRtOVN6Q1FsV0pxV3FtLUsxV3lOcENKS1VPN0k3N040OG11SUplLTVmOVM3TGM2dXJrSzRJampjSGExbw?oc=5"
       }
-    ]
+    ],
+    "image_source": "unsplash_fallback"
   },
   {
     "title": "Повратната точка в квантовите изчисления: Новият скок към устойчиви системи",
@@ -680,7 +716,7 @@
     "category": "Квантови технологии",
     "category_slug": "quantum",
     "url": "/articles/povratnata-tochka-v-kvantovite-izchisleniya-noviyat-skok-kam-ustoychivi-sistemi.html",
-    "img": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop",
+    "img": "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=1200&h=675&q=82",
     "sources": [
       {
         "title": "Experts: How are climate scientists using artificial intelligence? - Carbon Brief",
@@ -706,7 +742,8 @@
         "title": "AI-Generated Evidence in Drug Discovery: Reliability, Legal Risk & FDA Compliance - Crowell & Moring LLP",
         "url": "https://news.google.com/rss/articles/CBMi8wFBVV95cUxPXzNkV2c5dk43d1d5alhkOW9BbkJyY2h1VHNEd283dVJZdEc5dGhqbkpjNU1jUHpjXzZDRk5PTndtUmtUZ0hIVWxuRmlLMzN5OGczVlB4b1dWZDloMkV2eWc5ZEJVRkRvNkZ3MXYyOC1QMFRqTWJzTUZkVUl6cHJ1VVVyMk9TZ0xDOGs5eGRMWFVCWFZHUF9TLWJfMnhSbGNrSVVyWWJicGtNT3BvQmRJYlFGT1pkTVJuQWlITUg5MHRKMlRtREprc2xBTEZ2Wno3NU5yQlhYZGNrd3I3bzFlY2NhQWZtazhrWW1nbktxTlNDakE?oc=5"
       }
-    ]
+    ],
+    "image_source": "unsplash_fallback"
   },
   {
     "title": "Квантовият пробив: Как корекцията на грешки доближава машинните изчисления до хоризонта на 2029 година",
@@ -714,7 +751,7 @@
     "category": "Квантови технологии",
     "category_slug": "quantum",
     "url": "/articles/kvantoviyat-probiv-kak-korektsiyata-na-greshki-doblizhava-mashinnite-izchisleniya-do-horizonta-na-2029-godina.html",
-    "img": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&auto=format&fit=crop",
+    "img": "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1200&h=675&q=82",
     "sources": [
       {
         "title": "Writing Artificial Intelligence Into Constitutions: A Global Constitutional Moment for the Algorithmic State - www.iconnectblog.com",
@@ -740,7 +777,8 @@
         "title": "If I Could Only Buy 1 Artificial Intelligence (AI) Semiconductor Stock to Buy Before 2027, It Would Be This One - The Motley Fool",
         "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNV0lGckltbmw2UFM3ZC1LeERWWDhPS0NGS2NYZzdtS0hHZ1RnTTU1cWJMWjV6MVJ4TWxobVRjMVF4dHBOV01PQjFYaWpzWHZjal9YTGhFdmpQYTZlRTdvVDFXa2NHckNyZTRrNUVHVFFSM2lxWlZiaDZRaEc4Y1ViRV9hYzlKZVZJaW1MdmdOdmp5SlBSTFlwWA?oc=5"
       }
-    ]
+    ],
+    "image_source": "unsplash_fallback"
   },
   {
     "title": "Квантова ефективност с езикови модели: Как изкуственият интелект променя проектирането на кубити",
@@ -748,7 +786,7 @@
     "category": "Квантови технологии",
     "category_slug": "quantum",
     "url": "/articles/kvantova-efektivnost-s-ezikovi-modeli-kak-izkustveniyat-intelekt-promenya-proektiraneto-na-kubiti.html",
-    "img": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&auto=format&fit=crop",
+    "img": "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&h=675&q=82",
     "sources": [
       {
         "title": "FSB finalises sound practices for the responsible adoption of artificial intelligence (AI) - Financial Stability Board",
@@ -774,7 +812,8 @@
         "title": "President Trump Sells Micron Stock and Buys Another Mega-Cap Artificial Intelligence (AI) Stock - The Motley Fool",
         "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQZkR2YldmSlVIWGFUSmJSRmREanIzaFhwMWNyYk5HQk50SFB5cjVSbVcyZnVyY3ZjNXllMVFEUGQtY205MlZRblZRbjFwLU5BUUw5bUdKXzVDN1lfdm10dHBzNmJiUXBsRk5GRlIwenprZEJBcEZTdHJZSmFjR0RSeXJYZzh6Nnp0WldCb21uQ1FzR0hicGFR?oc=5"
       }
-    ]
+    ],
+    "image_source": "unsplash_fallback"
   },
   {
     "title": "Преодоляване на фундаменталната бариера: как квантовите компютри се доближават до практически приложения",
@@ -782,7 +821,7 @@
     "category": "Квантови технологии",
     "category_slug": "quantum",
     "url": "/articles/preodolyavane-na-fundamentalnata-bariera-kak-kvantovite-kompyutri-se-doblizhavat-do-prakticheski-prilozheniya.html",
-    "img": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop",
+    "img": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&h=675&q=82",
     "sources": [
       {
         "title": "Steven Spielberg and Stanley Kubrick's Near-Perfect Sci-Fi Fairytale Is Officially Back on Streaming - Polygon.com",
@@ -808,7 +847,8 @@
         "title": "Trump AI deal rebrands ‘artificial intelligence’ as ‘superintelligence’ - The Guardian",
         "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNOFVZQVZWMk1XVVREWXRWcVZaWGZrb0dGSURLVkl4MUg0ZHFoTHNWckY5WU9hWXJuOXhnU21xY1NHM0hMM2FiQkRKdUtmWlpRcHdGbEg1MmphUXFWaEE1VC1YSGgwTlJIVlhwX0tOcl9HV2F1UnhMOHZPV3hQMkEwdWI3c2N6TGxYOWVJS052Q3E3UmM?oc=5"
       }
-    ]
+    ],
+    "image_source": "unsplash_fallback"
   },
   {
     "title": "Пробив в квантовите изчисления: Нова техника смалява грешките в „магическите състояния“",
