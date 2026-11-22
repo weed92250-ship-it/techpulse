@@ -1,6 +1,7 @@
 name: TechPulse Image Repair
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
