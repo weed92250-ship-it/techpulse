@@ -244,7 +244,6 @@ def create_static_pages():
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {ADSENSE_HEAD_SCRIPT}
     <title>{title} — TechPulse</title>
-    {ADSENSE_HEAD_SCRIPT}
     <style>{CSS_STYLES}</style>
 </head>
 <body>
@@ -255,7 +254,7 @@ def create_static_pages():
             <div class="footer-links">
                 <a href="/">Начало</a> | <a href="/articles.html">Статии</a> | <a href="/tools.html">Инструменти</a>
                 <a href="/glossary.html">Речник</a>
-                <a href="/about.html">За нас</a> | <a href="/contacts.html">Контакти</a> | <a href="/privacy.html">Поверителност и бисквитки</a> | <a href="/terms.html">Общи условия</a> | <a href="#" id="tp-cookie-settings">Настройки за бисквитки</a>
+                <a href="/about.html">За нас</a> | <a href="/contacts.html">Контакти</a> | <a href="/privacy.html">Поверителност и бисквитки</a> | <a href="/terms.html">Общи условия</a>
             </div>
         </footer>
         
@@ -277,7 +276,6 @@ def sync_article_footers():
 <a href="/contacts.html">Контакти</a>
 <a href="/privacy.html">Поверителност и бисквитки</a>
 <a href="/terms.html">Общи условия</a>
-<a href="#" id="tp-cookie-settings">Настройки за бисквитки</a>
 </nav>
 <p>© TechPulse. Всички права запазени.</p>
 </footer>"""
@@ -344,6 +342,7 @@ def build_full_page(title, main_image_url, fallback_backup_img, article_body, si
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {ADSENSE_HEAD_SCRIPT}
     <title>{title} — TechPulse</title>
     <style>{CSS_STYLES}</style>
 </head>
