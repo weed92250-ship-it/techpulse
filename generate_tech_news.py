@@ -424,92 +424,101 @@ def load_history():
     return cleaned
 
 IMAGE_POOLS = {
-    "quantum": [
-        "photo-1535378273068-9bb67d5beacd", "photo-1635070041078-e363dbe005cb",
-        "photo-1451187580459-43490279c0fa", "photo-1523961131990-5ea7c61b2107",
-        "photo-1535223289827-42f1e9919769", "photo-1535378620166-273708d44e4c",
-        "photo-1618005182384-a83a8bd57fbe", "photo-1527443224154-c4a3942d3acf",
-        "photo-1581091226825-a6a2a5aee158", "photo-1581092160562-40aa08e78837"
-        "https://cdn.pixabay.com/photo/2018/05/08/08/44/artificial-intelligence-3382507_1280.jpg",
-        "https://cdn.pixabay.com/photo/2016/11/22/19/20/technology-1845385_1280.jpg",
-        "https://cdn.pixabay.com/photo/2017/06/13/09/36/technology-2396808_1280.jpg",
-        "https://cdn.pixabay.com/photo/2016/11/29/07/27/computer-1869236_1280.jpg",
+    'ai': [
+        "photo-1535378273068-9bb67d5beacd",
+        "photo-1635070041078-e363dbe005cb",
+        "photo-1451187580459-43490279c0fa",
+        "photo-1523961131990-5ea7c61b2107",
+        "photo-1535223289827-42f1e9919769",
+        "photo-1535378620166-273708d44e4c",
+        "photo-1618005182384-a83a8bd57fbe",
+        "photo-1527443224154-c4a3942d3acf",
+        "photo-1581091226825-a6a2a5aee158",
+        "photo-1581092160562-40aa08e78837"
     ],
-    "cyber": [
-        "photo-1526374965328-7f61d4dc18c5", "photo-1550751827-4bd374c3f58b",
-        "photo-1563013544-824ae1b704d3", "photo-1510511459019-5dda7724fd87",
-        "photo-1558494949-ef010cbdcc31", "photo-1550439062-609e1531270e",
-        "photo-1516321318423-f06f85e504b3", "photo-1527443224154-c4a3942d3acf",
-        "photo-1581092795360-fd1ca04f0952", "photo-1515879218367-8466d910aaa4"
-        "https://cdn.pixabay.com/photo/2016/11/19/14/00/code-1839406_1280.jpg",
-        "https://cdn.pixabay.com/photo/2016/11/30/20/58/programming-1873854_1280.jpg",
-        "https://cdn.pixabay.com/photo/2016/12/28/09/36/web-1935737_1280.jpg",
-        "https://cdn.pixabay.com/photo/2017/01/17/14/40/technology-1986105_1280.jpg",
+    'hardware': [
+        "photo-1526374965328-7f61d4dc18c5",
+        "photo-1550751827-4bd374c3f58b",
+        "photo-1563013544-824ae1b704d3",
+        "photo-1510511459019-5dda7724fd87",
+        "photo-1558494949-ef010cbdcc31",
+        "photo-1550439062-609e1531270e",
+        "photo-1516321318423-f06f85e504b3",
+        "photo-1581092795360-fd1ca04f0952",
+        "photo-1515879218367-8466d910aaa4",
+        "photo-1518770660439-4636190af475"
     ],
-    "hardware": [
-        "photo-1518770660439-4636190af475", "photo-1591799264318-7e6ef8ddb7ea",
-        "photo-1587202372775-e229f172b9d7", "photo-1591405351990-4726e331f141",
-        "photo-1550745165-9bc0b252726f", "photo-1527443224154-c4a3942d3acf",
-        "photo-1581092580497-e0d23cbdf1dc", "photo-1581092335878-2d9ff86ca2bf",
-        "photo-1581092921461-eab62e97a780", "photo-1597733336794-12d05021d510"
-        "https://cdn.pixabay.com/photo/2017/08/10/03/47/technology-2615761_1280.jpg",
-        "https://cdn.pixabay.com/photo/2016/10/29/09/06/computer-1784430_1280.jpg",
-        "https://cdn.pixabay.com/photo/2017/03/20/17/07/technology-2159136_1280.jpg",
-        "https://cdn.pixabay.com/photo/2016/11/14/08/18/technology-1824969_1280.jpg",
+    'cyber': [
+        "photo-1591799264318-7e6ef8ddb7ea",
+        "photo-1587202372775-e229f172b9d7",
+        "photo-1591405351990-4726e331f141",
+        "photo-1550745165-9bc0b252726f",
+        "photo-1581092580497-e0d23cbdf1dc",
+        "photo-1581092335878-2d9ff86ca2bf",
+        "photo-1581092921461-eab62e97a780",
+        "photo-1597733336794-12d05021d510",
+        "photo-1485827404703-89b55fcc595e",
+        "photo-1521737711867-e3b97375f902"
     ],
-    "future": [
-        "photo-1485827404703-89b55fcc595e", "photo-1535378620166-273708d44e4c",
-        "photo-1521737711867-e3b97375f902", "photo-1531482615713-2afd69097998",
-        "photo-1522071820081-009f0129c71c", "photo-1531297484001-80022131f5a1",
-        "photo-1581091226825-a6a2a5aee158", "photo-1581092160562-40aa08e78837",
-        "photo-1521737711867-e3b97375f902", "photo-1550439062-609e1531270e"
-        "https://cdn.pixabay.com/photo/2017/03/19/20/19/robot-2159352_1280.jpg",
-        "https://cdn.pixabay.com/photo/2017/09/06/19/38/technology-2729801_1280.jpg",
-        "https://cdn.pixabay.com/photo/2017/08/07/14/14/technology-2608577_1280.jpg",
+    'technologies': [
+        "photo-1531482615713-2afd69097998",
+        "photo-1522071820081-009f0129c71c",
+        "photo-1531297484001-80022131f5a1",
+        "photo-1677442136019-21780ecad995",
+        "photo-1620712943543-bcc4688e7485",
+        "photo-1676299081847-824916de030a",
+        "photo-1498050108023-c5249f4df085",
+        "photo-1519389950473-47ba0277781c",
+        "photo-1504384308090-c894fdcc538d",
+        "photo-1504639725590-34d0984388bd"
     ],
-    "ai": [
-        "photo-1677442136019-21780ecad995", "photo-1620712943543-bcc4688e7485",
-        "photo-1676299081847-824916de030a", "photo-1498050108023-c5249f4df085",
-        "photo-1519389950473-47ba0277781c", "photo-1504384308090-c894fdcc538d",
-        "photo-1515879218367-8466d910aaa4", "photo-1531297484001-80022131f5a1",
-        "photo-1516321318423-f06f85e504b3", "photo-1521737711867-e3b97375f902"
-        "https://cdn.pixabay.com/photo/2019/04/11/11/52/artificial-intelligence-4118111_1280.jpg",
-        "https://cdn.pixabay.com/photo/2018/04/23/14/38/technology-3348071_1280.jpg",
-        "https://cdn.pixabay.com/photo/2017/01/20/00/30/laptop-1997184_1280.jpg",
+    'quantum': [
+        "photo-1516321497487-e288fb19713f",
+        "photo-1517245386807-bb43f82c33c4",
+        "photo-1522542550221-31fd19575a2d",
+        "photo-1551288049-bebda4e38f71",
+        "photo-1555949963-ff9fe0c870eb",
+        "photo-1560472354-b33ff0c44a43",
+        "photo-1563206767-5b18f218e8de",
+        "photo-1563770660941-10a63607739e",
+        "photo-1573164713714-d95e436ab8d6",
+        "photo-1573496359142-b8d87734a5a2"
     ],
-    "technologies": [
-        "photo-1504384308090-c894fdcc538d", "photo-1498050108023-c5249f4df085",
-        "photo-1519389950473-47ba0277781c", "photo-1522071820081-009f0129c71c",
-        "photo-1516321318423-f06f85e504b3", "photo-1531297484001-80022131f5a1",
-        "photo-1515879218367-8466d910aaa4", "photo-1550439062-609e1531270e",
-        "photo-1550745165-9bc0b252726f", "photo-1531482615713-2afd69097998"
-        "https://cdn.pixabay.com/photo/2017/07/31/11/22/people-2557396_1280.jpg",
-        "https://cdn.pixabay.com/photo/2016/11/29/06/15/plans-1867745_1280.jpg",
-        "https://cdn.pixabay.com/photo/2016/03/09/09/30/desk-1245954_1280.jpg",
+    'future': [
+        "photo-1581092334651-ddf26d9a09d0",
+        "photo-1581092918056-0c4c3acd3789",
+        "photo-1581092160607-ee22621dd758",
+        "photo-1593508512255-86ab42a8e620",
+        "photo-1593642632823-8f785ba67e45"
     ]
 }
 
+IMAGE_HEADERS = {
+    "User-Agent": "TechPulseBot/1.0 (https://techpulseon.site)",
+    "Accept": "image/avif,image/webp,image/jpeg,image/*;q=0.9,*/*;q=0.8",
+}
+COMMONS_HEADERS = {
+    "User-Agent": "TechPulseBot/1.0 (https://techpulseon.site)",
+    "Accept": "application/json",
+}
+
 def _image_url(photo_id):
-    if photo_id.startswith("https://"):
-        return photo_id
     return f"https://images.unsplash.com/{photo_id}?auto=format&fit=crop&w=1200&h=675&q=82"
 
 def _http_image_ok(url):
     try:
-        request = urllib.request.Request(
-            url,
-            headers={"User-Agent": "TechPulseImagePicker/1.0", "Accept": "image/avif,image/webp,image/*,*/*"}
-        )
-        with urllib.request.urlopen(request, timeout=12) as response:
-            return response.getcode() == 200 and response.headers.get("Content-Type", "").lower().startswith("image/")
+        req = urllib.request.Request(url, headers=IMAGE_HEADERS)
+        with urllib.request.urlopen(req, timeout=15) as response:
+            mime = response.headers.get("Content-Type", "").lower().split(";")[0]
+            return response.status == 200 and mime in ("image/jpeg", "image/webp")
     except Exception as error:
-        print(f"Снимката не премина HTTP проверката: {url} ({error})")
+        print(f"Непотвърдена снимка {url}: {error}")
         return False
 
 def _json_get(url, headers=None):
-    request = urllib.request.Request(url, headers=headers or {"User-Agent": "TechPulse/1.0"})
-    with urllib.request.urlopen(request, timeout=15) as response:
-        if response.getcode() != 200:
+    request = urllib.request.Request(url, headers=headers or COMMONS_HEADERS)
+    with urllib.request.urlopen(request, timeout=20) as response:
+        if response.status != 200:
             return {}
         return json.loads(response.read().decode("utf-8"))
 
@@ -519,56 +528,89 @@ def _recent_image_urls(history, count=50):
         if isinstance(item, dict) and isinstance(item.get("img"), str)
     }
 
-def _provider_image(image_query, history, provider):
-    used_all = {
-        item.get("img") for item in history
-        if isinstance(item, dict) and isinstance(item.get("img"), str)
-    }
-    query = urllib.parse.quote(image_query.strip())
-    candidates = []
-    try:
-        if provider == "pixabay":
-            key = os.environ.get("PIXABAY_API_KEY", "").strip()
-            if not key:
-                return None
-            endpoint = (
-                "https://pixabay.com/api/?key=" + urllib.parse.quote(key)
-                + "&q=" + query
-                + "&image_type=photo&orientation=horizontal&safesearch=true&per_page=20"
-            )
-            data = _json_get(endpoint)
-            for hit in data.get("hits", []):
-                if hit.get("imageWidth", 0) > hit.get("imageHeight", 0):
-                    candidates.append(hit.get("largeImageURL") or hit.get("webformatURL"))
-        else:
-            endpoint = (
-                "https://api.openverse.org/v1/images/?q=" + query
-                + "&aspect_ratio=wide&license_type=commercial,modification&page_size=20"
-            )
-            data = _json_get(endpoint)
-            for hit in data.get("results", []):
-                width, height = hit.get("width", 0), hit.get("height", 0)
-                if not width or not height or width > height:
-                    candidates.append(hit.get("url"))
-    except Exception as error:
-        print(f"{provider} търсенето не е достъпно: {error}")
-        return None
+def _save_pixabay_image(url, slug):
+    folder = os.path.join(PUBLIC_DIR, "images", "articles")
+    os.makedirs(folder, exist_ok=True)
+    path = os.path.join(folder, slug + ".jpg")
+    request = urllib.request.Request(url, headers=IMAGE_HEADERS)
+    with urllib.request.urlopen(request, timeout=25) as response:
+        data = response.read()
+        mime = response.headers.get("Content-Type", "").lower()
+        if response.status != 200 or not mime.startswith("image/") or not data:
+            raise RuntimeError("Pixabay изображението не премина проверката.")
+    with open(path, "wb") as image_file:
+        image_file.write(data)
+    return "/images/articles/" + slug + ".jpg"
 
-    for url in candidates:
-        if isinstance(url, str) and url.startswith("https://") and url not in used_all and _http_image_ok(url):
-            print(f"Избрана снимка от {provider}: {url}")
-            return url
+def _pixabay_image(image_query, slug):
+    key = os.environ.get("PIXABAY_API_KEY", "").strip()
+    if not key:
+        return None
+    endpoint = (
+        "https://pixabay.com/api/?key=" + urllib.parse.quote(key)
+        + "&q=" + urllib.parse.quote(image_query.strip())
+        + "&image_type=photo&orientation=horizontal&safesearch=true&per_page=20"
+    )
+    try:
+        data = _json_get(endpoint)
+        for hit in data.get("hits", []):
+            if hit.get("imageWidth", 0) >= 800 and hit.get("imageWidth", 0) > hit.get("imageHeight", 0):
+                remote = hit.get("largeImageURL") or hit.get("webformatURL")
+                if remote:
+                    try:
+                        return _save_pixabay_image(remote, slug)
+                    except Exception as error:
+                        print(f"Pixabay файлът не се свали локално: {error}")
+    except Exception as error:
+        print(f"Pixabay API не е достъпно: {error}")
     return None
 
-def choose_article_images(category_slug, history, image_query):
-    recent = _recent_image_urls(history, 50)
-    # Providers have priority. Their URLs are never reused from the full history.
-    main_image = _provider_image(image_query, history, "pixabay")
-    source = "pixabay" if main_image else None
-    if not main_image:
-        main_image = _provider_image(image_query, history, "openverse")
-        source = "openverse" if main_image else None
+def _commons_images(query, used_urls, limit=30):
+    params = {
+        "action": "query", "generator": "search", "gsrsearch": query,
+        "gsrnamespace": "6", "gsrlimit": str(min(50, max(10, limit * 2))),
+        "prop": "imageinfo", "iiprop": "url|size|mime", "iiurlwidth": "1200",
+        "format": "json", "origin": "*",
+    }
+    endpoint = "https://commons.wikimedia.org/w/api.php?" + urllib.parse.urlencode(params)
+    try:
+        data = _json_get(endpoint, COMMONS_HEADERS)
+    except Exception as error:
+        print(f"Wikimedia Commons API грешка за заявка '{query}': {error}")
+        return []
+    pages = data.get("query", {}).get("pages", {})
+    pages = sorted(pages.values(), key=lambda p: p.get("index", 999999))
+    found = []
+    for page in pages:
+        info = (page.get("imageinfo") or [{}])[0]
+        mime = info.get("mime", "").lower()
+        width, height = info.get("width", 0), info.get("height", 0)
+        url = info.get("thumburl") or info.get("url")
+        if (mime not in ("image/jpeg", "image/webp") or width < 800
+                or width <= height or not isinstance(url, str)
+                or not url.startswith("https://") or url in used_urls):
+            continue
+        if url not in {x["url"] for x in found}:
+            found.append({"url": url, "mime": mime, "width": width, "height": height})
+        if len(found) >= limit:
+            break
+    return found
 
+def _provider_image(image_query, history, slug):
+    used = {item.get("img") for item in history if isinstance(item, dict)}
+    pixabay = _pixabay_image(image_query, slug)
+    if pixabay and pixabay not in used:
+        return pixabay, "pixabay"
+    for query in [image_query, "technology research laboratory", "computer hardware science"]:
+        for result in _commons_images(query, used, 12):
+            if _http_image_ok(result["url"]):
+                print("Избрана проверена снимка от Wikimedia Commons: " + result["url"])
+                return result["url"], "wikimedia_commons"
+    return None, None
+
+def choose_article_images(category_slug, history, image_query, article_slug):
+    recent = _recent_image_urls(history, 50)
+    main_image, source = _provider_image(image_query, history, article_slug)
     if not main_image:
         pool = IMAGE_POOLS.get(category_slug, []) + [
             photo for key, photos in IMAGE_POOLS.items() if key != category_slug for photo in photos
@@ -577,13 +619,10 @@ def choose_article_images(category_slug, history, image_query):
         random.shuffle(candidates)
         for candidate in candidates:
             if candidate not in recent and _http_image_ok(candidate):
-                main_image = candidate
-                source = "unsplash_fallback"
+                main_image, source = candidate, "unsplash_fallback"
                 break
-
     if not main_image:
-        raise RuntimeError("Няма свободна хоризонтална снимка с HTTP 200 извън последните 50 статии.")
-
+        raise RuntimeError("Няма свободна проверена хоризонтална снимка от Unsplash или Wikimedia Commons.")
     fallback_image = next(
         (url for url in (_image_url(photo) for photos in IMAGE_POOLS.values() for photo in photos)
          if url != main_image and url not in recent and _http_image_ok(url)),
@@ -1057,8 +1096,9 @@ def generate_news():
         raise RuntimeError(
             "Заглавието повтаря тема от последните 20 статии. Публикуването е спряно."
         )
+    article_slug = slugify(title_text)
     main_image_url, fallback_img, image_source = choose_article_images(
-        category_slug, history, image_query
+        category_slug, history, image_query, article_slug
     )
 
     sidebar_items = history[:3] if len(history) >= 3 else DEFAULT_ARTICLES
@@ -1089,7 +1129,6 @@ def generate_news():
         title_text, main_image_url, fallback_img, article_body, sidebar_items
     )
 
-    article_slug = slugify(title_text)
     article_file_path = os.path.join(ARTICLES_DIR, f"{article_slug}.html")
     article_url = f"/articles/{article_slug}.html"
 
