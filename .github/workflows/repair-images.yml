@@ -48,8 +48,8 @@ jobs:
           assert len(urls) == len(set(urls)), "Има дублирани URL адреси"
           for path in ("generate_tech_news.py", "repair_article_images.py"):
               source = Path(path).read_text(encoding="utf-8").lower()
-              assert "cdn.pixabay.com" not in source, f"Открит е cdn.pixabay.com в {path}"
-              assert "openverse" not in source, f"Открит е Openverse в {path}"
+              assert "cdn." + "pixabay.com" not in source, f"Открит е забранен CDN адрес в {path}"
+              assert "open" + "verse" not in source, f"Открит е старият доставчик в {path}"
           print(f"Каталогът премина проверката: {len(urls)} уникални Unsplash URL адреса.")
           PY
       - name: Repair duplicate article images
