@@ -287,7 +287,9 @@ def create_static_pages():
         <div class="static-card">{content}</div>
         <footer>
             <div class="footer-links">
-                <a href="/">Начало</a> | <a href="/articles.html">Статии</a> | <a href="/tools.html">Инструменти</a>\n                <a href="/glossary.html">Речник</a>\n                <a href="/about.html">За нас</a> | <a href="/contacts.html">Контакти</a> | <a href="/privacy.html">Поверителност и бисквитки</a> | <a href="/terms.html">Общи условия</a> | <a href="#" id="tp-cookie-settings">Настройки за бисквитки</a>
+                <a href="/">Начало</a> | <a href="/articles.html">Статии</a> | <a href="/tools.html">Инструменти</a>
+                <a href="/glossary.html">Речник</a>
+                <a href="/about.html">За нас</a> | <a href="/contacts.html">Контакти</a> | <a href="/privacy.html">Поверителност и бисквитки</a> | <a href="/terms.html">Общи условия</a> | <a href="#" id="tp-cookie-settings">Настройки за бисквитки</a>
             </div>
         </footer>
         {COOKIE_CONSENT_HTML}
@@ -383,7 +385,9 @@ def build_full_page(title, main_image_url, fallback_backup_img, article_body, si
             <a href="/articles.html?category=ai" class="nav-link">AI</a>
             <a href="/articles.html?category=technologies" class="nav-link">Технологии</a>
             <a href="/articles.html?category=hardware" class="nav-link">Хардуер</a>
-            <a href="/tools.html" class="nav-link">Инструменти</a>\n            <a href="/glossary.html" class="nav-link">Речник</a>\n            <a href="/about.html" class="nav-link">За нас</a>
+            <a href="/tools.html" class="nav-link">Инструменти</a>
+            <a href="/glossary.html" class="nav-link">Речник</a>
+            <a href="/about.html" class="nav-link">За нас</a>
             <a href="/contacts.html" class="nav-link">Контакти</a>
         </nav>
         <div class="main-layout">
@@ -402,6 +406,8 @@ def build_full_page(title, main_image_url, fallback_backup_img, article_body, si
             <nav class="footer-links" aria-label="Полезни връзки">
                 <a href="/">Начало</a>
                 <a href="/articles.html">Статии</a>
+                <a href="/tools.html">Инструменти</a>
+                <a href="/glossary.html">Речник</a>
                 <a href="/about.html">За нас</a>
                 <a href="/contacts.html">Контакти</a>
                 <a href="/privacy.html">Поверителност и бисквитки</a>
