@@ -290,6 +290,7 @@ def sync_article_footers():
         try:
             with open(filepath, "r", encoding="utf-8") as article_file:
                 content = article_file.read()
+            original_content = content
             updated, count = re.subn(
                 r"<footer\b[^>]*>[\s\S]*?</footer>",
                 footer,
@@ -299,6 +300,13 @@ def sync_article_footers():
             )
             if count:
                 content = updated
+            # Remove legacy local consent UI and ensure AdSense is loaded directly in head.
+            content = re.sub(r'<style[^>]*id="tp-cookie-style"[^>]*>[\s\S]*?</style>', "", content, flags=re.IGNORECASE)
+            content = re.sub(r'<section[^>]*id="tp-cookie-banner"[\s\S]*?</section>', "", content, flags=re.IGNORECASE)
+            content = re.sub(r'<script>\s*\(function\(\)\{[\s\S]*?techpulse_cookie_choice_v1[\s\S]*?</script>', "", content, flags=re.IGNORECASE)
+            content = re.sub(r'<a[^>]*id="tp-cookie-settings"[^>]*>[\s\S]*?</a>', "", content, flags=re.IGNORECASE)
+            if "adsbygoogle.js?client=ca-pub-8109991761364968" not in content:
+                content = re.sub(r'<head[^>]*>', lambda match: match.group(0) + ADSENSE_HEAD_SCRIPT, content, count=1, flags=re.IGNORECASE)
             if "author-box" not in content:
                 content = content.replace("</main>", '<section class="author-box"><h2>Редакция и авторство</h2><p><strong>Редакция TechPulse</strong></p><p>Материалът е подготвен от редакционния екип на TechPulse. Проверимите факти се разграничават от анализа.</p></section></main>', 1)
             if "related-articles" not in content:
@@ -309,7 +317,7 @@ def sync_article_footers():
                     links = "".join('<li><a href="' + x.get("url", "#") + '">' + x.get("title", "Още по темата") + "</a></li>" for x in related)
                     block = '<section class="related-articles"><h2>Свързани статии</h2><ul>' + links + "</ul></section>"
                     content = content.replace("</main>", block + "</main>", 1)
-            if content != updated or count:
+            if content != original_content:
                 with open(filepath, "w", encoding="utf-8") as article_file:
                     article_file.write(content)
                 print(f"Обновена редакционна информация: {filename}")
