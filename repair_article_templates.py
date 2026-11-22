@@ -172,8 +172,7 @@ def remove_sidebar_duplicates(content: str) -> str:
         escaped = re.escape(url)
         item_pattern = re.compile(
             r'<div\b[^>]*class=["\'][^"\']*\bsimilar-item\b[^"\']*["\'][^>]*>'
-            r'(?:(?!<div\b)[\s\S])*?href=["\']' + escaped + r'["\']'
-            r'(?:(?!<div\b)[\s\S])*?</div>\s*</div>',
+            r'[\s\S]*?href=["\']' + escaped + r'["\'][\s\S]*?</div>\s*</div>',
             re.I,
         )
         sidebar = item_pattern.sub("", sidebar)
