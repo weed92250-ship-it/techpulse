@@ -531,7 +531,7 @@ def generate_news():
                 reasons = []
                 if h1_count != 1:
                     reasons.append(f"h1={h1_count} (трябва точно 1)")
-                if h2_count < 6 or h2_count > 7:
+                if h2_count < 4 or h2_count > 8:
                     reasons.append(f"h2={h2_count} (допустими 4–8)")
                 if not faq_schema_valid:
                     reasons.append("FAQPage JSON-LD е невалиден или няма точно 3 въпроса")
