@@ -35,9 +35,8 @@ jobs:
           from pathlib import Path
 
           repair = ast.parse(Path("repair_article_images.py").read_text(encoding="utf-8"))
-          namespace = {}
-          exec(compile(repair, "repair_article_images.py", "exec"), namespace)
-          ids = namespace["UNSPLASH_IDS"]
+          ids_node = next(node.value for node in repair.body if isinstance(node, ast.Assign) and any(isinstance(target, ast.Name) and target.id == "UNSPLASH_IDS" for target in node.targets))
+          ids = ast.literal_eval(ids_node)
           urls = [
               f'https://images.unsplash.com/{photo}?auto=format&fit=crop&w=1200&h=675&q=82'
               for photo in ids
