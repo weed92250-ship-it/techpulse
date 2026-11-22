@@ -62,6 +62,127 @@ def infer_category(title, article_html, history=None):
 
     return preferred[1], preferred[2]
 
+
+CATEGORY_ROTATION = [
+    ("AI", "ai"),
+    ("Хардуер", "hardware"),
+    ("Киберсигурност", "cyber"),
+    ("Технологии", "technologies"),
+    ("Квантови технологии", "quantum"),
+    ("Бъдещи технологии", "future"),
+]
+
+TOPIC_STOPWORDS = {
+    "как", "защо", "кога", "кой", "коя", "кои", "това", "тези", "този", "тази",
+    "при", "след", "преди", "между", "срещу", "от", "до", "на", "в", "и", "или",
+    "с", "по", "за", "над", "под", "нов", "нова", "нови", "новото", "новият",
+    "the", "and", "for", "with", "from", "into", "after", "before", "how", "why",
+    "what", "this", "that", "new", "latest", "its", "their", "are", "is",
+}
+
+
+def classify_topic_category(title):
+    text = (title or "").lower()
+    rules = [
+        ("quantum", ("квант", "quantum", "qubit", "кубит")),
+        ("cyber", ("киберсигур", "cybersecurity", "zero trust", "passkey", "ransomware", "криптограф")),
+        ("hardware", ("чип", "chip", "gpu", "cpu", "npu", "процесор", "хардуер", "semiconductor", "полупровод")),
+        ("future", ("робот", "robot", "невроморф", "autonomous", "автоном", "humanoid")),
+        ("ai", ("изкуствен интелект", "artificial intelligence", " ai", "ai ", "llm", "езиков модел", "генератив")),
+    ]
+    for slug, keywords in rules:
+        if any(keyword in text for keyword in keywords):
+            return slug
+    return "technologies"
+
+
+def topic_tokens(title):
+    words = re.findall(r"(?u)[a-zа-яё0-9]{3,}", (title or "").lower())
+    return {word for word in words if word not in TOPIC_STOPWORDS}
+
+
+def topic_titles_overlap(left, right):
+    a, b = topic_tokens(left), topic_tokens(right)
+    if len(a) < 2 or len(b) < 2:
+        return False
+    common = a & b
+    if len(common) < 2:
+        return False
+    return (len(common) / min(len(a), len(b)) >= 0.55
+            or len(common) / len(a | b) >= 0.38)
+
+
+def source_urls_from_record(record):
+    urls = set()
+    for key in ("source_url", "source_urls"):
+        value = record.get(key)
+        if isinstance(value, str) and value:
+            urls.add(value.rstrip("/"))
+        elif isinstance(value, list):
+            urls.update(item.rstrip("/") for item in value if isinstance(item, str) and item)
+    for source in record.get("sources", []) or []:
+        if isinstance(source, dict) and source.get("url"):
+            urls.add(str(source["url"]).rstrip("/"))
+    return urls
+
+
+def filter_recent_topics(rss_items, history):
+    """Exclude the last three published categories and topics covered in the last 20 articles."""
+    blocked_categories = {
+        item.get("category_slug") for item in (history or [])[:3]
+        if item.get("category_slug")
+    }
+    recent = (history or [])[:20]
+    seen_urls = set()
+    for record in recent:
+        seen_urls.update(source_urls_from_record(record))
+
+    accepted = []
+    rejected = {"recent_category": 0, "source_url": 0, "similar_title": 0}
+    seen_rss_urls = set()
+
+    for item in rss_items:
+        title = (item.get("title") or "").strip()
+        link = (item.get("link") or "").strip()
+        if not title or not link:
+            continue
+        normalized_link = link.rstrip("/")
+        if normalized_link in seen_rss_urls:
+            continue
+        seen_rss_urls.add(normalized_link)
+
+        category = classify_topic_category(title)
+        if category in blocked_categories:
+            rejected["recent_category"] += 1
+            continue
+        if normalized_link in seen_urls:
+            rejected["source_url"] += 1
+            continue
+
+        duplicate = False
+        for record in recent:
+            old_title = record.get("title", "")
+            old_source_title = record.get("source_title", "")
+            if topic_titles_overlap(title, old_title) or (
+                old_source_title and topic_titles_overlap(title, old_source_title)
+            ):
+                duplicate = True
+                break
+        if duplicate:
+            rejected["similar_title"] += 1
+            continue
+
+        accepted.append(item)
+
+    print(
+        "RSS филтър: "
+        f"{len(accepted)} допустими теми; отхвърлени по категория: "
+        f"{rejected['recent_category']}, по URL: {rejected['source_url']}, "
+        f"по сходно заглавие: {rejected['similar_title']}. "
+        f"Изключени категории: {', '.join(sorted(blocked_categories)) or 'няма'}."
+    )
+    return accepted
+
 CSS_STYLES = """
     body {
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -624,6 +745,7 @@ def generate_news():
 <writing>
 Пиши на естествен и точен български език. Забранени са клишетата „На фона на засилената глобална конкуренция“, „Динамиката в технологичната индустрия“, „В съвременния дигитален свят“, „в днешния динамичен свят“, „революционизира“, „нова ера“, „играта се променя“ и „това променя всичко“. Започни с конкретен проверен факт, число, техническа промяна или практическа ситуация.
 Целта е 950–1200 думи. Валидаторът допуска 650–1800 думи. Не повтаряй една теза и не добавяй празни абзаци.
+Избери тема само от подадения RSS списък. Не сменяй темата с друга новина. Списъкът вече е филтриран срещу последните 20 статии и последните три категории.
 Задължителна структура: конкретно въведение; 3–8 логични H2 секции; съдържателни абзаци с факти, обяснения и примери; „Ключови изводи“; „Какво означава това на практика“; FAQ „Често задавани въпроси“ с точно 3 въпроса като H3 и отговор за всеки в следващия P.
 Обясни механизма, контекста, предимствата, недостатъците, разходите и ограниченията, когато са приложими. Разграничавай факт, анализ и прогноза. Не измисляй тестове, личен опит, цитати, експерти или числа.
 </writing>
@@ -664,6 +786,14 @@ def generate_news():
 
     if not rss_items:
         raise RuntimeError("Не бяха получени актуални RSS новини. Няма да се публикува.")
+
+    history = load_history()
+    rss_items = filter_recent_topics(rss_items, history)
+    if not rss_items:
+        raise RuntimeError(
+            "Всички RSS теми са повторения или попадат в последните три категории. "
+            "Няма да се публикува дублираща статия."
+        )
 
     rss_context = "\n".join(
         f'- {item["title"]} | {item["source"]} | {item["date"]} | {item["link"]}'
@@ -792,8 +922,16 @@ def generate_news():
     byline = f'<p class="meta">Редакция TechPulse · {published_date} · {reading_minutes} мин. четене</p>'
     article_body = re.sub(r"(</h1>)", r"\1" + byline, article_body, count=1, flags=re.I)
 
-    history = load_history()
     category_label, category_slug = infer_category(title_text, article_body, history)
+    if category_slug in {item.get("category_slug") for item in history[:3]}:
+        raise RuntimeError(
+            f"Статията попада в наскоро публикувана категория: {category_label}. "
+            "Публикуването е спряно, за да не се наруши ротацията."
+        )
+    if any(topic_titles_overlap(title_text, item.get("title", "")) for item in history[:20]):
+        raise RuntimeError(
+            "Заглавието повтаря тема от последните 20 статии. Публикуването е спряно."
+        )
     main_image_url, fallback_img, image_source = choose_article_images(
         category_slug, history, image_query
     )
@@ -842,6 +980,8 @@ def generate_news():
         "img": main_image_url,
         "image_source": image_source,
         "image_query": image_query,
+        "source_title": rss_items[0]["title"] if rss_items else "",
+        "source_url": rss_items[0]["link"] if rss_items else "",
         "sources": source_links[:6],
     })
     save_history(history[:200])
