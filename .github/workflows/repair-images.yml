@@ -7,6 +7,7 @@ on:
       - main
     paths:
       - 'repair_article_images.py'
+      - 'repair_article_templates.py'
 
 permissions:
   contents: write
@@ -28,6 +29,8 @@ jobs:
           python-version: '3.12'
       - name: Repair duplicate article images
         run: python repair_article_images.py
+      - name: Normalize legacy article pages
+        run: python repair_article_templates.py
       - name: Commit repaired article images
         run: |
           git config user.name "github-actions[bot]"
