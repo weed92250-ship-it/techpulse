@@ -174,12 +174,26 @@ def filter_recent_topics(rss_items, history):
 
         accepted.append(item)
 
+    rotation_slugs = [slug for _, slug in CATEGORY_ROTATION]
+    latest_slug = (history or [{}])[0].get("category_slug")
+    rotation_start = (
+        (rotation_slugs.index(latest_slug) + 1) % len(rotation_slugs)
+        if latest_slug in rotation_slugs else 0
+    )
+    accepted.sort(
+        key=lambda item: (
+            rotation_slugs.index(classify_topic_category(item["title"])) - rotation_start
+        ) % len(rotation_slugs)
+    )
+
     print(
         "RSS филтър: "
         f"{len(accepted)} допустими теми; отхвърлени по категория: "
         f"{rejected['recent_category']}, по URL: {rejected['source_url']}, "
         f"по сходно заглавие: {rejected['similar_title']}. "
-        f"Изключени категории: {', '.join(sorted(blocked_categories)) or 'няма'}."
+        f"Изключени категории: {', '.join(sorted(blocked_categories)) or 'няма'}. "
+        f"Следваща категория по ротация: "
+        f"{CATEGORY_ROTATION[rotation_start][0]}."
     )
     return accepted
 
