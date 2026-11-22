@@ -505,13 +505,38 @@ def generate_news():
                 short_paragraphs = len(re.findall(r"<p\b[^>]*>[^<]{1,120}</p>", cleaned, flags=re.I))
 
                 h1_count = len(re.findall(r"<h1\b", cleaned, flags=re.I))
+                faq_schema_valid = False
+                faq_payloads = re.findall(
+                    r'<script\b[^>]*type=["\']application/ld\+json["\'][^>]*>([\s\S]*?)</script>',
+                    cleaned,
+                    flags=re.I,
+                )
+                for faq_payload in faq_payloads:
+                    try:
+                        faq_data = json.loads(faq_payload)
+                        faq_type = faq_data.get("@type", "")
+                        faq_items = faq_data.get("mainEntity", [])
+                        if (
+                            (faq_type == "FAQPage" or str(faq_type).endswith("/FAQPage"))
+                            and len(faq_items) == 3
+                            and all(
+                                item.get("@type") == "Question"
+                                and item.get("acceptedAnswer", {}).get("@type") == "Answer"
+                                for item in faq_items
+                            )
+                        ):
+                            faq_schema_valid = True
+                            break
+                    except (json.JSONDecodeError, AttributeError, TypeError):
+                        continue
+
                 valid_structure = (
                     h1_count == 1
                     and 6 <= h2_count <= 7
                     and "Ключови изводи" in cleaned
                     and "Какво означава това на практика" in cleaned
                     and "Често задавани въпроси" in cleaned
-                    and "FAQPage" in cleaned
+                    and faq_schema_valid
                     and '<p class="article-intro">' in cleaned
                     and "<p>" in cleaned
                     and word_count >= 900
@@ -530,8 +555,8 @@ def generate_news():
                     reasons.append(f"h1={h1_count} (трябва точно 1)")
                 if h2_count < 6 or h2_count > 7:
                     reasons.append(f"h2={h2_count} (трябва 6–7)")
-                if "FAQPage" not in cleaned:
-                    reasons.append("липсва FAQPage schema")
+                if not faq_schema_valid:
+                    reasons.append("FAQPage JSON-LD е невалиден или няма точно 3 въпроса")
                 if '<p class="article-intro">' not in cleaned:
                     reasons.append("липсва article-intro")
                 if "<p>" not in cleaned:
