@@ -530,8 +530,8 @@ def generate_news():
                     reasons.append("липсват стандартни абзаци")
                 if word_count < 900 or word_count > 1200:
                     reasons.append(f"думи={word_count} (допустими 900–1200)")
-                if h3_count > 4:
-                    reasons.append(f"h3={h3_count} (максимум 4)")
+                if h3_count != 3:
+                    reasons.append(f"h3={h3_count} (трябва точно 3 FAQ въпроса)")
                 if short_paragraphs > 8:
                     reasons.append(f"кратки абзаци={short_paragraphs} (максимум 8)")
                 print(f"Отхвърлена статия от {model_name}: {word_count} думи, {h3_count} подзаглавия. Причина: {', '.join(reasons) or 'непозната структурна грешка'}.")
