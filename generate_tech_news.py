@@ -159,70 +159,148 @@ def load_history():
 
 IMAGE_POOLS = {
     "quantum": [
-        "https://images.unsplash.com/photo-1535378273068-9bb67d5beacd?w=800&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop"
+        "photo-1535378273068-9bb67d5beacd", "photo-1635070041078-e363dbe005cb",
+        "photo-1451187580459-43490279c0fa", "photo-1523961131990-5ea7c61b2107",
+        "photo-1535223289827-42f1e9919769", "photo-1535378620166-273708d44e4c",
+        "photo-1618005182384-a83a8bd57fbe", "photo-1527443224154-c4a3942d3acf",
+        "photo-1581091226825-a6a2a5aee158", "photo-1581092160562-40aa08e78837"
     ],
     "cyber": [
-        "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1510511459019-5dda7724fd87?w=800&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&auto=format&fit=crop"
+        "photo-1526374965328-7f61d4dc18c5", "photo-1550751827-4bd374c3f58b",
+        "photo-1563013544-824ae1b704d3", "photo-1510511459019-5dda7724fd87",
+        "photo-1558494949-ef010cbdcc31", "photo-1550439062-609e1531270e",
+        "photo-1516321318423-f06f85e504b3", "photo-1527443224154-c4a3942d3acf",
+        "photo-1581092795360-fd1ca04f0952", "photo-1515879218367-8466d910aaa4"
     ],
     "hardware": [
-        "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=800&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=800&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1591405351990-4726e331f141?w=800&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&auto=format&fit=crop"
+        "photo-1518770660439-4636190af475", "photo-1591799264318-7e6ef8ddb7ea",
+        "photo-1587202372775-e229f172b9d7", "photo-1591405351990-4726e331f141",
+        "photo-1550745165-9bc0b252726f", "photo-1527443224154-c4a3942d3acf",
+        "photo-1581092580497-e0d23cbdf1dc", "photo-1581092335878-2d9ff86ca2bf",
+        "photo-1581092921461-eab62e97a780", "photo-1597733336794-12d05021d510"
     ],
     "future": [
-        "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1535223289827-42f1e9919769?w=800&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1523961131990-5ea7c61b2107?w=800&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1535378620166-273708d44e4c?w=800&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&auto=format&fit=crop"
+        "photo-1485827404703-89b55fcc595e", "photo-1535378620166-273708d44e4c",
+        "photo-1521737711867-e3b97375f902", "photo-1531482615713-2afd69097998",
+        "photo-1522071820081-009f0129c71c", "photo-1531297484001-80022131f5a1",
+        "photo-1581091226825-a6a2a5aee158", "photo-1581092160562-40aa08e78837",
+        "photo-1521737711867-e3b97375f902", "photo-1550439062-609e1531270e"
     ],
     "ai": [
-        "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1676299081847-824916de030a?w=800&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop"
+        "photo-1677442136019-21780ecad995", "photo-1620712943543-bcc4688e7485",
+        "photo-1676299081847-824916de030a", "photo-1498050108023-c5249f4df085",
+        "photo-1519389950473-47ba0277781c", "photo-1504384308090-c894fdcc538d",
+        "photo-1515879218367-8466d910aaa4", "photo-1531297484001-80022131f5a1",
+        "photo-1516321318423-f06f85e504b3", "photo-1521737711867-e3b97375f902"
     ],
     "technologies": [
-        "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&auto=format&fit=crop"
+        "photo-1504384308090-c894fdcc538d", "photo-1498050108023-c5249f4df085",
+        "photo-1519389950473-47ba0277781c", "photo-1522071820081-009f0129c71c",
+        "photo-1516321318423-f06f85e504b3", "photo-1531297484001-80022131f5a1",
+        "photo-1515879218367-8466d910aaa4", "photo-1550439062-609e1531270e",
+        "photo-1550745165-9bc0b252726f", "photo-1531482615713-2afd69097998"
     ]
 }
 
-def choose_article_images(category_slug, history):
-    recent_images = {
-        item.get("img") for item in history[:5]
+def _image_url(photo_id):
+    return f"https://images.unsplash.com/{photo_id}?auto=format&fit=crop&w=1200&h=675&q=82"
+
+def _http_image_ok(url):
+    try:
+        request = urllib.request.Request(
+            url,
+            headers={"User-Agent": "TechPulseImagePicker/1.0", "Accept": "image/avif,image/webp,image/*,*/*"}
+        )
+        with urllib.request.urlopen(request, timeout=12) as response:
+            return response.getcode() == 200 and response.headers.get("Content-Type", "").lower().startswith("image/")
+    except Exception as error:
+        print(f"Снимката не премина HTTP проверката: {url} ({error})")
+        return False
+
+def _json_get(url, headers=None):
+    request = urllib.request.Request(url, headers=headers or {"User-Agent": "TechPulse/1.0"})
+    with urllib.request.urlopen(request, timeout=15) as response:
+        if response.getcode() != 200:
+            return {}
+        return json.loads(response.read().decode("utf-8"))
+
+def _recent_image_urls(history, count=50):
+    return {
+        item.get("img") for item in history[:count]
         if isinstance(item, dict) and isinstance(item.get("img"), str)
     }
 
-    category_images = IMAGE_POOLS.get(category_slug, [])
-    available_category = [url for url in category_images if url not in recent_images]
-    available_all = list(dict.fromkeys(
-        url for urls in IMAGE_POOLS.values() for url in urls
-        if url not in recent_images
-    ))
+def _provider_image(image_query, history, provider):
+    used_all = {
+        item.get("img") for item in history
+        if isinstance(item, dict) and isinstance(item.get("img"), str)
+    }
+    query = urllib.parse.quote(image_query.strip())
+    candidates = []
+    try:
+        if provider == "pixabay":
+            key = os.environ.get("PIXABAY_API_KEY", "").strip()
+            if not key:
+                return None
+            endpoint = (
+                "https://pixabay.com/api/?key=" + urllib.parse.quote(key)
+                + "&q=" + query
+                + "&image_type=photo&orientation=horizontal&safesearch=true&per_page=20"
+            )
+            data = _json_get(endpoint)
+            for hit in data.get("hits", []):
+                if hit.get("imageWidth", 0) > hit.get("imageHeight", 0):
+                    candidates.append(hit.get("largeImageURL") or hit.get("webformatURL"))
+        else:
+            endpoint = (
+                "https://api.openverse.org/v1/images/?q=" + query
+                + "&aspect_ratio=wide&license_type=commercial,modification&page_size=20"
+            )
+            data = _json_get(endpoint)
+            for hit in data.get("results", []):
+                width, height = hit.get("width", 0), hit.get("height", 0)
+                if not width or not height or width > height:
+                    candidates.append(hit.get("url"))
+    except Exception as error:
+        print(f"{provider} търсенето не е достъпно: {error}")
+        return None
 
-    if not available_all:
-        raise RuntimeError("Няма свободна снимка извън последните 5 публикации.")
+    for url in candidates:
+        if isinstance(url, str) and url.startswith("https://") and url not in used_all and _http_image_ok(url):
+            print(f"Избрана снимка от {provider}: {url}")
+            return url
+    return None
 
-    main_image = random.choice(available_category or available_all)
-    fallback_candidates = [url for url in available_all if url != main_image]
-    fallback_image = random.choice(fallback_candidates) if fallback_candidates else main_image
-    return main_image, fallback_image
+def choose_article_images(category_slug, history, image_query):
+    recent = _recent_image_urls(history, 50)
+    # Providers have priority. Their URLs are never reused from the full history.
+    main_image = _provider_image(image_query, history, "pixabay")
+    source = "pixabay" if main_image else None
+    if not main_image:
+        main_image = _provider_image(image_query, history, "openverse")
+        source = "openverse" if main_image else None
 
+    if not main_image:
+        pool = IMAGE_POOLS.get(category_slug, []) + [
+            photo for key, photos in IMAGE_POOLS.items() if key != category_slug for photo in photos
+        ]
+        candidates = list(dict.fromkeys(_image_url(photo) for photo in pool))
+        random.shuffle(candidates)
+        for candidate in candidates:
+            if candidate not in recent and _http_image_ok(candidate):
+                main_image = candidate
+                source = "unsplash_fallback"
+                break
+
+    if not main_image:
+        raise RuntimeError("Няма свободна хоризонтална снимка с HTTP 200 извън последните 50 статии.")
+
+    fallback_image = next(
+        (url for url in (_image_url(photo) for photos in IMAGE_POOLS.values() for photo in photos)
+         if url != main_image and url not in recent and _http_image_ok(url)),
+        main_image
+    )
+    return main_image, fallback_image, source
 
 def save_history(history):
     with open(HISTORY_FILE, "w", encoding="utf-8") as f:
@@ -419,7 +497,7 @@ def generate_news():
 </current_rss>
 
 <format>
-Върни само HTML без Markdown и code fences. Първият елемент е <h1> със заглавието, следван от точно един <p class="article-intro">. След това включи 4–8 смислени <h2> секции, като всяка основна секция съдържа по 2–3 плътни абзаца. Една секция трябва да съдържа „Ключови изводи“ като сравнителна таблица или списък. Включи отделно <h2>Какво означава това на практика</h2>. Накрая добави <h2>Често задавани въпроси</h2> с точно 3 въпроса и отговора, оформени като <h3> и <p>. Добави валиден JSON-LD <script type="application/ld+json"> за FAQPage със същите три въпроса и отговора. Не включвай фиктивна секция с източници.
+Върни валиден JSON обект без Markdown и code fences. Форматът е точно: {"article_html":"Пълният HTML материал...","image_query":"2–3 конкретни английски думи"}. В article_html запази следната структура: първият елемент е <h1>, следван от точно един <p class="article-intro">, после 4–8 смислени <h2> секции с по 2–3 плътни абзаца, секция „Ключови изводи“, отделна секция „Какво означава това на практика“ и FAQ с точно 3 въпроса като <h3> и <p>, плюс валиден FAQPage JSON-LD. image_query трябва да е кратка фраза на английски с 2–3 думи, описваща конкретния обект/сцена в статията (например "quantum computer lab", "microchip silicon wafer", "cybersecurity server room"). Не връщай URL в image_query и не включвай изображение в HTML.
 </format>
 
 Напиши материала така, че читателят да получи реално обяснение на темата, а не просто преразказ на новината.
@@ -463,12 +541,23 @@ def generate_news():
                 response = client.models.generate_content(
                     model=model_name,
                     contents=request_prompt,
-                    config=types.GenerateContentConfig(max_output_tokens=4096),
+                    config=types.GenerateContentConfig(
+                        max_output_tokens=8192,
+                        response_mime_type="application/json",
+                    ),
                 )
                 if not response or not response.text:
                     continue
 
-                cleaned = response.text.replace(chr(96) * 3 + "html", "").replace(chr(96) * 3, "").strip()
+                payload = json.loads(response.text)
+                cleaned = str(payload.get("article_html", "")).strip()
+                image_query = str(payload.get("image_query", "")).strip()
+                image_query = re.sub(r"[^A-Za-z ]", " ", image_query)
+                image_query = re.sub(r"\\s+", " ", image_query).strip()
+                if not 2 <= len(image_query.split()) <= 3:
+                    image_query = " ".join(re.findall(r"[A-Za-z]+", title_text if "title_text" in locals() else "technology innovation")[:3]) or "technology innovation"
+                if not cleaned:
+                    raise ValueError("JSON отговорът няма article_html")
                 plain_text = re.sub(r"<[^>]+>", " ", cleaned)
                 plain_text = re.sub(r"\s+", " ", plain_text).strip()
                 word_count = len(re.findall(r"(?u)\b[\wА-Яа-яЁё]+\b", plain_text))
@@ -596,7 +685,7 @@ def generate_news():
 
     history = load_history()
     category_label, category_slug = infer_category(title_text, article_body, history)
-    main_image_url, fallback_img = choose_article_images(category_slug, history)
+    main_image_url, fallback_img, image_source = choose_article_images(category_slug, history, image_query)
 
     sidebar_items = history[:3] if len(history) >= 3 else DEFAULT_ARTICLES
     related_items = [x for x in history if x.get("category_slug") == category_slug][:3]
@@ -626,6 +715,8 @@ def generate_news():
         "category_slug": category_slug,
         "url": article_url,
         "img": main_image_url,
+        "image_source": image_source,
+        "image_query": image_query,
         "sources": source_links[:6]
     })
     save_history(history[:200])

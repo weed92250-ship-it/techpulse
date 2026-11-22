@@ -42,6 +42,7 @@ jobs:
       - name: Generate article
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
         run: python generate_tech_news.py
 
       - name: Restore curated pages and wire the new article
@@ -52,6 +53,9 @@ jobs:
           cp /tmp/techpulse-backup/privacy.html public/privacy.html
           cp /tmp/techpulse-backup/articles.html public/articles.html
           cp /tmp/techpulse-backup/sitemap.xml public/sitemap.xml
+
+          # Repair the latest 30 image assignments and synchronize every article card/meta image.
+          python repair_article_images.py
 
           python - <<'PY'
           import datetime as dt
