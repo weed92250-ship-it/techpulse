@@ -27,6 +27,8 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Check Python syntax
+        run: python -m py_compile generate_tech_news.py repair_article_images.py repair_article_templates.py
       - name: Repair duplicate article images
         run: python repair_article_images.py
       - name: Normalize legacy article pages
