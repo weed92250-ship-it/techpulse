@@ -1,11 +1,24 @@
 [
   {
+    "title": "Технологичният зрялостен цикъл на прахосмукачките-роботи: Защо цените спадат, а възможностите се увеличават",
+    "time": "2026-11-24",
+    "category": "AI",
+    "category_slug": "ai",
+    "url": "/articles/tehnologichniyat-zryalosten-tsikal-na-prahosmukachkite-roboti-zashto-tsenite-spadat-a-vazmozhnostite-se-uvelichavat.html",
+    "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d0/MIT_Computer_Science_and_Artificial_Intelligence_Laboratory_%28CSAIL%29_%2854960889464%29.jpg/1280px-MIT_Computer_Science_and_Artificial_Intelligence_Laboratory_%28CSAIL%29_%2854960889464%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "image_source": "wikimedia_commons",
+    "image_query": "robot vacuum cleaning station",
+    "source_title": "Dreame and Eufy are offering nearly 60 percent off robovacs for Black Friday",
+    "source_url": "https://www.theverge.com/gadgets/1040315/black-friday-best-early-robot-vacuum-mop-deals-2026",
+    "sources": []
+  },
+  {
     "title": "Протести пред офисите на Meta в Индия: Сблъсък между глобални платформи и локални регулации",
     "time": "2026-11-22",
     "category": "Киберсигурност",
     "category_slug": "cyber",
     "url": "/articles/protesti-pred-ofisite-na-meta-v-indiya-sblasak-mezhdu-globalni-platformi-i-lokalni-regulatsii.html",
-    "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d1/74ACT574PC.jpg/1280px-74ACT574PC.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/17/De_La_Salle_University_%E2%80%93_Dasmari%C3%B1as_%28DLSU%E2%80%93D%29_Information_and_Communications_Technology_Center_%28ICTC%29_laboratory_room_203_%28ICT203%29_%E2%80%94_normal_view.jpg/1280px-De_La_Salle_University_%E2%80%93_Dasmari%C3%B1as_%28DLSU%E2%80%93D%29_Information_and_Communications_Technology_Center_%28ICTC%29_laboratory_room_203_%28ICT203%29_%E2%80%94_normal_view.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
     "image_source": "wikimedia_commons",
     "image_query": "cybersecurity server room",
     "source_title": "Protesters storm Meta offices in India",
@@ -18,7 +31,7 @@
     "category": "Хардуер",
     "category_slug": "hardware",
     "url": "/articles/kvantovite-izchisleniya-nasochvat-fokusa-si-kam-energiyniya-sektor.html",
-    "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c5/TA8632N.jpg/1280px-TA8632N.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c1/Software%3B_Math%3B_Computer_Science_%285941074396%29.jpg/1280px-Software%3B_Math%3B_Computer_Science_%285941074396%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
     "image_source": "wikimedia_commons",
     "image_query": "quantum computing energy grid",
     "sources": []
@@ -29,7 +42,7 @@
     "category": "Квантови технологии",
     "category_slug": "quantum",
     "url": "/articles/kvantovite-izchisleniya-nasochvat-fokusa-kam-energiyniya-sektor-vmesto-kam-biofarmatsevtikata.html",
-    "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/dc/BA6411.jpg/1280px-BA6411.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/87/Arduino_Laboratory.jpg/1280px-Arduino_Laboratory.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
     "sources": [],
     "image_source": "wikimedia_commons"
   },
@@ -39,7 +52,7 @@
     "category": "Квантови технологии",
     "category_slug": "quantum",
     "url": "/articles/kvantoviyat-sprint-nakade-vodyat-akademichnite-probivi-i-pravitelstvenite-initsiativi.html",
-    "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3a/MCM6206.jpg/1280px-MCM6206.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/73/De_La_Salle_University_%E2%80%93_Dasmari%C3%B1as_%28DLSU%E2%80%93D%29_Information_and_Communications_Technology_Center_%28ICTC%29_laboratory_room_203_%28ICT203%29_%E2%80%94_fisheye_view.jpg/1280px-De_La_Salle_University_%E2%80%93_Dasmari%C3%B1as_%28DLSU%E2%80%93D%29_Information_and_Communications_Technology_Center_%28ICTC%29_laboratory_room_203_%28ICT203%29_%E2%80%94_fisheye_view.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
     "sources": [],
     "image_source": "wikimedia_commons"
   },
@@ -49,7 +62,7 @@
     "category": "Квантови технологии",
     "category_slug": "quantum",
     "url": "/articles/kvantovi-granitsi-i-klasicheski-ogranicheniya-izkustveniyat-intelekt-potvarzhdava-fizicheskite-barieri-pred-izchislitelnata-mosht.html",
-    "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8d/P82A204.jpg/1280px-P82A204.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/10/CAP_Computer_%28general_view%29_-_Cambridge_University.JPG/1280px-CAP_Computer_%28general_view%29_-_Cambridge_University.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
     "sources": [],
     "image_source": "wikimedia_commons"
   },
@@ -59,7 +72,7 @@
     "category": "Хардуер",
     "category_slug": "hardware",
     "url": "/articles/novata-infrastruktura-na-kvantovite-izchisleniya-i-presechnata-tochka-s-izkustveniya-intelekt.html",
-    "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3b/TDA440P.jpg/1280px-TDA440P.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1a/SIP_integrated_circuits_package.jpg/1280px-SIP_integrated_circuits_package.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
     "sources": [],
     "image_source": "wikimedia_commons"
   },
@@ -69,7 +82,7 @@
     "category": "Квантови технологии",
     "category_slug": "quantum",
     "url": "/articles/ministerstvoto-na-targoviyata-na-sasht-finalizira-grant-ot-100-miliona-dolara-za-kvantovi-izsledvaniya.html",
-    "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/05/CDB490EM.jpg/1280px-CDB490EM.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ee/A741_IPRS.jpg/1280px-A741_IPRS.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
     "sources": [],
     "image_source": "wikimedia_commons"
   },
@@ -79,7 +92,7 @@
     "category": "Технологии",
     "category_slug": "technologies",
     "url": "/articles/strategicheskiyat-sblasak-za-tehnologichno-prevazhodstvo-v-syankata-na-novi-ogranicheniya-i-kvantovi-investitsii.html",
-    "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/58/P82C201.jpg/1280px-P82C201.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/90/SB80486DX2-50.jpg/1280px-SB80486DX2-50.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
     "sources": [],
     "image_source": "wikimedia_commons"
   },
@@ -89,7 +102,7 @@
     "category": "Квантови технологии",
     "category_slug": "quantum",
     "url": "/articles/kvantovoto-predimstvo-pred-novi-ogranicheniya-izkustveniyat-intelekt-ochertava-realnite-granitsi-na-kompyutrite-na-badeshteto.html",
-    "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/A3054.jpg/1280px-A3054.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/44/DIP_packages.jpg/1280px-DIP_packages.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
     "sources": [],
     "image_source": "wikimedia_commons"
   },
@@ -99,7 +112,7 @@
     "category": "Киберсигурност",
     "category_slug": "cyber",
     "url": "/articles/slozhnata-geopolitika-na-chipovete-kak-edna-kitayska-universitetska-pokupka-izostri-debata-okolo-iznosniya-kontrol.html",
-    "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c5/D8259AC-2.jpg/1280px-D8259AC-2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bb/Variations_of_the_DIP_package.jpg/1280px-Variations_of_the_DIP_package.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
     "sources": [
       {
         "title": "How artificial intelligence is changing healthcare - MPR News",
@@ -134,7 +147,7 @@
     "category": "Квантови технологии",
     "category_slug": "quantum",
     "url": "/articles/google-zasilva-natiska-varhu-nvidia-s-novi-spetsializirani-chipove-na-fona-na-oblachniya-bum.html",
-    "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c9/TBA570A_1.jpg/1280px-TBA570A_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ac/IBM_MST_6813185.jpg/1280px-IBM_MST_6813185.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
     "sources": [
       {
         "title": "Nvidia Opens Investigation Into Jensen Huang’s Relationship With Suspected Chinese Spy - The New York Times",
@@ -169,7 +182,7 @@
     "category": "Квантови технологии",
     "category_slug": "quantum",
     "url": "/articles/izkustveniyat-intelekt-sreshtu-kvantovite-zagadki-kak-nepublikuvan-model-razreshi-seriozno-teoretichno-uravnenie.html",
-    "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9c/P82C202.jpg/1280px-P82C202.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/98/Laptop_Acrobat_Model_NBD_486C%2C_Type_DXh2_-_California_Micro_Devices_CMD_9324_on_motherboard-9749.jpg/1280px-Laptop_Acrobat_Model_NBD_486C%2C_Type_DXh2_-_California_Micro_Devices_CMD_9324_on_motherboard-9749.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
     "sources": [
       {
         "title": "Data Precedes Artificial Intelligence - Defense.info",
@@ -204,7 +217,7 @@
     "category": "Квантови технологии",
     "category_slug": "quantum",
     "url": "/articles/izkustveniyat-intelekt-zad-zlatniya-standart-v-kvantovite-izchisleniya-razreshavane-na-desetiletnata-zagadka-za-uskoreniyata.html",
-    "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ea/AN3231K.jpg/1280px-AN3231K.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/16/T9901C.jpg/1280px-T9901C.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
     "sources": [
       {
         "title": "OCC Issues Supervisory Framework for Banks’ Use of “Super Intelligence”: A Risk-Based Approach to Generative and Agentic AI - Consumer Finance Monitor",
@@ -239,7 +252,7 @@
     "category": "Квантови технологии",
     "category_slug": "quantum",
     "url": "/articles/novata-boyna-liniya-v-poluprovodnikovata-industriya-kak-naprednaloto-opakovane-na-chipove-se-prevarna-v-kritichen-faktor-za-izkustveniya-intelekt.html",
-    "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bb/CDB4153EM.jpg/1280px-CDB4153EM.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/1/1b/Integrated_circuit_on_microchip.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
     "sources": [
       {
         "title": "How the College Board Is Fighting A.I. Cheating on the SAT Tests - The New York Times",
@@ -274,7 +287,7 @@
     "category": "Квантови технологии",
     "category_slug": "quantum",
     "url": "/articles/tihiyat-probiv-v-kvantovite-izchisleniya-zashto-ibm-amd-i-laboratoriyata-oak-ridge-obedinyavat-sili-sreshtu-dekoherentsiyata.html",
-    "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/76/TDA3653B.jpg/1280px-TDA3653B.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/05/BA741.jpg/1280px-BA741.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
     "sources": [
       {
         "title": "Michigan can use artificial intelligence to improve lives - Mackinac Center",
@@ -309,7 +322,7 @@
     "category": "Киберсигурност",
     "category_slug": "cyber",
     "url": "/articles/slozhnata-logistika-na-tehnologichnite-ogranicheniya-kak-zabranenite-chipove-namirat-pat-do-pazarite.html",
-    "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f5/CDB495EM.jpg/1280px-CDB495EM.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/82/D71054C.jpg/1280px-D71054C.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
     "sources": [
       {
         "title": "Advancing software engineering education with artificial intelligence - Augusta University",
@@ -344,7 +357,7 @@
     "category": "Квантови технологии",
     "category_slug": "quantum",
     "url": "/articles/bitkata-za-kvantova-stabilnost-navliza-v-nov-etap-s-postizheniya-v-potiskaneto-na-greshkite.html",
-    "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b4/A723_2.jpg/1280px-A723_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a4/M3900BE.jpg/1280px-M3900BE.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
     "sources": [
       {
         "title": "Steven Spielberg's A.I. ARTIFICIAL INTELLIGENCE to Make 4K UHD Debut in December 2026 - Get Your Comic On",
@@ -379,7 +392,7 @@
     "category": "Квантови технологии",
     "category_slug": "quantum",
     "url": "/articles/kvantovite-tehnologii-sreshtu-ogranicheniyata-na-dannite-kak-izsledovateli-izpolzvat-novi-metodi-za-ranna-diagnostika-na-belodroben-kartsinom.html",
-    "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b1/CDB476EM.jpg/1280px-CDB476EM.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7f/TBA950_2.jpg/1280px-TBA950_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
     "sources": [
       {
         "title": "Artificial intelligence use doubles among rural Nebraskans - Nebraska Public Media",
@@ -414,7 +427,7 @@
     "category": "Квантови технологии",
     "category_slug": "quantum",
     "url": "/articles/modulniyat-kvantov-probiv-na-ibm-kak-l-couplers-promenyat-arhitekturata-na-izchislitelnite-sistemi.html",
-    "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fe/CDB404ET3.jpg/1280px-CDB404ET3.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f6/BE565E.jpg/1280px-BE565E.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
     "sources": [
       {
         "title": "Musk and Zuckerberg echo Trump's push to rebrand AI as 'super intelligence' on earnings calls. Others do not - CNBC",
@@ -449,7 +462,7 @@
     "category": "Квантови технологии",
     "category_slug": "quantum",
     "url": "/articles/modulniyat-podhod-v-kvantovite-izchisleniya-nabira-skorost-s-novi-arhitekturni-resheniya.html",
-    "img": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Sunderland_University_Experimental_Robot_Arm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e0/TBA950_1.jpg/1280px-TBA950_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
     "sources": [
       {
         "title": "Big Tech's AI bill comes due, but Michigan automakers see a rebound - Detroit Free Press",
@@ -484,7 +497,7 @@
     "category": "Квантови технологии",
     "category_slug": "quantum",
     "url": "/articles/modulniyat-kvantov-probiv-zashto-prehodat-kam-svarzani-protsesori-promenya-pravilata-v-industriyata.html",
-    "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/52/Disrupting_the_research_process%2C_changing_materials_science_with_robotics%2C_AI_and_autonomy_160909-F-ZS991-002.jpg/1280px-Disrupting_the_research_process%2C_changing_materials_science_with_robotics%2C_AI_and_autonomy_160909-F-ZS991-002.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1b/TC51V4260BFL-80.jpg/1280px-TC51V4260BFL-80.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
     "sources": [
       {
         "title": "Trump Wants to Ban Use of the Term 'Artificial Intelligence' and 'AI' - Variety",
@@ -519,7 +532,7 @@
     "category": "Квантови технологии",
     "category_slug": "quantum",
     "url": "/articles/noviyat-grafik-na-nist-izpravya-kriptografiyata-pred-kvantovata-zaplaha.html",
-    "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ca/AI_research_robots_key_to_%E2%80%98democratizing_and_revolutionizing_science%E2%80%99%2C_world-class_AFRL_researcher_says_%288274977%29.jpg/1280px-AI_research_robots_key_to_%E2%80%98democratizing_and_revolutionizing_science%E2%80%99%2C_world-class_AFRL_researcher_says_%288274977%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/be/L107_IPRS.jpg/1280px-L107_IPRS.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
     "sources": [
       {
         "title": "Trump Wants to Ban Use of the Term 'Artificial Intelligence' and 'AI' - Variety",
@@ -554,7 +567,7 @@
     "category": "Квантови технологии",
     "category_slug": "quantum",
     "url": "/articles/pridobivaneto-na-classiq-ot-intel-chertae-novi-ochertaniya-v-komersializatsiyata-na-kvantovite-tehnologii.html",
-    "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/75/Manuela_Veloso_IMG_2376.jpg/1280px-Manuela_Veloso_IMG_2376.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/45/CXD8054.jpg/1280px-CXD8054.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
     "sources": [
       {
         "title": "Illustration shows \"AI Artificial Intelligence\" words and keyboard - The Lufkin Daily News",
@@ -589,7 +602,7 @@
     "category": "Квантови технологии",
     "category_slug": "quantum",
     "url": "/articles/mashtabnata-nadprevara-za-izchislitelna-mosht-dostigna-novi-izmereniya-s-kapitalovite-inzhektsii-v-ai-infrastrukturata.html",
-    "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/51/2006-01-21_Detaching_drop.jpg/1280px-2006-01-21_Detaching_drop.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f1/UPC2313CA.jpg/1280px-UPC2313CA.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
     "sources": [
       {
         "title": "Illustration shows \"AI Artificial Intelligence\" words and keyboard - The Lufkin Daily News",
@@ -624,7 +637,7 @@
     "category": "Квантови технологии",
     "category_slug": "quantum",
     "url": "/articles/novata-faza-na-kvantovite-tehnologii-mezhdu-darzhavnite-investitsii-i-targovskata-realizatsiya.html",
-    "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2b/Ronald_C._Arkin.jpg/1280px-Ronald_C._Arkin.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b2/TDA1028.jpg/1280px-TDA1028.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
     "sources": [
       {
         "title": "Why Trump’s Rebrand of Artificial Intelligence to Super Intelligence Matters - Time Magazine",
@@ -659,7 +672,7 @@
     "category": "Квантови технологии",
     "category_slug": "quantum",
     "url": "/articles/kvantovite-kompyutri-i-tyahnata-nay-golyama-bariera-kak-izkustveniyat-intelekt-se-namesva-v-korektsiyata-na-greshki.html",
-    "img": "https://upload.wikimedia.org/wikipedia/commons/b/b3/A_coragem_da_gota_de_%C3%A1gua_%C3%A9_que_ousa_cair_no_deserto%2C_Museu_do_Neo-Realismo%2C_VFX_05.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/64/D41256C-15.jpg/1280px-D41256C-15.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
     "sources": [
       {
         "title": "Why Trump’s Rebrand of Artificial Intelligence to Super Intelligence Matters - Time Magazine",
@@ -694,7 +707,7 @@
     "category": "Квантови технологии",
     "category_slug": "quantum",
     "url": "/articles/nov-horizont-za-izkustveniya-intelekt-modeliraneto-na-choveshkiya-um.html",
-    "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/db/Citation_Excel_%E2%80%98D-CAIR%E2%80%99_%26_Falcon_900EX_%E2%80%98N900HD%E2%80%99_at_Cascais%2C_Portugal._20-9-2022_%2853773329902%29.jpg/1280px-Citation_Excel_%E2%80%98D-CAIR%E2%80%99_%26_Falcon_900EX_%E2%80%98N900HD%E2%80%99_at_Cascais%2C_Portugal._20-9-2022_%2853773329902%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/39/SAS560S.jpg/1280px-SAS560S.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
     "sources": [
       {
         "title": "Civil Beat’s Artificial Intelligence Policy - Honolulu Civil Beat",
@@ -729,7 +742,7 @@
     "category": "Квантови технологии",
     "category_slug": "quantum",
     "url": "/articles/povratnata-tochka-v-kvantovite-izchisleniya-noviyat-skok-kam-ustoychivi-sistemi.html",
-    "img": "https://upload.wikimedia.org/wikipedia/commons/5/58/A_coragem_da_gota_de_%C3%A1gua_%C3%A9_que_ousa_cair_no_deserto%2C_Museu_do_Neo-Realismo%2C_VFX_03.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3a/P82A203.jpg/1280px-P82A203.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
     "sources": [
       {
         "title": "Experts: How are climate scientists using artificial intelligence? - Carbon Brief",
@@ -764,7 +777,7 @@
     "category": "Квантови технологии",
     "category_slug": "quantum",
     "url": "/articles/kvantoviyat-probiv-kak-korektsiyata-na-greshki-doblizhava-mashinnite-izchisleniya-do-horizonta-na-2029-godina.html",
-    "img": "https://upload.wikimedia.org/wikipedia/commons/e/e7/A_coragem_da_gota_de_%C3%A1gua_%C3%A9_que_ousa_cair_no_deserto%2C_Museu_do_Neo-Realismo%2C_VFX_04.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/22/SN74ALS521N.jpg/1280px-SN74ALS521N.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
     "sources": [
       {
         "title": "Writing Artificial Intelligence Into Constitutions: A Global Constitutional Moment for the Algorithmic State - www.iconnectblog.com",
